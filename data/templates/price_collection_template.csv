@@ -1,0 +1,2 @@
+group_id,retailer,retailer_sku,brand,product_name,price,uom,pack_coverage,promo_price,in_stock,collected_on,data_source,url,specs
+G0001,home_depot,1005432109,LifeProof,Sterling Oak 22 MIL Rigid Core,89.98,per_box,23.77,,yes,2026-08-14,collected,https://www.homedepot.com/p/...,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2

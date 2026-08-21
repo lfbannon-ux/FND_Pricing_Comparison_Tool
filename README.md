@@ -1,0 +1,187 @@
+# Floor & Decor pricing comparison tool
+
+Compares **200 SKUs** across **Floor & Decor**, **Home Depot** and **Lowe's** on a
+like-for-like basis: every price is restated in a common unit, every competitor
+item is scored for how genuinely comparable it is, and only defensible pairs are
+allowed to move the headline numbers.
+
+```
+python3 -m fnd_pricing compare      # console summary
+python3 -m fnd_pricing report       # self-contained HTML report
+python3 -m fnd_pricing export       # multi-sheet Excel workbook
+```
+
+---
+
+## Read this first: where the prices come from
+
+None of the three retailers publish a price API, and all three block automated
+collection, so **the prices shipped in this repository are seed estimates, not
+collected prices.** Every seed row is stamped `data_source=seed_estimate`. They
+are anchored to how these categories are actually merchandised — real price
+bands, real pack sizes, real unit-of-measure conventions, real brand line-ups —
+so the tool runs end to end and the output is shaped like the real thing. They
+are not a substitute for a collection run.
+
+Everything downstream of the data file — normalisation, matching, indexing,
+exception handling, reporting — is production logic. Replace the price rows with
+collected ones (see [Loading real prices](#loading-real-prices)) and every number
+in the report becomes a real number. Nothing else has to change.
+
+## Quickstart
+
+```bash
+git clone <this repo> && cd FND_Pricing_Comparison_Tool
+pip install -r requirements.txt          # only needed for the xlsx export
+export PYTHONPATH=src
+
+python3 -m fnd_pricing validate          # check the data files and coverage
+python3 -m fnd_pricing compare --top 10  # summary + widest gaps
+python3 -m fnd_pricing report            # -> data/out/pricing_report.html
+python3 -m fnd_pricing export            # -> data/out/pricing_comparison.xlsx
+```
+
+Filter to one category, or write the per-SKU detail to CSV:
+
+```bash
+python3 -m fnd_pricing compare --category "Porcelain Tile"
+python3 -m fnd_pricing compare --csv data/out/sku_detail.csv
+python3 -m fnd_pricing report --min-tier equivalent   # tighten the match bar
+```
+
+## How the comparison works
+
+**1. SKU groups, not SKUs.** The unit of analysis is a *SKU group*: one
+specification with up to three retailer offers against it. Comparing
+"Floor & Decor SKU 12345 vs Home Depot SKU 67890" only means something once you
+have asserted the two are the same kind of good, so that assertion is the
+primary data structure.
+
+**2. Normalisation.** Retailers quote the same goods differently: Floor & Decor
+prices most flooring per square foot, Home Depot often prices the identical
+product per case, Lowe's sometimes prices per tile or per square yard, and
+setting materials come in 25 lb and 50 lb bags. Each group declares a
+**comparison basis** (`sq_ft`, `lin_ft`, `lb`, `each`) and every offer is
+converted onto it before anything is compared. A unit of measure that resolves
+to the wrong basis is a hard error — silently comparing a per-piece trim price
+against per-square-foot tile would produce a confident, meaningless number.
+
+**3. Match confidence.** Each competitor offer is scored against the
+Floor & Decor offer on the attributes that actually drive price in that category
+(wear layer, core, species, PEI rating, stone grade, chemistry, profile…),
+weighted by importance. The score yields a tier:
+
+| Tier | Meaning |
+|---|---|
+| `exact` | Same brand and model — the identical good |
+| `equivalent` | Different brand, specifications align |
+| `close` | Specs differ on a secondary attribute |
+| `weak` | Not defensible as like-for-like — **excluded** |
+
+Attributes only one retailer publishes are unverified, so confidence is capped
+by how much of the group's spec weight was actually comparable. `--min-tier`
+controls the bar; the default admits `close` and better.
+
+**4. Measurement.** For each group the tool reports each competitor's gap
+against Floor & Decor, the market low across comparable in-stock offers, and a
+win / tie / loss outcome. Gaps within ±0.5% are called ties rather than wins.
+
+**5. Rollups.** Category and overall rollups report win rate, median and mean
+gap, and a **volume-weighted basket index** — Floor & Decor spend divided by
+market-low spend on the same basket. That answers "what would this basket
+cost us" rather than averaging unit prices, which would let a $0.30 underlayment
+outvote a $9 hardwood.
+
+**6. Exceptions.** Rows that need a human before anyone acts on them are
+flagged, not silently dropped: `no_competitor_offer`, `weak_match`,
+`competitor_out_of_stock`, `promo_driven_gap` (the gap reverses at list price,
+so it is temporary), `extreme_gap` (>40%), `uom_conversion_error`.
+
+## Loading real prices
+
+1. Generate the collection template:
+   ```bash
+   python3 -m fnd_pricing template   # -> data/templates/price_collection_template.csv
+   ```
+2. Collect prices for each `group_id` in `data/raw/sku_groups.csv`. Record the
+   price **as the shelf shows it** — do not pre-convert. Put the pack size in
+   `pack_coverage` (square feet per case, pounds per bag, feet per piece) and let
+   the tool do the conversion, so the audit trail survives.
+3. Set `data_source=collected` and fill `collected_on` and `url`.
+4. Replace `data/raw/products.csv`, then:
+   ```bash
+   python3 -m fnd_pricing validate && python3 -m fnd_pricing report
+   ```
+
+`validate` reports coverage per retailer, flags groups with no Floor & Decor
+price, and names the file and line number of any bad row.
+
+To change the assortment under study, edit `data/raw/sku_groups.csv`. To
+regenerate the seed dataset from scratch, run
+`python3 scripts/generate_seed_data.py` (deterministic — same seed, same file).
+
+### Data format
+
+`data/raw/sku_groups.csv` — one row per comparison unit:
+
+| column | meaning |
+|---|---|
+| `group_id` | stable id, referenced by every offer |
+| `category`, `subcategory` | rollup keys |
+| `basis` | `sq_ft`, `lin_ft`, `lb` or `each` |
+| `annual_volume` | units per year on the basis; weights the basket index |
+| `specs` | `key=value;key=value` — the reference specification |
+
+`data/raw/products.csv` — one row per retailer offer:
+
+| column | meaning |
+|---|---|
+| `retailer` | `floor_and_decor`, `home_depot` or `lowes` |
+| `price`, `uom` | shelf price and how it is quoted (`per_box`, `per_bag`, …) |
+| `pack_coverage` | sq ft per case, lb per bag, ft per piece — required for pack uoms |
+| `promo_price` | today's promotional price, if any; blank otherwise |
+| `in_stock` | out-of-stock offers do not set the market price |
+| `data_source` | `collected` or `seed_estimate` — provenance stays with the row |
+| `specs` | this retailer's published specification |
+
+## What the seed data shows
+
+On the shipped seed dataset, the shape is the one you would expect from this
+competitive set: Floor & Decor leads decisively on hard-surface flooring and
+tile, and gives ground on the categories where the home centres are strong.
+
+| | |
+|---|---|
+| SKU groups compared | 196 of 200 |
+| Win rate vs cheapest competitor | 68% (134W / 15T / 47L) |
+| Median gap vs market low | −7.7% |
+| Basket index vs market low | 0.918 |
+
+Strongest: Wall Tile (−16.3%), Ceramic Tile (−10.0%), Solid Hardwood (−10.8%),
+LVP (−10.7%). Weakest: Vanities & Tops (+5.1%), Trim & Moulding (+5.2%),
+Grout & Caulk (+3.1%), Installation Tools (+0.0% median but a 1.109 basket
+index). Treat the direction as illustrative until real prices are loaded.
+
+## Layout
+
+```
+src/fnd_pricing/
+  models.py      SKU groups, offers, units of measure
+  loader.py      CSV ingestion and validation
+  normalize.py   unit-of-measure conversion onto the comparison basis
+  matching.py    attribute-weighted like-for-like confidence scoring
+  compare.py     gaps, outcomes, exception flags, rollups, basket index
+  report.py      self-contained HTML report
+  excel.py       multi-sheet workbook (Summary / SKU Detail / Offers / Exceptions)
+  cli.py         validate | compare | report | export | template
+data/raw/        sku_groups.csv, products.csv
+data/out/        generated reports
+scripts/         seed dataset generator
+tests/           47 unit tests
+```
+
+## Tests
+
+```bash
+PYTHONPATH=src python3 -m unittest discover -s tests
+```

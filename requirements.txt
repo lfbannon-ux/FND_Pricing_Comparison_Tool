@@ -1,0 +1,3 @@
+# The comparison engine, CLI, CSV output and HTML report use only the standard
+# library. openpyxl is needed for the `export` command (xlsx workbook).
+openpyxl>=3.1

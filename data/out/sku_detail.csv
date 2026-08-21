@@ -1,0 +1,201 @@
+group_id,category,subcategory,description,basis,annual_volume,fnd_unit_price,home_depot_unit_price,home_depot_delta_pct,home_depot_match_tier,lowes_unit_price,lowes_delta_pct,lowes_match_tier,market_min,gap_vs_market_min,outcome,cheapest_retailer,flags
+G0001,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Ashford rigid core 28,sq_ft,181026.0,2.49,2.9973,0.2037,equivalent,2.59,0.0402,equivalent,2.59,-0.0386,win,floor_and_decor,
+G0002,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Barnwood WPC 22,sq_ft,28770.0,3.89,5.69,0.4627,equivalent,6.39,0.6427,equivalent,6.39,-0.3912,win,floor_and_decor,competitor_out_of_stock:home_depot;extreme_gap:lowes
+G0003,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Onyx SPC 20,sq_ft,21571.0,3.59,3.5777,-0.0034,equivalent,3.59,0.0,equivalent,3.5777,0.0034,tie,floor_and_decor,promo_driven_gap:home_depot;promo_driven_gap:lowes
+G0004,Luxury Vinyl Plank,WPC Rigid Core,WPC Rigid Core - Carrara SPC 6,sq_ft,195104.0,3.99,4.1982,0.0522,exact,4.09,0.0251,exact,4.09,-0.0244,win,floor_and_decor,
+G0005,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Cedar Point rigid core 6,sq_ft,216009.0,4.29,4.5857,0.0689,exact,4.4497,0.0372,exact,4.4497,-0.0359,win,floor_and_decor,
+G0006,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Blackwater WPC 6,sq_ft,229427.0,3.89,4.1222,0.0597,equivalent,3.8431,-0.0121,equivalent,3.8431,0.0122,loss,lowes,promo_driven_gap:lowes
+G0007,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Ashford rigid core 22,sq_ft,116281.0,3.69,4.7954,0.2996,equivalent,4.2059,0.1398,equivalent,4.2059,-0.1227,win,floor_and_decor,
+G0008,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Harbor Oak rigid core 12,sq_ft,184528.0,3.89,5.027,0.2923,equivalent,4.387,0.1278,equivalent,4.387,-0.1133,win,floor_and_decor,
+G0009,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Pearl SPC 6,sq_ft,247440.0,3.89,4.7479,0.2205,equivalent,3.8853,-0.0012,equivalent,3.8853,0.0012,tie,floor_and_decor,
+G0010,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Hillcrest WPC 12,sq_ft,33371.0,4.49,6.09,0.3563,equivalent,4.99,0.1114,close,4.99,-0.1002,win,floor_and_decor,
+G0011,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Cedar Point WPC 12,sq_ft,238928.0,2.29,2.99,0.3057,equivalent,2.69,0.1747,equivalent,2.69,-0.1487,win,floor_and_decor,
+G0012,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Yorkshire WPC 28,sq_ft,193420.0,4.99,6.3473,0.272,equivalent,5.69,0.1403,equivalent,5.69,-0.123,win,floor_and_decor,
+G0013,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Bayside rigid core 20,sq_ft,140397.0,2.69,2.99,0.1115,equivalent,3.237,0.2033,equivalent,2.99,-0.1003,win,floor_and_decor,competitor_out_of_stock:lowes
+G0014,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Harbor Oak WPC 12,sq_ft,163958.0,2.59,2.7704,0.0697,equivalent,2.7543,0.0634,equivalent,2.7543,-0.0597,win,floor_and_decor,
+G0015,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Willow Bend WPC 20,sq_ft,75811.0,4.29,5.19,0.2098,equivalent,5.0754,0.1831,equivalent,5.0754,-0.1547,win,floor_and_decor,
+G0016,Luxury Vinyl Plank,WPC Rigid Core,WPC Rigid Core - Linen WPC 6,sq_ft,148486.0,2.49,2.4823,-0.0031,exact,2.69,0.0803,exact,2.4823,0.0031,tie,floor_and_decor,promo_driven_gap:home_depot
+G0017,Luxury Vinyl Plank,WPC Rigid Core,WPC Rigid Core - Calacatta rigid core 28,sq_ft,36407.0,2.79,3.39,0.2151,equivalent,3.39,0.2151,equivalent,3.39,-0.177,win,floor_and_decor,
+G0018,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Sandstone SPC 20,sq_ft,134661.0,4.69,5.7434,0.2246,equivalent,,,none,5.7434,-0.1834,win,floor_and_decor,no_competitor_offer:lowes
+G0019,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Marbella WPC 6,sq_ft,97378.0,3.79,3.935,0.0383,equivalent,4.59,0.2111,equivalent,3.935,-0.0368,win,floor_and_decor,
+G0020,Luxury Vinyl Plank,WPC Rigid Core,WPC Rigid Core - Bergamo SPC 6,sq_ft,169835.0,3.69,4.0389,0.0946,equivalent,,,none,4.0389,-0.0864,win,floor_and_decor,no_competitor_offer:lowes
+G0021,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Espresso SPC 6,sq_ft,136293.0,3.59,3.79,0.0557,equivalent,3.8452,0.0711,equivalent,3.79,-0.0528,win,floor_and_decor,
+G0022,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Zermatt rigid core 12,sq_ft,168568.0,2.79,3.59,0.2867,equivalent,3.223,0.1552,equivalent,3.223,-0.1343,win,floor_and_decor,
+G0023,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Juniper WPC 28,sq_ft,117526.0,4.99,6.0525,0.2129,equivalent,,,none,6.0525,-0.1755,win,floor_and_decor,no_competitor_offer:lowes
+G0024,Luxury Vinyl Plank,Waterproof LVP,Waterproof LVP - Juniper rigid core 20,sq_ft,81609.0,4.89,4.49,-0.0818,equivalent,5.49,0.1227,equivalent,5.49,-0.1093,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0025,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Copperfield SPC 28,sq_ft,46630.0,3.99,5.4529,0.3666,equivalent,4.99,0.2506,equivalent,4.99,-0.2004,win,floor_and_decor,
+G0026,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Charcoal WPC 20,sq_ft,230071.0,2.19,2.8546,0.3035,equivalent,,,none,2.8546,-0.2328,win,floor_and_decor,no_competitor_offer:lowes
+G0027,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Yorkshire rigid core 6,sq_ft,89772.0,2.19,2.4518,0.1195,close,2.4873,0.1358,equivalent,2.4518,-0.1068,win,floor_and_decor,
+G0028,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Bianco rigid core 22,sq_ft,205990.0,3.29,3.39,0.0304,exact,3.5302,0.073,exact,3.39,-0.0295,win,floor_and_decor,
+G0029,Luxury Vinyl Plank,Glue Down LVP,Glue Down LVP - Tidewater WPC 28,sq_ft,196616.0,2.49,2.9407,0.181,equivalent,2.79,0.1205,equivalent,2.79,-0.1075,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0030,Luxury Vinyl Plank,SPC Rigid Core,SPC Rigid Core - Glacier WPC 20,sq_ft,102330.0,2.59,3.0797,0.1891,equivalent,3.09,0.1931,equivalent,3.0797,-0.159,win,floor_and_decor,
+G0031,Laminate,Water Resistant Laminate,Water Resistant Laminate - Cedar Point 4 8,sq_ft,88784.0,2.79,2.6888,-0.0363,equivalent,2.89,0.0358,close,2.6888,0.0376,loss,home_depot,promo_driven_gap:home_depot
+G0032,Laminate,Water Resistant Laminate,Water Resistant Laminate - Bergamo 4 12,sq_ft,47283.0,2.79,3.6151,0.2957,equivalent,3.4665,0.2425,equivalent,3.4665,-0.1952,win,floor_and_decor,
+G0033,Laminate,Standard Laminate,Standard Laminate - Marbella 3 7,sq_ft,50522.0,2.79,3.19,0.1434,exact,2.8611,0.0255,exact,2.8611,-0.0249,win,floor_and_decor,
+G0034,Laminate,Standard Laminate,Standard Laminate - Cambridge 5 10,sq_ft,158714.0,2.59,2.9784,0.15,equivalent,2.9688,0.1463,equivalent,2.9688,-0.1276,win,floor_and_decor,
+G0035,Laminate,Water Resistant Laminate,Water Resistant Laminate - Marbella 3 12,sq_ft,99758.0,1.99,2.3854,0.1987,equivalent,2.5064,0.2595,equivalent,2.3854,-0.1658,win,floor_and_decor,
+G0036,Laminate,Water Resistant Laminate,Water Resistant Laminate - Cedar Point 4 8,sq_ft,166770.0,3.49,3.99,0.1433,equivalent,4.0473,0.1597,equivalent,3.99,-0.1253,win,floor_and_decor,
+G0037,Laminate,Standard Laminate,Standard Laminate - Havana 5 12,sq_ft,56613.0,1.79,1.7159,-0.0414,equivalent,2.09,0.1676,equivalent,1.7159,0.0432,loss,home_depot,promo_driven_gap:home_depot
+G0038,Laminate,Waterproof Laminate,Waterproof Laminate - Linen 4 10,sq_ft,64021.0,1.89,2.4808,0.3126,equivalent,2.39,0.2646,equivalent,2.39,-0.2092,win,floor_and_decor,
+G0039,Laminate,Waterproof Laminate,Waterproof Laminate - Bergamo 4 8,sq_ft,140394.0,1.89,2.19,0.1587,equivalent,2.3036,0.2188,equivalent,2.19,-0.137,win,floor_and_decor,
+G0040,Laminate,Standard Laminate,Standard Laminate - Cambridge 4 10,sq_ft,169450.0,2.99,,,none,3.79,0.2676,equivalent,3.79,-0.2111,win,floor_and_decor,no_competitor_offer:home_depot
+G0041,Laminate,Standard Laminate,Standard Laminate - Bianco 4 8,sq_ft,93485.0,2.29,2.59,0.131,exact,2.29,0.0,exact,2.29,0.0,tie,floor_and_decor,competitor_out_of_stock:home_depot
+G0042,Laminate,Standard Laminate,Standard Laminate - Espresso 3 8,sq_ft,69497.0,1.59,1.79,0.1258,equivalent,1.89,0.1887,equivalent,1.79,-0.1117,win,floor_and_decor,
+G0043,Laminate,Waterproof Laminate,Waterproof Laminate - Amber Ridge 3 7,sq_ft,54357.0,3.19,4.113,0.2893,equivalent,3.29,0.0313,equivalent,3.29,-0.0304,win,floor_and_decor,
+G0044,Laminate,Water Resistant Laminate,Water Resistant Laminate - Sterling 5 10,sq_ft,89967.0,1.99,2.4815,0.247,equivalent,2.09,0.0503,close,2.09,-0.0478,win,floor_and_decor,
+G0045,Laminate,Waterproof Laminate,Waterproof Laminate - Granite Peak 5 10,sq_ft,38143.0,1.79,2.29,0.2793,equivalent,1.69,-0.0559,equivalent,1.69,0.0592,loss,lowes,promo_driven_gap:lowes
+G0046,Laminate,Standard Laminate,Standard Laminate - Thornbury 3 10,sq_ft,71689.0,1.39,1.6059,0.1553,close,1.49,0.0719,equivalent,1.49,-0.0671,win,floor_and_decor,
+G0047,Laminate,Waterproof Laminate,Waterproof Laminate - Blackwater 5 12,sq_ft,40358.0,1.49,1.39,-0.0671,equivalent,1.5338,0.0294,equivalent,1.39,0.0719,loss,home_depot,promo_driven_gap:home_depot
+G0048,Laminate,Water Resistant Laminate,Water Resistant Laminate - Cedar Point 5 12,sq_ft,179371.0,3.39,,,none,4.182,0.2336,close,4.182,-0.1894,win,floor_and_decor,no_competitor_offer:home_depot
+G0049,Engineered Hardwood,Click Engineered,Click Engineered - Granite Peak red oak 2.0,sq_ft,61847.0,6.19,8.99,0.4523,equivalent,8.29,0.3393,equivalent,8.29,-0.2533,win,floor_and_decor,extreme_gap:home_depot
+G0050,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Glacier white oak 0.6,sq_ft,45741.0,6.19,6.6165,0.0689,equivalent,5.0072,-0.1911,equivalent,5.0072,0.2362,loss,lowes,promo_driven_gap:lowes
+G0051,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Zermatt red oak 4.0,sq_ft,5046.0,6.29,,,none,7.4656,0.1869,equivalent,7.4656,-0.1575,win,floor_and_decor,no_competitor_offer:home_depot
+G0052,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Havana white oak 3.0,sq_ft,61091.0,4.49,,,none,5.5941,0.2459,exact,5.5941,-0.1974,win,floor_and_decor,no_competitor_offer:home_depot
+G0053,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Riverbend walnut 2.0,sq_ft,7207.0,8.39,9.6974,0.1558,equivalent,10.5066,0.2523,close,9.6974,-0.1348,win,floor_and_decor,
+G0054,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Stonehaven white oak 4.0,sq_ft,49697.0,4.09,5.2763,0.29,equivalent,4.59,0.1222,equivalent,4.59,-0.1089,win,floor_and_decor,
+G0055,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Thornbury red oak 3.0,sq_ft,45686.0,3.09,3.3136,0.0724,exact,2.65,-0.1424,exact,2.65,0.166,loss,lowes,promo_driven_gap:lowes
+G0056,Engineered Hardwood,Click Engineered,Click Engineered - Ivory maple 2.0,sq_ft,9588.0,5.99,,,none,5.39,-0.1002,exact,5.39,0.1113,loss,lowes,no_competitor_offer:home_depot;promo_driven_gap:lowes
+G0057,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Umber red oak 3.0,sq_ft,15757.0,8.29,10.9191,0.3171,close,9.79,0.1809,equivalent,9.79,-0.1532,win,floor_and_decor,
+G0058,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Ashford birch 0.6,sq_ft,34761.0,8.79,9.6984,0.1033,equivalent,10.1344,0.1529,equivalent,9.6984,-0.0937,win,floor_and_decor,
+G0059,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Cambridge hickory 0.6,sq_ft,62716.0,5.59,7.49,0.3399,equivalent,4.6502,-0.1681,close,4.6502,0.2021,loss,lowes,promo_driven_gap:lowes
+G0060,Engineered Hardwood,Click Engineered,Click Engineered - Cedar Point walnut 3.0,sq_ft,22824.0,8.99,9.69,0.0779,equivalent,9.701,0.0791,equivalent,9.69,-0.0722,win,floor_and_decor,
+G0061,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Meridian red oak 2.0,sq_ft,19314.0,6.09,6.89,0.1314,equivalent,7.1614,0.1759,close,6.89,-0.1161,win,floor_and_decor,
+G0062,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Linen hickory 4.0,sq_ft,30824.0,5.39,6.59,0.2226,equivalent,5.89,0.0928,equivalent,6.59,-0.1821,win,floor_and_decor,competitor_out_of_stock:lowes
+G0063,Engineered Hardwood,Glue Down Engineered,Glue Down Engineered - Zermatt walnut 4.0,sq_ft,8003.0,7.79,9.8355,0.2626,equivalent,9.59,0.2311,equivalent,9.59,-0.1877,win,floor_and_decor,
+G0064,Engineered Hardwood,Wide Plank Engineered,Wide Plank Engineered - Oakmont walnut 2.0,sq_ft,5340.0,5.69,6.19,0.0879,close,5.2899,-0.0703,equivalent,5.2899,0.0756,loss,lowes,promo_driven_gap:lowes
+G0065,Solid Hardwood,Prefinished Solid,Prefinished Solid - Tidewater maple 0.5,sq_ft,15034.0,4.69,5.19,0.1066,exact,4.89,0.0426,exact,4.89,-0.0409,win,floor_and_decor,
+G0066,Solid Hardwood,Unfinished Solid,Unfinished Solid - Pembroke hickory 0.5,sq_ft,9088.0,6.99,9.09,0.3004,equivalent,,,none,9.09,-0.231,win,floor_and_decor,no_competitor_offer:lowes
+G0067,Solid Hardwood,Prefinished Solid,Prefinished Solid - Havana birch 0.75,sq_ft,5910.0,7.99,9.89,0.2378,equivalent,9.29,0.1627,equivalent,9.29,-0.1399,win,floor_and_decor,
+G0068,Solid Hardwood,Prefinished Solid,Prefinished Solid - Sundance hickory 0.75,sq_ft,34083.0,5.79,6.99,0.2073,equivalent,8.09,0.3972,equivalent,6.99,-0.1717,win,floor_and_decor,
+G0069,Solid Hardwood,Prefinished Solid,Prefinished Solid - Charcoal hickory 0.5,sq_ft,18730.0,9.69,12.3506,0.2746,close,10.97,0.1321,close,10.97,-0.1167,win,floor_and_decor,
+G0070,Solid Hardwood,Prefinished Solid,Prefinished Solid - Sundance hickory 0.5,sq_ft,34366.0,7.79,8.6948,0.1161,equivalent,8.59,0.1027,equivalent,8.59,-0.0931,win,floor_and_decor,
+G0071,Solid Hardwood,Prefinished Solid,Prefinished Solid - Quarry maple 0.5,sq_ft,14797.0,7.19,9.2084,0.2807,equivalent,7.99,0.1113,equivalent,7.99,-0.1001,win,floor_and_decor,
+G0072,Solid Hardwood,Unfinished Solid,Unfinished Solid - Kingsport white oak 0.5,sq_ft,12589.0,5.19,6.29,0.2119,equivalent,5.49,0.0578,close,5.49,-0.0546,win,floor_and_decor,
+G0073,Solid Hardwood,Prefinished Solid,Prefinished Solid - Sierra maple 0.5,sq_ft,22235.0,8.89,10.98,0.2351,exact,7.49,-0.1575,exact,10.98,-0.1903,win,floor_and_decor,competitor_out_of_stock:lowes
+G0074,Solid Hardwood,Prefinished Solid,Prefinished Solid - Autumn Hollow hickory 0.75,sq_ft,38925.0,5.49,6.09,0.1093,exact,4.99,-0.0911,exact,4.99,0.1002,loss,lowes,promo_driven_gap:lowes
+G0075,Porcelain Tile,Concrete Look,Concrete Look - Juniper porcelain 18x18,sq_ft,108683.0,4.99,4.7564,-0.0468,equivalent,6.39,0.2806,close,4.7564,0.0491,loss,home_depot,promo_driven_gap:home_depot
+G0076,Porcelain Tile,Marble Look,Marble Look - Ivory porcelain 18x18,sq_ft,134269.0,3.59,4.6062,0.2831,equivalent,3.09,-0.1393,equivalent,3.09,0.1618,loss,lowes,promo_driven_gap:lowes
+G0077,Porcelain Tile,Large Format,Large Format - Calacatta porcelain 8x48,sq_ft,53103.0,1.89,2.3812,0.2599,equivalent,2.2462,0.1885,equivalent,2.2462,-0.1586,win,floor_and_decor,
+G0078,Porcelain Tile,Outdoor Paver,Outdoor Paver - Driftwood porcelain 12x24,sq_ft,19886.0,1.09,1.29,0.1835,equivalent,1.09,0.0,equivalent,1.09,0.0,tie,floor_and_decor,
+G0079,Porcelain Tile,Wood Look Plank,Wood Look Plank - Westbury porcelain 8x48,sq_ft,9931.0,3.79,4.9928,0.3174,equivalent,5.2387,0.3822,equivalent,4.9928,-0.2409,win,floor_and_decor,
+G0080,Porcelain Tile,Concrete Look,Concrete Look - Amber Ridge porcelain 12x24,sq_ft,13941.0,4.79,4.39,-0.0835,equivalent,5.79,0.2088,equivalent,4.39,0.0911,loss,home_depot,promo_driven_gap:home_depot
+G0081,Porcelain Tile,Outdoor Paver,Outdoor Paver - Millbrook porcelain 12x12,sq_ft,77655.0,5.59,6.09,0.0894,exact,6.09,0.0894,exact,6.09,-0.0821,win,floor_and_decor,
+G0082,Porcelain Tile,Concrete Look,Concrete Look - Stonehaven porcelain 12x12,sq_ft,83280.0,4.59,5.895,0.2843,close,5.99,0.305,equivalent,5.895,-0.2214,win,floor_and_decor,
+G0083,Porcelain Tile,Large Format,Large Format - Westbury porcelain 24x24,sq_ft,60320.0,2.39,2.69,0.1255,equivalent,2.39,0.0,equivalent,2.69,-0.1115,win,floor_and_decor,competitor_out_of_stock:lowes
+G0084,Porcelain Tile,Marble Look,Marble Look - Slate Creek porcelain 18x18,sq_ft,18131.0,2.39,3.0589,0.2799,equivalent,2.79,0.1674,close,2.79,-0.1434,win,floor_and_decor,
+G0085,Porcelain Tile,Large Format,Large Format - Westbury porcelain 24x48,sq_ft,29605.0,4.19,4.8492,0.1573,exact,4.4975,0.0734,exact,4.4975,-0.0684,win,floor_and_decor,
+G0086,Porcelain Tile,Outdoor Paver,Outdoor Paver - Saxony porcelain 18x18,sq_ft,64515.0,5.39,6.5323,0.2119,close,6.2133,0.1527,equivalent,6.2133,-0.1325,win,floor_and_decor,
+G0087,Porcelain Tile,Outdoor Paver,Outdoor Paver - Espresso porcelain 8x48,sq_ft,84718.0,1.59,1.9515,0.2274,equivalent,1.99,0.2516,equivalent,1.9515,-0.1852,win,floor_and_decor,
+G0088,Porcelain Tile,Outdoor Paver,Outdoor Paver - Copperfield porcelain 12x12,sq_ft,63321.0,3.99,4.79,0.2005,equivalent,4.69,0.1754,close,4.69,-0.1493,win,floor_and_decor,
+G0089,Porcelain Tile,Concrete Look,Concrete Look - Hillcrest porcelain 6x24,sq_ft,95876.0,4.79,6.4388,0.3442,close,4.99,0.0418,equivalent,4.99,-0.0401,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0090,Porcelain Tile,Concrete Look,Concrete Look - Hillcrest porcelain 6x24,sq_ft,45415.0,1.19,1.49,0.2521,equivalent,1.39,0.1681,equivalent,1.39,-0.1439,win,floor_and_decor,
+G0091,Porcelain Tile,Marble Look,Marble Look - Ashford porcelain 18x18,sq_ft,45251.0,3.19,3.7439,0.1736,close,3.89,0.2194,equivalent,3.7439,-0.1479,win,floor_and_decor,
+G0092,Porcelain Tile,Marble Look,Marble Look - Riverbend porcelain 18x18,sq_ft,11306.0,5.59,6.29,0.1252,equivalent,,,none,6.29,-0.1113,win,floor_and_decor,no_competitor_offer:lowes
+G0093,Porcelain Tile,Outdoor Paver,Outdoor Paver - Barnwood porcelain 18x18,sq_ft,148126.0,2.19,2.5869,0.1812,equivalent,2.69,0.2283,equivalent,2.69,-0.1859,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0094,Porcelain Tile,Outdoor Paver,Outdoor Paver - Pearl porcelain 12x24,sq_ft,38683.0,5.19,5.6777,0.094,equivalent,,,none,5.6777,-0.0859,win,floor_and_decor,no_competitor_offer:lowes
+G0095,Porcelain Tile,Wood Look Plank,Wood Look Plank - Bergamo porcelain 18x18,sq_ft,106482.0,5.79,7.39,0.2763,equivalent,7.19,0.2418,equivalent,7.19,-0.1947,win,floor_and_decor,
+G0096,Porcelain Tile,Outdoor Paver,Outdoor Paver - Nordic porcelain 18x18,sq_ft,114585.0,5.09,4.6603,-0.0844,equivalent,5.89,0.1572,equivalent,4.6603,0.0922,loss,home_depot,competitor_out_of_stock:lowes;promo_driven_gap:home_depot
+G0097,Porcelain Tile,Marble Look,Marble Look - Dunmore porcelain 6x36,sq_ft,33523.0,4.29,4.3784,0.0206,equivalent,5.09,0.1865,equivalent,4.3784,-0.0202,win,floor_and_decor,
+G0098,Porcelain Tile,Marble Look,Marble Look - Alabaster porcelain 12x24,sq_ft,9902.0,2.99,3.1688,0.0598,equivalent,3.49,0.1672,equivalent,3.1688,-0.0564,win,floor_and_decor,
+G0099,Porcelain Tile,Marble Look,Marble Look - Chelsea porcelain 12x12,sq_ft,108527.0,1.49,1.3621,-0.0858,exact,1.39,-0.0671,exact,1.3621,0.0939,loss,home_depot,promo_driven_gap:home_depot;promo_driven_gap:lowes
+G0100,Porcelain Tile,Concrete Look,Concrete Look - Copperfield porcelain 24x48,sq_ft,17576.0,2.59,,,none,3.09,0.1931,equivalent,3.09,-0.1618,win,floor_and_decor,no_competitor_offer:home_depot
+G0101,Ceramic Tile,Subway Tile,Subway Tile - Windsor ceramic 6x24,sq_ft,19070.0,2.69,3.3091,0.2301,close,3.49,0.2974,equivalent,3.3091,-0.1871,win,floor_and_decor,
+G0102,Ceramic Tile,Subway Tile,Subway Tile - Bayside ceramic 4x12,sq_ft,94029.0,1.49,1.89,0.2685,equivalent,2.0702,0.3894,equivalent,2.0702,-0.2803,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0103,Ceramic Tile,Field Tile,Field Tile - Barnwood ceramic 4x12,sq_ft,73603.0,2.19,2.49,0.137,exact,2.3702,0.0823,exact,2.3702,-0.076,win,floor_and_decor,
+G0104,Ceramic Tile,Subway Tile,Subway Tile - Bianco ceramic 8x10,sq_ft,39546.0,0.99,1.19,0.202,equivalent,1.0619,0.0726,close,1.0619,-0.0677,win,floor_and_decor,
+G0105,Ceramic Tile,Subway Tile,Subway Tile - Pembroke ceramic 12x12,sq_ft,130117.0,1.69,2.1608,0.2786,equivalent,1.99,0.1775,close,1.99,-0.1508,win,floor_and_decor,
+G0106,Ceramic Tile,Field Tile,Field Tile - Calacatta ceramic 6x24,sq_ft,87050.0,2.49,2.79,0.1205,close,2.79,0.1205,equivalent,2.79,-0.1075,win,floor_and_decor,
+G0107,Ceramic Tile,Floor Ceramic,Floor Ceramic - Havana ceramic 4x16,sq_ft,92010.0,0.99,1.2275,0.2399,close,1.09,0.101,equivalent,1.09,-0.0917,win,floor_and_decor,
+G0108,Ceramic Tile,Floor Ceramic,Floor Ceramic - Sundance ceramic 4x16,sq_ft,123715.0,0.99,,,none,1.09,0.101,exact,1.09,-0.0917,win,floor_and_decor,no_competitor_offer:home_depot
+G0109,Ceramic Tile,Subway Tile,Subway Tile - Slate Creek ceramic 6x24,sq_ft,124763.0,1.29,1.39,0.0775,close,1.49,0.155,close,1.39,-0.0719,win,floor_and_decor,competitor_out_of_stock:lowes
+G0110,Ceramic Tile,Subway Tile,Subway Tile - Meridian ceramic 6x24,sq_ft,124870.0,2.39,3.79,0.5858,equivalent,3.19,0.3347,equivalent,3.19,-0.2508,win,floor_and_decor,extreme_gap:home_depot
+G0111,Ceramic Tile,Floor Ceramic,Floor Ceramic - Autumn Hollow ceramic 12x12,sq_ft,123246.0,0.79,0.89,0.1266,close,0.89,0.1266,close,0.89,-0.1124,win,floor_and_decor,
+G0112,Ceramic Tile,Field Tile,Field Tile - Barnwood ceramic 12x12,sq_ft,19845.0,1.59,1.7681,0.112,close,1.79,0.1258,equivalent,1.7681,-0.1007,win,floor_and_decor,
+G0113,Ceramic Tile,Subway Tile,Subway Tile - Autumn Hollow ceramic 8x10,sq_ft,72161.0,1.69,1.6669,-0.0137,exact,1.79,0.0592,exact,1.6669,0.0139,loss,home_depot,promo_driven_gap:home_depot
+G0114,Ceramic Tile,Floor Ceramic,Floor Ceramic - Kingsport ceramic 3x6,sq_ft,28837.0,2.09,2.4576,0.1759,equivalent,2.32,0.11,equivalent,2.32,-0.0991,win,floor_and_decor,
+G0115,Natural Stone Tile,Quartzite,Quartzite - Kingsport slate 12x24,sq_ft,28259.0,5.49,5.8959,0.0739,exact,6.39,0.1639,exact,5.8959,-0.0688,win,floor_and_decor,
+G0116,Natural Stone Tile,Limestone,Limestone - Greystone limestone 6x12,sq_ft,34164.0,9.19,8.9369,-0.0275,equivalent,,,none,8.9369,0.0283,loss,home_depot,no_competitor_offer:lowes;promo_driven_gap:home_depot
+G0117,Natural Stone Tile,Marble,Marble - Alabaster quartzite 18x18,sq_ft,36719.0,12.99,14.6496,0.1278,exact,12.4356,-0.0427,exact,12.4356,0.0446,loss,lowes,promo_driven_gap:lowes
+G0118,Natural Stone Tile,Quartzite,Quartzite - Driftwood quartzite 18x18,sq_ft,34581.0,9.19,8.0972,-0.1189,exact,10.98,0.1948,exact,8.0972,0.135,loss,home_depot,promo_driven_gap:home_depot
+G0119,Natural Stone Tile,Marble,Marble - Dunmore quartzite 6x12,sq_ft,15849.0,11.97,15.9513,0.3326,equivalent,13.98,0.1679,close,15.9513,-0.2496,win,floor_and_decor,competitor_out_of_stock:lowes
+G0120,Natural Stone Tile,Limestone,Limestone - Marbella travertine 16x16,sq_ft,27614.0,9.69,10.6366,0.0977,equivalent,11.98,0.2363,equivalent,10.6366,-0.089,win,floor_and_decor,
+G0121,Natural Stone Tile,Travertine,Travertine - Millbrook limestone 6x12,sq_ft,38713.0,7.39,10.97,0.4844,equivalent,8.38,0.134,equivalent,8.38,-0.1181,win,floor_and_decor,extreme_gap:home_depot
+G0122,Natural Stone Tile,Marble,Marble - Slate Creek limestone 12x12,sq_ft,24533.0,9.09,9.8892,0.0879,exact,9.99,0.099,exact,9.8892,-0.0808,win,floor_and_decor,
+G0123,Natural Stone Tile,Travertine,Travertine - Copperfield limestone 18x18,sq_ft,5633.0,11.97,14.4534,0.2075,equivalent,,,none,14.4534,-0.1718,win,floor_and_decor,no_competitor_offer:lowes
+G0124,Natural Stone Tile,Travertine,Travertine - Onyx marble 16x16,sq_ft,25179.0,4.19,5.09,0.2148,equivalent,5.2256,0.2472,close,5.09,-0.1768,win,floor_and_decor,
+G0125,Natural Stone Tile,Quartzite,Quartzite - Blackwater marble 12x12,sq_ft,7920.0,7.79,9.09,0.1669,equivalent,9.59,0.2311,equivalent,9.09,-0.143,win,floor_and_decor,
+G0126,Natural Stone Tile,Limestone,Limestone - Ivory travertine 12x12,sq_ft,7983.0,10.98,11.99,0.092,equivalent,10.99,0.0009,close,10.99,-0.0009,tie,floor_and_decor,
+G0127,Mosaic & Decorative Tile,Stone Mosaic,Stone Mosaic - Bayside porcelain picket,sq_ft,985.0,18.98,18.5464,-0.0228,exact,17.99,-0.0522,exact,17.99,0.055,loss,lowes,competitor_out_of_stock:home_depot;promo_driven_gap:lowes
+G0128,Mosaic & Decorative Tile,Stone Mosaic,Stone Mosaic - Maplewood glass and stone basketweave,sq_ft,8768.0,13.98,17.6979,0.2659,weak,16.6354,0.1899,equivalent,16.6354,-0.1596,win,floor_and_decor,weak_match:home_depot
+G0129,Mosaic & Decorative Tile,Stone Mosaic,Stone Mosaic - Whitewash glass penny round,sq_ft,6680.0,15.98,13.97,-0.1258,equivalent,19.99,0.2509,equivalent,13.97,0.1439,loss,home_depot,promo_driven_gap:home_depot
+G0130,Mosaic & Decorative Tile,Glass Mosaic,Glass Mosaic - Bayside glass penny round,sq_ft,3698.0,11.97,12.4792,0.0425,exact,12.99,0.0852,exact,12.99,-0.0785,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0131,Mosaic & Decorative Tile,Porcelain Mosaic,Porcelain Mosaic - Sierra porcelain basketweave,sq_ft,3736.0,16.99,21.8438,0.2857,equivalent,16.6562,-0.0196,equivalent,16.6562,0.02,loss,lowes,promo_driven_gap:lowes
+G0132,Mosaic & Decorative Tile,Glass Mosaic,Glass Mosaic - Bayside porcelain penny round,sq_ft,5416.0,12.4792,13.5312,0.0843,equivalent,13.99,0.1211,equivalent,13.5312,-0.0777,win,floor_and_decor,
+G0133,Mosaic & Decorative Tile,Porcelain Mosaic,Porcelain Mosaic - Thornbury marble basketweave,sq_ft,6050.0,21.98,26.0312,0.1843,close,29.99,0.3644,equivalent,26.0312,-0.1556,win,floor_and_decor,competitor_out_of_stock:lowes
+G0134,Mosaic & Decorative Tile,Stone Mosaic,Stone Mosaic - Sandstone glass and stone hexagon,sq_ft,3007.0,12.4688,14.4021,0.1551,equivalent,14.99,0.2022,close,14.4021,-0.1342,win,floor_and_decor,
+G0135,Mosaic & Decorative Tile,Glass Mosaic,Glass Mosaic - Onyx glass and stone picket,sq_ft,5431.0,21.98,24.98,0.1365,exact,24.99,0.1369,exact,24.98,-0.1201,win,floor_and_decor,
+G0136,Mosaic & Decorative Tile,Stone Mosaic,Stone Mosaic - Cedar Point glass and stone basketweave,sq_ft,8408.0,11.97,13.3814,0.1179,equivalent,15.6042,0.3036,close,13.3814,-0.1055,win,floor_and_decor,
+G0137,Wall Tile & Backsplash,Ceramic Wall,Ceramic Wall - Barnwood porcelain 4x12,sq_ft,9057.0,2.49,2.9421,0.1816,weak,2.99,0.2008,equivalent,2.99,-0.1672,win,floor_and_decor,weak_match:home_depot
+G0138,Wall Tile & Backsplash,Glass Wall,Glass Wall - Nordic porcelain 4x12,sq_ft,20416.0,1.29,1.59,0.2326,equivalent,1.69,0.3101,close,1.59,-0.1887,win,floor_and_decor,
+G0139,Wall Tile & Backsplash,Porcelain Wall,Porcelain Wall - Cedar Point porcelain 3x6,sq_ft,3942.0,6.59,8.59,0.3035,close,6.99,0.0607,close,6.99,-0.0572,win,floor_and_decor,
+G0140,Wall Tile & Backsplash,Porcelain Wall,Porcelain Wall - Onyx ceramic 4x12,sq_ft,13274.0,2.79,3.3522,0.2015,equivalent,2.99,0.0717,equivalent,2.99,-0.0669,win,floor_and_decor,
+G0141,Wall Tile & Backsplash,Glass Wall,Glass Wall - Bianco porcelain 2.5x8,sq_ft,21350.0,5.09,6.0653,0.1916,close,5.49,0.0786,weak,6.0653,-0.1608,win,floor_and_decor,weak_match:lowes
+G0142,Wall Tile & Backsplash,Porcelain Wall,Porcelain Wall - Bergamo glass 4x16,sq_ft,21843.0,1.99,2.2919,0.1517,exact,2.09,0.0503,exact,2.09,-0.0478,win,floor_and_decor,
+G0143,Wall Tile & Backsplash,Porcelain Wall,Porcelain Wall - Bianco ceramic 4x16,sq_ft,20434.0,6.99,8.39,0.2003,close,8.79,0.2575,close,8.39,-0.1669,win,floor_and_decor,
+G0144,Wall Tile & Backsplash,Glass Wall,Glass Wall - Bergamo glass 4x12,sq_ft,13143.0,6.09,7.29,0.197,close,,,none,7.29,-0.1646,win,floor_and_decor,no_competitor_offer:lowes
+G0145,Carpet & Carpet Tile,Broadloom,Broadloom - Marbella polyester 40,sq_ft,25906.0,1.29,1.6216,0.2571,close,1.3311,0.0319,equivalent,1.3311,-0.0309,win,floor_and_decor,
+G0146,Carpet & Carpet Tile,Broadloom,Broadloom - Harbor Oak olefin 26,sq_ft,14660.0,2.59,2.7685,0.0689,equivalent,2.9989,0.1579,equivalent,2.7685,-0.0645,win,floor_and_decor,
+G0147,Carpet & Carpet Tile,Broadloom,Broadloom - Calacatta nylon 26,sq_ft,21344.0,1.89,2.2281,0.1789,equivalent,2.1089,0.1158,equivalent,2.1089,-0.1038,win,floor_and_decor,
+G0148,Carpet & Carpet Tile,Carpet Tile,Carpet Tile - Dunmore olefin 40,sq_ft,8802.0,1.49,1.5783,0.0593,equivalent,1.5533,0.0425,equivalent,1.5533,-0.0408,win,floor_and_decor,
+G0149,Carpet & Carpet Tile,Carpet Tile,Carpet Tile - Cambridge nylon 26,sq_ft,28381.0,2.49,2.29,-0.0803,equivalent,2.69,0.0803,equivalent,2.29,0.0873,loss,home_depot,promo_driven_gap:home_depot
+G0150,Carpet & Carpet Tile,Carpet Tile,Carpet Tile - Driftwood nylon 32,sq_ft,7837.0,1.79,2.49,0.3911,equivalent,2.79,0.5587,equivalent,2.49,-0.2811,win,floor_and_decor,extreme_gap:lowes
+G0151,Underlayment,Felt Underlayment,Felt Underlayment - Cambridge rubber 2,sq_ft,51580.0,0.6999,0.7127,0.0183,exact,0.79,0.1287,exact,0.79,-0.1141,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0152,Underlayment,Cork Underlayment,Cork Underlayment - Alabaster rubber 3,sq_ft,30353.0,0.6497,0.6499,0.0003,exact,0.69,0.062,exact,0.6499,-0.0003,tie,floor_and_decor,
+G0153,Underlayment,Rubber Underlayment,Rubber Underlayment - Millbrook foam 3,sq_ft,29453.0,0.6398,0.6499,0.0158,exact,0.6249,-0.0233,exact,,,no_comparison,floor_and_decor,competitor_out_of_stock:home_depot;competitor_out_of_stock:lowes
+G0154,Underlayment,Felt Underlayment,Felt Underlayment - Hillcrest felt 6,sq_ft,7431.0,0.4949,0.4999,0.0101,exact,,,none,0.4999,-0.01,win,floor_and_decor,no_competitor_offer:lowes
+G0155,Underlayment,Rubber Underlayment,Rubber Underlayment - Stonehaven cork 3,sq_ft,30670.0,0.6699,0.6249,-0.0672,close,0.7499,0.1194,equivalent,0.6249,0.072,loss,home_depot,
+G0156,Underlayment,Cork Underlayment,Cork Underlayment - Havana rubber 2,sq_ft,23691.0,0.3799,0.3999,0.0526,equivalent,0.4299,0.1316,close,0.3999,-0.05,win,floor_and_decor,
+G0157,Underlayment,Foam Underlayment,Foam Underlayment - Quarry rubber 3,sq_ft,35433.0,0.3699,0.3597,-0.0276,exact,0.39,0.0543,exact,0.3597,0.0284,loss,home_depot,
+G0158,Underlayment,Rubber Underlayment,Rubber Underlayment - Havana cork 2,sq_ft,67324.0,0.7397,0.7127,-0.0365,exact,0.7399,0.0003,exact,0.7127,0.0379,loss,home_depot,
+G0159,Setting Materials,Modified Thinset,Modified Thinset - Vintage Elm unmodified thinset standard,lb,15572.0,0.5592,,,none,0.6388,0.1423,close,0.6388,-0.1246,win,floor_and_decor,no_competitor_offer:home_depot
+G0160,Setting Materials,Modified Thinset,Modified Thinset - Westbury modified thinset standard,lb,7032.0,0.5196,0.5188,-0.0015,exact,0.4998,-0.0381,exact,0.4998,0.0396,loss,lowes,
+G0161,Setting Materials,Modified Thinset,Modified Thinset - Kingsport modified thinset premium,lb,20572.0,0.2876,0.3198,0.112,exact,,,none,,,no_comparison,floor_and_decor,competitor_out_of_stock:home_depot;no_competitor_offer:lowes
+G0162,Setting Materials,Unmodified Thinset,Unmodified Thinset - Driftwood unmodified thinset premium,lb,53444.0,0.3836,0.3956,0.0313,exact,0.3796,-0.0104,exact,,,no_comparison,floor_and_decor,competitor_out_of_stock:home_depot;competitor_out_of_stock:lowes
+G0163,Setting Materials,Epoxy Mortar,Epoxy Mortar - Blackwater large format mortar standard,lb,48802.0,0.4796,0.4396,-0.0834,exact,0.4994,0.0413,exact,0.4396,0.091,loss,home_depot,promo_driven_gap:home_depot
+G0164,Setting Materials,Epoxy Mortar,Epoxy Mortar - Amber Ridge modified thinset standard,lb,47816.0,0.5988,0.5992,0.0007,exact,0.5798,-0.0317,exact,0.5798,0.0328,loss,lowes,
+G0165,Setting Materials,Epoxy Mortar,Epoxy Mortar - Fieldstone large format mortar standard,lb,13117.0,0.6396,0.6388,-0.0013,exact,0.6388,-0.0013,exact,0.6388,0.0013,tie,floor_and_decor,competitor_out_of_stock:lowes;promo_driven_gap:home_depot
+G0166,Setting Materials,Epoxy Mortar,Epoxy Mortar - Kingsport unmodified thinset premium,lb,43126.0,0.6388,0.6788,0.0626,exact,0.6392,0.0006,exact,0.6392,-0.0006,tie,floor_and_decor,
+G0167,Grout & Caulk,Single Component Grout,Single Component Grout - Saxony single component 0.25,lb,6803.0,1.497,1.499,0.0013,exact,1.4388,-0.0389,exact,1.4388,0.0405,loss,lowes,
+G0168,Grout & Caulk,Single Component Grout,Single Component Grout - Charcoal epoxy 0.5,lb,17014.0,1.6656,1.699,0.0201,exact,1.5996,-0.0396,exact,1.5996,0.0413,loss,lowes,
+G0169,Grout & Caulk,Sanded Grout,Sanded Grout - Greystone sanded 0.125,lb,34769.0,0.7988,0.7989,0.0001,exact,0.819,0.0253,exact,0.7989,-0.0001,tie,floor_and_decor,
+G0170,Grout & Caulk,Unsanded Grout,Unsanded Grout - Charcoal unsanded 0.5,lb,27394.0,1.2788,1.499,0.1722,exact,1.5196,0.1883,exact,1.499,-0.1469,win,floor_and_decor,
+G0171,Grout & Caulk,Single Component Grout,Single Component Grout - Chelsea unsanded 0.25,lb,33425.0,1.11,0.9656,-0.1301,exact,0.999,-0.1,exact,0.9656,0.1495,loss,home_depot,promo_driven_gap:home_depot
+G0172,Grout & Caulk,Sanded Grout,Sanded Grout - Windsor unsanded 0.25,lb,27243.0,0.9592,1.0544,0.0992,exact,1.199,0.25,exact,1.0544,-0.0903,win,floor_and_decor,promo_driven_gap:home_depot
+G0173,Grout & Caulk,Unsanded Grout,Unsanded Grout - Quarry epoxy 0.125,lb,4041.0,1.3311,1.2796,-0.0387,exact,1.2788,-0.0393,exact,1.2788,0.0409,loss,home_depot,
+G0174,Grout & Caulk,Epoxy Grout,Epoxy Grout - Riverbend sanded 0.5,lb,8153.0,1.5533,1.5988,0.0293,close,1.5192,-0.022,equivalent,1.5192,0.0224,loss,lowes,
+G0175,Trim & Moulding,T-Molding,T-Molding - Calacatta quarter round MDF,lin_ft,3761.0,3.996,4.396,0.1001,exact,3.59,-0.1016,exact,3.59,0.1131,loss,lowes,competitor_out_of_stock:home_depot;promo_driven_gap:lowes
+G0176,Trim & Moulding,Quarter Round,Quarter Round - Coastal Grey stair nose vinyl,lin_ft,26677.0,2.3062,2.1508,-0.0674,close,2.69,0.1664,equivalent,2.1508,0.0723,loss,home_depot,competitor_out_of_stock:lowes;promo_driven_gap:home_depot
+G0177,Trim & Moulding,T-Molding,T-Molding - Driftwood reducer wood,lin_ft,9677.0,3.332,3.1987,-0.04,exact,,,none,,,no_comparison,floor_and_decor,competitor_out_of_stock:home_depot;no_competitor_offer:lowes
+G0178,Trim & Moulding,T-Molding,T-Molding - Vintage Elm T-molding vinyl,lin_ft,3671.0,2.2462,2.5293,0.126,equivalent,2.3062,0.0267,equivalent,2.3062,-0.026,win,floor_and_decor,
+G0179,Trim & Moulding,Threshold,Threshold - Quarry reducer wood,lin_ft,3336.0,2.7677,2.7662,-0.0005,exact,2.79,0.0081,exact,2.79,-0.008,win,floor_and_decor,competitor_out_of_stock:home_depot
+G0180,Trim & Moulding,Reducer,Reducer - Coastal Grey stair nose wood,lin_ft,23538.0,2.9975,2.9962,-0.0004,exact,3.1212,0.0413,exact,2.9962,0.0004,tie,floor_and_decor,
+G0181,Trim & Moulding,T-Molding,T-Molding - Quarry threshold wood,lin_ft,20482.0,4.3738,4.8738,0.1143,equivalent,3.7487,-0.1429,equivalent,3.7487,0.1668,loss,lowes,
+G0182,Trim & Moulding,Baseboard,Baseboard - Willow Bend baseboard vinyl,lin_ft,11624.0,5.5973,5.5987,0.0003,equivalent,4.6653,-0.1665,close,4.6653,0.1998,loss,lowes,
+G0183,Trim & Moulding,Stair Nose,Stair Nose - Amber Ridge baseboard MDF,lin_ft,13946.0,5.1238,5.3725,0.0485,exact,4.8725,-0.049,exact,4.8725,0.0516,loss,lowes,promo_driven_gap:lowes
+G0184,Trim & Moulding,T-Molding,T-Molding - Cedar Point stair nose aluminum,lin_ft,18730.0,4.4988,6.8738,0.5279,close,6.09,0.3537,equivalent,6.09,-0.2613,win,floor_and_decor,extreme_gap:home_depot
+G0185,Tile Trim & Edging,Edge Profile,Edge Profile - Tidewater stair nose brushed brass,lin_ft,8920.0,11.6447,11.7624,0.0101,exact,11.7624,0.0101,exact,11.7624,-0.01,win,floor_and_decor,
+G0186,Tile Trim & Edging,Edge Profile,Edge Profile - Autumn Hollow stair nose anodized aluminum,lin_ft,8446.0,8.1165,8.3518,0.029,exact,8.4694,0.0435,exact,8.3518,-0.0282,win,floor_and_decor,
+G0187,Tile Trim & Edging,Transition Profile,Transition Profile - Millbrook round edge stainless steel,lin_ft,2324.0,8.8212,9.2929,0.0535,equivalent,9.1753,0.0401,equivalent,9.1753,-0.0386,win,floor_and_decor,
+G0188,Tile Trim & Edging,Transition Profile,Transition Profile - Whitewash bullnose PVC,lin_ft,2026.0,3.7624,4.7024,0.2498,equivalent,5.0565,0.344,close,4.7024,-0.1999,win,floor_and_decor,promo_driven_gap:home_depot
+G0189,Tile Trim & Edging,Transition Profile,Transition Profile - Copperfield bullnose anodized aluminum,lin_ft,6609.0,8.1153,7.6435,-0.0581,exact,8.1141,-0.0001,exact,7.6435,0.0617,loss,home_depot,promo_driven_gap:home_depot
+G0190,Tile Trim & Edging,Edge Profile,Edge Profile - Amber Ridge bullnose PVC,lin_ft,1654.0,13.5271,13.5271,0.0,exact,14.1153,0.0435,exact,13.5271,0.0,tie,floor_and_decor,
+G0191,Installation Tools,Leveling System,Leveling System - Cedar Point snap cutter manual,each,1303.0,74.99,74.97,-0.0003,exact,75.98,0.0132,exact,74.97,0.0003,tie,floor_and_decor,
+G0192,Installation Tools,Leveling System,Leveling System - Tidewater mixing paddle electric,each,2012.0,97.99,84.99,-0.1327,equivalent,99.98,0.0203,equivalent,84.99,0.153,loss,home_depot,
+G0193,Installation Tools,Leveling System,Leveling System - Quarry leveling clips manual,each,820.0,14.99,14.99,0.0,exact,,,none,14.99,0.0,tie,floor_and_decor,no_competitor_offer:lowes
+G0194,Installation Tools,Leveling System,Leveling System - Slate Creek leveling clips manual,each,2984.0,114.98,114.98,0.0,exact,85.99,-0.2521,exact,85.99,0.3371,loss,lowes,
+G0195,Installation Tools,Wet Saw,Wet Saw - Espresso wet saw electric,each,423.0,56.98,56.98,0.0,exact,57.98,0.0176,exact,56.98,0.0,tie,floor_and_decor,
+G0196,Installation Tools,Hand Tool,Hand Tool - Havana mixing paddle electric,each,3110.0,99.98,104.98,0.05,exact,104.98,0.05,exact,104.98,-0.0476,win,floor_and_decor,
+G0197,Vanities & Tops,Single Sink Vanity,Single Sink Vanity - Quarry 60 quartz top,each,215.0,739.0,709.0,-0.0406,equivalent,709.0,-0.0406,weak,709.0,0.0423,loss,home_depot,weak_match:lowes
+G0198,Vanities & Tops,Single Sink Vanity,Single Sink Vanity - Dunmore 24 cultured marble top,each,113.0,589.0,599.0,0.017,close,559.0,-0.0509,close,559.0,0.0537,loss,lowes,
+G0199,Vanities & Tops,Double Sink Vanity,Double Sink Vanity - Yorkshire 30 cultured marble top,each,172.0,859.0,,,none,819.0,-0.0466,exact,819.0,0.0488,loss,lowes,no_competitor_offer:home_depot
+G0200,Vanities & Tops,Single Sink Vanity,Single Sink Vanity - Chelsea 60 engineered stone top,each,881.0,889.0,759.0,-0.1462,equivalent,819.0,-0.0787,close,759.0,0.1713,loss,home_depot,
