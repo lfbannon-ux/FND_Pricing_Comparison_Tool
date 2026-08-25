@@ -7,6 +7,7 @@ allowed to move the headline numbers.
 
 ```
 python3 -m fnd_pricing compare      # console summary
+python3 -m fnd_pricing index        # annual expense by category
 python3 -m fnd_pricing report       # self-contained HTML report
 python3 -m fnd_pricing export       # multi-sheet Excel workbook
 ```
@@ -37,6 +38,7 @@ export PYTHONPATH=src
 
 python3 -m fnd_pricing validate          # check the data files and coverage
 python3 -m fnd_pricing compare --top 10  # summary + widest gaps
+python3 -m fnd_pricing index             # expense by category, ranked
 python3 -m fnd_pricing report            # -> data/out/pricing_report.html
 python3 -m fnd_pricing export            # -> data/out/pricing_comparison.xlsx
 ```
@@ -46,6 +48,7 @@ Filter to one category, or write the per-SKU detail to CSV:
 ```bash
 python3 -m fnd_pricing compare --category "Porcelain Tile"
 python3 -m fnd_pricing compare --csv data/out/sku_detail.csv
+python3 -m fnd_pricing index --csv data/out/category_expense.csv
 python3 -m fnd_pricing report --min-tier equivalent   # tighten the match bar
 ```
 
@@ -92,7 +95,29 @@ market-low spend on the same basket. That answers "what would this basket
 cost us" rather than averaging unit prices, which would let a $0.30 underlayment
 outvote a $9 hardwood.
 
-**6. Exceptions.** Rows that need a human before anyone acts on them are
+**6. Expense by category.** Gaps and indexes are *rates*; `index` reports the
+*level*. Each category's annual expense is Floor & Decor price x annual volume,
+ranked largest first, next to what that expense is worth against the market —
+because a 20% gap on a category worth $4k/yr is a rounding error beside a 3% gap
+on one worth $900k.
+
+Two things make these numbers trustworthy:
+
+- **Matched baskets.** A retailer's index divides Floor & Decor spend by that
+  retailer's spend over *only the SKUs that retailer covers*. Dividing total
+  Floor & Decor spend by a competitor's spend across a smaller set would compare
+  two different baskets and read as a price advantage that is really just
+  missing coverage. The consequence is that an index is comparable to 1.0 but
+  **not to the other indexes on its row** — they rest on different baskets.
+- **Benchmark coverage.** The share of a category's expense sitting on SKUs
+  where some competitor offer was comparable enough to use. The rest is reported
+  as unbenchmarked spend rather than quietly ignored.
+
+Average unit price is withheld wherever a category mixes comparison bases —
+dollars per square foot and dollars per unit cannot be averaged into a number
+that means anything.
+
+**7. Exceptions.** Rows that need a human before anyone acts on them are
 flagged, not silently dropped: `no_competitor_offer`, `weak_match`,
 `competitor_out_of_stock`, `promo_driven_gap` (the gap reverses at list price,
 so it is temporary), `extreme_gap` (>40%), `uom_conversion_error`.
@@ -156,6 +181,18 @@ tile, and gives ground on the categories where the home centres are strong.
 | Win rate vs cheapest competitor | 68% (134W / 15T / 47L) |
 | Median gap vs market low | −7.7% |
 | Basket index vs market low | 0.918 |
+| Annual expense at Floor & Decor prices | $38.2M |
+| Net annual advantage vs market low | $3.4M |
+| Annual expense priced above market low | $233k across 4 categories |
+
+Expense is heavily concentrated: Luxury Vinyl Plank alone is 38% of it ($14.5M),
+and the top four categories carry 72%. The expense view also reverses the
+priority the rate view implies: Trim & Moulding and Setting Materials look bad on
+median gap (+5.2%, +1.7%) but carry $4.5k of exposure between them, while
+Vanities & Tops and Installation Tools carry $228k. Grout & Caulk flips sign
+outright — a +3.1% median gap, but a small net *advantage* in dollars, because
+the SKUs Floor & Decor wins there are the ones with volume behind them.
+**Dollars, not percentages, say where to negotiate.**
 
 Strongest: Wall Tile (−16.3%), Ceramic Tile (−10.0%), Solid Hardwood (−10.8%),
 LVP (−10.7%). Weakest: Vanities & Tops (+5.1%), Trim & Moulding (+5.2%),
@@ -171,13 +208,16 @@ src/fnd_pricing/
   normalize.py   unit-of-measure conversion onto the comparison basis
   matching.py    attribute-weighted like-for-like confidence scoring
   compare.py     gaps, outcomes, exception flags, rollups, basket index
+  spend.py       annual expense by category on matched baskets
+  charts.py      inline SVG bar and diverging charts for the report
   report.py      self-contained HTML report
-  excel.py       multi-sheet workbook (Summary / SKU Detail / Offers / Exceptions)
-  cli.py         validate | compare | report | export | template
+  excel.py       multi-sheet workbook (Summary / Category Expense / SKU Detail /
+                 Offers / Exceptions)
+  cli.py         validate | compare | index | report | export | template
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           47 unit tests
+tests/           64 unit tests
 ```
 
 ## Tests

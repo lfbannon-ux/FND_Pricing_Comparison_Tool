@@ -11,7 +11,9 @@ import json
 from typing import Dict, List, Optional
 
 from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
+from .charts import compact_money, diverging_bars, magnitude_bars
 from .compare import GroupComparison, Rollup, build_rollup, rollup_by_category
+from .spend import MARKET_LOW, expense_by_category, total_expense
 
 COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
 
@@ -22,6 +24,10 @@ def _pct(value: Optional[float], digits: int = 1) -> str:
 
 def _money(value: Optional[float]) -> str:
     return "-" if value is None else f"${value:,.2f}"
+
+
+def _index(value: Optional[float]) -> str:
+    return "-" if value is None else f"{value:.3f}"
 
 
 def _basis_label(basis: str) -> str:
@@ -118,6 +124,102 @@ def _category_table(rollups: List[Rollup]) -> str:
     return "\n".join(body)
 
 
+def _expense_section(comparisons: List[GroupComparison]) -> str:
+    """Where the money sits, and how much of it is priced off-market."""
+    rows = expense_by_category(comparisons)
+    total = total_expense(comparisons)
+    if not rows or total.annual_spend <= 0:
+        return ""
+
+    spend_rows, delta_rows = [], []
+    for row in rows:
+        basket = row.baskets[MARKET_LOW]
+        share = row.share_of(total.annual_spend) or 0
+        index = basket.index
+        spend_rows.append((
+            row.category, row.annual_spend,
+            f"{row.category} - ${row.annual_spend:,.0f} a year, "
+            f"{share * 100:.1f}% of total expense, {row.priced_skus} SKUs",
+        ))
+        delta_rows.append((
+            row.category, basket.delta,
+            f"{row.category} - {compact_money(abs(basket.delta))} "
+            f"{'above' if basket.delta > 0 else 'below'} market low on "
+            f"{basket.matched_skus} matched SKUs"
+            + (f", index {index:.3f}" if index else ""),
+        ))
+
+    body = []
+    for row in rows:
+        basket = row.baskets[MARKET_LOW]
+        home_depot, lowes = row.baskets["home_depot"], row.baskets["lowes"]
+        index = basket.index
+        body.append(
+            f"<tr><td>{html.escape(row.category)}</td>"
+            f"<td class='num'>{row.priced_skus}</td>"
+            f"<td class='num'>{row.annual_spend:,.0f}</td>"
+            f"<td class='num'>{(row.share_of(total.annual_spend) or 0) * 100:.1f}%</td>"
+            f"<td class='num {'pos' if (index or 1) > 1 else 'neg'}'>{_index(index)}</td>"
+            f"<td class='num {'pos' if basket.delta > 0 else 'neg'}'>{basket.delta:,.0f}</td>"
+            f"<td class='num'>{_index(home_depot.index)}</td>"
+            f"<td class='num'>{_index(lowes.index)}</td>"
+            f"<td class='num'>{(row.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
+        )
+
+    market = total.baskets[MARKET_LOW]
+    body.append(
+        f"<tr class='total'><td>All categories</td>"
+        f"<td class='num'>{total.priced_skus}</td>"
+        f"<td class='num'>{total.annual_spend:,.0f}</td><td class='num'>100.0%</td>"
+        f"<td class='num'>{_index(market.index)}</td>"
+        f"<td class='num'>{market.delta:,.0f}</td>"
+        f"<td class='num'>{_index(total.baskets['home_depot'].index)}</td>"
+        f"<td class='num'>{_index(total.baskets['lowes'].index)}</td>"
+        f"<td class='num'>{(total.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
+    )
+
+    exposure = sum(r.baskets[MARKET_LOW].delta for r in rows
+                   if r.baskets[MARKET_LOW].delta > 0)
+    top = rows[0]
+
+    return f"""
+<h2>Expense by category</h2>
+<div class="tiles">
+  <div class="tile"><div class="tile-value">{compact_money(total.annual_spend)}</div>
+    <div class="tile-label">Annual expense at Floor &amp; Decor prices</div>
+    <div class="tile-sub">{total.priced_skus} SKUs carrying a price and a volume</div></div>
+  <div class="tile"><div class="tile-value">{(top.share_of(total.annual_spend) or 0) * 100:.0f}%</div>
+    <div class="tile-label">Concentrated in {html.escape(top.category)}</div>
+    <div class="tile-sub">{compact_money(top.annual_spend)} of {compact_money(total.annual_spend)}</div></div>
+  <div class="tile bad"><div class="tile-value">{compact_money(exposure)}</div>
+    <div class="tile-label">Annual spend priced above market low</div>
+    <div class="tile-sub">across {sum(1 for r in rows if r.baskets[MARKET_LOW].delta > 0)} categories</div></div>
+  <div class="tile good"><div class="tile-value">{compact_money(-market.delta)}</div>
+    <div class="tile-label">Net annual advantage vs market low</div>
+    <div class="tile-sub">on the {market.matched_skus} SKUs with a comparable offer</div></div>
+</div>
+
+<h3>Annual expense</h3>
+<div class="panel chart-panel viz-root">{magnitude_bars(spend_rows, "Annual expense")}</div>
+
+<h3>Dollars above or below the market low</h3>
+<p class="note"><span class="key under"></span>Below market low (advantage)
+<span class="key over"></span>Above market low (exposure)</p>
+<div class="panel chart-panel viz-root">{diverging_bars(delta_rows, "Annual dollars vs market low")}</div>
+
+<div class="panel"><table>
+<thead><tr><th>Category</th><th class="num">SKUs</th><th class="num">Annual expense $</th>
+<th class="num">Share</th><th class="num">Index vs low</th><th class="num">$ vs low</th>
+<th class="num">Index vs HD</th><th class="num">Index vs Lowe's</th>
+<th class="num">Benchmarked</th></tr></thead>
+<tbody>{"".join(body)}</tbody></table></div>
+<p class="note">Each index divides Floor &amp; Decor spend by that retailer's spend over
+<em>only the SKUs that retailer covers</em>, so an index is comparable to 1.0 but not to
+the other indexes in its row - they rest on different baskets. Benchmarked is the share of
+category expense on SKUs where some competitor offer was comparable enough to use.</p>
+"""
+
+
 def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> str:
     overall = build_rollup("All categories", comparisons)
     categories = rollup_by_category(comparisons)
@@ -139,10 +241,12 @@ def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> s
 :root {{
   --bg:#f6f7f9; --panel:#ffffff; --ink:#16191d; --muted:#5f6873; --line:#e2e5ea;
   --good:#0b7a4b; --bad:#b3261e; --accent:#1a4f8a;
+  --mark:#2a78d6; --mark-over:#e34948; --grid:#e2e5ea; --zero:#aab2be;
 }}
 @media (prefers-color-scheme: dark) {{
   :root {{ --bg:#14171a; --panel:#1c2126; --ink:#e8eaed; --muted:#9aa4b0;
-           --line:#2b3138; --good:#4ade80; --bad:#f87171; --accent:#7aa7dd; }}
+           --line:#2b3138; --good:#4ade80; --bad:#f87171; --accent:#7aa7dd;
+           --mark:#3987e5; --mark-over:#e66767; --grid:#2b3138; --zero:#4a525c; }}
 }}
 * {{ box-sizing:border-box; }}
 body {{ margin:0; background:var(--bg); color:var(--ink);
@@ -168,6 +272,30 @@ th {{ position:sticky; top:0; background:var(--panel); font-weight:600; font-siz
 th.num, td.num {{ text-align:right; font-variant-numeric:tabular-nums; }}
 tbody tr:hover {{ background:rgba(127,127,127,.07); }}
 .neg {{ color:var(--good); }} .pos {{ color:var(--bad); }}
+h3 {{ font-size:13px; font-weight:600; margin:26px 0 8px; }}
+.note {{ color:var(--muted); font-size:12px; margin:10px 2px 0; max-width:960px; }}
+.chart-panel {{ padding:18px 16px 6px; overflow-x:auto; }}
+.chart {{ width:100%; min-width:640px; height:auto; display:block; }}
+.chart .grid {{ stroke:var(--grid); stroke-width:1; }}
+.chart .zero {{ stroke:var(--zero); stroke-width:1; }}
+.chart .label {{ fill:var(--muted); font-size:12px; }}
+.chart .tick {{ fill:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }}
+.chart .value {{ fill:var(--ink); font-size:12px; font-variant-numeric:tabular-nums; }}
+.chart .mark {{ fill:var(--mark); }}
+.chart .mark.over {{ fill:var(--mark-over); }}
+.chart .hit {{ fill:transparent; }}
+.chart .row:hover .hit, .chart .row:focus .hit {{ fill:rgba(127,127,127,.09); }}
+.chart .row {{ outline:none; }}
+.chart .row:focus .label {{ fill:var(--ink); }}
+.key {{ display:inline-block; width:10px; height:10px; border-radius:2px;
+  margin:0 6px 0 16px; vertical-align:middle; }}
+.key:first-child {{ margin-left:0; }}
+.key.under {{ background:var(--mark); }} .key.over {{ background:var(--mark-over); }}
+tr.total td {{ font-weight:650; border-top:2px solid var(--line); }}
+#tip {{ position:fixed; z-index:20; display:none; max-width:330px; padding:8px 11px;
+  background:var(--panel); color:var(--ink); border:1px solid var(--line);
+  border-radius:6px; font-size:12px; line-height:1.45; pointer-events:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.16); }}
 .desc {{ white-space:normal; min-width:220px; color:var(--muted); }}
 .pill {{ display:inline-block; padding:1px 7px; border-radius:20px; font-size:11px;
   border:1px solid var(--line); color:var(--muted); }}
@@ -192,6 +320,8 @@ footer {{ color:var(--muted); font-size:12px; margin-top:32px; line-height:1.7; 
 <th class="num">Win rate</th><th class="num">Median gap</th><th class="num">Basket index</th>
 <th class="num">vs Home Depot</th><th class="num">vs Lowe's</th></tr></thead>
 <tbody>{_category_table(categories)}</tbody></table></div>
+
+{_expense_section(comparisons)}
 
 <h2>SKU detail</h2>
 <div class="controls">
@@ -280,6 +410,26 @@ function render() {{
   document.getElementById('count').textContent =
     rows.length + ' of ' + ROWS.length + ' SKU groups';
 }}
+
+const tip = Object.assign(document.createElement('div'), {{id:'tip'}});
+document.body.appendChild(tip);
+const showTip = (row, x, y) => {{
+  tip.textContent = row.dataset.tip;
+  tip.style.display = 'block';
+  tip.style.left = Math.min(x + 16, window.innerWidth - 350) + 'px';
+  tip.style.top = Math.min(y + 16, window.innerHeight - 90) + 'px';
+}};
+const hideTip = () => {{ tip.style.display = 'none'; }};
+document.querySelectorAll('.chart .row').forEach(row => {{
+  row.addEventListener('mousemove', e => showTip(row, e.clientX, e.clientY));
+  row.addEventListener('mouseleave', hideTip);
+  // Keyboard reaches the same value the pointer does.
+  row.addEventListener('focus', () => {{
+    const box = row.getBoundingClientRect();
+    showTip(row, box.left + 40, box.top);
+  }});
+  row.addEventListener('blur', hideTip);
+}});
 
 document.querySelectorAll('#grid th').forEach(th => th.addEventListener('click', () => {{
   const k = th.dataset.k;

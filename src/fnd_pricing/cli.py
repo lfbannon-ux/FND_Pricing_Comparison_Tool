@@ -19,6 +19,7 @@ from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
 from .matching import DEFAULT_MIN_TIER, TIER_ORDER
+from .spend import MARKET_LOW, expense_by_category, total_expense
 from .models import DataError
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -158,6 +159,86 @@ def _write_detail_csv(comparisons: List[GroupComparison], path: Path) -> None:
             })
 
 
+def cmd_index(args) -> int:
+    """Rank categories by annual expense and show each one's price position."""
+    comparisons = _load(args)
+    rows = expense_by_category(comparisons)
+    total = total_expense(comparisons)
+    if total.annual_spend <= 0:
+        raise SystemExit("no annual_volume set on any SKU group - expense cannot be computed")
+
+    def line(label, skus, units, spend, share, basket, coverage):
+        index = "        -" if basket.index is None else f"{basket.index:9.3f}"
+        return (f"{label[:27]:<28}{skus:>5}{units:>15,.0f}{spend:>16,.0f}"
+                f"{share * 100:>7.1f}%{index}{basket.delta:>14,.0f}{coverage * 100:>6.0f}%")
+
+    print()
+    print("ANNUAL EXPENSE BY CATEGORY - at Floor & Decor prices")
+    print("=" * 111)
+    print(f"{'CATEGORY':<28}{'SKUS':>5}{'ANNUAL UNITS':>15}{'ANNUAL SPEND':>16}"
+          f"{'SHARE':>8}{'IDX/LOW':>9}{'$ VS LOW':>14}{'BMK':>7}")
+    print("-" * 111)
+    for row in rows:
+        print(line(row.category, row.priced_skus, row.annual_units, row.annual_spend,
+                   row.share_of(total.annual_spend) or 0, row.baskets[MARKET_LOW],
+                   row.benchmark_coverage or 0))
+    print("-" * 111)
+    print(line("All categories", total.priced_skus, total.annual_units, total.annual_spend,
+               1.0, total.baskets[MARKET_LOW], total.benchmark_coverage or 0))
+
+    exposed = [r for r in rows if r.baskets[MARKET_LOW].delta > 0]
+    if exposed:
+        print()
+        print("PRICED ABOVE THE MARKET LOW - ranked by annual dollars at stake")
+        print("-" * 111)
+        for row in sorted(exposed, key=lambda r: r.baskets[MARKET_LOW].delta, reverse=True):
+            basket = row.baskets[MARKET_LOW]
+            print(f"  {row.category[:26]:<28}{basket.delta:>12,.0f} a year on "
+                  f"{basket.matched_skus:>3} matched SKUs   index {basket.index:.3f}")
+
+    print()
+    print("Note: each index divides Floor & Decor spend by that retailer's spend over only")
+    print("the SKUs that retailer covers, so compare an index to 1.0 - not to each other.")
+    print("BMK is the share of category expense that has any comparable competitor offer.")
+
+    if args.csv:
+        out = Path(args.csv)
+        _write_expense_csv(rows, total, out)
+        print(f"\nWrote expense CSV -> {out}")
+    return 0
+
+
+def _write_expense_csv(rows, total, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    columns = [
+        "category", "skus", "priced_skus", "basis", "annual_units", "avg_unit_price",
+        "annual_spend", "share_of_spend", "benchmarked_spend", "unbenchmarked_spend",
+        "benchmark_coverage", "matched_skus_vs_low", "index_vs_market_low",
+        "dollars_vs_market_low", "index_vs_home_depot", "dollars_vs_home_depot",
+        "index_vs_lowes", "dollars_vs_lowes",
+    ]
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer.writeheader()
+        for row in list(rows) + [total]:
+            low = row.baskets[MARKET_LOW]
+            hd, lw = row.baskets["home_depot"], row.baskets["lowes"]
+            writer.writerow({
+                "category": row.category, "skus": row.skus,
+                "priced_skus": row.priced_skus, "basis": row.basis or "mixed",
+                "annual_units": row.annual_units, "avg_unit_price": row.avg_unit_price,
+                "annual_spend": row.annual_spend,
+                "share_of_spend": row.share_of(total.annual_spend),
+                "benchmarked_spend": row.benchmarked_spend,
+                "unbenchmarked_spend": row.unbenchmarked_spend,
+                "benchmark_coverage": row.benchmark_coverage,
+                "matched_skus_vs_low": low.matched_skus,
+                "index_vs_market_low": low.index, "dollars_vs_market_low": low.delta,
+                "index_vs_home_depot": hd.index, "dollars_vs_home_depot": hd.delta,
+                "index_vs_lowes": lw.index, "dollars_vs_lowes": lw.delta,
+            })
+
+
 def cmd_report(args) -> int:
     from .report import render_html
 
@@ -231,6 +312,12 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_argument("--top", type=int, default=10, help="how many worst gaps to list")
     sub.add_argument("--csv", help="also write the per-SKU detail to this CSV path")
     sub.set_defaults(func=cmd_compare)
+
+    sub = subparsers.add_parser(
+        "index", help="rank categories by annual expense and price position")
+    sub.add_argument("--category", help="filter to categories containing this text")
+    sub.add_argument("--csv", help="also write the category expense table to this CSV path")
+    sub.set_defaults(func=cmd_index)
 
     sub = subparsers.add_parser("report", help="write the self-contained HTML report")
     sub.add_argument("--category", help="filter to categories containing this text")

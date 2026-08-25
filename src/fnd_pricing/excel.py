@@ -7,6 +7,7 @@ from typing import List
 
 from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
 from .compare import GroupComparison, build_rollup, rollup_by_category
+from .spend import MARKET_LOW, expense_by_category, total_expense
 
 COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
 
@@ -85,6 +86,42 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
     _style_header(sheet, header_row)
     sheet.freeze_panes = f"A{header_row + 1}"
     _autosize(sheet)
+
+    # --- Category expense: the level, not just the rate ---
+    expense = workbook.create_sheet("Category Expense")
+    expense.append([
+        "Category", "SKUs priced", "Basis", "Annual units", "Avg unit price",
+        "Annual expense", "Share of expense", "Benchmarked expense",
+        "Unbenchmarked expense", "Benchmark coverage", "Matched SKUs vs low",
+        "Index vs market low", "$ vs market low",
+        "Index vs Home Depot", "$ vs Home Depot",
+        "Index vs Lowe's", "$ vs Lowe's",
+    ])
+    rows = expense_by_category(comparisons)
+    total = total_expense(comparisons)
+    for row in rows + [total]:
+        low, home_depot, lowes = (
+            row.baskets[MARKET_LOW], row.baskets["home_depot"], row.baskets["lowes"]
+        )
+        expense.append([
+            row.category, row.priced_skus, row.basis or "mixed", row.annual_units,
+            row.avg_unit_price, row.annual_spend, row.share_of(total.annual_spend),
+            row.benchmarked_spend, row.unbenchmarked_spend, row.benchmark_coverage,
+            low.matched_skus, low.index, low.delta,
+            home_depot.index, home_depot.delta, lowes.index, lowes.delta,
+        ])
+        line = expense.max_row
+        for col in (5, 6, 8, 9, 13, 15, 17):
+            expense.cell(row=line, column=col).number_format = _MONEY
+        for col in (7, 10):
+            expense.cell(row=line, column=col).number_format = "0.0%"
+        for col in (12, 14, 16):
+            expense.cell(row=line, column=col).number_format = _INDEX
+    for cell in expense[expense.max_row]:
+        cell.font = Font(bold=True)
+    _style_header(expense)
+    expense.auto_filter.ref = f"A1:Q{expense.max_row - 1}"
+    _autosize(expense)
 
     # --- SKU detail ---
     detail = workbook.create_sheet("SKU Detail")

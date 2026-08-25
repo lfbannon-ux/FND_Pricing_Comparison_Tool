@@ -31,6 +31,20 @@ class OutputTest(unittest.TestCase):
         for comp in self.comparisons:
             self.assertIn(f'"{comp.group.group_id}"', html)
 
+    def test_expense_section_is_rendered_with_both_charts(self):
+        html = render_html(self.comparisons)
+        self.assertIn("Expense by category", html)
+        self.assertIn("Annual expense at Floor &amp; Decor prices", html)
+        self.assertEqual(html.count('<svg class="chart"'), 2)
+        self.assertIn("Below market low", html)   # legend, so colour is never alone
+
+    def test_charts_carry_a_hover_and_keyboard_target_per_row(self):
+        from fnd_pricing.spend import expense_by_category
+
+        html = render_html(self.comparisons)
+        categories = len(expense_by_category(self.comparisons))
+        self.assertEqual(html.count('<g class="row" tabindex="0"'), categories * 2)
+
     def test_workbook_writes_all_sheets(self):
         from openpyxl import load_workbook
 
@@ -40,7 +54,8 @@ class OutputTest(unittest.TestCase):
         write_workbook(self.comparisons, out)
         workbook = load_workbook(out)
         self.assertEqual(
-            workbook.sheetnames, ["Summary", "SKU Detail", "Offers", "Exceptions"]
+            workbook.sheetnames,
+            ["Summary", "Category Expense", "SKU Detail", "Offers", "Exceptions"],
         )
         self.assertEqual(workbook["SKU Detail"].max_row, len(self.comparisons) + 1)
 
