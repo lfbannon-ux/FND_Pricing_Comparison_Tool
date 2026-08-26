@@ -57,6 +57,19 @@ def body_font(color=BLACK, bold=False, italic=False, sz=10):
     return Font(name=F, size=sz, bold=bold, italic=italic, color=color)
 
 
+
+def cell_value(raw: str, unit: str):
+    """Numeric where numeric; verbatim string for text-unit facts."""
+    if raw in ("", None):
+        return None
+    if unit == "text":
+        return raw
+    try:
+        return float(raw)
+    except (TypeError, ValueError):
+        return raw
+
+
 def load_canonical() -> list[dict]:
     path = CANON / "canonical.csv"
     if not path.exists():
@@ -158,10 +171,14 @@ def write_statement_sheet(wb, sheet_name: str, rows: list[dict], basis: str,
                 col = 2 + pidx[c["period_label"]]
                 if c["value"] in ("", None):
                     continue
-                cell = ws.cell(row=r, column=col, value=float(c["value"]))
+                v = cell_value(c["value"], c["unit"])
+                if v is None:
+                    continue
+                cell = ws.cell(row=r, column=col, value=v)
                 unit = c["unit"]
                 cell.number_format = (
-                    PERSHARE if unit == "usd_per_share" else
+                    "General" if unit == "text" else
+                    PERSHARE if unit in ("usd_per_share", "cad_per_share") else
                     PCT_PRINTED if unit == "pct" else
                     NUMBER if unit in ("shares", "count") else
                     MONEY)
@@ -341,11 +358,14 @@ def main() -> int:
                     for c in cells:
                         if c["period_label"] not in pidx or c["value"] in ("", None):
                             continue
-                        cell = ws.cell(row=rr, column=2 + pidx[c["period_label"]],
-                                       value=float(c["value"]))
+                        v = cell_value(c["value"], c["unit"])
+                        if v is None:
+                            continue
+                        cell = ws.cell(row=rr, column=2 + pidx[c["period_label"]], value=v)
                         unit = c["unit"]
                         cell.number_format = (
-                            PERSHARE if unit == "usd_per_share" else
+                            "General" if unit == "text" else
+                            PERSHARE if unit in ("usd_per_share", "cad_per_share") else
                             PCT_PRINTED if unit == "pct" else
                             NUMBER if unit in ("shares", "count") else
                             '#,##0.0' if unit == "bcf" else MONEY)

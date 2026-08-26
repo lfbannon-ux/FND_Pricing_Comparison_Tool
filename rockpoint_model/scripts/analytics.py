@@ -118,71 +118,141 @@ def _check_row(ws, r, label, periods, formula_fn, ncols):
     return r + 1
 
 
+def guarded(rows_needed, expr):
+    """
+    Build =IF(AND(ISNUMBER(r1),ISNUMBER(r2),...),expr,"").
+
+    A check may only assert where EVERY input is actually reported. Excel treats a
+    blank cell as zero, which would otherwise turn "not reported" into a false
+    failure -- e.g. the audited annual statements print no total-current-liabilities
+    subtotal, so an unguarded liabilities check fails by exactly that amount.
+    """
+    def fn(c):
+        conds = ",".join(f"ISNUMBER({c}{rw})" for rw in rows_needed)
+        return f'=IF(AND({conds}),{expr(c)},"")'
+    return fn
+
+
+def _computed_row(ws, r, label, periods, expr_fn, ncols, fmt=MONEY, indent=1):
+    """A BLACK in-sheet formula row (derived, not filed)."""
+    ws.cell(row=r, column=1, value=label).font = _font(BLACK, bold=True)
+    ws.cell(row=r, column=1).alignment = Alignment(indent=indent)
+    for i in range(len(periods)):
+        col = get_column_letter(2 + i)
+        cell = ws.cell(row=r, column=2 + i, value=expr_fn(col))
+        cell.number_format = fmt
+        cell.font = _font(BLACK, bold=True)
+        cell.border = Border(top=thin)
+    return r + 1
+
+
 def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
                         statement: str, ncols: int,
                         cash_sheet_name: str | None = None,
                         cash_row: int | None = None,
                         bs_period_index: list | None = None) -> int:
-    """Append the Analytics & checks block at the foot of a statement sheet."""
+    """
+    Append the Analytics & checks block at the foot of a statement sheet.
+
+    Canonical row names are matched EXACTLY where possible -- the canonical layer
+    controls them, so fuzzy matching would only hide a mapping change.
+    """
     r += 1
     r = _section(ws, r, "Analytics & checks", ncols)
+    F_ = find_row
 
     if statement == "income_statement":
-        rev = find_row(line_rows, "Total revenues", "Revenue", "Revenues")
-        op = find_row(line_rows, "Operating income", "Earnings from operations",
-                      "Operating earnings")
-        ni = find_row(line_rows, "Net earnings", "Net income", "Net earnings and comprehensive")
+        rev = F_(line_rows, "Total revenues")
+        exp = F_(line_rows, "Total expenses (income)")
+        ebt = F_(line_rows, "Earnings before income taxes")
+        tax = F_(line_rows, "Total income tax expense (benefit)")
+        ni = F_(line_rows, "Net earnings")
         if rev:
             r = _growth_row(ws, r, "Revenue growth", periods, rev, ncols)
-        if rev and op:
-            r = _ratio_row(ws, r, "Operating margin", periods, op, rev, ncols)
+        if rev and ebt:
+            r = _ratio_row(ws, r, "Pre-tax margin", periods, ebt, rev, ncols)
         if rev and ni:
             r = _ratio_row(ws, r, "Net margin", periods, ni, rev, ncols)
         if ni:
             r = _growth_row(ws, r, "Net earnings growth", periods, ni, ncols)
+        if ebt and tax:
+            r = _ratio_row(ws, r, "Effective tax rate", periods, tax, ebt, ncols)
+        if rev and exp and ebt:
+            r = _check_row(ws, r, "CHECK: total revenues less total expenses less earnings before tax",
+                           periods,
+                           guarded([rev, exp, ebt],
+                                   lambda c: f'{c}{rev}-{c}{exp}-{c}{ebt}'), ncols)
+        if ebt and tax and ni:
+            r = _check_row(ws, r, "CHECK: earnings before tax less income tax less net earnings",
+                           periods,
+                           guarded([ebt, tax, ni],
+                                   lambda c: f'{c}{ebt}-{c}{tax}-{c}{ni}'), ncols)
 
     elif statement == "balance_sheet":
-        ta = find_row(line_rows, "Total assets")
-        tl = find_row(line_rows, "Total liabilities")
-        te = find_row(line_rows, "Total equity")
-        tle = find_row(line_rows, "Total liabilities and equity")
-        if ta and tl and te:
-            r = _check_row(ws, r, "CHECK: total assets less total liabilities and equity",
-                           periods, lambda c: f'=IF(ISNUMBER({c}{ta}),{c}{ta}-({c}{tl}+{c}{te}),"")',
-                           ncols)
-        if ta and tle:
-            r = _check_row(ws, r, "CHECK: total assets less printed total liabilities and equity",
-                           periods, lambda c: f'=IF(ISNUMBER({c}{tle}),{c}{ta}-{c}{tle},"")', ncols)
-        ca = find_row(line_rows, "Total current assets")
-        cl = find_row(line_rows, "Total current liabilities")
-        if ca and cl:
-            r = _ratio_row(ws, r, "Current ratio", periods, ca, cl, ncols, fmt='#,##0.00"x"')
+        tca = F_(line_rows, "Total current assets")
+        tla = F_(line_rows, "Total long-term assets")
+        tcl = F_(line_rows, "Total current liabilities")
+        tll = F_(line_rows, "Total long-term liabilities")
+        eq = F_(line_rows, "Owners' equity (deficiency)")
+        tle = F_(line_rows, "Total liabilities and owners' equity")
+        ta_printed = F_(line_rows, "Total assets")
+
+        ta_row = None
+        if tca and tla:
+            ta_row = r
+            r = _computed_row(ws, r, "Total assets (computed: current + long-term)", periods,
+                              guarded([tca, tla], lambda c: f'{c}{tca}+{c}{tla}'), ncols)
+        tl_row = None
+        if tcl and tll:
+            tl_row = r
+            r = _computed_row(ws, r, "Total liabilities (computed: current + long-term)", periods,
+                              guarded([tcl, tll], lambda c: f'{c}{tcl}+{c}{tll}'), ncols)
+
+        if ta_row and tle:
+            r = _check_row(ws, r, "CHECK: computed total assets less printed total liabilities and equity",
+                           periods,
+                           guarded([ta_row, tle], lambda c: f'{c}{ta_row}-{c}{tle}'), ncols)
+        if tl_row and eq and tle:
+            r = _check_row(ws, r, "CHECK: total liabilities plus equity less printed total",
+                           periods,
+                           guarded([tl_row, eq, tle],
+                                   lambda c: f'{c}{tl_row}+{c}{eq}-{c}{tle}'), ncols)
+        if ta_printed and ta_row:
+            r = _check_row(ws, r, "CHECK: printed total assets less computed total assets",
+                           periods,
+                           guarded([ta_printed, ta_row],
+                                   lambda c: f'{c}{ta_printed}-{c}{ta_row}'), ncols)
+        if tca and tcl:
+            r = _ratio_row(ws, r, "Current ratio", periods, tca, tcl, ncols, fmt='#,##0.00"x"')
 
     elif statement == "cash_flow":
-        cfo = find_row(line_rows, "Cash from operating activities",
-                       "Net cash provided by operating activities", "operating activities")
-        cfi = find_row(line_rows, "Cash used in investing activities",
-                       "Net cash used in investing activities", "investing activities")
-        cff = find_row(line_rows, "Cash from financing activities",
-                       "Net cash provided by financing activities", "financing activities")
-        chg = find_row(line_rows, "Change in cash and cash equivalents",
-                       "Net change in cash", "Increase (decrease) in cash")
-        opening = find_row(line_rows, "Cash and cash equivalents, beginning of",
-                           "beginning of period", "beginning of year")
-        closing = find_row(line_rows, "Cash and cash equivalents, end of",
-                           "end of period", "end of year")
+        cfo = F_(line_rows, "Net cash provided by operating activities")
+        cfi = F_(line_rows, "Net cash used in investing activities")
+        cff = F_(line_rows, "Net cash used in financing activities")
+        fx = F_(line_rows, "Effect of translation on foreign currency cash and cash equivalents")
+        chg = F_(line_rows, "Net changes in cash and cash equivalents")
+        opening = F_(line_rows, "Cash and cash equivalents, beginning of the period")
+        closing = F_(line_rows, "Cash and cash equivalents, end of the period")
+        capex = F_(line_rows, "Property, plant and equipment expenditures")
+
+        if cfo and capex:
+            r = _computed_row(ws, r, "Free cash flow (computed: CFO + PP&E expenditures)", periods,
+                                            guarded([cfo, capex], lambda c: f'{c}{cfo}+{c}{capex}'), ncols)
         if cfo and cfi and cff and chg:
+            fx_term = f'+{{c}}{fx}' if fx else ''
+            needed = [x for x in (cfo, cfi, cff, fx, chg) if x]
             r = _check_row(
-                ws, r, "CHECK: operating + investing + financing less printed change in cash",
+                ws, r, "CHECK: operating + investing + financing + FX less printed change in cash",
                 periods,
-                lambda c: f'=IF(ISNUMBER({c}{chg}),{c}{cfo}+{c}{cfi}+{c}{cff}-{c}{chg},"")', ncols)
+                guarded(needed, lambda c: (f'{c}{cfo}+{c}{cfi}+{c}{cff}'
+                                           + (f'+{c}{fx}' if fx else '')
+                                           + f'-{c}{chg}')), ncols)
         if opening and closing and chg:
             r = _check_row(
                 ws, r, "CHECK: opening cash plus change less closing cash", periods,
-                lambda c: f'=IF(ISNUMBER({c}{closing}),{c}{opening}+{c}{chg}-{c}{closing},"")',
-                ncols)
-        if closing and cash_sheet_name and cash_row:
-            # GREEN: cross-sheet link to the balance sheet's cash line
+                guarded([opening, chg, closing],
+                        lambda c: f'{c}{opening}+{c}{chg}-{c}{closing}'), ncols)
+        if closing and cash_sheet_name and cash_row and bs_period_index:
             ws.cell(row=r, column=1,
                     value="CHECK: closing cash less balance-sheet cash (cross-sheet)"
                     ).font = _font(GREY, italic=True)
@@ -190,10 +260,11 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
             ref = f"'{cash_sheet_name}'"
             for i in range(len(periods)):
                 col = get_column_letter(2 + i)
-                bs_col = get_column_letter(2 + bs_period_index[i]) if bs_period_index[i] is not None else None
+                idx = bs_period_index[i]
+                bs_col = get_column_letter(2 + idx) if idx is not None else None
                 cell = ws.cell(row=r, column=2 + i)
                 if bs_col is None:
-                    cell.value = None            # period absent from the balance sheet
+                    cell.value = None
                 else:
                     cell.value = (f'=IF(AND(ISNUMBER({col}{closing}),'
                                   f'ISNUMBER({ref}!{bs_col}{cash_row})),'
@@ -203,10 +274,9 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
                 cell.border = Border(top=thin)
             r += 1
 
-    if statement in ('income_statement',):
-        ws.cell(row=r, column=1,
-                value="Growth is deliberately blank across any non-comparable boundary "
-                      "(different period type, stub period, or basis change)."
-                ).font = _font(GREY, italic=True, sz=9)
-        r += 1
-    return r
+    ws.cell(row=r, column=1,
+            value="Growth is deliberately blank across any non-comparable boundary "
+                  "(different period type, stub period, or basis change). "
+                  "Black = formula in this sheet; green = formula linking to another sheet."
+            ).font = _font(GREY, italic=True, sz=9)
+    return r + 1
