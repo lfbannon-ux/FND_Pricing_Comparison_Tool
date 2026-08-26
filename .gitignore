@@ -4,3 +4,6 @@ __pycache__/
 venv/
 .pytest_cache/
 .DS_Store
+
+# Rockpoint model: large intermediate artefacts
+rockpoint_model/build/*.xlsx.tmp

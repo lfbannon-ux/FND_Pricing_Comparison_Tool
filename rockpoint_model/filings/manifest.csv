@@ -1,0 +1,23 @@
+fiscal_period,doc_type,quartr_document_id,quartr_event_id,filing_date,pages,basis_covered,source_channel,notes
+FY2026,audited_annual_financial_statements,4064735,554427,2026-05-28,44,business_100,Quartr,"Combined consolidated FS of Swan Equity Aggregator LP + BIF II CalGas (Delaware) LLC. Deloitte LLP audit opinion, IFRS. Covers FY2026 and FY2025 comparative."
+FY2026,annual_mdna,4064736,554427,2026-05-28,,both,Quartr,"Annual MD&A. Company-basis and Business-basis discussion; non-IFRS measures."
+FY2026,annual_information_form,3724816,554427,2026-05-28,~80,both,Quartr,"FY2026 AIF. Incorporates IPO Prospectus by reference (prospectus itself NOT available)."
+FY2026,earnings_release,3409150,554427,2026-05-28,15,both,Quartr,"Q4 + full-year FY2026 results. Company-basis financials on pages 8-10."
+FY2026,transcript,3477660,554427,2026-05-28,,n/a,Quartr,Q4 FY2026 earnings call
+FY2026,transcript,3410676,554427,2026-05-28,,n/a,Quartr,Q4 FY2026 earnings call (variant)
+Q3 FY2026,interim_financial_statements,4064733,411100,2026-02-10,,both,Quartr,
+Q3 FY2026,interim_mdna,4064734,411100,2026-02-10,,both,Quartr,
+Q3 FY2026,earnings_release,2794952,411100,2026-02-10,,both,Quartr,
+Q3 FY2026,transcript,3235532,411100,2026-02-10,,n/a,Quartr,
+Q3 FY2026,transcript,2795698,411100,2026-02-10,,n/a,Quartr,variant
+Q2 FY2026,interim_financial_statements,4064731,405757,2025-11-05,,both,Quartr,"First interim statements after IPO (closed 2025-10-15)"
+Q2 FY2026,interim_mdna,4064732,405757,2025-11-05,,both,Quartr,
+Q2 FY2026,earnings_release,2235906,405757,2025-11-05,,both,Quartr,"Announces inaugural dividend"
+Q2 FY2026,transcript,2271325,405757,2025-11-05,,n/a,Quartr,
+Q2 FY2026,transcript,2236857,405757,2025-11-05,,n/a,Quartr,variant
+Q1 FY2027,interim_financial_statements,3693795,681828,2026-08-05,,both,Quartr,
+Q1 FY2027,interim_mdna,3693799,681828,2026-08-05,,both,Quartr,
+Q1 FY2027,earnings_release,3693793,681828,2026-08-05,,both,Quartr,
+Q1 FY2027,transcript,4027028,681828,2026-08-05,,n/a,Quartr,
+Q1 FY2027,transcript,3968147,681828,2026-08-05,,n/a,Quartr,variant
+FY2025 and earlier,IPO_prospectus,,,2025-10-08,,business_100,BLOCKED,"Supplemented PREP prospectus dated 2025-10-08. Sole source of FY2023-FY2025 as-originally-reported history. rockpointgs.com and sedarplus.ca blocked by egress policy - NOT OBTAINED."
