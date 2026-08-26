@@ -24,9 +24,18 @@ This company prints **two different sets of numbers**. Never mix them. Every ext
   Business prior to 2025-10-15**, so Company-basis figures do not exist before that date.
   In the FY2026 earnings release the Company-basis financials appear on **pages 8–10**.
 
-Quartr's standardized `get_financials` feed **silently merges the two bases** (FY2026: total assets 1,030.7
-from p.5 vs total liabilities-and-equity 916.3 from p.8 — they do not foot). **Do not use `get_financials`
-as a source.** It may be used only as a loose smell-test. All values come from document text.
+Quartr's standardized `get_financials` feed is **unreliable for this issuer** and must not be used as a
+source. Two independent defects were confirmed against the filing text:
+  (a) it **mislabels subtotals** — it reports "total assets" 1,030.7 for FY2026, but 1,030.7 is the
+      **long-term asset subtotal**. Actual **total assets = 1,239.7** (FY2025: 1,430.2), being
+      current 209.0 + long-term 1,030.7. It also reports total current liabilities 209.0, which is in
+      fact total current *assets*.
+  (b) it **mixes the two bases**, drawing some figures from p.5 (business_100) and others from p.8.
+**Do not use `get_financials` as a source.** All values come from document text.
+
+Confirmed FY2026 / FY2025 anchors (audited, doc 4064735), for cross-checking your own work:
+  total assets 1,239.7 / 1,430.2 · owners' equity (deficiency) (238.8) / (85.8) · total revenues 479.4 / 415.3
+  · earnings before income taxes 223.5 / 198.8 · net earnings 206.9 / 209.4 · cash 42.3 / 204.1.
 
 ## 3. Golden rules (priority order)
 1. **As originally reported.** Every figure comes from the filing's own printed column for that period.
