@@ -151,10 +151,12 @@ def write_statement_sheet(wb, sheet_name: str, rows: list[dict], basis: str,
         by_section.setdefault(row["section"] or "", []).append(row)
 
     line_rows: dict[str, int] = {}
+    section_ranges: dict[str, tuple[int, int]] = {}
     for section, srows in by_section.items():
         if section:
             section_row(ws, r, section, ncols)
             r += 1
+        sec_start = r
         seen: "OrderedDict[str, list]" = OrderedDict()
         for row in srows:
             seen.setdefault(row["line"], []).append(row)
@@ -190,8 +192,10 @@ def write_statement_sheet(wb, sheet_name: str, rows: list[dict], basis: str,
                     cell.font = body_font(BLUE, bold=is_sub, italic=True)
             line_rows[line] = r
             r += 1
+        if section:
+            section_ranges[section] = (sec_start, r - 1)
         r += 1
-    return ws, periods, line_rows, r
+    return ws, periods, line_rows, r, section_ranges
 
 
 def main() -> int:
@@ -278,10 +282,10 @@ def main() -> int:
             name = f"{nice} ({'B100' if basis == 'business_100' else 'Co'})"
             res = write_statement_sheet(wb, name, rows, basis, stmt, nice)
             if res:
-                ws_s, periods_s, line_rows_s, end_r = res
+                ws_s, periods_s, line_rows_s, end_r, sec_ranges = res
                 built[(basis, stmt)] = {
                     "ws": ws_s, "name": ws_s.title, "periods": periods_s,
-                    "line_rows": line_rows_s, "end": end_r,
+                    "line_rows": line_rows_s, "end": end_r, "sections": sec_ranges,
                 }
 
     for (basis, stmt), info in built.items():
@@ -300,8 +304,11 @@ def main() -> int:
                             for p in info["periods"]
                         ],
                     }
-        add_analytics_block(info["ws"], info["end"], info["periods"],
-                            info["line_rows"], stmt, len(info["periods"]), **kwargs)
+        new_rows = add_analytics_block(info["ws"], info["end"], info["periods"],
+                                       info["line_rows"], stmt, len(info["periods"]),
+                                       sections=info["sections"], **kwargs)
+        if new_rows:
+            info["line_rows"].update(new_rows)
 
     # ---- note / topic sheets ----
     topic_sheets = [
@@ -316,6 +323,7 @@ def main() -> int:
         ("note_related_party", "Related Party"),
         ("note_commitments", "Commitments"),
         ("note_other", "Other Notes"),
+        ("mdna_summary", "MD&A Summary"),
         ("non_ifrs", "Adjusted (Non-IFRS)"),
         ("kpi", "Operating KPIs"),
         ("dividends", "Dividends"),
@@ -374,6 +382,155 @@ def main() -> int:
                     rr += 1
                 rr += 1
 
+    # ---- Accounting Notes: every structural break, one row each ----
+    an_path = CANON / "accounting_notes.csv"
+    if an_path.exists():
+        ws = wb.create_sheet("Accounting Notes")
+        ws.sheet_view.showGridLines = False
+        rr = band(ws, 1, "Accounting Notes -- read before comparing any two periods", 6,
+                  sub="Every structural break, restatement, definition change and genuine "
+                      "non-disclosure. One row each.")
+        with an_path.open(newline="", encoding="utf-8") as fh:
+            rdr = csv.reader(fh)
+            head = next(rdr)
+            for i, h in enumerate(head):
+                c = ws.cell(row=rr, column=1 + i, value=h.replace("_", " ").title())
+                c.font = title_font(10)
+                c.fill = PatternFill("solid", fgColor=NAVY)
+                c.alignment = Alignment(vertical="center")
+            ws.freeze_panes = ws.cell(row=rr + 1, column=1)
+            rr += 1
+            for row in rdr:
+                for i, v in enumerate(row):
+                    c = ws.cell(row=rr, column=1 + i, value=v)
+                    c.font = body_font(sz=9, bold=(i == 0))
+                    c.alignment = Alignment(wrap_text=True, vertical="top")
+                ws.row_dimensions[rr].height = 58
+                rr += 1
+        for i, w in enumerate([7, 24, 20, 13, 72, 62, 34]):
+            ws.column_dimensions[get_column_letter(1 + i)].width = w
+
+    # ---- Key Metrics: formulas only, linking to the statement tabs (green) ----
+    ismeta = built.get(("business_100", "income_statement"))
+    bsmeta = built.get(("business_100", "balance_sheet"))
+    cfmeta = built.get(("business_100", "cash_flow"))
+    if ismeta and bsmeta and cfmeta:
+        from analytics import find_row as _fr
+        fy = [p for p in ismeta["periods"] if p[2] == "FY"]
+        if fy:
+            ws = wb.create_sheet("Key Metrics")
+            style_sheet(ws, len(fy))
+            rr = band(ws, 1, "Rockpoint Gas Storage Inc.  |  Key Metrics", len(fy),
+                      sub="Basis: business_100, full years only. Every cell is a formula "
+                          "linking to a statement tab (green). Nothing here is typed.")
+            header_row(ws, rr, fy, len(fy))
+            ws.freeze_panes = ws.cell(row=rr + 1, column=2)
+            rr += 1
+
+            def ref(meta, line, period_label):
+                """Cross-sheet A1 reference, or None if that line/period is absent."""
+                row_no = _fr(meta["line_rows"], line)
+                labels = [p[0] for p in meta["periods"]]
+                if row_no is None or period_label not in labels:
+                    return None
+                return f"'{meta['name']}'!{get_column_letter(2 + labels.index(period_label))}{row_no}"
+
+            def metric(label, fn, fmt=MONEY, section=None):
+                nonlocal rr
+                if section:
+                    section_row(ws, rr, section, len(fy))
+                    rr += 1
+                ws.cell(row=rr, column=1, value=label).font = body_font()
+                ws.cell(row=rr, column=1).alignment = Alignment(indent=1)
+                for i, per in enumerate(fy):
+                    f = fn(per[0])
+                    cell = ws.cell(row=rr, column=2 + i)
+                    if f:
+                        cell.value = f
+                        cell.number_format = fmt
+                        cell.font = body_font(GREEN)   # green = cross-sheet formula
+                rr += 1
+
+            def ratio(num, den, line, fmt=PCT_CALC, stmt_n=None, stmt_d=None, section=None):
+                def fn(per):
+                    a = ref(stmt_n, num, per)
+                    b = ref(stmt_d, den, per)
+                    return f'=IF(AND(ISNUMBER({a}),ISNUMBER({b}),{b}<>0),{a}/{b},"")' if a and b else None
+                metric(line, fn, fmt, section)
+
+            metric("Total revenues", lambda p: (lambda a: f"={a}" if a else None)(
+                ref(ismeta, "Total revenues", p)), section="Scale and growth")
+            def rev_growth(per):
+                labels = [x[0] for x in fy]
+                i = labels.index(per)
+                if i == 0:
+                    return None
+                from analytics import comparable
+                if not comparable(fy[i - 1], fy[i]):
+                    return None
+                a, b = ref(ismeta, "Total revenues", per), ref(ismeta, "Total revenues", labels[i - 1])
+                return f'=IF(AND(ISNUMBER({a}),ISNUMBER({b}),{b}<>0),{a}/{b}-1,"")' if a and b else None
+            metric("Revenue growth", rev_growth, PCT_CALC)
+            metric("Net earnings", lambda p: (lambda a: f"={a}" if a else None)(
+                ref(ismeta, "Net earnings", p)))
+
+            ratio("Earnings before income taxes", "Total revenues", "Pre-tax margin",
+                  stmt_n=ismeta, stmt_d=ismeta, section="Margins and returns")
+            ratio("Net earnings", "Total revenues", "Net margin", stmt_n=ismeta, stmt_d=ismeta)
+            ratio("Total income tax expense (benefit)", "Earnings before income taxes",
+                  "Effective tax rate", stmt_n=ismeta, stmt_d=ismeta)
+            ws.cell(row=rr, column=1,
+                    value="Return on equity / ROIC -- deliberately not shown: owners' equity is a "
+                          "DEFICIENCY ((238.8) at FY2026, (85.8) at FY2025), so equity-based "
+                          "returns are meaningless. See Accounting Notes N08."
+                    ).font = body_font(GREY, italic=True, sz=9)
+            rr += 2
+
+            def debt_fn(per):
+                st = ref(bsmeta, "Short-term debt", per)
+                lt = ref(bsmeta, "Long-term debt", per)
+                return f'=IF(AND(ISNUMBER({st}),ISNUMBER({lt})),{st}+{lt},"")' if st and lt else None
+            metric("Total debt", debt_fn, section="Leverage and liquidity")
+            def netdebt_fn(per):
+                st = ref(bsmeta, "Short-term debt", per)
+                lt = ref(bsmeta, "Long-term debt", per)
+                ca = ref(bsmeta, "Cash and cash equivalents", per)
+                return (f'=IF(AND(ISNUMBER({st}),ISNUMBER({lt}),ISNUMBER({ca})),{st}+{lt}-{ca},"")'
+                        if st and lt and ca else None)
+            metric("Net debt", netdebt_fn)
+            ratio("Total current assets", "Total current liabilities", "Current ratio",
+                  '#,##0.00"x"', stmt_n=bsmeta, stmt_d=bsmeta)
+            def cover_fn(per):
+                ebt = ref(ismeta, "Earnings before income taxes", per)
+                fin = ref(ismeta, "Financing costs", per)
+                return (f'=IF(AND(ISNUMBER({ebt}),ISNUMBER({fin}),{fin}<>0),({ebt}+{fin})/{fin},"")'
+                        if ebt and fin else None)
+            metric("Interest coverage (EBT + financing costs) / financing costs", cover_fn,
+                   '#,##0.00"x"')
+
+            metric("Net cash provided by operating activities",
+                   lambda p: (lambda a: f"={a}" if a else None)(
+                       ref(cfmeta, "Net cash provided by operating activities", p)),
+                   section="Cash generation")
+            metric("Property, plant and equipment expenditures",
+                   lambda p: (lambda a: f"={a}" if a else None)(
+                       ref(cfmeta, "Property, plant and equipment expenditures", p)))
+            def fcf_fn(per):
+                o = ref(cfmeta, "Net cash provided by operating activities", per)
+                cx = ref(cfmeta, "Property, plant and equipment expenditures", per)
+                return f'=IF(AND(ISNUMBER({o}),ISNUMBER({cx})),{o}+{cx},"")' if o and cx else None
+            metric("Free cash flow (CFO + PP&E expenditures)", fcf_fn)
+            metric("Distributions", lambda p: (lambda a: f"={a}" if a else None)(
+                ref(cfmeta, "Distributions", p)))
+
+            ws.cell(row=rr + 1, column=1,
+                    value="Per-share metrics are not shown on this basis: the audited Business "
+                          "statements are an LP + LLC combination and print no EPS and no share "
+                          "counts (Accounting Notes N19). No share split has occurred -- the "
+                          "Company listed on 2025-10-15. Per-share data exists only on the "
+                          "Company basis, for the 246-day stub period."
+                    ).font = body_font(GREY, italic=True, sz=9)
+
     # ---- Caption Map: the full audit trail ----
     cm_path = CANON / "caption_map.csv"
     if cm_path.exists():
@@ -396,6 +553,15 @@ def main() -> int:
                 r += 1
         for i, w in enumerate([22, 38, 14, 52, 14, 12]):
             ws.column_dimensions[get_column_letter(1 + i)].width = w
+
+    # Reading order: basis and caveats first, then the statements, then detail.
+    desired = ["Cover & Basis", "Accounting Notes", "Key Metrics"]
+    for i, name in enumerate(desired):
+        if name in wb.sheetnames:
+            wb.move_sheet(name, offset=-(wb.sheetnames.index(name) - i))
+    for name in ("Caption Map",):
+        if name in wb.sheetnames:
+            wb.move_sheet(name, offset=len(wb.sheetnames) - 1 - wb.sheetnames.index(name))
 
     out = BUILD / "Rockpoint_Gas_Storage_Historical_Model.xlsx"
     wb.save(out)

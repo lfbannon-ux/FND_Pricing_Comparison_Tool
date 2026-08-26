@@ -150,7 +150,8 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
                         statement: str, ncols: int,
                         cash_sheet_name: str | None = None,
                         cash_row: int | None = None,
-                        bs_period_index: list | None = None) -> int:
+                        bs_period_index: list | None = None,
+                        sections: dict | None = None):
     """
     Append the Analytics & checks block at the foot of a statement sheet.
 
@@ -160,6 +161,8 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
     r += 1
     r = _section(ws, r, "Analytics & checks", ncols)
     F_ = find_row
+    sections = sections or {}
+    exported: dict[str, int] = {}
 
     if statement == "income_statement":
         rev = F_(line_rows, "Total revenues")
@@ -192,6 +195,35 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
         tca = F_(line_rows, "Total current assets")
         tla = F_(line_rows, "Total long-term assets")
         tcl = F_(line_rows, "Total current liabilities")
+        # The audited annual statements print no total-current-liabilities subtotal
+        # (the interim filings do). Derive it as a labelled in-sheet formula summing
+        # the printed current-liability lines -- black, never blue: it is computed
+        # here, not filed. Agent A independently proved 79.9 / 112.9 this way.
+        cl_span = sections.get("Current liabilities")
+        if cl_span:
+            lo, hi = cl_span
+            # Exclude the printed subtotal row itself from the SUM range, or the
+            # interim periods (which DO print it) would double-count.
+            if tcl is not None and lo <= tcl <= hi:
+                hi = tcl - 1
+            if hi >= lo:
+                printed = f"{{c}}{tcl}" if tcl else None
+                def _tcl_expr(c, lo=lo, hi=hi, tcl=tcl):
+                    summed = f'IF(COUNT({c}{lo}:{c}{hi})=0,"",SUM({c}{lo}:{c}{hi}))'
+                    if tcl:
+                        # prefer the figure the filing printed; fall back to the sum
+                        return f'=IF(ISNUMBER({c}{tcl}),{c}{tcl},{summed})'
+                    return f'={summed}'
+                tcl_row = r
+                r = _computed_row(
+                    ws, r,
+                    "Total current liabilities (printed where given, else sum of "
+                    "printed current-liability lines)",
+                    periods, _tcl_expr, ncols)
+                tcl = tcl_row
+                # Downstream (Key Metrics) should use this row rather than the
+                # printed one, since it carries a figure in every period.
+                exported["Total current liabilities"] = tcl_row
         tll = F_(line_rows, "Total long-term liabilities")
         eq = F_(line_rows, "Owners' equity (deficiency)")
         tle = F_(line_rows, "Total liabilities and owners' equity")
@@ -274,9 +306,11 @@ def add_analytics_block(ws, r: int, periods: list, line_rows: dict[str, int],
                 cell.border = Border(top=thin)
             r += 1
 
+    if exported:
+        pass
     ws.cell(row=r, column=1,
             value="Growth is deliberately blank across any non-comparable boundary "
                   "(different period type, stub period, or basis change). "
                   "Black = formula in this sheet; green = formula linking to another sheet."
             ).font = _font(GREY, italic=True, sz=9)
-    return r + 1
+    return exported
