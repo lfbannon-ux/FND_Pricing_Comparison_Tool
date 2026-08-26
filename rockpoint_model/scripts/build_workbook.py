@@ -24,6 +24,9 @@ from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from analytics import add_analytics_block, find_row  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CANON = ROOT / "canonical"
 BUILD = ROOT / "build"
@@ -250,14 +253,38 @@ def main() -> int:
         ws.column_dimensions[col].width = 40
 
     # ---- statement sheets, one per basis ----
-    built = []
+    # Build first, then append analytics; the cash-flow sheet needs the balance
+    # sheet's cash row to exist before it can link to it.
+    built: dict[tuple, dict] = {}
     for basis in bases:
-        tag = "Business 100%" if basis == "business_100" else "Company"
         for stmt, nice in statements:
             name = f"{nice} ({'B100' if basis == 'business_100' else 'Co'})"
             res = write_statement_sheet(wb, name, rows, basis, stmt, nice)
             if res:
-                built.append((name, basis, stmt))
+                ws_s, periods_s, line_rows_s, end_r = res
+                built[(basis, stmt)] = {
+                    "ws": ws_s, "name": ws_s.title, "periods": periods_s,
+                    "line_rows": line_rows_s, "end": end_r,
+                }
+
+    for (basis, stmt), info in built.items():
+        kwargs = {}
+        if stmt == "cash_flow":
+            bs = built.get((basis, "balance_sheet"))
+            if bs:
+                cash_row = find_row(bs["line_rows"], "Cash and cash equivalents", "Cash")
+                if cash_row:
+                    bs_labels = [p[0] for p in bs["periods"]]
+                    kwargs = {
+                        "cash_sheet_name": bs["name"],
+                        "cash_row": cash_row,
+                        "bs_period_index": [
+                            bs_labels.index(p[0]) if p[0] in bs_labels else None
+                            for p in info["periods"]
+                        ],
+                    }
+        add_analytics_block(info["ws"], info["end"], info["periods"],
+                            info["line_rows"], stmt, len(info["periods"]), **kwargs)
 
     # ---- note / topic sheets ----
     topic_sheets = [
