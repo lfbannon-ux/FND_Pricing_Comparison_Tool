@@ -8,6 +8,7 @@ allowed to move the headline numbers.
 ```
 python3 -m fnd_pricing compare      # console summary
 python3 -m fnd_pricing index        # annual expense by category
+python3 -m fnd_pricing basket       # price a basket of identical SKUs only
 python3 -m fnd_pricing report       # self-contained HTML report
 python3 -m fnd_pricing export       # multi-sheet Excel workbook
 ```
@@ -49,6 +50,8 @@ Filter to one category, or write the per-SKU detail to CSV:
 python3 -m fnd_pricing compare --category "Porcelain Tile"
 python3 -m fnd_pricing compare --csv data/out/sku_detail.csv
 python3 -m fnd_pricing index --csv data/out/category_expense.csv
+python3 -m fnd_pricing basket --csv data/out/exact_match_basket.csv
+python3 -m fnd_pricing basket --tier equivalent    # widen to spec-matched goods
 python3 -m fnd_pricing report --min-tier equivalent   # tighten the match bar
 ```
 
@@ -117,7 +120,24 @@ Average unit price is withheld wherever a category mixes comparison bases —
 dollars per square foot and dollars per unit cannot be averaged into a number
 that means anything.
 
-**7. Exceptions.** Rows that need a human before anyone acts on them are
+**7. Identical-SKU basket.** The headline index mixes identical goods with
+spec-equivalents. That is the right default — most of the assortment is private
+label on both sides, so refusing to compare anything but identical SKUs would
+leave almost nothing to measure — but it means the number partly rests on a
+judgement that two different products are substitutes. `basket` strips that
+judgement out and prices one tier only, normally `exact`: same brand, same
+model, both shelves.
+
+It avoids two traps. The SKUs identical at Home Depot are not the SKUs
+identical at Lowe's, so the command reports a **common basket** — the SKUs that
+qualify at *every* competitor, the only basket on which all three retailers can
+be quoted side by side — alongside each competitor's own wider set. And it
+reports both the volume-weighted basket cost and the unweighted per-SKU median,
+because they answer different questions and can point opposite ways. The promo
+effect is broken out separately, so a temporary discount is never mistaken for a
+price position.
+
+**8. Exceptions.** Rows that need a human before anyone acts on them are
 flagged, not silently dropped: `no_competitor_offer`, `weak_match`,
 `competitor_out_of_stock`, `promo_driven_gap` (the gap reverses at list price,
 so it is temporary), `extreme_gap` (>40%), `uom_conversion_error`.
@@ -185,6 +205,14 @@ tile, and gives ground on the categories where the home centres are strong.
 | Net annual advantage vs market low | $3.4M |
 | Annual expense priced above market low | $233k across 4 categories |
 
+On the 43-SKU identical-goods basket the advantage narrows sharply — from ~8–13%
+across all match tiers to **−4.6% vs Home Depot and −2.9% vs Lowe's** — and the
+unweighted view reverses outright: on the *median* identical SKU, Floor & Decor
+is 2.0% dearer than Home Depot and 3.7% dearer than Lowe's. The basket is
+cheaper because Floor & Decor wins the high-volume items in it, not because it
+is broadly cheaper on branded goods. Most of the headline advantage lives in
+private-label spec-equivalents, not in identical SKUs.
+
 Expense is heavily concentrated: Luxury Vinyl Plank alone is 38% of it ($14.5M),
 and the top four categories carry 72%. The expense view also reverses the
 priority the rate view implies: Trim & Moulding and Setting Materials look bad on
@@ -209,15 +237,17 @@ src/fnd_pricing/
   matching.py    attribute-weighted like-for-like confidence scoring
   compare.py     gaps, outcomes, exception flags, rollups, basket index
   spend.py       annual expense by category on matched baskets
+  basket.py      single-tier basket pricing (identical-SKU comparison)
   charts.py      inline SVG bar and diverging charts for the report
   report.py      self-contained HTML report
   excel.py       multi-sheet workbook (Summary / Category Expense / SKU Detail /
                  Offers / Exceptions)
-  cli.py         validate | compare | index | report | export | template
+  cli.py         validate | compare | index | basket | report | export |
+                 template
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           64 unit tests
+tests/           78 unit tests
 ```
 
 ## Tests

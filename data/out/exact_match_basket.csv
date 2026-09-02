@@ -1,0 +1,44 @@
+group_id,category,description,brand,basis,annual_volume,fnd_unit_price,home_depot_unit_price,lowes_unit_price,fnd_annual_spend,home_depot_annual_spend,lowes_annual_spend,home_depot_gap_pct,lowes_gap_pct,cheapest_retailer
+G0004,Luxury Vinyl Plank,WPC Rigid Core - Carrara SPC 6,Pergo,sq_ft,195104.0,3.99,4.1982,4.09,778464.96,819085.61,797975.36,0.0522,0.0251,floor_and_decor
+G0005,Luxury Vinyl Plank,SPC Rigid Core - Cedar Point rigid core 6,Shaw,sq_ft,216009.0,4.29,4.5857,4.4497,926678.61,990552.47,961175.25,0.0689,0.0372,floor_and_decor
+G0016,Luxury Vinyl Plank,WPC Rigid Core - Linen WPC 6,COREtec,sq_ft,148486.0,2.49,2.4823,2.69,369730.14,368586.8,399427.34,-0.0031,0.0803,floor_and_decor
+G0028,Luxury Vinyl Plank,Glue Down LVP - Bianco rigid core 22,COREtec,sq_ft,205990.0,3.29,3.39,3.5302,677707.1,698306.1,727185.9,0.0304,0.073,floor_and_decor
+G0033,Laminate,Standard Laminate - Marbella 3 7,Quick-Step,sq_ft,50522.0,2.79,3.19,2.8611,140956.38,161165.18,144548.49,0.1434,0.0255,floor_and_decor
+G0055,Engineered Hardwood,Wide Plank Engineered - Thornbury red oak 3.0,Mannington,sq_ft,45686.0,3.09,3.3136,2.65,141169.74,151385.13,121067.9,0.0724,-0.1424,lowes
+G0065,Solid Hardwood,Prefinished Solid - Tidewater maple 0.5,Mohawk,sq_ft,15034.0,4.69,5.19,4.89,70509.46,78026.46,73516.26,0.1066,0.0426,floor_and_decor
+G0074,Solid Hardwood,Prefinished Solid - Autumn Hollow hickory 0.75,Mohawk,sq_ft,38925.0,5.49,6.09,4.99,213698.25,237053.25,194235.75,0.1093,-0.0911,lowes
+G0081,Porcelain Tile,Outdoor Paver - Millbrook porcelain 12x12,MSI,sq_ft,77655.0,5.59,6.09,6.09,434091.45,472918.95,472918.95,0.0894,0.0894,floor_and_decor
+G0085,Porcelain Tile,Large Format - Westbury porcelain 24x48,MSI,sq_ft,29605.0,4.19,4.8492,4.4975,124044.95,143560.57,133148.49,0.1573,0.0734,floor_and_decor
+G0099,Porcelain Tile,Marble Look - Chelsea porcelain 12x12,Emser,sq_ft,108527.0,1.49,1.3621,1.39,161705.23,147824.63,150852.53,-0.0858,-0.0671,home_depot
+G0103,Ceramic Tile,Field Tile - Barnwood ceramic 4x12,MSI,sq_ft,73603.0,2.19,2.49,2.3702,161190.57,183271.47,174453.83,0.137,0.0823,floor_and_decor
+G0113,Ceramic Tile,Subway Tile - Autumn Hollow ceramic 8x10,MSI,sq_ft,72161.0,1.69,1.6669,1.79,121952.09,120285.17,129168.19,-0.0137,0.0592,home_depot
+G0115,Natural Stone Tile,Quartzite - Kingsport slate 12x24,Emser,sq_ft,28259.0,5.49,5.8959,6.39,155141.91,166612.24,180575.01,0.0739,0.1639,floor_and_decor
+G0117,Natural Stone Tile,Marble - Alabaster quartzite 18x18,Emser,sq_ft,36719.0,12.99,14.6496,12.4356,476979.81,537918.66,456622.8,0.1278,-0.0427,lowes
+G0118,Natural Stone Tile,Quartzite - Driftwood quartzite 18x18,Emser,sq_ft,34581.0,9.19,8.0972,10.98,317799.39,280009.27,379699.38,-0.1189,0.1948,home_depot
+G0122,Natural Stone Tile,Marble - Slate Creek limestone 12x12,MSI,sq_ft,24533.0,9.09,9.8892,9.99,223004.97,242611.74,245084.67,0.0879,0.099,floor_and_decor
+G0135,Mosaic & Decorative Tile,Glass Mosaic - Onyx glass and stone picket,MSI,sq_ft,5431.0,21.98,24.98,24.99,119373.38,135666.38,135720.69,0.1365,0.1369,floor_and_decor
+G0142,Wall Tile & Backsplash,Porcelain Wall - Bergamo glass 4x16,Marazzi,sq_ft,21843.0,1.99,2.2919,2.09,43467.57,50061.97,45651.87,0.1517,0.0503,floor_and_decor
+G0152,Underlayment,Cork Underlayment - Alabaster rubber 3,Roberts,sq_ft,30353.0,0.6497,0.6499,0.69,19720.34,19726.41,20943.57,0.0003,0.062,floor_and_decor
+G0157,Underlayment,Foam Underlayment - Quarry rubber 3,Roberts,sq_ft,35433.0,0.3699,0.3597,0.39,13106.67,12745.25,13818.87,-0.0276,0.0543,home_depot
+G0158,Underlayment,Rubber Underlayment - Havana cork 2,QEP,sq_ft,67324.0,0.7397,0.7127,0.7399,49799.56,47981.81,49813.03,-0.0365,0.0003,home_depot
+G0160,Setting Materials,Modified Thinset - Westbury modified thinset standard,Bostik,lb,7032.0,0.5196,0.5188,0.4998,3653.83,3648.2,3514.59,-0.0015,-0.0381,lowes
+G0163,Setting Materials,Epoxy Mortar - Blackwater large format mortar standard,Laticrete,lb,48802.0,0.4796,0.4396,0.4994,23405.44,21453.36,24371.72,-0.0834,0.0413,home_depot
+G0164,Setting Materials,Epoxy Mortar - Amber Ridge modified thinset standard,Laticrete,lb,47816.0,0.5988,0.5992,0.5798,28632.22,28651.35,27723.72,0.0007,-0.0317,lowes
+G0166,Setting Materials,Epoxy Mortar - Kingsport unmodified thinset premium,MAPEI,lb,43126.0,0.6388,0.6788,0.6392,27548.89,29273.93,27566.14,0.0626,0.0006,floor_and_decor
+G0167,Grout & Caulk,Single Component Grout - Saxony single component 0.25,Custom Building Products,lb,6803.0,1.497,1.499,1.4388,10184.09,10197.7,9788.16,0.0013,-0.0389,lowes
+G0168,Grout & Caulk,Single Component Grout - Charcoal epoxy 0.5,MAPEI,lb,17014.0,1.6656,1.699,1.5996,28338.52,28906.79,27215.59,0.0201,-0.0396,lowes
+G0169,Grout & Caulk,Sanded Grout - Greystone sanded 0.125,Laticrete,lb,34769.0,0.7988,0.7989,0.819,27773.48,27776.95,28475.81,0.0001,0.0253,floor_and_decor
+G0170,Grout & Caulk,Unsanded Grout - Charcoal unsanded 0.5,TEC,lb,27394.0,1.2788,1.499,1.5196,35031.45,41063.61,41627.92,0.1722,0.1883,floor_and_decor
+G0171,Grout & Caulk,Single Component Grout - Chelsea unsanded 0.25,TEC,lb,33425.0,1.11,0.9656,0.999,37101.75,32275.18,33391.57,-0.1301,-0.1,home_depot
+G0172,Grout & Caulk,Sanded Grout - Windsor unsanded 0.25,Custom Building Products,lb,27243.0,0.9592,1.0544,1.199,26131.49,28725.02,32664.36,0.0992,0.25,floor_and_decor
+G0173,Grout & Caulk,Unsanded Grout - Quarry epoxy 0.125,TEC,lb,4041.0,1.3311,1.2796,1.2788,5378.98,5170.86,5167.63,-0.0387,-0.0393,home_depot
+G0180,Trim & Moulding,Reducer - Coastal Grey stair nose wood,Zamma,lin_ft,23538.0,2.9975,2.9962,3.1212,70555.15,70524.56,73466.81,-0.0004,0.0413,floor_and_decor
+G0183,Trim & Moulding,Stair Nose - Amber Ridge baseboard MDF,Zamma,lin_ft,13946.0,5.1238,5.3725,4.8725,71456.51,74924.88,67951.88,0.0485,-0.049,lowes
+G0185,Tile Trim & Edging,Edge Profile - Tidewater stair nose brushed brass,Custom Building Products,lin_ft,8920.0,11.6447,11.7624,11.7624,103870.72,104920.61,104920.61,0.0101,0.0101,floor_and_decor
+G0186,Tile Trim & Edging,Edge Profile - Autumn Hollow stair nose anodized aluminum,Custom Building Products,lin_ft,8446.0,8.1165,8.3518,8.4694,68551.96,70539.3,71532.55,0.029,0.0435,floor_and_decor
+G0189,Tile Trim & Edging,Transition Profile - Copperfield bullnose anodized aluminum,Schluter,lin_ft,6609.0,8.1153,7.6435,8.1141,53634.02,50515.89,53626.09,-0.0581,-0.0001,home_depot
+G0190,Tile Trim & Edging,Edge Profile - Amber Ridge bullnose PVC,Schluter,lin_ft,1654.0,13.5271,13.5271,14.1153,22373.82,22373.82,23346.71,0.0,0.0435,floor_and_decor
+G0191,Installation Tools,Leveling System - Cedar Point snap cutter manual,Rubi,each,1303.0,74.99,74.97,75.98,97711.97,97685.91,99001.94,-0.0003,0.0132,floor_and_decor
+G0194,Installation Tools,Leveling System - Slate Creek leveling clips manual,Rubi,each,2984.0,114.98,114.98,85.99,343100.32,343100.32,256594.16,0.0,-0.2521,lowes
+G0195,Installation Tools,Wet Saw - Espresso wet saw electric,QEP,each,423.0,56.98,56.98,57.98,24102.54,24102.54,24525.54,0.0,0.0176,floor_and_decor
+G0196,Installation Tools,Hand Tool - Havana mixing paddle electric,Rubi,each,3110.0,99.98,104.98,104.98,310937.8,326487.8,326487.8,0.05,0.05,floor_and_decor

@@ -18,7 +18,8 @@ from typing import List, Optional
 from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
-from .matching import DEFAULT_MIN_TIER, TIER_ORDER
+from .basket import build_basket_set, qualifies
+from .matching import DEFAULT_MIN_TIER, TIER_EXACT, TIER_ORDER
 from .spend import MARKET_LOW, expense_by_category, total_expense
 from .models import DataError
 
@@ -239,6 +240,124 @@ def _write_expense_csv(rows, total, path: Path) -> None:
             })
 
 
+def cmd_basket(args) -> int:
+    """Price a basket built from a single match tier - identical goods by default."""
+    comparisons = _load(args)
+    basket_set = build_basket_set(comparisons, tier=args.tier)
+    common = basket_set.common
+    if not common:
+        raise SystemExit(
+            f"no SKU carries an in-stock {args.tier!r} match at every competitor"
+        )
+
+    base_spend = basket_set.common_baskets[COMPETITORS[0]].base_spend
+    label = {TIER_EXACT: "IDENTICAL SKUs (same brand and model)"}.get(
+        args.tier, f"{args.tier.upper()} MATCHES")
+
+    print()
+    print(f"BASKET: {label}")
+    print("=" * 78)
+    print(f"{len(common)} SKUs carry an in-stock {args.tier} match at BOTH competitors, out of "
+          f"{len(comparisons)} studied.")
+    print("This is the only basket all three retailers can be quoted on side by side.")
+    print()
+    print(f"  {'Floor & Decor':<16}{base_spend:>16,.2f}")
+    for retailer in COMPETITORS:
+        basket = basket_set.common_baskets[retailer]
+        print(f"  {RETAILER_LABELS[retailer]:<16}{basket.comp_spend:>16,.2f}")
+
+    print()
+    print("HOW MUCH CHEAPER IS FLOOR & DECOR?")
+    print("-" * 78)
+    for retailer in COMPETITORS:
+        basket = basket_set.common_baskets[retailer]
+        name = RETAILER_LABELS[retailer]
+        print(f"  vs {name:<14}"
+              f"{-basket.spend_delta:>14,.2f}/yr   {-(basket.spend_advantage or 0) * 100:>6.1f}%"
+              f"   basket index {basket.spend_index}")
+    print()
+    print("  Weighted by annual volume - what the basket costs. The unweighted view")
+    print("  below answers a different question and does not have to agree:")
+    print()
+    for retailer in COMPETITORS:
+        basket = basket_set.common_baskets[retailer]
+        print(f"  vs {RETAILER_LABELS[retailer]:<14}median SKU {_pct(basket.median_gap)}"
+              f"   mean {_pct(basket.mean_gap)}"
+              f"   F&D cheaper on {basket.wins}/{basket.skus}"
+              f" (tie {basket.ties}, dearer {basket.losses})")
+
+    print()
+    print("PROMOTION EFFECT")
+    print("-" * 78)
+    for retailer in COMPETITORS:
+        basket = basket_set.common_baskets[retailer]
+        print(f"  vs {RETAILER_LABELS[retailer]:<14}today {basket.spend_index}"
+              f"   at list price {basket.list_spend_index}"
+              f"   promotions move it {basket.promo_effect:+.4f}")
+
+    print()
+    print("EACH COMPETITOR'S OWN WIDER BASKET (not mutually comparable)")
+    print("-" * 78)
+    for retailer in COMPETITORS:
+        basket = basket_set.own_baskets[retailer]
+        print(f"  vs {RETAILER_LABELS[retailer]:<14}{basket.skus:>3} SKUs   "
+              f"index {basket.spend_index}   "
+              f"{-basket.spend_delta:>12,.0f}/yr in Floor & Decor's favour")
+
+    print()
+    print(f"{'BASKET COMPOSITION':<30}{'SKUS':>6}{'F&D SPEND':>16}{'SHARE':>8}")
+    print("-" * 78)
+    by_category: dict = {}
+    for comparison in common:
+        spend = comparison.base_price * comparison.group.annual_volume
+        entry = by_category.setdefault(comparison.group.category, [0, 0.0])
+        entry[0] += 1
+        entry[1] += spend
+    for category, (count, spend) in sorted(
+        by_category.items(), key=lambda kv: kv[1][1], reverse=True
+    ):
+        print(f"{category[:29]:<30}{count:>6}{spend:>16,.0f}{spend / base_spend * 100:>7.1f}%")
+
+    if args.csv:
+        out = Path(args.csv)
+        _write_basket_csv(common, basket_set, out)
+        print(f"\nWrote basket members -> {out}")
+    return 0
+
+
+def _write_basket_csv(common, basket_set, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    columns = [
+        "group_id", "category", "description", "brand", "basis", "annual_volume",
+        "fnd_unit_price", "home_depot_unit_price", "lowes_unit_price",
+        "fnd_annual_spend", "home_depot_annual_spend", "lowes_annual_spend",
+        "home_depot_gap_pct", "lowes_gap_pct", "cheapest_retailer",
+    ]
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer.writeheader()
+        for comparison in common:
+            volume = comparison.group.annual_volume
+            home_depot, lowes = comparison.quotes["home_depot"], comparison.quotes["lowes"]
+            writer.writerow({
+                "group_id": comparison.group.group_id,
+                "category": comparison.group.category,
+                "description": comparison.group.description,
+                "brand": comparison.base.offer.brand,
+                "basis": comparison.group.basis,
+                "annual_volume": volume,
+                "fnd_unit_price": comparison.base_price,
+                "home_depot_unit_price": home_depot.unit_price,
+                "lowes_unit_price": lowes.unit_price,
+                "fnd_annual_spend": round(comparison.base_price * volume, 2),
+                "home_depot_annual_spend": round(home_depot.unit_price * volume, 2),
+                "lowes_annual_spend": round(lowes.unit_price * volume, 2),
+                "home_depot_gap_pct": home_depot.delta_pct,
+                "lowes_gap_pct": lowes.delta_pct,
+                "cheapest_retailer": comparison.cheapest_retailer or "",
+            })
+
+
 def cmd_report(args) -> int:
     from .report import render_html
 
@@ -318,6 +437,14 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_argument("--category", help="filter to categories containing this text")
     sub.add_argument("--csv", help="also write the category expense table to this CSV path")
     sub.set_defaults(func=cmd_index)
+
+    sub = subparsers.add_parser(
+        "basket", help="price a basket built from one match tier (default: identical SKUs)")
+    sub.add_argument("--tier", default=TIER_EXACT, choices=list(TIER_ORDER),
+                     help="match tier the basket is built from (default: %(default)s)")
+    sub.add_argument("--category", help="filter to categories containing this text")
+    sub.add_argument("--csv", help="also write the basket members to this CSV path")
+    sub.set_defaults(func=cmd_basket)
 
     sub = subparsers.add_parser("report", help="write the self-contained HTML report")
     sub.add_argument("--category", help="filter to categories containing this text")
