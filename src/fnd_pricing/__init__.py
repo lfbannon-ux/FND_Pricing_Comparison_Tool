@@ -1,12 +1,50 @@
-"""Like-for-like pricing comparison across Floor & Decor, Home Depot and Lowe's."""
+"""Like-for-like pricing comparison across Floor & Decor and its competitive set."""
 
-__version__ = "1.0.0"
+__version__ = "1.2.0"
 
-RETAILERS = ("floor_and_decor", "home_depot", "lowes")
 BASE_RETAILER = "floor_and_decor"
+
+RETAILERS = (
+    "floor_and_decor",
+    "home_depot",
+    "lowes",
+    "menards",
+    "tile_shop",
+)
 
 RETAILER_LABELS = {
     "floor_and_decor": "Floor & Decor",
     "home_depot": "Home Depot",
     "lowes": "Lowe's",
+    "menards": "Menards",
+    "tile_shop": "The Tile Shop",
 }
+
+# Short codes: column prefixes in the collection worksheet, keys in the report's
+# JSON payload, and abbreviations in narrow console tables.
+RETAILER_CODES = {
+    "floor_and_decor": "fnd",
+    "home_depot": "hd",
+    "lowes": "lw",
+    "menards": "mnd",
+    "tile_shop": "tsh",
+}
+
+# Compact labels for column headers where the full name will not fit.
+RETAILER_SHORT = {
+    "floor_and_decor": "F&D",
+    "home_depot": "Home Depot",
+    "lowes": "Lowe's",
+    "menards": "Menards",
+    "tile_shop": "Tile Shop",
+}
+
+COMPETITORS = tuple(r for r in RETAILERS if r != BASE_RETAILER)
+
+
+def label(retailer: str) -> str:
+    return RETAILER_LABELS.get(retailer, retailer)
+
+
+def code(retailer: str) -> str:
+    return RETAILER_CODES.get(retailer, retailer)

@@ -1,201 +1,201 @@
 group_id,category,subcategory,basis,description,annual_volume,specs
 G0001,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Ashford rigid core 28,181026,core=rigid core;wear_layer_mil=28;thickness_mm=4.0;width_in=7.2;length_in=72;waterproof=yes;attached_pad=no;finish=matte;look=oak;install=click
-G0002,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Barnwood WPC 22,28770,core=WPC;wear_layer_mil=22;thickness_mm=6.0;width_in=7.2;length_in=60;waterproof=yes;attached_pad=yes;finish=matte;look=stone;install=glue
-G0003,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Onyx SPC 20,21571,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=no;finish=embossed;look=maple;install=click
-G0004,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Carrara SPC 6,195104,core=SPC;wear_layer_mil=6;thickness_mm=8.0;width_in=7;length_in=60;waterproof=yes;attached_pad=yes;finish=embossed;look=stone;install=click
-G0005,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Cedar Point rigid core 6,216009,core=rigid core;wear_layer_mil=6;thickness_mm=6.0;width_in=7;length_in=72;waterproof=yes;attached_pad=no;finish=embossed;look=oak;install=glue
-G0006,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Blackwater WPC 6,229427,core=WPC;wear_layer_mil=6;thickness_mm=6.5;width_in=7.2;length_in=48;waterproof=yes;attached_pad=yes;finish=hand scraped;look=stone;install=glue
-G0007,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Ashford rigid core 22,116281,core=rigid core;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=48;waterproof=yes;attached_pad=no;finish=matte;look=walnut;install=click
-G0008,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Harbor Oak rigid core 12,184528,core=rigid core;wear_layer_mil=12;thickness_mm=6.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=yes;finish=hand scraped;look=stone;install=glue
-G0009,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Pearl SPC 6,247440,core=SPC;wear_layer_mil=6;thickness_mm=6.0;width_in=7;length_in=48;waterproof=yes;attached_pad=yes;finish=wire brushed;look=maple;install=click
-G0010,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Hillcrest WPC 12,33371,core=WPC;wear_layer_mil=12;thickness_mm=6.0;width_in=7;length_in=60;waterproof=yes;attached_pad=yes;finish=hand scraped;look=maple;install=click
-G0011,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Cedar Point WPC 12,238928,core=WPC;wear_layer_mil=12;thickness_mm=6.5;width_in=6;length_in=72;waterproof=yes;attached_pad=yes;finish=embossed;look=maple;install=glue
-G0012,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Yorkshire WPC 28,193420,core=WPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=48;waterproof=yes;attached_pad=no;finish=embossed;look=oak;install=glue
-G0013,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Bayside rigid core 20,140397,core=rigid core;wear_layer_mil=20;thickness_mm=8.0;width_in=7.2;length_in=72;waterproof=yes;attached_pad=yes;finish=wire brushed;look=oak;install=glue
-G0014,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Harbor Oak WPC 12,163958,core=WPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=60;waterproof=yes;attached_pad=yes;finish=wire brushed;look=maple;install=click
-G0015,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Willow Bend WPC 20,75811,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=9;length_in=72;waterproof=yes;attached_pad=yes;finish=matte;look=stone;install=glue
-G0016,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Linen WPC 6,148486,core=WPC;wear_layer_mil=6;thickness_mm=6.0;width_in=9;length_in=72;waterproof=yes;attached_pad=no;finish=embossed;look=walnut;install=glue
-G0017,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Calacatta rigid core 28,36407,core=rigid core;wear_layer_mil=28;thickness_mm=4.0;width_in=6;length_in=48;waterproof=yes;attached_pad=no;finish=wire brushed;look=walnut;install=click
-G0018,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Sandstone SPC 20,134661,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=6;length_in=48;waterproof=yes;attached_pad=yes;finish=embossed;look=walnut;install=glue
-G0019,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Marbella WPC 6,97378,core=WPC;wear_layer_mil=6;thickness_mm=6.5;width_in=9;length_in=72;waterproof=yes;attached_pad=no;finish=embossed;look=oak;install=glue
-G0020,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Bergamo SPC 6,169835,core=SPC;wear_layer_mil=6;thickness_mm=8.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=yes;finish=matte;look=maple;install=click
-G0021,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Espresso SPC 6,136293,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=6;length_in=48;waterproof=yes;attached_pad=no;finish=hand scraped;look=hickory;install=glue
-G0022,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Zermatt rigid core 12,168568,core=rigid core;wear_layer_mil=12;thickness_mm=4.0;width_in=6;length_in=60;waterproof=yes;attached_pad=no;finish=hand scraped;look=maple;install=click
-G0023,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Juniper WPC 28,117526,core=WPC;wear_layer_mil=28;thickness_mm=5.0;width_in=7.2;length_in=60;waterproof=yes;attached_pad=yes;finish=wire brushed;look=stone;install=click
-G0024,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Juniper rigid core 20,81609,core=rigid core;wear_layer_mil=20;thickness_mm=8.0;width_in=7;length_in=60;waterproof=yes;attached_pad=no;finish=hand scraped;look=walnut;install=glue
-G0025,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Copperfield SPC 28,46630,core=SPC;wear_layer_mil=28;thickness_mm=6.0;width_in=9;length_in=48;waterproof=yes;attached_pad=no;finish=embossed;look=oak;install=glue
-G0026,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Charcoal WPC 20,230071,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=6;length_in=48;waterproof=yes;attached_pad=yes;finish=matte;look=hickory;install=click
-G0027,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Yorkshire rigid core 6,89772,core=rigid core;wear_layer_mil=6;thickness_mm=8.0;width_in=6;length_in=60;waterproof=yes;attached_pad=yes;finish=embossed;look=stone;install=click
-G0028,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Bianco rigid core 22,205990,core=rigid core;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=48;waterproof=yes;attached_pad=no;finish=matte;look=hickory;install=glue
-G0029,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Tidewater WPC 28,196616,core=WPC;wear_layer_mil=28;thickness_mm=4.0;width_in=7.2;length_in=72;waterproof=yes;attached_pad=yes;finish=hand scraped;look=walnut;install=glue
-G0030,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Glacier WPC 20,102330,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=9;length_in=60;waterproof=yes;attached_pad=no;finish=matte;look=walnut;install=click
-G0031,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Cedar Point 4 8,88784,ac_rating=4;thickness_mm=8;width_in=7;length_in=50;attached_pad=no;waterproof=no;finish=matte;look=tile
-G0032,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Bergamo 4 12,47283,ac_rating=4;thickness_mm=12;width_in=7;length_in=50;attached_pad=no;waterproof=yes;finish=matte;look=hickory
-G0033,Laminate,Standard Laminate,sq_ft,Standard Laminate - Marbella 3 7,50522,ac_rating=3;thickness_mm=7;width_in=5;length_in=48;attached_pad=no;waterproof=yes;finish=hand scraped;look=hickory
-G0034,Laminate,Standard Laminate,sq_ft,Standard Laminate - Cambridge 5 10,158714,ac_rating=5;thickness_mm=10;width_in=5;length_in=54;attached_pad=no;waterproof=no;finish=hand scraped;look=hickory
-G0035,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Marbella 3 12,99758,ac_rating=3;thickness_mm=12;width_in=5;length_in=54;attached_pad=no;waterproof=no;finish=hand scraped;look=tile
-G0036,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Cedar Point 4 8,166770,ac_rating=4;thickness_mm=8;width_in=9;length_in=48;attached_pad=yes;waterproof=no;finish=matte;look=tile
-G0037,Laminate,Standard Laminate,sq_ft,Standard Laminate - Havana 5 12,56613,ac_rating=5;thickness_mm=12;width_in=7;length_in=50;attached_pad=yes;waterproof=yes;finish=matte;look=hickory
-G0038,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Linen 4 10,64021,ac_rating=4;thickness_mm=10;width_in=7;length_in=50;attached_pad=yes;waterproof=no;finish=embossed;look=tile
-G0039,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Bergamo 4 8,140394,ac_rating=4;thickness_mm=8;width_in=5;length_in=50;attached_pad=yes;waterproof=no;finish=hand scraped;look=oak
-G0040,Laminate,Standard Laminate,sq_ft,Standard Laminate - Cambridge 4 10,169450,ac_rating=4;thickness_mm=10;width_in=5;length_in=48;attached_pad=yes;waterproof=no;finish=matte;look=tile
-G0041,Laminate,Standard Laminate,sq_ft,Standard Laminate - Bianco 4 8,93485,ac_rating=4;thickness_mm=8;width_in=5;length_in=48;attached_pad=yes;waterproof=yes;finish=hand scraped;look=oak
-G0042,Laminate,Standard Laminate,sq_ft,Standard Laminate - Espresso 3 8,69497,ac_rating=3;thickness_mm=8;width_in=9;length_in=54;attached_pad=no;waterproof=no;finish=hand scraped;look=tile
-G0043,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Amber Ridge 3 7,54357,ac_rating=3;thickness_mm=7;width_in=7;length_in=48;attached_pad=no;waterproof=no;finish=hand scraped;look=maple
-G0044,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Sterling 5 10,89967,ac_rating=5;thickness_mm=10;width_in=7;length_in=48;attached_pad=no;waterproof=yes;finish=embossed;look=hickory
-G0045,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Granite Peak 5 10,38143,ac_rating=5;thickness_mm=10;width_in=5;length_in=48;attached_pad=no;waterproof=no;finish=embossed;look=hickory
-G0046,Laminate,Standard Laminate,sq_ft,Standard Laminate - Thornbury 3 10,71689,ac_rating=3;thickness_mm=10;width_in=9;length_in=48;attached_pad=yes;waterproof=no;finish=hand scraped;look=maple
-G0047,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Blackwater 5 12,40358,ac_rating=5;thickness_mm=12;width_in=9;length_in=54;attached_pad=no;waterproof=yes;finish=hand scraped;look=oak
-G0048,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Cedar Point 5 12,179371,ac_rating=5;thickness_mm=12;width_in=7;length_in=54;attached_pad=yes;waterproof=yes;finish=matte;look=tile
-G0049,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Granite Peak red oak 2.0,61847,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=7.5;finish=hand scraped;install=nail
-G0050,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Glacier white oak 0.6,45741,species=white oak;veneer_mm=0.6;thickness_mm=12.7;width_in=5;finish=smooth;install=click
-G0051,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Zermatt red oak 4.0,5046,species=red oak;veneer_mm=4.0;thickness_mm=9.5;width_in=9.5;finish=smooth;install=nail
-G0052,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Havana white oak 3.0,61091,species=white oak;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=wire brushed;install=click
-G0053,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Riverbend walnut 2.0,7207,species=walnut;veneer_mm=2.0;thickness_mm=15.0;width_in=6.5;finish=hand scraped;install=click
-G0054,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Stonehaven white oak 4.0,49697,species=white oak;veneer_mm=4.0;thickness_mm=15.0;width_in=6.5;finish=wire brushed;install=nail
-G0055,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Thornbury red oak 3.0,45686,species=red oak;veneer_mm=3.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
-G0056,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Ivory maple 2.0,9588,species=maple;veneer_mm=2.0;thickness_mm=15.0;width_in=5;finish=smooth;install=nail
-G0057,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Umber red oak 3.0,15757,species=red oak;veneer_mm=3.0;thickness_mm=15.0;width_in=6.5;finish=wire brushed;install=glue
-G0058,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Ashford birch 0.6,34761,species=birch;veneer_mm=0.6;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
-G0059,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Cambridge hickory 0.6,62716,species=hickory;veneer_mm=0.6;thickness_mm=9.5;width_in=6.5;finish=hand scraped;install=click
-G0060,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Cedar Point walnut 3.0,22824,species=walnut;veneer_mm=3.0;thickness_mm=9.5;width_in=5;finish=smooth;install=click
-G0061,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Meridian red oak 2.0,19314,species=red oak;veneer_mm=2.0;thickness_mm=15.0;width_in=9.5;finish=smooth;install=nail
-G0062,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Linen hickory 4.0,30824,species=hickory;veneer_mm=4.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=glue
-G0063,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Zermatt walnut 4.0,8003,species=walnut;veneer_mm=4.0;thickness_mm=15.0;width_in=6.5;finish=wire brushed;install=nail
-G0064,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Oakmont walnut 2.0,5340,species=walnut;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=hand scraped;install=click
-G0065,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Tidewater maple 0.5,15034,species=maple;thickness_in=0.5;width_in=3.25;finish=unfinished;grade=select
-G0066,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Pembroke hickory 0.5,9088,species=hickory;thickness_in=0.5;width_in=2.25;finish=hand scraped;grade=character
-G0067,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Havana birch 0.75,5910,species=birch;thickness_in=0.75;width_in=5;finish=smooth;grade=character
-G0068,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Sundance hickory 0.75,34083,species=hickory;thickness_in=0.75;width_in=3.25;finish=smooth;grade=character
-G0069,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Charcoal hickory 0.5,18730,species=hickory;thickness_in=0.5;width_in=3.25;finish=unfinished;grade=rustic
-G0070,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Sundance hickory 0.5,34366,species=hickory;thickness_in=0.5;width_in=2.25;finish=unfinished;grade=rustic
-G0071,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Quarry maple 0.5,14797,species=maple;thickness_in=0.5;width_in=2.25;finish=smooth;grade=character
-G0072,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Kingsport white oak 0.5,12589,species=white oak;thickness_in=0.5;width_in=3.25;finish=smooth;grade=rustic
-G0073,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Sierra maple 0.5,22235,species=maple;thickness_in=0.5;width_in=2.25;finish=unfinished;grade=rustic
-G0074,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Autumn Hollow hickory 0.75,38925,species=hickory;thickness_in=0.75;width_in=5;finish=hand scraped;grade=rustic
-G0075,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Juniper porcelain 18x18,108683,material=porcelain;size_in=18x18;pei_rating=3;finish_tile=textured;rectified=yes;look=stone;thickness_mm=9
-G0076,Porcelain Tile,Marble Look,sq_ft,Marble Look - Ivory porcelain 18x18,134269,material=porcelain;size_in=18x18;pei_rating=5;finish_tile=matte;rectified=no;look=marble;thickness_mm=9
-G0077,Porcelain Tile,Large Format,sq_ft,Large Format - Calacatta porcelain 8x48,53103,material=porcelain;size_in=8x48;pei_rating=3;finish_tile=matte;rectified=yes;look=concrete;thickness_mm=8
-G0078,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Driftwood porcelain 12x24,19886,material=porcelain;size_in=12x24;pei_rating=4;finish_tile=polished;rectified=no;look=wood;thickness_mm=10
-G0079,Porcelain Tile,Wood Look Plank,sq_ft,Wood Look Plank - Westbury porcelain 8x48,9931,material=porcelain;size_in=8x48;pei_rating=4;finish_tile=textured;rectified=no;look=terrazzo;thickness_mm=8
-G0080,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Amber Ridge porcelain 12x24,13941,material=porcelain;size_in=12x24;pei_rating=3;finish_tile=textured;rectified=no;look=terrazzo;thickness_mm=20
-G0081,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Millbrook porcelain 12x12,77655,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=textured;rectified=yes;look=terrazzo;thickness_mm=9
-G0082,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Stonehaven porcelain 12x12,83280,material=porcelain;size_in=12x12;pei_rating=3;finish_tile=polished;rectified=yes;look=stone;thickness_mm=8
-G0083,Porcelain Tile,Large Format,sq_ft,Large Format - Westbury porcelain 24x24,60320,material=porcelain;size_in=24x24;pei_rating=3;finish_tile=textured;rectified=yes;look=stone;thickness_mm=8
-G0084,Porcelain Tile,Marble Look,sq_ft,Marble Look - Slate Creek porcelain 18x18,18131,material=porcelain;size_in=18x18;pei_rating=3;finish_tile=matte;rectified=yes;look=stone;thickness_mm=9
-G0085,Porcelain Tile,Large Format,sq_ft,Large Format - Westbury porcelain 24x48,29605,material=porcelain;size_in=24x48;pei_rating=4;finish_tile=matte;rectified=yes;look=marble;thickness_mm=20
-G0086,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Saxony porcelain 18x18,64515,material=porcelain;size_in=18x18;pei_rating=4;finish_tile=polished;rectified=no;look=concrete;thickness_mm=8
-G0087,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Espresso porcelain 8x48,84718,material=porcelain;size_in=8x48;pei_rating=3;finish_tile=matte;rectified=no;look=marble;thickness_mm=8
-G0088,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Copperfield porcelain 12x12,63321,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=textured;rectified=yes;look=marble;thickness_mm=20
-G0089,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Hillcrest porcelain 6x24,95876,material=porcelain;size_in=6x24;pei_rating=3;finish_tile=polished;rectified=yes;look=wood;thickness_mm=20
-G0090,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Hillcrest porcelain 6x24,45415,material=porcelain;size_in=6x24;pei_rating=4;finish_tile=textured;rectified=yes;look=marble;thickness_mm=8
-G0091,Porcelain Tile,Marble Look,sq_ft,Marble Look - Ashford porcelain 18x18,45251,material=porcelain;size_in=18x18;pei_rating=3;finish_tile=textured;rectified=no;look=concrete;thickness_mm=8
-G0092,Porcelain Tile,Marble Look,sq_ft,Marble Look - Riverbend porcelain 18x18,11306,material=porcelain;size_in=18x18;pei_rating=5;finish_tile=textured;rectified=no;look=marble;thickness_mm=10
-G0093,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Barnwood porcelain 18x18,148126,material=porcelain;size_in=18x18;pei_rating=4;finish_tile=textured;rectified=no;look=terrazzo;thickness_mm=8
-G0094,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Pearl porcelain 12x24,38683,material=porcelain;size_in=12x24;pei_rating=3;finish_tile=textured;rectified=no;look=stone;thickness_mm=8
-G0095,Porcelain Tile,Wood Look Plank,sq_ft,Wood Look Plank - Bergamo porcelain 18x18,106482,material=porcelain;size_in=18x18;pei_rating=3;finish_tile=textured;rectified=no;look=concrete;thickness_mm=10
-G0096,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Nordic porcelain 18x18,114585,material=porcelain;size_in=18x18;pei_rating=3;finish_tile=matte;rectified=no;look=marble;thickness_mm=8
-G0097,Porcelain Tile,Marble Look,sq_ft,Marble Look - Dunmore porcelain 6x36,33523,material=porcelain;size_in=6x36;pei_rating=3;finish_tile=textured;rectified=no;look=terrazzo;thickness_mm=8
-G0098,Porcelain Tile,Marble Look,sq_ft,Marble Look - Alabaster porcelain 12x24,9902,material=porcelain;size_in=12x24;pei_rating=5;finish_tile=textured;rectified=no;look=stone;thickness_mm=10
-G0099,Porcelain Tile,Marble Look,sq_ft,Marble Look - Chelsea porcelain 12x12,108527,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=textured;rectified=yes;look=terrazzo;thickness_mm=10
-G0100,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Copperfield porcelain 24x48,17576,material=porcelain;size_in=24x48;pei_rating=5;finish_tile=matte;rectified=no;look=stone;thickness_mm=10
-G0101,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Windsor ceramic 6x24,19070,material=ceramic;size_in=6x24;pei_rating=2;finish_tile=crackle;look=wood
-G0102,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Bayside ceramic 4x12,94029,material=ceramic;size_in=4x12;pei_rating=1;finish_tile=crackle;look=wood
-G0103,Ceramic Tile,Field Tile,sq_ft,Field Tile - Barnwood ceramic 4x12,73603,material=ceramic;size_in=4x12;pei_rating=3;finish_tile=matte;look=wood
-G0104,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Bianco ceramic 8x10,39546,material=ceramic;size_in=8x10;pei_rating=1;finish_tile=glossy;look=stone
-G0105,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Pembroke ceramic 12x12,130117,material=ceramic;size_in=12x12;pei_rating=4;finish_tile=crackle;look=solid
-G0106,Ceramic Tile,Field Tile,sq_ft,Field Tile - Calacatta ceramic 6x24,87050,material=ceramic;size_in=6x24;pei_rating=4;finish_tile=glossy;look=stone
-G0107,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Havana ceramic 4x16,92010,material=ceramic;size_in=4x16;pei_rating=3;finish_tile=glossy;look=wood
-G0108,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Sundance ceramic 4x16,123715,material=ceramic;size_in=4x16;pei_rating=2;finish_tile=glossy;look=solid
-G0109,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Slate Creek ceramic 6x24,124763,material=ceramic;size_in=6x24;pei_rating=1;finish_tile=matte;look=stone
-G0110,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Meridian ceramic 6x24,124870,material=ceramic;size_in=6x24;pei_rating=1;finish_tile=glossy;look=stone
-G0111,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Autumn Hollow ceramic 12x12,123246,material=ceramic;size_in=12x12;pei_rating=4;finish_tile=crackle;look=stone
-G0112,Ceramic Tile,Field Tile,sq_ft,Field Tile - Barnwood ceramic 12x12,19845,material=ceramic;size_in=12x12;pei_rating=4;finish_tile=matte;look=wood
-G0113,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Autumn Hollow ceramic 8x10,72161,material=ceramic;size_in=8x10;pei_rating=1;finish_tile=crackle;look=wood
-G0114,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Kingsport ceramic 3x6,28837,material=ceramic;size_in=3x6;pei_rating=4;finish_tile=crackle;look=stone
-G0115,Natural Stone Tile,Quartzite,sq_ft,Quartzite - Kingsport slate 12x24,28259,material=slate;size_in=12x24;finish_tile=polished;stone_grade=standard;thickness_mm=15
-G0116,Natural Stone Tile,Limestone,sq_ft,Limestone - Greystone limestone 6x12,34164,material=limestone;size_in=6x12;finish_tile=polished;stone_grade=standard;thickness_mm=15
-G0117,Natural Stone Tile,Marble,sq_ft,Marble - Alabaster quartzite 18x18,36719,material=quartzite;size_in=18x18;finish_tile=brushed;stone_grade=premium;thickness_mm=12
-G0118,Natural Stone Tile,Quartzite,sq_ft,Quartzite - Driftwood quartzite 18x18,34581,material=quartzite;size_in=18x18;finish_tile=polished;stone_grade=premium;thickness_mm=10
-G0119,Natural Stone Tile,Marble,sq_ft,Marble - Dunmore quartzite 6x12,15849,material=quartzite;size_in=6x12;finish_tile=tumbled;stone_grade=commercial;thickness_mm=12
-G0120,Natural Stone Tile,Limestone,sq_ft,Limestone - Marbella travertine 16x16,27614,material=travertine;size_in=16x16;finish_tile=honed;stone_grade=commercial;thickness_mm=15
-G0121,Natural Stone Tile,Travertine,sq_ft,Travertine - Millbrook limestone 6x12,38713,material=limestone;size_in=6x12;finish_tile=honed;stone_grade=premium;thickness_mm=10
-G0122,Natural Stone Tile,Marble,sq_ft,Marble - Slate Creek limestone 12x12,24533,material=limestone;size_in=12x12;finish_tile=honed;stone_grade=premium;thickness_mm=12
-G0123,Natural Stone Tile,Travertine,sq_ft,Travertine - Copperfield limestone 18x18,5633,material=limestone;size_in=18x18;finish_tile=brushed;stone_grade=premium;thickness_mm=15
-G0124,Natural Stone Tile,Travertine,sq_ft,Travertine - Onyx marble 16x16,25179,material=marble;size_in=16x16;finish_tile=brushed;stone_grade=premium;thickness_mm=12
-G0125,Natural Stone Tile,Quartzite,sq_ft,Quartzite - Blackwater marble 12x12,7920,material=marble;size_in=12x12;finish_tile=tumbled;stone_grade=premium;thickness_mm=10
-G0126,Natural Stone Tile,Limestone,sq_ft,Limestone - Ivory travertine 12x12,7983,material=travertine;size_in=12x12;finish_tile=tumbled;stone_grade=premium;thickness_mm=15
-G0127,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Bayside porcelain picket,985,material=porcelain;pattern=picket;chip_size=mixed;finish_tile=matte;size_in=11.8x11.8
-G0128,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Maplewood glass and stone basketweave,8768,material=glass and stone;pattern=basketweave;chip_size=1x3;finish_tile=matte;size_in=12x13
-G0129,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Whitewash glass penny round,6680,material=glass;pattern=penny round;chip_size=mixed;finish_tile=polished;size_in=12x13
-G0130,Mosaic & Decorative Tile,Glass Mosaic,sq_ft,Glass Mosaic - Bayside glass penny round,3698,material=glass;pattern=penny round;chip_size=1x1;finish_tile=matte;size_in=12x12
-G0131,Mosaic & Decorative Tile,Porcelain Mosaic,sq_ft,Porcelain Mosaic - Sierra porcelain basketweave,3736,material=porcelain;pattern=basketweave;chip_size=2x2;finish_tile=honed;size_in=12x12
-G0132,Mosaic & Decorative Tile,Glass Mosaic,sq_ft,Glass Mosaic - Bayside porcelain penny round,5416,material=porcelain;pattern=penny round;chip_size=2x2;finish_tile=polished;size_in=12x12
-G0133,Mosaic & Decorative Tile,Porcelain Mosaic,sq_ft,Porcelain Mosaic - Thornbury marble basketweave,6050,material=marble;pattern=basketweave;chip_size=1x1;finish_tile=polished;size_in=12x12
-G0134,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Sandstone glass and stone hexagon,3007,material=glass and stone;pattern=hexagon;chip_size=2x2;finish_tile=honed;size_in=12x12
-G0135,Mosaic & Decorative Tile,Glass Mosaic,sq_ft,Glass Mosaic - Onyx glass and stone picket,5431,material=glass and stone;pattern=picket;chip_size=1x3;finish_tile=matte;size_in=12x12
-G0136,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Cedar Point glass and stone basketweave,8408,material=glass and stone;pattern=basketweave;chip_size=2x2;finish_tile=polished;size_in=12x12
-G0137,Wall Tile & Backsplash,Ceramic Wall,sq_ft,Ceramic Wall - Barnwood porcelain 4x12,9057,material=porcelain;size_in=4x12;finish_tile=matte;look=handmade
-G0138,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Nordic porcelain 4x12,20416,material=porcelain;size_in=4x12;finish_tile=glossy;look=handmade
-G0139,Wall Tile & Backsplash,Porcelain Wall,sq_ft,Porcelain Wall - Cedar Point porcelain 3x6,3942,material=porcelain;size_in=3x6;finish_tile=beveled;look=solid
-G0140,Wall Tile & Backsplash,Porcelain Wall,sq_ft,Porcelain Wall - Onyx ceramic 4x12,13274,material=ceramic;size_in=4x12;finish_tile=crackle;look=marble
-G0141,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Bianco porcelain 2.5x8,21350,material=porcelain;size_in=2.5x8;finish_tile=beveled;look=handmade
-G0142,Wall Tile & Backsplash,Porcelain Wall,sq_ft,Porcelain Wall - Bergamo glass 4x16,21843,material=glass;size_in=4x16;finish_tile=glossy;look=handmade
-G0143,Wall Tile & Backsplash,Porcelain Wall,sq_ft,Porcelain Wall - Bianco ceramic 4x16,20434,material=ceramic;size_in=4x16;finish_tile=crackle;look=handmade
-G0144,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Bergamo glass 4x12,13143,material=glass;size_in=4x12;finish_tile=glossy;look=handmade
-G0145,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Marbella polyester 40,25906,material=polyester;pile_weight_oz=40;backing=hard back;style=loop;size_in=19.7x19.7
-G0146,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Harbor Oak olefin 26,14660,material=olefin;pile_weight_oz=26;backing=cushion;style=patterned;size_in=19.7x19.7
-G0147,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Calacatta nylon 26,21344,material=nylon;pile_weight_oz=26;backing=cushion;style=loop;size_in=19.7x19.7
-G0148,Carpet & Carpet Tile,Carpet Tile,sq_ft,Carpet Tile - Dunmore olefin 40,8802,material=olefin;pile_weight_oz=40;backing=cushion;style=patterned;size_in=19.7x19.7
-G0149,Carpet & Carpet Tile,Carpet Tile,sq_ft,Carpet Tile - Cambridge nylon 26,28381,material=nylon;pile_weight_oz=26;backing=cushion;style=cut pile;size_in=24x24
-G0150,Carpet & Carpet Tile,Carpet Tile,sq_ft,Carpet Tile - Driftwood nylon 32,7837,material=nylon;pile_weight_oz=32;backing=cushion;style=loop;size_in=19.7x19.7
-G0151,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Cambridge rubber 2,51580,material=rubber;thickness_mm=2;moisture_barrier=no;sound_rating_iic=60;r_value=1.5
-G0152,Underlayment,Cork Underlayment,sq_ft,Cork Underlayment - Alabaster rubber 3,30353,material=rubber;thickness_mm=3;moisture_barrier=yes;sound_rating_iic=60;r_value=1.5
-G0153,Underlayment,Rubber Underlayment,sq_ft,Rubber Underlayment - Millbrook foam 3,29453,material=foam;thickness_mm=3;moisture_barrier=no;sound_rating_iic=60;r_value=1.5
-G0154,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Hillcrest felt 6,7431,material=felt;thickness_mm=6;moisture_barrier=no;sound_rating_iic=60;r_value=1.5
-G0155,Underlayment,Rubber Underlayment,sq_ft,Rubber Underlayment - Stonehaven cork 3,30670,material=cork;thickness_mm=3;moisture_barrier=no;sound_rating_iic=66;r_value=1.5
-G0156,Underlayment,Cork Underlayment,sq_ft,Cork Underlayment - Havana rubber 2,23691,material=rubber;thickness_mm=2;moisture_barrier=no;sound_rating_iic=60;r_value=0.5
-G0157,Underlayment,Foam Underlayment,sq_ft,Foam Underlayment - Quarry rubber 3,35433,material=rubber;thickness_mm=3;moisture_barrier=no;sound_rating_iic=50;r_value=1.0
-G0158,Underlayment,Rubber Underlayment,sq_ft,Rubber Underlayment - Havana cork 2,67324,material=cork;thickness_mm=2;moisture_barrier=yes;sound_rating_iic=71;r_value=1.0
-G0159,Setting Materials,Modified Thinset,lb,Modified Thinset - Vintage Elm unmodified thinset standard,15572,chemistry=unmodified thinset;grade=standard;color_family=gray;material=epoxy
-G0160,Setting Materials,Modified Thinset,lb,Modified Thinset - Westbury modified thinset standard,7032,chemistry=modified thinset;grade=standard;color_family=white;material=cement based
-G0161,Setting Materials,Modified Thinset,lb,Modified Thinset - Kingsport modified thinset premium,20572,chemistry=modified thinset;grade=premium;color_family=white;material=cement based
-G0162,Setting Materials,Unmodified Thinset,lb,Unmodified Thinset - Driftwood unmodified thinset premium,53444,chemistry=unmodified thinset;grade=premium;color_family=gray;material=epoxy
-G0163,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Blackwater large format mortar standard,48802,chemistry=large format mortar;grade=standard;color_family=white;material=epoxy
-G0164,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Amber Ridge modified thinset standard,47816,chemistry=modified thinset;grade=standard;color_family=gray;material=epoxy
-G0165,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Fieldstone large format mortar standard,13117,chemistry=large format mortar;grade=standard;color_family=gray;material=epoxy
-G0166,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Kingsport unmodified thinset premium,43126,chemistry=unmodified thinset;grade=premium;color_family=gray;material=epoxy
-G0167,Grout & Caulk,Single Component Grout,lb,Single Component Grout - Saxony single component 0.25,6803,chemistry=single component;joint_width=0.25;color_family=linen;stain_resistant=no
-G0168,Grout & Caulk,Single Component Grout,lb,Single Component Grout - Charcoal epoxy 0.5,17014,chemistry=epoxy;joint_width=0.5;color_family=charcoal;stain_resistant=yes
-G0169,Grout & Caulk,Sanded Grout,lb,Sanded Grout - Greystone sanded 0.125,34769,chemistry=sanded;joint_width=0.125;color_family=delorean gray;stain_resistant=yes
-G0170,Grout & Caulk,Unsanded Grout,lb,Unsanded Grout - Charcoal unsanded 0.5,27394,chemistry=unsanded;joint_width=0.5;color_family=delorean gray;stain_resistant=yes
-G0171,Grout & Caulk,Single Component Grout,lb,Single Component Grout - Chelsea unsanded 0.25,33425,chemistry=unsanded;joint_width=0.25;color_family=charcoal;stain_resistant=no
-G0172,Grout & Caulk,Sanded Grout,lb,Sanded Grout - Windsor unsanded 0.25,27243,chemistry=unsanded;joint_width=0.25;color_family=charcoal;stain_resistant=no
-G0173,Grout & Caulk,Unsanded Grout,lb,Unsanded Grout - Quarry epoxy 0.125,4041,chemistry=epoxy;joint_width=0.125;color_family=charcoal;stain_resistant=yes
-G0174,Grout & Caulk,Epoxy Grout,lb,Epoxy Grout - Riverbend sanded 0.5,8153,chemistry=sanded;joint_width=0.5;color_family=delorean gray;stain_resistant=yes
-G0175,Trim & Moulding,T-Molding,lin_ft,T-Molding - Calacatta quarter round MDF,3761,profile=quarter round;material_trim=MDF;length_ft=7.5;finish=matte
-G0176,Trim & Moulding,Quarter Round,lin_ft,Quarter Round - Coastal Grey stair nose vinyl,26677,profile=stair nose;material_trim=vinyl;length_ft=6.5;finish=embossed
-G0177,Trim & Moulding,T-Molding,lin_ft,T-Molding - Driftwood reducer wood,9677,profile=reducer;material_trim=wood;length_ft=7.5;finish=matte
-G0178,Trim & Moulding,T-Molding,lin_ft,T-Molding - Vintage Elm T-molding vinyl,3671,profile=T-molding;material_trim=vinyl;length_ft=8.0;finish=smooth
-G0179,Trim & Moulding,Threshold,lin_ft,Threshold - Quarry reducer wood,3336,profile=reducer;material_trim=wood;length_ft=6.5;finish=smooth
-G0180,Trim & Moulding,Reducer,lin_ft,Reducer - Coastal Grey stair nose wood,23538,profile=stair nose;material_trim=wood;length_ft=8.0;finish=embossed
-G0181,Trim & Moulding,T-Molding,lin_ft,T-Molding - Quarry threshold wood,20482,profile=threshold;material_trim=wood;length_ft=8.0;finish=embossed
-G0182,Trim & Moulding,Baseboard,lin_ft,Baseboard - Willow Bend baseboard vinyl,11624,profile=baseboard;material_trim=vinyl;length_ft=7.5;finish=embossed
-G0183,Trim & Moulding,Stair Nose,lin_ft,Stair Nose - Amber Ridge baseboard MDF,13946,profile=baseboard;material_trim=MDF;length_ft=8.0;finish=matte
-G0184,Trim & Moulding,T-Molding,lin_ft,T-Molding - Cedar Point stair nose aluminum,18730,profile=stair nose;material_trim=aluminum;length_ft=8.0;finish=embossed
-G0185,Tile Trim & Edging,Edge Profile,lin_ft,Edge Profile - Tidewater stair nose brushed brass,8920,profile=stair nose;material_trim=brushed brass;height_mm=10;length_ft=8.5
-G0186,Tile Trim & Edging,Edge Profile,lin_ft,Edge Profile - Autumn Hollow stair nose anodized aluminum,8446,profile=stair nose;material_trim=anodized aluminum;height_mm=10;length_ft=8.5
-G0187,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Millbrook round edge stainless steel,2324,profile=round edge;material_trim=stainless steel;height_mm=12.5;length_ft=8.5
-G0188,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Whitewash bullnose PVC,2026,profile=bullnose;material_trim=PVC;height_mm=12.5;length_ft=8.5
-G0189,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Copperfield bullnose anodized aluminum,6609,profile=bullnose;material_trim=anodized aluminum;height_mm=10;length_ft=8.5
-G0190,Tile Trim & Edging,Edge Profile,lin_ft,Edge Profile - Amber Ridge bullnose PVC,1654,profile=bullnose;material_trim=PVC;height_mm=12.5;length_ft=8.5
-G0191,Installation Tools,Leveling System,each,Leveling System - Cedar Point snap cutter manual,1303,tool_type=snap cutter;power=manual;capacity=24;material=composite
-G0192,Installation Tools,Leveling System,each,Leveling System - Tidewater mixing paddle electric,2012,tool_type=mixing paddle;power=electric;capacity=24;material=composite
-G0193,Installation Tools,Leveling System,each,Leveling System - Quarry leveling clips manual,820,tool_type=leveling clips;power=manual;capacity=24;material=steel
-G0194,Installation Tools,Leveling System,each,Leveling System - Slate Creek leveling clips manual,2984,tool_type=leveling clips;power=manual;capacity=36;material=aluminum
-G0195,Installation Tools,Wet Saw,each,Wet Saw - Espresso wet saw electric,423,tool_type=wet saw;power=electric;capacity=24;material=aluminum
-G0196,Installation Tools,Hand Tool,each,Hand Tool - Havana mixing paddle electric,3110,tool_type=mixing paddle;power=electric;capacity=36;material=aluminum
-G0197,Vanities & Tops,Single Sink Vanity,each,Single Sink Vanity - Quarry 60 quartz top,215,width_in=60;material=quartz top;sink=double;finish=espresso
-G0198,Vanities & Tops,Single Sink Vanity,each,Single Sink Vanity - Dunmore 24 cultured marble top,113,width_in=24;material=cultured marble top;sink=double;finish=natural oak
-G0199,Vanities & Tops,Double Sink Vanity,each,Double Sink Vanity - Yorkshire 30 cultured marble top,172,width_in=30;material=cultured marble top;sink=single;finish=espresso
-G0200,Vanities & Tops,Single Sink Vanity,each,Single Sink Vanity - Chelsea 60 engineered stone top,881,width_in=60;material=engineered stone top;sink=single;finish=grey
+G0002,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Windsor SPC 6,232102,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=9;length_in=60;waterproof=yes;attached_pad=no;finish=matte;look=walnut;install=click
+G0003,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Bergamo WPC 22,144948,core=WPC;wear_layer_mil=22;thickness_mm=6.0;width_in=7;length_in=48;waterproof=yes;attached_pad=yes;finish=wire brushed;look=stone;install=glue
+G0004,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Nordic rigid core 20,153834,core=rigid core;wear_layer_mil=20;thickness_mm=4.0;width_in=6;length_in=72;waterproof=yes;attached_pad=no;finish=embossed;look=stone;install=glue
+G0005,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Stonehaven WPC 12,56423,core=WPC;wear_layer_mil=12;thickness_mm=6.5;width_in=6;length_in=60;waterproof=yes;attached_pad=yes;finish=hand scraped;look=hickory;install=click
+G0006,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Blackwater rigid core 20,107649,core=rigid core;wear_layer_mil=20;thickness_mm=6.0;width_in=6;length_in=60;waterproof=yes;attached_pad=yes;finish=matte;look=stone;install=glue
+G0007,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Oakmont WPC 22,76661,core=WPC;wear_layer_mil=22;thickness_mm=8.0;width_in=7;length_in=72;waterproof=yes;attached_pad=no;finish=matte;look=stone;install=glue
+G0008,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Vintage Elm WPC 28,233094,core=WPC;wear_layer_mil=28;thickness_mm=5.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=no;finish=wire brushed;look=oak;install=glue
+G0009,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Zermatt WPC 20,146770,core=WPC;wear_layer_mil=20;thickness_mm=5.0;width_in=7;length_in=72;waterproof=yes;attached_pad=yes;finish=matte;look=stone;install=glue
+G0010,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Stonehaven WPC 12,113210,core=WPC;wear_layer_mil=12;thickness_mm=4.0;width_in=6;length_in=72;waterproof=yes;attached_pad=no;finish=hand scraped;look=stone;install=glue
+G0011,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Harbor Oak WPC 12,163958,core=WPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=60;waterproof=yes;attached_pad=yes;finish=wire brushed;look=maple;install=click
+G0012,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Zermatt rigid core 12,192148,core=rigid core;wear_layer_mil=12;thickness_mm=4.0;width_in=9;length_in=72;waterproof=yes;attached_pad=yes;finish=embossed;look=maple;install=click
+G0013,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Umber rigid core 22,54349,core=rigid core;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=60;waterproof=yes;attached_pad=yes;finish=embossed;look=stone;install=glue
+G0014,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Thornbury WPC 20,192652,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=60;waterproof=yes;attached_pad=yes;finish=matte;look=maple;install=click
+G0015,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Blackwater rigid core 6,211980,core=rigid core;wear_layer_mil=6;thickness_mm=8.0;width_in=9;length_in=60;waterproof=yes;attached_pad=yes;finish=hand scraped;look=walnut;install=click
+G0016,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Maplewood rigid core 22,203747,core=rigid core;wear_layer_mil=22;thickness_mm=8.0;width_in=9;length_in=48;waterproof=yes;attached_pad=yes;finish=hand scraped;look=stone;install=glue
+G0017,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Oakmont WPC 6,64460,core=WPC;wear_layer_mil=6;thickness_mm=6.5;width_in=9;length_in=72;waterproof=yes;attached_pad=no;finish=hand scraped;look=stone;install=click
+G0018,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Pembroke SPC 22,19092,core=SPC;wear_layer_mil=22;thickness_mm=8.0;width_in=9;length_in=72;waterproof=yes;attached_pad=yes;finish=hand scraped;look=walnut;install=click
+G0019,Luxury Vinyl Plank,SPC Rigid Core,sq_ft,SPC Rigid Core - Sierra WPC 12,246749,core=WPC;wear_layer_mil=12;thickness_mm=4.0;width_in=9;length_in=72;waterproof=yes;attached_pad=no;finish=wire brushed;look=walnut;install=glue
+G0020,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Bianco rigid core 22,205990,core=rigid core;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=48;waterproof=yes;attached_pad=no;finish=matte;look=hickory;install=glue
+G0021,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Espresso SPC 12,156612,core=SPC;wear_layer_mil=12;thickness_mm=8.0;width_in=6;length_in=48;waterproof=yes;attached_pad=yes;finish=matte;look=oak;install=click
+G0022,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Yorkshire rigid core 6,177638,core=rigid core;wear_layer_mil=6;thickness_mm=4.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=no;finish=wire brushed;look=walnut;install=click
+G0023,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Coastal Grey WPC 6,64412,core=WPC;wear_layer_mil=6;thickness_mm=4.0;width_in=7.2;length_in=48;waterproof=yes;attached_pad=yes;finish=embossed;look=hickory;install=glue
+G0024,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Kingsport SPC 12,152137,core=SPC;wear_layer_mil=12;thickness_mm=6.5;width_in=9;length_in=60;waterproof=yes;attached_pad=yes;finish=wire brushed;look=oak;install=glue
+G0025,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Bergamo WPC 28,247080,core=WPC;wear_layer_mil=28;thickness_mm=6.0;width_in=7.2;length_in=72;waterproof=yes;attached_pad=no;finish=hand scraped;look=maple;install=glue
+G0026,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Fieldstone WPC 20,240188,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=9;length_in=48;waterproof=yes;attached_pad=no;finish=wire brushed;look=maple;install=glue
+G0027,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Ivory rigid core 20,212609,core=rigid core;wear_layer_mil=20;thickness_mm=8.0;width_in=9;length_in=60;waterproof=yes;attached_pad=no;finish=hand scraped;look=hickory;install=glue
+G0028,Luxury Vinyl Plank,Glue Down LVP,sq_ft,Glue Down LVP - Alabaster SPC 12,132973,core=SPC;wear_layer_mil=12;thickness_mm=6.5;width_in=9;length_in=60;waterproof=yes;attached_pad=yes;finish=matte;look=oak;install=glue
+G0029,Luxury Vinyl Plank,Waterproof LVP,sq_ft,Waterproof LVP - Autumn Hollow SPC 12,212904,core=SPC;wear_layer_mil=12;thickness_mm=8.0;width_in=6;length_in=72;waterproof=yes;attached_pad=no;finish=matte;look=oak;install=glue
+G0030,Luxury Vinyl Plank,WPC Rigid Core,sq_ft,WPC Rigid Core - Granite Peak WPC 12,195088,core=WPC;wear_layer_mil=12;thickness_mm=6.5;width_in=7;length_in=72;waterproof=yes;attached_pad=no;finish=matte;look=hickory;install=click
+G0031,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Fieldstone 4 7,91308,ac_rating=4;thickness_mm=7;width_in=9;length_in=50;attached_pad=no;waterproof=no;finish=embossed;look=tile
+G0032,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Sundance 4 12,157778,ac_rating=4;thickness_mm=12;width_in=9;length_in=54;attached_pad=yes;waterproof=no;finish=matte;look=maple
+G0033,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Coastal Grey 3 7,63538,ac_rating=3;thickness_mm=7;width_in=5;length_in=50;attached_pad=yes;waterproof=no;finish=matte;look=oak
+G0034,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Saxony 5 7,49772,ac_rating=5;thickness_mm=7;width_in=7;length_in=48;attached_pad=yes;waterproof=yes;finish=hand scraped;look=oak
+G0035,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Pembroke 5 7,179784,ac_rating=5;thickness_mm=7;width_in=5;length_in=48;attached_pad=yes;waterproof=yes;finish=hand scraped;look=maple
+G0036,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Slate Creek 4 10,179213,ac_rating=4;thickness_mm=10;width_in=9;length_in=50;attached_pad=no;waterproof=no;finish=hand scraped;look=hickory
+G0037,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Umber 3 8,10355,ac_rating=3;thickness_mm=8;width_in=7;length_in=48;attached_pad=yes;waterproof=yes;finish=embossed;look=maple
+G0038,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Cedar Point 4 12,18181,ac_rating=4;thickness_mm=12;width_in=9;length_in=48;attached_pad=yes;waterproof=yes;finish=matte;look=maple
+G0039,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Windsor 5 10,70810,ac_rating=5;thickness_mm=10;width_in=5;length_in=48;attached_pad=no;waterproof=yes;finish=matte;look=tile
+G0040,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Coastal Grey 5 12,18195,ac_rating=5;thickness_mm=12;width_in=9;length_in=54;attached_pad=yes;waterproof=yes;finish=embossed;look=hickory
+G0041,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Chelsea 4 7,33774,ac_rating=4;thickness_mm=7;width_in=7;length_in=48;attached_pad=yes;waterproof=yes;finish=embossed;look=oak
+G0042,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Willow Bend 4 7,42624,ac_rating=4;thickness_mm=7;width_in=7;length_in=48;attached_pad=yes;waterproof=yes;finish=matte;look=tile
+G0043,Laminate,Waterproof Laminate,sq_ft,Waterproof Laminate - Willow Bend 5 8,113014,ac_rating=5;thickness_mm=8;width_in=5;length_in=54;attached_pad=yes;waterproof=no;finish=matte;look=hickory
+G0044,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Carrara 4 12,40708,ac_rating=4;thickness_mm=12;width_in=7;length_in=54;attached_pad=no;waterproof=yes;finish=matte;look=maple
+G0045,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Barnwood 4 12,106096,ac_rating=4;thickness_mm=12;width_in=7;length_in=50;attached_pad=yes;waterproof=no;finish=embossed;look=hickory
+G0046,Laminate,Standard Laminate,sq_ft,Standard Laminate - Whitewash 3 12,29385,ac_rating=3;thickness_mm=12;width_in=7;length_in=50;attached_pad=yes;waterproof=no;finish=hand scraped;look=maple
+G0047,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Sterling 3 10,159396,ac_rating=3;thickness_mm=10;width_in=5;length_in=48;attached_pad=no;waterproof=yes;finish=embossed;look=maple
+G0048,Laminate,Water Resistant Laminate,sq_ft,Water Resistant Laminate - Charcoal 3 10,132972,ac_rating=3;thickness_mm=10;width_in=5;length_in=48;attached_pad=no;waterproof=yes;finish=hand scraped;look=maple
+G0049,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Copperfield white oak 3.0,48288,species=white oak;veneer_mm=3.0;thickness_mm=12.7;width_in=5;finish=hand scraped;install=nail
+G0050,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Cedar Point birch 4.0,57976,species=birch;veneer_mm=4.0;thickness_mm=9.5;width_in=9.5;finish=smooth;install=nail
+G0051,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Windsor white oak 3.0,7683,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=6.5;finish=hand scraped;install=glue
+G0052,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Ivory hickory 2.0,62688,species=hickory;veneer_mm=2.0;thickness_mm=12.7;width_in=6.5;finish=hand scraped;install=click
+G0053,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Windsor red oak 3.0,27903,species=red oak;veneer_mm=3.0;thickness_mm=9.5;width_in=5;finish=smooth;install=glue
+G0054,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Greystone birch 3.0,55125,species=birch;veneer_mm=3.0;thickness_mm=9.5;width_in=9.5;finish=smooth;install=nail
+G0055,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Autumn Hollow red oak 4.0,46645,species=red oak;veneer_mm=4.0;thickness_mm=9.5;width_in=7.5;finish=hand scraped;install=nail
+G0056,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Sandstone hickory 0.6,40648,species=hickory;veneer_mm=0.6;thickness_mm=15.0;width_in=9.5;finish=wire brushed;install=nail
+G0057,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Millbrook birch 2.0,37319,species=birch;veneer_mm=2.0;thickness_mm=15.0;width_in=5;finish=smooth;install=glue
+G0058,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Calacatta white oak 2.0,52835,species=white oak;veneer_mm=2.0;thickness_mm=9.5;width_in=7.5;finish=wire brushed;install=nail
+G0059,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Cambridge birch 3.0,59690,species=birch;veneer_mm=3.0;thickness_mm=9.5;width_in=7.5;finish=wire brushed;install=click
+G0060,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Havana birch 3.0,61722,species=birch;veneer_mm=3.0;thickness_mm=9.5;width_in=7.5;finish=wire brushed;install=nail
+G0061,Engineered Hardwood,Wide Plank Engineered,sq_ft,Wide Plank Engineered - Amber Ridge birch 0.6,10213,species=birch;veneer_mm=0.6;thickness_mm=15.0;width_in=5;finish=hand scraped;install=glue
+G0062,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Copperfield walnut 0.6,54920,species=walnut;veneer_mm=0.6;thickness_mm=12.7;width_in=7.5;finish=hand scraped;install=click
+G0063,Engineered Hardwood,Glue Down Engineered,sq_ft,Glue Down Engineered - Alabaster red oak 2.0,62801,species=red oak;veneer_mm=2.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=glue
+G0064,Engineered Hardwood,Click Engineered,sq_ft,Click Engineered - Dunmore walnut 4.0,57666,species=walnut;veneer_mm=4.0;thickness_mm=15.0;width_in=6.5;finish=wire brushed;install=glue
+G0065,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Saxony birch 0.5,34431,species=birch;thickness_in=0.5;width_in=5;finish=unfinished;grade=rustic
+G0066,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Nordic birch 0.5,37873,species=birch;thickness_in=0.5;width_in=5;finish=wire brushed;grade=character
+G0067,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Tidewater white oak 0.5,37609,species=white oak;thickness_in=0.5;width_in=5;finish=smooth;grade=select
+G0068,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Bergamo birch 0.5,33958,species=birch;thickness_in=0.5;width_in=3.25;finish=wire brushed;grade=rustic
+G0069,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Meridian white oak 0.5,3821,species=white oak;thickness_in=0.5;width_in=3.25;finish=smooth;grade=select
+G0070,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Quarry red oak 0.75,14857,species=red oak;thickness_in=0.75;width_in=2.25;finish=wire brushed;grade=select
+G0071,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Meridian red oak 0.5,15455,species=red oak;thickness_in=0.5;width_in=5;finish=wire brushed;grade=select
+G0072,Solid Hardwood,Unfinished Solid,sq_ft,Unfinished Solid - Nordic hickory 0.5,43831,species=hickory;thickness_in=0.5;width_in=2.25;finish=wire brushed;grade=select
+G0073,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Cambridge maple 0.75,34840,species=maple;thickness_in=0.75;width_in=5;finish=unfinished;grade=select
+G0074,Solid Hardwood,Prefinished Solid,sq_ft,Prefinished Solid - Yorkshire birch 0.75,13631,species=birch;thickness_in=0.75;width_in=5;finish=wire brushed;grade=select
+G0075,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Bianco porcelain 12x12,35970,material=porcelain;size_in=12x12;pei_rating=4;finish_tile=polished;rectified=yes;look=marble;thickness_mm=10
+G0076,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Stonehaven porcelain 12x12,105389,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=matte;rectified=no;look=terrazzo;thickness_mm=20
+G0077,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Tidewater porcelain 24x24,96069,material=porcelain;size_in=24x24;pei_rating=3;finish_tile=matte;rectified=no;look=marble;thickness_mm=10
+G0078,Porcelain Tile,Marble Look,sq_ft,Marble Look - Bayside porcelain 12x12,81021,material=porcelain;size_in=12x12;pei_rating=4;finish_tile=polished;rectified=no;look=terrazzo;thickness_mm=9
+G0079,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Maplewood porcelain 8x48,25412,material=porcelain;size_in=8x48;pei_rating=4;finish_tile=polished;rectified=yes;look=concrete;thickness_mm=20
+G0080,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Blackwater porcelain 24x48,141764,material=porcelain;size_in=24x48;pei_rating=4;finish_tile=textured;rectified=yes;look=stone;thickness_mm=8
+G0081,Porcelain Tile,Wood Look Plank,sq_ft,Wood Look Plank - Bayside porcelain 6x24,50412,material=porcelain;size_in=6x24;pei_rating=3;finish_tile=textured;rectified=no;look=stone;thickness_mm=10
+G0082,Porcelain Tile,Marble Look,sq_ft,Marble Look - Bergamo porcelain 12x12,18352,material=porcelain;size_in=12x12;pei_rating=4;finish_tile=polished;rectified=yes;look=terrazzo;thickness_mm=8
+G0083,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Thornbury porcelain 6x36,78094,material=porcelain;size_in=6x36;pei_rating=3;finish_tile=polished;rectified=yes;look=marble;thickness_mm=8
+G0084,Porcelain Tile,Marble Look,sq_ft,Marble Look - Granite Peak porcelain 12x12,112291,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=textured;rectified=no;look=stone;thickness_mm=8
+G0085,Porcelain Tile,Wood Look Plank,sq_ft,Wood Look Plank - Ashford porcelain 8x48,108030,material=porcelain;size_in=8x48;pei_rating=3;finish_tile=textured;rectified=yes;look=marble;thickness_mm=20
+G0086,Porcelain Tile,Wood Look Plank,sq_ft,Wood Look Plank - Quarry porcelain 6x24,114273,material=porcelain;size_in=6x24;pei_rating=5;finish_tile=matte;rectified=no;look=terrazzo;thickness_mm=8
+G0087,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Ivory porcelain 24x24,68378,material=porcelain;size_in=24x24;pei_rating=3;finish_tile=matte;rectified=yes;look=stone;thickness_mm=9
+G0088,Porcelain Tile,Large Format,sq_ft,Large Format - Sundance porcelain 24x48,37732,material=porcelain;size_in=24x48;pei_rating=5;finish_tile=textured;rectified=yes;look=wood;thickness_mm=10
+G0089,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Quarry porcelain 6x36,90233,material=porcelain;size_in=6x36;pei_rating=3;finish_tile=polished;rectified=yes;look=concrete;thickness_mm=9
+G0090,Porcelain Tile,Large Format,sq_ft,Large Format - Tidewater porcelain 24x48,20709,material=porcelain;size_in=24x48;pei_rating=5;finish_tile=textured;rectified=yes;look=stone;thickness_mm=10
+G0091,Porcelain Tile,Marble Look,sq_ft,Marble Look - Sandstone porcelain 24x24,115842,material=porcelain;size_in=24x24;pei_rating=5;finish_tile=polished;rectified=no;look=stone;thickness_mm=20
+G0092,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Whitewash porcelain 24x48,53286,material=porcelain;size_in=24x48;pei_rating=3;finish_tile=textured;rectified=no;look=marble;thickness_mm=8
+G0093,Porcelain Tile,Concrete Look,sq_ft,Concrete Look - Bayside porcelain 12x24,89429,material=porcelain;size_in=12x24;pei_rating=4;finish_tile=matte;rectified=yes;look=wood;thickness_mm=8
+G0094,Porcelain Tile,Outdoor Paver,sq_ft,Outdoor Paver - Thornbury porcelain 12x24,100140,material=porcelain;size_in=12x24;pei_rating=5;finish_tile=polished;rectified=yes;look=wood;thickness_mm=8
+G0095,Porcelain Tile,Marble Look,sq_ft,Marble Look - Maplewood porcelain 12x12,115294,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=matte;rectified=yes;look=concrete;thickness_mm=9
+G0096,Porcelain Tile,Large Format,sq_ft,Large Format - Quarry porcelain 12x24,39440,material=porcelain;size_in=12x24;pei_rating=3;finish_tile=textured;rectified=no;look=terrazzo;thickness_mm=9
+G0097,Porcelain Tile,Marble Look,sq_ft,Marble Look - Yorkshire porcelain 24x48,30584,material=porcelain;size_in=24x48;pei_rating=3;finish_tile=textured;rectified=no;look=marble;thickness_mm=10
+G0098,Porcelain Tile,Large Format,sq_ft,Large Format - Windsor porcelain 24x24,30763,material=porcelain;size_in=24x24;pei_rating=3;finish_tile=matte;rectified=yes;look=marble;thickness_mm=9
+G0099,Porcelain Tile,Marble Look,sq_ft,Marble Look - Maplewood porcelain 12x12,20183,material=porcelain;size_in=12x12;pei_rating=5;finish_tile=textured;rectified=yes;look=terrazzo;thickness_mm=9
+G0100,Porcelain Tile,Large Format,sq_ft,Large Format - Blackwater porcelain 12x12,148412,material=porcelain;size_in=12x12;pei_rating=4;finish_tile=polished;rectified=no;look=concrete;thickness_mm=20
+G0101,Ceramic Tile,Field Tile,sq_ft,Field Tile - Windsor ceramic 4x16,11366,material=ceramic;size_in=4x16;pei_rating=3;finish_tile=matte;look=wood
+G0102,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Riverbend ceramic 4x12,127832,material=ceramic;size_in=4x12;pei_rating=1;finish_tile=glossy;look=wood
+G0103,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Sterling ceramic 3x6,43525,material=ceramic;size_in=3x6;pei_rating=1;finish_tile=matte;look=stone
+G0104,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Charcoal ceramic 3x6,100579,material=ceramic;size_in=3x6;pei_rating=2;finish_tile=glossy;look=solid
+G0105,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Charcoal ceramic 3x6,147604,material=ceramic;size_in=3x6;pei_rating=3;finish_tile=crackle;look=solid
+G0106,Ceramic Tile,Field Tile,sq_ft,Field Tile - Onyx ceramic 12x12,120062,material=ceramic;size_in=12x12;pei_rating=4;finish_tile=crackle;look=solid
+G0107,Ceramic Tile,Field Tile,sq_ft,Field Tile - Bayside ceramic 12x12,54136,material=ceramic;size_in=12x12;pei_rating=4;finish_tile=crackle;look=solid
+G0108,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Juniper ceramic 6x24,83668,material=ceramic;size_in=6x24;pei_rating=4;finish_tile=matte;look=wood
+G0109,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Fieldstone ceramic 12x12,119389,material=ceramic;size_in=12x12;pei_rating=1;finish_tile=glossy;look=stone
+G0110,Ceramic Tile,Field Tile,sq_ft,Field Tile - Quarry ceramic 6x24,69662,material=ceramic;size_in=6x24;pei_rating=3;finish_tile=glossy;look=stone
+G0111,Ceramic Tile,Subway Tile,sq_ft,Subway Tile - Chelsea ceramic 12x12,117796,material=ceramic;size_in=12x12;pei_rating=3;finish_tile=matte;look=wood
+G0112,Ceramic Tile,Field Tile,sq_ft,Field Tile - Coastal Grey ceramic 4x16,149603,material=ceramic;size_in=4x16;pei_rating=1;finish_tile=crackle;look=wood
+G0113,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Redmond ceramic 12x12,129225,material=ceramic;size_in=12x12;pei_rating=1;finish_tile=matte;look=solid
+G0114,Ceramic Tile,Floor Ceramic,sq_ft,Floor Ceramic - Meridian ceramic 4x12,48988,material=ceramic;size_in=4x12;pei_rating=4;finish_tile=glossy;look=solid
+G0115,Natural Stone Tile,Slate,sq_ft,Slate - Onyx travertine 12x12,5038,material=travertine;size_in=12x12;finish_tile=honed;stone_grade=standard;thickness_mm=10
+G0116,Natural Stone Tile,Marble,sq_ft,Marble - Harbor Oak slate 18x18,34722,material=slate;size_in=18x18;finish_tile=brushed;stone_grade=premium;thickness_mm=15
+G0117,Natural Stone Tile,Travertine,sq_ft,Travertine - Vintage Elm limestone 18x18,28339,material=limestone;size_in=18x18;finish_tile=polished;stone_grade=commercial;thickness_mm=10
+G0118,Natural Stone Tile,Marble,sq_ft,Marble - Cambridge quartzite 16x16,14599,material=quartzite;size_in=16x16;finish_tile=brushed;stone_grade=premium;thickness_mm=10
+G0119,Natural Stone Tile,Quartzite,sq_ft,Quartzite - Sundance travertine 6x12,16421,material=travertine;size_in=6x12;finish_tile=polished;stone_grade=commercial;thickness_mm=10
+G0120,Natural Stone Tile,Slate,sq_ft,Slate - Harbor Oak slate 12x12,22974,material=slate;size_in=12x12;finish_tile=honed;stone_grade=premium;thickness_mm=10
+G0121,Natural Stone Tile,Travertine,sq_ft,Travertine - Stonehaven limestone 16x16,35877,material=limestone;size_in=16x16;finish_tile=polished;stone_grade=premium;thickness_mm=10
+G0122,Natural Stone Tile,Travertine,sq_ft,Travertine - Dunmore travertine 12x12,14379,material=travertine;size_in=12x12;finish_tile=brushed;stone_grade=premium;thickness_mm=15
+G0123,Natural Stone Tile,Travertine,sq_ft,Travertine - Umber slate 6x12,18612,material=slate;size_in=6x12;finish_tile=polished;stone_grade=premium;thickness_mm=10
+G0124,Natural Stone Tile,Travertine,sq_ft,Travertine - Sterling travertine 12x24,38993,material=travertine;size_in=12x24;finish_tile=polished;stone_grade=standard;thickness_mm=10
+G0125,Natural Stone Tile,Limestone,sq_ft,Limestone - Dunmore travertine 12x24,33636,material=travertine;size_in=12x24;finish_tile=tumbled;stone_grade=standard;thickness_mm=12
+G0126,Natural Stone Tile,Slate,sq_ft,Slate - Thornbury travertine 12x24,33404,material=travertine;size_in=12x24;finish_tile=polished;stone_grade=standard;thickness_mm=12
+G0127,Mosaic & Decorative Tile,Decorative Accent,sq_ft,Decorative Accent - Alabaster marble hexagon,2066,material=marble;pattern=hexagon;chip_size=1x1;finish_tile=matte;size_in=11.8x11.8
+G0128,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Thornbury marble subway,4549,material=marble;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x13
+G0129,Mosaic & Decorative Tile,Decorative Accent,sq_ft,Decorative Accent - Oakmont marble picket,3812,material=marble;pattern=picket;chip_size=1x3;finish_tile=honed;size_in=11.8x11.8
+G0130,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Riverbend porcelain subway,5055,material=porcelain;pattern=subway;chip_size=1x3;finish_tile=matte;size_in=12x13
+G0131,Mosaic & Decorative Tile,Decorative Accent,sq_ft,Decorative Accent - Nordic marble hexagon,2762,material=marble;pattern=hexagon;chip_size=mixed;finish_tile=polished;size_in=11.8x11.8
+G0132,Mosaic & Decorative Tile,Porcelain Mosaic,sq_ft,Porcelain Mosaic - Millbrook glass penny round,1927,material=glass;pattern=penny round;chip_size=1x1;finish_tile=honed;size_in=12x13
+G0133,Mosaic & Decorative Tile,Glass Mosaic,sq_ft,Glass Mosaic - Espresso glass herringbone,1286,material=glass;pattern=herringbone;chip_size=1x3;finish_tile=matte;size_in=11.8x11.8
+G0134,Mosaic & Decorative Tile,Stone Mosaic,sq_ft,Stone Mosaic - Havana glass and stone penny round,7108,material=glass and stone;pattern=penny round;chip_size=1x3;finish_tile=polished;size_in=11.8x11.8
+G0135,Mosaic & Decorative Tile,Decorative Accent,sq_ft,Decorative Accent - Hillcrest marble subway,2125,material=marble;pattern=subway;chip_size=1x1;finish_tile=polished;size_in=12x12
+G0136,Mosaic & Decorative Tile,Decorative Accent,sq_ft,Decorative Accent - Thornbury marble basketweave,4878,material=marble;pattern=basketweave;chip_size=1x1;finish_tile=honed;size_in=12x12
+G0137,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Quarry ceramic 4x16,19290,material=ceramic;size_in=4x16;finish_tile=matte;look=solid
+G0138,Wall Tile & Backsplash,Porcelain Wall,sq_ft,Porcelain Wall - Umber glass 4x12,12730,material=glass;size_in=4x12;finish_tile=beveled;look=handmade
+G0139,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Slate Creek porcelain 3x6,4907,material=porcelain;size_in=3x6;finish_tile=glossy;look=marble
+G0140,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Barnwood ceramic 4x16,18832,material=ceramic;size_in=4x16;finish_tile=glossy;look=handmade
+G0141,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Sundance glass 3x6,2647,material=glass;size_in=3x6;finish_tile=crackle;look=marble
+G0142,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Westbury porcelain 3x6,4459,material=porcelain;size_in=3x6;finish_tile=glossy;look=solid
+G0143,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Quarry porcelain 4x16,4030,material=porcelain;size_in=4x16;finish_tile=crackle;look=solid
+G0144,Wall Tile & Backsplash,Glass Wall,sq_ft,Glass Wall - Calacatta porcelain 4x16,16545,material=porcelain;size_in=4x16;finish_tile=matte;look=solid
+G0145,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Harbor Oak nylon 32,24853,material=nylon;pile_weight_oz=32;backing=cushion;style=loop;size_in=24x24
+G0146,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Oakmont polyester 40,24494,material=polyester;pile_weight_oz=40;backing=cushion;style=patterned;size_in=24x24
+G0147,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Calacatta nylon 26,4185,material=nylon;pile_weight_oz=26;backing=hard back;style=patterned;size_in=19.7x19.7
+G0148,Carpet & Carpet Tile,Broadloom,sq_ft,Broadloom - Umber nylon 26,9858,material=nylon;pile_weight_oz=26;backing=hard back;style=loop;size_in=24x24
+G0149,Carpet & Carpet Tile,Carpet Tile,sq_ft,Carpet Tile - Westbury nylon 20,22702,material=nylon;pile_weight_oz=20;backing=hard back;style=patterned;size_in=24x24
+G0150,Carpet & Carpet Tile,Carpet Tile,sq_ft,Carpet Tile - Vintage Elm nylon 26,9545,material=nylon;pile_weight_oz=26;backing=hard back;style=patterned;size_in=24x24
+G0151,Underlayment,Rubber Underlayment,sq_ft,Rubber Underlayment - Oakmont cork 6,42416,material=cork;thickness_mm=6;moisture_barrier=yes;sound_rating_iic=71;r_value=1.0
+G0152,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Riverbend cork 2,24022,material=cork;thickness_mm=2;moisture_barrier=yes;sound_rating_iic=50;r_value=1.0
+G0153,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Sierra felt 6,45473,material=felt;thickness_mm=6;moisture_barrier=yes;sound_rating_iic=50;r_value=0.5
+G0154,Underlayment,Foam Underlayment,sq_ft,Foam Underlayment - Zermatt felt 3,70677,material=felt;thickness_mm=3;moisture_barrier=no;sound_rating_iic=71;r_value=1.0
+G0155,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Yorkshire rubber 6,78432,material=rubber;thickness_mm=6;moisture_barrier=no;sound_rating_iic=71;r_value=1.5
+G0156,Underlayment,Foam Underlayment,sq_ft,Foam Underlayment - Tidewater felt 3,66869,material=felt;thickness_mm=3;moisture_barrier=no;sound_rating_iic=71;r_value=1.5
+G0157,Underlayment,Cork Underlayment,sq_ft,Cork Underlayment - Saxony felt 6,53775,material=felt;thickness_mm=6;moisture_barrier=no;sound_rating_iic=66;r_value=0.5
+G0158,Underlayment,Felt Underlayment,sq_ft,Felt Underlayment - Carrara felt 2,58313,material=felt;thickness_mm=2;moisture_barrier=no;sound_rating_iic=66;r_value=1.0
+G0159,Setting Materials,Unmodified Thinset,lb,Unmodified Thinset - Onyx epoxy mortar standard,36746,chemistry=epoxy mortar;grade=standard;color_family=gray;material=cement based
+G0160,Setting Materials,Unmodified Thinset,lb,Unmodified Thinset - Greystone epoxy mortar premium,33242,chemistry=epoxy mortar;grade=premium;color_family=gray;material=epoxy
+G0161,Setting Materials,Modified Thinset,lb,Modified Thinset - Tidewater epoxy mortar standard,12276,chemistry=epoxy mortar;grade=standard;color_family=gray;material=cement based
+G0162,Setting Materials,Modified Thinset,lb,Modified Thinset - Cedar Point large format mortar standard,15613,chemistry=large format mortar;grade=standard;color_family=gray;material=cement based
+G0163,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Havana epoxy mortar standard,8110,chemistry=epoxy mortar;grade=standard;color_family=white;material=epoxy
+G0164,Setting Materials,Unmodified Thinset,lb,Unmodified Thinset - Riverbend unmodified thinset standard,6676,chemistry=unmodified thinset;grade=standard;color_family=gray;material=cement based
+G0165,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Windsor unmodified thinset standard,35500,chemistry=unmodified thinset;grade=standard;color_family=gray;material=epoxy
+G0166,Setting Materials,Epoxy Mortar,lb,Epoxy Mortar - Alabaster modified thinset standard,30822,chemistry=modified thinset;grade=standard;color_family=white;material=cement based
+G0167,Grout & Caulk,Sanded Grout,lb,Sanded Grout - Tidewater unsanded 0.5,30679,chemistry=unsanded;joint_width=0.5;color_family=bright white;stain_resistant=yes
+G0168,Grout & Caulk,Unsanded Grout,lb,Unsanded Grout - Umber epoxy 0.25,18932,chemistry=epoxy;joint_width=0.25;color_family=charcoal;stain_resistant=no
+G0169,Grout & Caulk,Single Component Grout,lb,Single Component Grout - Charcoal single component 0.5,5469,chemistry=single component;joint_width=0.5;color_family=bright white;stain_resistant=no
+G0170,Grout & Caulk,Sanded Grout,lb,Sanded Grout - Linen sanded 0.125,10089,chemistry=sanded;joint_width=0.125;color_family=linen;stain_resistant=yes
+G0171,Grout & Caulk,Epoxy Grout,lb,Epoxy Grout - Hillcrest epoxy 0.125,34627,chemistry=epoxy;joint_width=0.125;color_family=linen;stain_resistant=no
+G0172,Grout & Caulk,Epoxy Grout,lb,Epoxy Grout - Riverbend single component 0.25,25514,chemistry=single component;joint_width=0.25;color_family=charcoal;stain_resistant=no
+G0173,Grout & Caulk,Sanded Grout,lb,Sanded Grout - Vintage Elm epoxy 0.125,34872,chemistry=epoxy;joint_width=0.125;color_family=linen;stain_resistant=no
+G0174,Grout & Caulk,Single Component Grout,lb,Single Component Grout - Fieldstone sanded 0.125,31626,chemistry=sanded;joint_width=0.125;color_family=charcoal;stain_resistant=no
+G0175,Trim & Moulding,T-Molding,lin_ft,T-Molding - Westbury quarter round aluminum,26252,profile=quarter round;material_trim=aluminum;length_ft=8.0;finish=matte
+G0176,Trim & Moulding,Stair Nose,lin_ft,Stair Nose - Willow Bend quarter round wood,28228,profile=quarter round;material_trim=wood;length_ft=6.5;finish=matte
+G0177,Trim & Moulding,Threshold,lin_ft,Threshold - Sierra quarter round wood,4737,profile=quarter round;material_trim=wood;length_ft=6.5;finish=matte
+G0178,Trim & Moulding,Quarter Round,lin_ft,Quarter Round - Hillcrest threshold MDF,17161,profile=threshold;material_trim=MDF;length_ft=6.5;finish=embossed
+G0179,Trim & Moulding,Reducer,lin_ft,Reducer - Pembroke T-molding vinyl,5654,profile=T-molding;material_trim=vinyl;length_ft=8.0;finish=smooth
+G0180,Trim & Moulding,Baseboard,lin_ft,Baseboard - Cedar Point T-molding aluminum,19646,profile=T-molding;material_trim=aluminum;length_ft=6.5;finish=smooth
+G0181,Trim & Moulding,Quarter Round,lin_ft,Quarter Round - Maplewood reducer wood,25521,profile=reducer;material_trim=wood;length_ft=6.5;finish=smooth
+G0182,Trim & Moulding,Stair Nose,lin_ft,Stair Nose - Marbella T-molding vinyl,3260,profile=T-molding;material_trim=vinyl;length_ft=7.5;finish=embossed
+G0183,Trim & Moulding,Baseboard,lin_ft,Baseboard - Granite Peak quarter round MDF,28601,profile=quarter round;material_trim=MDF;length_ft=6.5;finish=embossed
+G0184,Trim & Moulding,Baseboard,lin_ft,Baseboard - Slate Creek T-molding wood,16519,profile=T-molding;material_trim=wood;length_ft=8.0;finish=matte
+G0185,Tile Trim & Edging,Edge Profile,lin_ft,Edge Profile - Riverbend bullnose brushed brass,8453,profile=bullnose;material_trim=brushed brass;height_mm=8;length_ft=8.0
+G0186,Tile Trim & Edging,Stair Nose Profile,lin_ft,Stair Nose Profile - Maplewood bullnose stainless steel,8868,profile=bullnose;material_trim=stainless steel;height_mm=8;length_ft=8.5
+G0187,Tile Trim & Edging,Edge Profile,lin_ft,Edge Profile - Juniper bullnose PVC,7716,profile=bullnose;material_trim=PVC;height_mm=10;length_ft=8.5
+G0188,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Calacatta square edge stainless steel,7478,profile=square edge;material_trim=stainless steel;height_mm=12.5;length_ft=8.5
+G0189,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Saxony square edge stainless steel,3638,profile=square edge;material_trim=stainless steel;height_mm=8;length_ft=8.0
+G0190,Tile Trim & Edging,Transition Profile,lin_ft,Transition Profile - Amber Ridge bullnose brushed brass,8438,profile=bullnose;material_trim=brushed brass;height_mm=8;length_ft=8.5
+G0191,Installation Tools,Hand Tool,each,Hand Tool - Fieldstone knee pads manual,1209,tool_type=knee pads;power=manual;capacity=36;material=aluminum
+G0192,Installation Tools,Snap Cutter,each,Snap Cutter - Bergamo mixing paddle manual,189,tool_type=mixing paddle;power=manual;capacity=36;material=aluminum
+G0193,Installation Tools,Wet Saw,each,Wet Saw - Havana mixing paddle electric,1526,tool_type=mixing paddle;power=electric;capacity=36;material=steel
+G0194,Installation Tools,Hand Tool,each,Hand Tool - Copperfield leveling clips electric,3378,tool_type=leveling clips;power=electric;capacity=7;material=steel
+G0195,Installation Tools,Leveling System,each,Leveling System - Oakmont notched trowel manual,2743,tool_type=notched trowel;power=manual;capacity=36;material=aluminum
+G0196,Installation Tools,Hand Tool,each,Hand Tool - Willow Bend leveling clips electric,2105,tool_type=leveling clips;power=electric;capacity=10;material=composite
+G0197,Vanities & Tops,Double Sink Vanity,each,Double Sink Vanity - Quarry 48 engineered stone top,720,width_in=48;material=engineered stone top;sink=double;finish=natural oak
+G0198,Vanities & Tops,Double Sink Vanity,each,Double Sink Vanity - Charcoal 30 quartz top,457,width_in=30;material=quartz top;sink=single;finish=espresso
+G0199,Vanities & Tops,Double Sink Vanity,each,Double Sink Vanity - Sundance 48 quartz top,517,width_in=48;material=quartz top;sink=double;finish=grey
+G0200,Vanities & Tops,Single Sink Vanity,each,Single Sink Vanity - Amber Ridge 24 engineered stone top,856,width_in=24;material=engineered stone top;sink=single;finish=white

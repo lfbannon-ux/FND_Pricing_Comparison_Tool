@@ -1,7 +1,7 @@
 # Floor & Decor pricing comparison tool
 
-Compares **200 SKUs** across **Floor & Decor**, **Home Depot** and **Lowe's** on a
-like-for-like basis: every price is restated in a common unit, every competitor
+Compares **200 SKUs** across **Floor & Decor**, **Home Depot**, **Lowe's**,
+**Menards** and **The Tile Shop** on a like-for-like basis: every price is restated in a common unit, every competitor
 item is scored for how genuinely comparable it is, and only defensible pairs are
 allowed to move the headline numbers.
 
@@ -216,20 +216,24 @@ tile, and gives ground on the categories where the home centres are strong.
 
 | | |
 |---|---|
-| SKU groups compared | 196 of 200 |
-| Win rate vs cheapest competitor | 68% (134W / 15T / 47L) |
-| Median gap vs market low | −7.7% |
-| Basket index vs market low | 0.918 |
-| Annual expense at Floor & Decor prices | $38.2M |
-| Net annual advantage vs market low | $3.4M |
-| Annual expense priced above market low | $233k across 4 categories |
+| SKU groups compared | 200 of 200 |
+| Win rate vs cheapest competitor | 62% (125W / 11T / 64L) |
+| Median gap vs market low | −4.9% |
+| Basket index vs market low | 0.950 |
+| Basket index vs HD / Lowe's / Menards / Tile Shop | 0.882 / 0.879 / 0.893 / 0.813 |
 
-On the 43-SKU identical-goods basket the advantage **narrows but does not
-reverse**: the basket costs 4.6% less than Home Depot and 2.9% less than Lowe's,
-against ~13% and ~11% across all match tiers, and Floor & Decor is still cheaper
-on the median identical SKU (by 2.0% and 3.7%) and on 23 and 28 of the 43 SKUs
-respectively. Most of the *size* of the headline advantage lives in private-label
-spec-equivalents; the direction holds on identical goods too.
+Adding Menards and The Tile Shop moved the headline, which is the point of adding
+them: the market low is now the lowest of four banners rather than two, so
+Floor & Decor's win rate falls from 68% to 62% and the market-low index rises
+from 0.918 to 0.950. A wider competitive set is a harder benchmark.
+
+The identical-goods basket shows the cost of a wider competitive set. Requiring
+an identical SKU at **all four** competitors collapses the common basket from 43
+(two competitors) to **19 SKUs** — only 34-38% of each big box's own basket
+survives the intersection. On that common basket Floor & Decor is cheaper than
+every banner: 5.4% vs Home Depot, 5.1% vs Lowe's, 4.6% vs Menards, 7.5% vs The
+Tile Shop. The pairwise baskets are wider (50-56 SKUs each) but rest on different
+SKU sets, so they are comparable to 1.0 and not to each other.
 
 Note the two sign conventions in the codebase: `Quote.delta_pct` is the
 competitor measured against Floor & Decor (**positive = Floor & Decor cheaper**),
@@ -251,6 +255,30 @@ LVP (−10.7%). Weakest: Vanities & Tops (+5.1%), Trim & Moulding (+5.2%),
 Grout & Caulk (+3.1%), Installation Tools (+0.0% median but a 1.109 basket
 index). Treat the direction as illustrative until real prices are loaded.
 
+## Adding or changing a retailer
+
+The comparison engine is retailer-agnostic: `normalize`, `matching`, `compare`,
+`spend` and `basket` contain no reference to any specific banner. A retailer is
+added in `src/fnd_pricing/__init__.py` — an entry in `RETAILERS`, a display
+name, a short code and a compact label — and every table, chart, CSV column and
+worksheet column block scales from there.
+
+Two consequences worth planning for:
+
+- **The common identical-SKU basket shrinks with each competitor added**, because
+  a SKU must be an identical match at *all* of them to qualify. `basket` reports
+  `common_share` — how much of each competitor's own basket survives the
+  intersection — so a thin three-way number cannot pass unnoticed.
+- **The market low gets lower.** Win rate and the market-low index are defined
+  against the cheapest comparable competitor, so they are only comparable across
+  runs with the same competitive set. Changing the set is a methodology change,
+  not a data refresh.
+
+A specialist does not merchandise everything. The Tile Shop carries no laminate,
+wood, carpet, wood trim, underlayment or vanities in the seed data, which is why
+its coverage is ~52% against ~93-96% for the full-line boxes. Missing carriage is
+recorded as a missing offer, never as a zero.
+
 ## Layout
 
 ```
@@ -269,11 +297,12 @@ src/fnd_pricing/
                  Offers / Exceptions)
   cli.py         validate | compare | index | basket | report | export |
                  ingest | template
+  __init__.py    the retailer registry - add a banner here and it propagates
 data/collection/ identical-SKU worksheet + collection guide
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           95 unit tests
+tests/           103 unit tests
 ```
 
 ## Tests

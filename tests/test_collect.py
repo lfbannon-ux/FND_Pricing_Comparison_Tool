@@ -170,3 +170,46 @@ class ShippedWorksheetTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RegistryTest(unittest.TestCase):
+    """The worksheet and the retailer registry must stay in step."""
+
+    def test_worksheet_has_a_column_block_per_retailer(self):
+        from fnd_pricing import RETAILERS, RETAILER_CODES
+        from fnd_pricing.collect import PER_RETAILER_FIELDS, IDENTITY_COLUMNS
+
+        columns = worksheet_columns()
+        self.assertEqual(
+            len(columns),
+            len(IDENTITY_COLUMNS) + len(RETAILERS) * len(PER_RETAILER_FIELDS),
+        )
+        for retailer in RETAILERS:
+            self.assertIn(f"{RETAILER_CODES[retailer]}_price", columns)
+
+    def test_shipped_worksheet_covers_every_retailer(self):
+        from fnd_pricing import RETAILER_CODES, RETAILERS
+
+        header = list(csv.DictReader(open(WORKSHEET, encoding="utf-8")).fieldnames)
+        for retailer in RETAILERS:
+            self.assertIn(f"{RETAILER_CODES[retailer]}_carried", header)
+
+    def test_ingest_handles_a_retailer_that_carries_nothing(self):
+        # The Tile Shop does not merchandise laminate; that must ingest cleanly
+        # as a missing offer rather than as an error.
+        from fnd_pricing import COMPETITORS
+
+        path = Path(tempfile.mkdtemp()) / "w.csv"
+        write_worksheet([CANDIDATE], path)
+        rows = list(csv.DictReader(open(path, encoding="utf-8")))
+        row = fill(rows[0], {"fnd": 24.98, "hd": 26.98})
+        for retailer in COMPETITORS[1:]:
+            from fnd_pricing import RETAILER_CODES
+            row[f"{RETAILER_CODES[retailer]}_carried"] = "n"
+        with open(path, "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=worksheet_columns())
+            writer.writeheader()
+            writer.writerow(row)
+        report = ingest_worksheet(path)
+        self.assertEqual(len(report.offers), 2)
+        self.assertEqual(report.three_way, 0)

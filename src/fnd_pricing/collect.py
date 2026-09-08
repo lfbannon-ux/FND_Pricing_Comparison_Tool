@@ -21,12 +21,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-from . import RETAILERS
+from . import RETAILER_CODES, RETAILERS
 from .loader import GROUP_COLUMNS, PRODUCT_COLUMNS, parse_specs
 from .models import DataError
 
 # Short prefixes keep the wide worksheet readable in a spreadsheet.
-RETAILER_PREFIX = {"floor_and_decor": "fnd", "home_depot": "hd", "lowes": "lw"}
+RETAILER_PREFIX = dict(RETAILER_CODES)
 
 IDENTITY_COLUMNS = [
     "candidate_id",

@@ -5,7 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List
 
-from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
+from openpyxl.utils import get_column_letter
+
+from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS
 from .compare import GroupComparison, build_rollup, rollup_by_category
 from .spend import MARKET_LOW, expense_by_category, total_expense
 
@@ -28,7 +30,6 @@ def _style_header(worksheet, row: int = 1) -> None:
 
 
 def _autosize(worksheet, limit: int = 46) -> None:
-    from openpyxl.utils import get_column_letter
 
     for idx, column in enumerate(worksheet.columns, start=1):
         width = max((len(str(c.value)) for c in column if c.value is not None), default=8)
@@ -57,8 +58,9 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         ("Median gap vs market low", overall.median_gap, _PCT),
         ("Mean gap vs market low", overall.mean_gap, _PCT),
         ("Volume-weighted basket index vs market low", overall.spend_index, _INDEX),
-        ("Median gap vs Home Depot", overall.per_retailer_gap.get("home_depot"), _PCT),
-        ("Median gap vs Lowe's", overall.per_retailer_gap.get("lowes"), _PCT),
+    ] + [
+        (f"Median gap vs {RETAILER_LABELS.get(r, r)}", overall.per_retailer_gap.get(r), _PCT)
+        for r in COMPETITORS
     ]:
         sheet.append([label, value])
         if fmt:
@@ -69,20 +71,20 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
     header_row = sheet.max_row + 1
     sheet.append([
         "Category", "SKUs", "Compared", "Win rate", "Median gap", "Mean gap",
-        "Basket index", "Median vs Home Depot", "Median vs Lowe's",
-    ])
+        "Basket index",
+    ] + [f"Median vs {RETAILER_SHORT.get(r, r)}" for r in COMPETITORS])
     for rollup in rollup_by_category(comparisons):
         sheet.append([
             rollup.label, rollup.groups, rollup.compared, rollup.win_rate,
             rollup.median_gap, rollup.mean_gap, rollup.spend_index,
-            rollup.per_retailer_gap.get("home_depot"),
-            rollup.per_retailer_gap.get("lowes"),
-        ])
+        ] + [rollup.per_retailer_gap.get(r) for r in COMPETITORS])
         row = sheet.max_row
         sheet.cell(row=row, column=4).number_format = "0.0%"
-        for col in (5, 6, 8, 9):
+        for col in (5, 6):
             sheet.cell(row=row, column=col).number_format = _PCT
         sheet.cell(row=row, column=7).number_format = _INDEX
+        for offset in range(len(COMPETITORS)):
+            sheet.cell(row=row, column=8 + offset).number_format = _PCT
     _style_header(sheet, header_row)
     sheet.freeze_panes = f"A{header_row + 1}"
     _autosize(sheet)
@@ -94,33 +96,42 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         "Annual expense", "Share of expense", "Benchmarked expense",
         "Unbenchmarked expense", "Benchmark coverage", "Matched SKUs vs low",
         "Index vs market low", "$ vs market low",
-        "Index vs Home Depot", "$ vs Home Depot",
-        "Index vs Lowe's", "$ vs Lowe's",
+    ] + [
+        heading
+        for r in COMPETITORS
+        for heading in (f"Index vs {RETAILER_SHORT.get(r, r)}",
+                        f"$ vs {RETAILER_SHORT.get(r, r)}")
     ])
     rows = expense_by_category(comparisons)
     total = total_expense(comparisons)
     for row in rows + [total]:
-        low, home_depot, lowes = (
-            row.baskets[MARKET_LOW], row.baskets["home_depot"], row.baskets["lowes"]
-        )
+        low = row.baskets[MARKET_LOW]
         expense.append([
             row.category, row.priced_skus, row.basis or "mixed", row.annual_units,
             row.avg_unit_price, row.annual_spend, row.share_of(total.annual_spend),
             row.benchmarked_spend, row.unbenchmarked_spend, row.benchmark_coverage,
             low.matched_skus, low.index, low.delta,
-            home_depot.index, home_depot.delta, lowes.index, lowes.delta,
+        ] + [
+            value
+            for r in COMPETITORS
+            for value in (row.baskets[r].index, row.baskets[r].delta)
         ])
         line = expense.max_row
-        for col in (5, 6, 8, 9, 13, 15, 17):
+        for col in (5, 6, 8, 9, 13):
             expense.cell(row=line, column=col).number_format = _MONEY
         for col in (7, 10):
             expense.cell(row=line, column=col).number_format = "0.0%"
-        for col in (12, 14, 16):
-            expense.cell(row=line, column=col).number_format = _INDEX
+        expense.cell(row=line, column=12).number_format = _INDEX
+        # index / dollars alternate from column 14 onwards, one pair per competitor
+        for offset in range(len(COMPETITORS)):
+            expense.cell(row=line, column=14 + offset * 2).number_format = _INDEX
+            expense.cell(row=line, column=15 + offset * 2).number_format = _MONEY
     for cell in expense[expense.max_row]:
         cell.font = Font(bold=True)
     _style_header(expense)
-    expense.auto_filter.ref = f"A1:Q{expense.max_row - 1}"
+    expense.auto_filter.ref = (
+        f"A1:{get_column_letter(expense.max_column)}{expense.max_row - 1}"
+    )
     _autosize(expense)
 
     # --- SKU detail ---
@@ -128,29 +139,43 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
     detail.append([
         "Group", "Category", "Subcategory", "Description", "Basis", "Annual volume",
         "F&D brand", "F&D unit price",
-        "Home Depot brand", "Home Depot unit price", "HD delta %", "HD match", "HD counted",
-        "Lowe's brand", "Lowe's unit price", "LW delta %", "LW match", "LW counted",
-        "Market low", "Gap vs low", "Outcome", "Cheapest", "Flags",
-    ])
+    ] + [
+        heading
+        for r in COMPETITORS
+        for heading in (
+            f"{RETAILER_SHORT.get(r, r)} brand", f"{RETAILER_SHORT.get(r, r)} unit price",
+            f"{RETAILER_SHORT.get(r, r)} delta %", f"{RETAILER_SHORT.get(r, r)} match",
+            f"{RETAILER_SHORT.get(r, r)} counted",
+        )
+    ] + ["Market low", "Gap vs low", "Outcome", "Cheapest", "Flags"])
     for comp in comparisons:
-        hd, lw = comp.quotes["home_depot"], comp.quotes["lowes"]
+        quotes = [comp.quotes[r] for r in COMPETITORS]
         detail.append([
             comp.group.group_id, comp.group.category, comp.group.subcategory,
             comp.group.description, comp.group.basis, comp.group.annual_volume,
             comp.base.offer.brand if comp.base else "", comp.base_price,
-            hd.normalized.offer.brand if hd.normalized else "", hd.unit_price,
-            hd.delta_pct, hd.tier, "yes" if hd.included else "no",
-            lw.normalized.offer.brand if lw.normalized else "", lw.unit_price,
-            lw.delta_pct, lw.tier, "yes" if lw.included else "no",
+        ] + [
+            value
+            for quote in quotes
+            for value in (
+                quote.normalized.offer.brand if quote.normalized else "",
+                quote.unit_price, quote.delta_pct, quote.tier,
+                "yes" if quote.included else "no",
+            )
+        ] + [
             comp.market_min, comp.gap_vs_market_min, comp.outcome,
             RETAILER_LABELS.get(comp.cheapest_retailer or "", ""),
             ", ".join(sorted({f.split(":")[0] for f in comp.flags})),
         ])
         row = detail.max_row
-        for col in (8, 10, 15, 19):
-            detail.cell(row=row, column=col).number_format = _MONEY
-        for col in (11, 16, 20):
-            detail.cell(row=row, column=col).number_format = _PCT
+        detail.cell(row=row, column=8).number_format = _MONEY
+        for offset in range(len(COMPETITORS)):
+            base_col = 9 + offset * 5
+            detail.cell(row=row, column=base_col + 1).number_format = _MONEY
+            detail.cell(row=row, column=base_col + 2).number_format = _PCT
+        tail = 9 + len(COMPETITORS) * 5
+        detail.cell(row=row, column=tail).number_format = _MONEY
+        detail.cell(row=row, column=tail + 1).number_format = _PCT
     _style_header(detail)
     detail.auto_filter.ref = detail.dimensions
     _autosize(detail)

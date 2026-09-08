@@ -10,12 +10,13 @@ import html
 import json
 from typing import Dict, List, Optional
 
-from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
+from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS, code
 from .charts import compact_money, diverging_bars, magnitude_bars
 from .compare import GroupComparison, Rollup, build_rollup, rollup_by_category
 from .spend import MARKET_LOW, expense_by_category, total_expense
 
 COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
+COMPETITOR_LABELS = [(r, RETAILER_SHORT.get(r, r)) for r in COMPETITORS]
 
 
 def _pct(value: Optional[float], digits: int = 1) -> str:
@@ -24,6 +25,22 @@ def _pct(value: Optional[float], digits: int = 1) -> str:
 
 def _money(value: Optional[float]) -> str:
     return "-" if value is None else f"${value:,.2f}"
+
+
+def _competitor_headers(prefix: str) -> str:
+    return "".join(
+        f'<th class="num">{prefix}{html.escape(label)}</th>'
+        for _, label in COMPETITOR_LABELS
+    )
+
+
+def _detail_headers() -> str:
+    """A price column and a delta column for each competitor."""
+    return "".join(
+        f'<th class="num" data-k="{code(retailer)}">{html.escape(label)}</th>'
+        f'<th class="num" data-k="{code(retailer)}Delta">&Delta;</th>'
+        for retailer, label in COMPETITOR_LABELS
+    )
 
 
 def _index(value: Optional[float]) -> str:
@@ -53,7 +70,7 @@ def _rows_payload(comparisons: List[GroupComparison]) -> List[dict]:
         }
         for retailer in COMPETITORS:
             quote = comp.quotes[retailer]
-            key = "hd" if retailer == "home_depot" else "lw"
+            key = code(retailer)
             row[key] = quote.unit_price
             row[key + "Delta"] = quote.delta_pct
             row[key + "Tier"] = quote.tier
@@ -100,8 +117,10 @@ def _tiles(overall: Rollup, comparisons: List[GroupComparison]) -> str:
         <div class="tile-label">Median gap vs market low</div>
         <div class="tile-sub">negative = Floor &amp; Decor is cheaper</div></div>""",
         index_tile(overall.spend_index, "Basket index vs market low", "volume-weighted spend ratio"),
-        index_tile(basket("home_depot"), "Basket index vs Home Depot", "volume-weighted spend ratio"),
-        index_tile(basket("lowes"), "Basket index vs Lowe's", "volume-weighted spend ratio"),
+    ] + [
+        index_tile(basket(retailer), f"Basket index vs {label}",
+                   "volume-weighted spend ratio")
+        for retailer, label in COMPETITOR_LABELS
     ]
     return "\n".join(tiles)
 
@@ -118,8 +137,11 @@ def _category_table(rollups: List[Rollup]) -> str:
             f"<td class='num'>{(r.win_rate or 0) * 100:.0f}%</td>"
             f"<td class='num {gap_class}'>{_pct(r.median_gap)}</td>"
             f"<td class='num {idx_class}'>{idx}</td>"
-            f"<td class='num'>{_pct(r.per_retailer_gap.get('home_depot'))}</td>"
-            f"<td class='num'>{_pct(r.per_retailer_gap.get('lowes'))}</td></tr>"
+            + "".join(
+                f"<td class='num'>{_pct(r.per_retailer_gap.get(retailer))}</td>"
+                for retailer in COMPETITORS
+            )
+            + "</tr>"
         )
     return "\n".join(body)
 
@@ -152,7 +174,6 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
     body = []
     for row in rows:
         basket = row.baskets[MARKET_LOW]
-        home_depot, lowes = row.baskets["home_depot"], row.baskets["lowes"]
         index = basket.index
         body.append(
             f"<tr><td>{html.escape(row.category)}</td>"
@@ -161,9 +182,11 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
             f"<td class='num'>{(row.share_of(total.annual_spend) or 0) * 100:.1f}%</td>"
             f"<td class='num {'pos' if (index or 1) > 1 else 'neg'}'>{_index(index)}</td>"
             f"<td class='num {'pos' if basket.delta > 0 else 'neg'}'>{basket.delta:,.0f}</td>"
-            f"<td class='num'>{_index(home_depot.index)}</td>"
-            f"<td class='num'>{_index(lowes.index)}</td>"
-            f"<td class='num'>{(row.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
+            + "".join(
+                f"<td class='num'>{_index(row.baskets[retailer].index)}</td>"
+                for retailer in COMPETITORS
+            )
+            + f"<td class='num'>{(row.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
         )
 
     market = total.baskets[MARKET_LOW]
@@ -173,9 +196,11 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
         f"<td class='num'>{total.annual_spend:,.0f}</td><td class='num'>100.0%</td>"
         f"<td class='num'>{_index(market.index)}</td>"
         f"<td class='num'>{market.delta:,.0f}</td>"
-        f"<td class='num'>{_index(total.baskets['home_depot'].index)}</td>"
-        f"<td class='num'>{_index(total.baskets['lowes'].index)}</td>"
-        f"<td class='num'>{(total.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
+        + "".join(
+            f"<td class='num'>{_index(total.baskets[retailer].index)}</td>"
+            for retailer in COMPETITORS
+        )
+        + f"<td class='num'>{(total.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
     )
 
     exposure = sum(r.baskets[MARKET_LOW].delta for r in rows
@@ -210,7 +235,7 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
 <div class="panel"><table>
 <thead><tr><th>Category</th><th class="num">SKUs</th><th class="num">Annual expense $</th>
 <th class="num">Share</th><th class="num">Index vs low</th><th class="num">$ vs low</th>
-<th class="num">Index vs HD</th><th class="num">Index vs Lowe's</th>
+{_competitor_headers("Index vs ")}
 <th class="num">Benchmarked</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 <p class="note">Each index divides Floor &amp; Decor spend by that retailer's spend over
@@ -224,12 +249,15 @@ def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> s
     overall = build_rollup("All categories", comparisons)
     categories = rollup_by_category(comparisons)
     payload = json.dumps(_rows_payload(comparisons))
+    codes = json.dumps([code(r) for r in COMPETITORS])
+    first_tier_key = code(COMPETITORS[0]) + "Tier"
     cat_options = "\n".join(
         f'<option value="{html.escape(c.label)}">{html.escape(c.label)}</option>'
         for c in categories
     )
+    versus = " vs ".join(["Floor &amp; Decor"] + [l for _, l in COMPETITOR_LABELS])
     subtitle = (
-        f"200 SKU groups &middot; Floor &amp; Decor vs Home Depot vs Lowe's"
+        f"{len(comparisons)} SKU groups &middot; {versus}"
         + (f" &middot; prices collected {html.escape(collected_on)}" if collected_on else "")
     )
 
@@ -318,7 +346,7 @@ footer {{ color:var(--muted); font-size:12px; margin-top:32px; line-height:1.7; 
 <div class="panel"><table>
 <thead><tr><th>Category</th><th class="num">SKUs</th><th class="num">Compared</th>
 <th class="num">Win rate</th><th class="num">Median gap</th><th class="num">Basket index</th>
-<th class="num">vs Home Depot</th><th class="num">vs Lowe's</th></tr></thead>
+{_competitor_headers("vs ")}</tr></thead>
 <tbody>{_category_table(categories)}</tbody></table></div>
 
 {_expense_section(comparisons)}
@@ -339,10 +367,9 @@ footer {{ color:var(--muted); font-size:12px; margin-top:32px; line-height:1.7; 
 <thead><tr>
 <th data-k="id">Group</th><th data-k="category">Category</th><th data-k="desc">Description</th>
 <th class="num" data-k="fnd">F&amp;D</th>
-<th class="num" data-k="hd">Home Depot</th><th class="num" data-k="hdDelta">&Delta;</th>
-<th class="num" data-k="lw">Lowe's</th><th class="num" data-k="lwDelta">&Delta;</th>
+{_detail_headers()}
 <th class="num" data-k="gap">Gap vs low</th><th data-k="cheapest">Cheapest</th>
-<th data-k="hdTier">Match</th><th data-k="flags">Flags</th>
+<th data-k="{first_tier_key}">Match</th><th data-k="flags">Flags</th>
 </tr></thead><tbody></tbody></table></div>
 
 <footer>
@@ -357,6 +384,7 @@ Only offers matched at <em>close</em> tier or better and in stock at collection 
 </div>
 <script>
 const ROWS = {payload};
+const CODES = {codes};   // competitor short codes, in registry order
 const pct = v => v == null ? '-' : (v*100).toFixed(1).replace(/^(?!-)/,'+') + '%';
 const money = v => v == null ? '-' : '$' + v.toFixed(2);
 const cls = v => v == null ? '' : (v > 0 ? 'pos' : 'neg');
@@ -374,12 +402,12 @@ function visible() {{
     if (cat && r.category !== cat) return false;
     if (out && r.outcome !== out) return false;
     if (tier) {{
-      const best = Math.min(TIER_RANK[r.hdTier] ?? 99, TIER_RANK[r.lwTier] ?? 99);
+      const best = Math.min(...CODES.map(c => TIER_RANK[r[c + 'Tier']] ?? 99));
       if (best > maxRank) return false;
     }}
     if (q) {{
-      const hay = (r.id + ' ' + r.desc + ' ' + r.category + ' ' + r.sub + ' ' +
-                   r.fndBrand + ' ' + r.hdBrand + ' ' + r.lwBrand).toLowerCase();
+      const hay = [r.id, r.desc, r.category, r.sub, r.fndBrand]
+        .concat(CODES.map(c => r[c + 'Brand'] || '')).join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
     }}
     return true;
@@ -398,13 +426,12 @@ function render() {{
       <td>${{r.id}}</td><td>${{r.category}}</td>
       <td class="desc">${{r.desc}}</td>
       <td class="num">${{money(r.fnd)}}<span class="flag">${{r.basis}}</span></td>
-      <td class="num">${{money(r.hd)}}${{r.hdPromo ? ' <span class="flag">promo</span>' : ''}}</td>
-      <td class="num ${{cls(r.hdDelta)}}">${{pct(r.hdDelta)}}</td>
-      <td class="num">${{money(r.lw)}}${{r.lwPromo ? ' <span class="flag">promo</span>' : ''}}</td>
-      <td class="num ${{cls(r.lwDelta)}}">${{pct(r.lwDelta)}}</td>
+      ${{CODES.map(c => `
+        <td class="num">${{money(r[c])}}${{r[c + 'Promo'] ? ' <span class="flag">promo</span>' : ''}}</td>
+        <td class="num ${{cls(r[c + 'Delta'])}}">${{pct(r[c + 'Delta'])}}</td>`).join('')}}
       <td class="num ${{cls(r.gap)}}">${{pct(r.gap)}}</td>
       <td>${{r.cheapest}}</td>
-      <td><span class="pill ${{r.hdTier}}">${{r.hdTier}}</span> <span class="pill ${{r.lwTier}}">${{r.lwTier}}</span></td>
+      <td>${{CODES.map(c => `<span class="pill ${{r[c + 'Tier']}}" title="${{r[c + 'Note'] || ''}}">${{r[c + 'Tier']}}</span>`).join(' ')}}</td>
       <td><span class="flag">${{r.flags.join(', ') || '-'}}</span></td>
     </tr>`).join('');
   document.getElementById('count').textContent =

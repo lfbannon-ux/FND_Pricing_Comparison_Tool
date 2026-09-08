@@ -12,11 +12,15 @@ Nothing here depends on a spec-matching opinion.
 
 Two traps it is built to avoid:
 
-- **Different baskets per retailer.** The SKUs identical at Home Depot are not
-  the SKUs identical at Lowe's. Comparing "F&D vs HD" on one set against
-  "F&D vs Lowe's" on another is not a three-way comparison. `common=True`
-  restricts to the SKUs that qualify at *every* competitor, which is the only
-  basket on which all three retailers can be quoted side by side.
+- **Different baskets per retailer.** The SKUs identical at one competitor are
+  not the SKUs identical at another, so quoting "F&D vs A" on one set against
+  "F&D vs B" on another is not a like-for-like comparison between A and B.
+  `common_members` restricts to the SKUs that qualify at *every* competitor,
+  the only basket on which all of them can be quoted side by side. That
+  intersection shrinks with each competitor added - a specialist carries fewer
+  national brands than a full-line box - so `common_share` reports how much of
+  each competitor's own basket survives it, and the per-competitor `own_baskets`
+  stay available for the pairwise view.
 - **One summary statistic.** The volume-weighted basket cost and the typical
   per-SKU gap answer different questions and can point opposite ways, so both
   are always reported.
@@ -28,11 +32,12 @@ import statistics
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence
 
+from . import COMPETITORS as _COMPETITORS
 from . import BASE_RETAILER, RETAILERS
 from .compare import GroupComparison
 from .matching import TIER_EXACT
 
-COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
+COMPETITORS = list(_COMPETITORS)
 
 
 def qualifies(comparison: GroupComparison, retailer: str, tier: str) -> bool:
@@ -164,6 +169,21 @@ class BasketSet:
     @property
     def common_skus(self) -> int:
         return len(self.common)
+
+    @property
+    def common_share(self) -> Dict[str, Optional[float]]:
+        """What fraction of each competitor's own basket survives the intersection.
+
+        Every competitor added shrinks the common basket, because a SKU must be
+        an identical match at all of them to qualify. A low share here is the
+        warning that the three-way number rests on very little.
+        """
+        return {
+            retailer: (
+                round(len(self.common) / own.skus, 4) if own.skus else None
+            )
+            for retailer, own in self.own_baskets.items()
+        }
 
     @property
     def cheapest_retailer(self) -> str:

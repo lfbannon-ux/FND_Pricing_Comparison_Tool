@@ -18,10 +18,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
+from . import COMPETITORS as _COMPETITORS
 from . import BASE_RETAILER, RETAILERS
 from .compare import GroupComparison
 
-COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
+COMPETITORS = list(_COMPETITORS)
 MARKET_LOW = "market_low"
 BASKETS = COMPETITORS + [MARKET_LOW]
 

@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
-from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
+from . import BASE_RETAILER, RETAILER_CODES, RETAILER_LABELS, RETAILER_SHORT, RETAILERS
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
 from .basket import build_basket_set, qualifies
@@ -84,7 +84,10 @@ def cmd_compare(args) -> int:
     overall = build_rollup("All categories", comparisons)
 
     print()
-    print("FLOOR & DECOR vs HOME DEPOT vs LOWE'S - like-for-like pricing")
+    versus = " vs ".join(
+        [RETAILER_LABELS[BASE_RETAILER]] + [RETAILER_LABELS[r] for r in COMPETITORS]
+    )
+    print(f"{versus.upper()} - like-for-like pricing")
     print("=" * 78)
     print(f"SKU groups                {overall.groups}")
     print(f"With comparable offers    {overall.compared}")
@@ -96,15 +99,21 @@ def cmd_compare(args) -> int:
         print(f"Median gap vs {RETAILER_LABELS[retailer]:<12}{_pct(overall.per_retailer_gap.get(retailer))}")
 
     print()
+    competitor_heads = "".join(
+        f"{RETAILER_CODES[r].upper():>9}" for r in COMPETITORS
+    )
+    width = 60 + 9 * len(COMPETITORS)
     print(f"{'CATEGORY':<28}{'SKUs':>5}{'CMP':>5}{'WIN':>6}{'MEDIAN':>9}{'INDEX':>8}"
-          f"{'vs HD':>9}{'vs LOW':>9}")
-    print("-" * 78)
+          f"{competitor_heads}")
+    print("-" * width)
     for rollup in rollup_by_category(comparisons):
         index = "     -" if rollup.spend_index is None else f"{rollup.spend_index:6.3f}"
+        gaps = "".join(
+            f"{_pct(rollup.per_retailer_gap.get(r)):>9}" for r in COMPETITORS
+        )
         print(f"{rollup.label[:27]:<28}{rollup.groups:>5}{rollup.compared:>5}"
               f"{(rollup.win_rate or 0) * 100:>5.0f}%{_pct(rollup.median_gap):>9}{index:>8}"
-              f"{_pct(rollup.per_retailer_gap.get('home_depot')):>9}"
-              f"{_pct(rollup.per_retailer_gap.get('lowes')):>9}")
+              f"{gaps}")
 
     losses = sorted(
         (c for c in comparisons if c.outcome == "loss"),
@@ -129,17 +138,19 @@ def _write_detail_csv(comparisons: List[GroupComparison], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     columns = [
         "group_id", "category", "subcategory", "description", "basis", "annual_volume",
-        "fnd_unit_price", "home_depot_unit_price", "home_depot_delta_pct",
-        "home_depot_match_tier", "lowes_unit_price", "lowes_delta_pct",
-        "lowes_match_tier", "market_min", "gap_vs_market_min", "outcome",
-        "cheapest_retailer", "flags",
+        "fnd_unit_price",
+    ] + [
+        f"{retailer}_{field}"
+        for retailer in COMPETITORS
+        for field in ("unit_price", "delta_pct", "match_tier")
+    ] + [
+        "market_min", "gap_vs_market_min", "outcome", "cheapest_retailer", "flags",
     ]
     with open(path, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=columns)
         writer.writeheader()
         for comp in comparisons:
-            hd, lw = comp.quotes["home_depot"], comp.quotes["lowes"]
-            writer.writerow({
+            row = {
                 "group_id": comp.group.group_id,
                 "category": comp.group.category,
                 "subcategory": comp.group.subcategory,
@@ -147,18 +158,18 @@ def _write_detail_csv(comparisons: List[GroupComparison], path: Path) -> None:
                 "basis": comp.group.basis,
                 "annual_volume": comp.group.annual_volume,
                 "fnd_unit_price": comp.base_price,
-                "home_depot_unit_price": hd.unit_price,
-                "home_depot_delta_pct": hd.delta_pct,
-                "home_depot_match_tier": hd.tier,
-                "lowes_unit_price": lw.unit_price,
-                "lowes_delta_pct": lw.delta_pct,
-                "lowes_match_tier": lw.tier,
                 "market_min": comp.market_min,
                 "gap_vs_market_min": comp.gap_vs_market_min,
                 "outcome": comp.outcome,
                 "cheapest_retailer": comp.cheapest_retailer or "",
                 "flags": ";".join(sorted(set(comp.flags))),
-            })
+            }
+            for retailer in COMPETITORS:
+                quote = comp.quotes[retailer]
+                row[f"{retailer}_unit_price"] = quote.unit_price
+                row[f"{retailer}_delta_pct"] = quote.delta_pct
+                row[f"{retailer}_match_tier"] = quote.tier
+            writer.writerow(row)
 
 
 def cmd_index(args) -> int:
@@ -216,16 +227,18 @@ def _write_expense_csv(rows, total, path: Path) -> None:
         "category", "skus", "priced_skus", "basis", "annual_units", "avg_unit_price",
         "annual_spend", "share_of_spend", "benchmarked_spend", "unbenchmarked_spend",
         "benchmark_coverage", "matched_skus_vs_low", "index_vs_market_low",
-        "dollars_vs_market_low", "index_vs_home_depot", "dollars_vs_home_depot",
-        "index_vs_lowes", "dollars_vs_lowes",
+        "dollars_vs_market_low",
+    ] + [
+        f"{prefix}_vs_{retailer}"
+        for retailer in COMPETITORS
+        for prefix in ("index", "dollars")
     ]
     with open(path, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=columns)
         writer.writeheader()
         for row in list(rows) + [total]:
             low = row.baskets[MARKET_LOW]
-            hd, lw = row.baskets["home_depot"], row.baskets["lowes"]
-            writer.writerow({
+            record = {
                 "category": row.category, "skus": row.skus,
                 "priced_skus": row.priced_skus, "basis": row.basis or "mixed",
                 "annual_units": row.annual_units, "avg_unit_price": row.avg_unit_price,
@@ -236,9 +249,11 @@ def _write_expense_csv(rows, total, path: Path) -> None:
                 "benchmark_coverage": row.benchmark_coverage,
                 "matched_skus_vs_low": low.matched_skus,
                 "index_vs_market_low": low.index, "dollars_vs_market_low": low.delta,
-                "index_vs_home_depot": hd.index, "dollars_vs_home_depot": hd.delta,
-                "index_vs_lowes": lw.index, "dollars_vs_lowes": lw.delta,
-            })
+            }
+            for retailer in COMPETITORS:
+                record[f"index_vs_{retailer}"] = row.baskets[retailer].index
+                record[f"dollars_vs_{retailer}"] = row.baskets[retailer].delta
+            writer.writerow(record)
 
 
 def cmd_basket(args) -> int:
@@ -258,9 +273,11 @@ def cmd_basket(args) -> int:
     print()
     print(f"BASKET: {label}")
     print("=" * 78)
-    print(f"{len(common)} SKUs carry an in-stock {args.tier} match at BOTH competitors, out of "
-          f"{len(comparisons)} studied.")
-    print("This is the only basket all three retailers can be quoted on side by side.")
+    print(f"{len(common)} SKUs carry an in-stock {args.tier} match at ALL "
+          f"{len(COMPETITORS)} competitors, out of {len(comparisons)} studied.")
+    print(f"This is the only basket all {len(RETAILERS)} retailers can be quoted on "
+          f"side by side. Every competitor added shrinks it - see the pairwise")
+    print("baskets below, which are wider but not comparable to each other.")
     print()
     print(f"  {'Floor & Decor':<16}{base_spend:>16,.2f}")
     for retailer in COMPETITORS:
@@ -298,13 +315,19 @@ def cmd_basket(args) -> int:
               f"   promotions move it {basket.promo_effect:+.4f}")
 
     print()
-    print("EACH COMPETITOR'S OWN WIDER BASKET (not mutually comparable)")
+    print("EACH COMPETITOR'S OWN WIDER BASKET (pairwise - not mutually comparable)")
     print("-" * 78)
+    share = basket_set.common_share
     for retailer in COMPETITORS:
         basket = basket_set.own_baskets[retailer]
-        print(f"  vs {RETAILER_LABELS[retailer]:<14}{basket.skus:>3} SKUs   "
+        if not basket.skus:
+            print(f"  vs {RETAILER_LABELS[retailer]:<16}no identical SKUs in stock")
+            continue
+        kept = share.get(retailer)
+        print(f"  vs {RETAILER_LABELS[retailer]:<16}{basket.skus:>3} SKUs   "
               f"index {basket.spend_index}   "
-              f"{-basket.spend_delta:>12,.0f}/yr in Floor & Decor's favour")
+              f"{-basket.spend_delta:>12,.0f}/yr in Floor & Decor's favour"
+              f"   ({(kept or 0) * 100:.0f}% survive the common basket)")
 
     print()
     print(f"{'BASKET COMPOSITION':<30}{'SKUS':>6}{'F&D SPEND':>16}{'SHARE':>8}")
@@ -331,17 +354,18 @@ def _write_basket_csv(common, basket_set, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     columns = [
         "group_id", "category", "description", "brand", "basis", "annual_volume",
-        "fnd_unit_price", "home_depot_unit_price", "lowes_unit_price",
-        "fnd_annual_spend", "home_depot_annual_spend", "lowes_annual_spend",
-        "home_depot_gap_pct", "lowes_gap_pct", "cheapest_retailer",
-    ]
+        "fnd_unit_price", "fnd_annual_spend",
+    ] + [
+        f"{retailer}_{field}"
+        for retailer in COMPETITORS
+        for field in ("unit_price", "annual_spend", "gap_pct")
+    ] + ["cheapest_retailer"]
     with open(path, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=columns)
         writer.writeheader()
         for comparison in common:
             volume = comparison.group.annual_volume
-            home_depot, lowes = comparison.quotes["home_depot"], comparison.quotes["lowes"]
-            writer.writerow({
+            record = {
                 "group_id": comparison.group.group_id,
                 "category": comparison.group.category,
                 "description": comparison.group.description,
@@ -349,15 +373,17 @@ def _write_basket_csv(common, basket_set, path: Path) -> None:
                 "basis": comparison.group.basis,
                 "annual_volume": volume,
                 "fnd_unit_price": comparison.base_price,
-                "home_depot_unit_price": home_depot.unit_price,
-                "lowes_unit_price": lowes.unit_price,
                 "fnd_annual_spend": round(comparison.base_price * volume, 2),
-                "home_depot_annual_spend": round(home_depot.unit_price * volume, 2),
-                "lowes_annual_spend": round(lowes.unit_price * volume, 2),
-                "home_depot_gap_pct": home_depot.delta_pct,
-                "lowes_gap_pct": lowes.delta_pct,
                 "cheapest_retailer": comparison.cheapest_retailer or "",
-            })
+            }
+            for retailer in COMPETITORS:
+                quote = comparison.quotes[retailer]
+                record[f"{retailer}_unit_price"] = quote.unit_price
+                record[f"{retailer}_annual_spend"] = (
+                    round(quote.unit_price * volume, 2) if quote.unit_price else ""
+                )
+                record[f"{retailer}_gap_pct"] = quote.delta_pct
+            writer.writerow(record)
 
 
 def cmd_report(args) -> int:
@@ -447,7 +473,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="fnd_pricing",
         description="Like-for-like pricing comparison across Floor & Decor, "
-                    "Home Depot and Lowe's.",
+                    "Home Depot, Lowe's, Menards and The Tile Shop.",
     )
     parser.add_argument("--groups", default=str(DEFAULT_GROUPS), help="sku_groups.csv path")
     parser.add_argument("--products", default=str(DEFAULT_PRODUCTS), help="products.csv path")

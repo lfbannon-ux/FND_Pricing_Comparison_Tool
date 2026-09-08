@@ -47,7 +47,7 @@ class LoaderTest(unittest.TestCase):
 
     def test_unknown_retailer_is_rejected(self):
         with self.assertRaises(DataError):
-            load_dataset(*self.write(offers=OFFER_ROW.replace("floor_and_decor", "menards")))
+            load_dataset(*self.write(offers=OFFER_ROW.replace("floor_and_decor", "acme_tile")))
 
     def test_duplicate_offer_for_one_retailer_is_rejected(self):
         with self.assertRaises(DataError) as ctx:

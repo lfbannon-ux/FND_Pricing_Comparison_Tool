@@ -27,7 +27,8 @@ def offer(group_id, retailer, price, brand="Mohawk", **kwargs):
 
 
 def comparison(group_id, fnd, home_depot=None, lowes=None, brands=None, volume=1000.0,
-               category="LVP", **offer_kwargs):
+               category="LVP", others=None, **offer_kwargs):
+    """Build a comparison. `others` prices any additional competitor by name."""
     brands = brands or {}
     offers = [offer(group_id, "floor_and_decor", fnd,
                     brand=brands.get("floor_and_decor", "Mohawk"))]
@@ -37,7 +38,20 @@ def comparison(group_id, fnd, home_depot=None, lowes=None, brands=None, volume=1
     if lowes is not None:
         offers.append(offer(group_id, "lowes", lowes,
                             brand=brands.get("lowes", "Mohawk")))
+    for retailer, price in (others or {}).items():
+        offers.append(offer(group_id, retailer, price,
+                            brand=brands.get(retailer, "Mohawk")))
     return compare_group(group(group_id, volume, category), offers)
+
+
+def everywhere(group_id, fnd, competitor_price, brands=None, volume=1000.0):
+    """Priced identically at every competitor in the registry."""
+    from fnd_pricing import COMPETITORS
+
+    return comparison(
+        group_id, fnd, volume=volume, brands=brands,
+        others={r: competitor_price for r in COMPETITORS},
+    )
 
 
 class QualifyTest(unittest.TestCase):
@@ -108,11 +122,16 @@ class BasketTest(unittest.TestCase):
 
 class CommonBasketTest(unittest.TestCase):
     def setUp(self):
+        from fnd_pricing import COMPETITORS
+
+        self.competitors = COMPETITORS
         self.comparisons = [
-            comparison("G1", 2.0, 3.0, 3.0),                                    # both
-            comparison("G2", 2.0, 3.0),                                         # HD only
-            comparison("G3", 2.0, None, 3.0),                                   # Lowe's only
-            comparison("G4", 2.0, 3.0, 3.0, brands={"lowes": "Style Selections"}),
+            everywhere("G1", 2.0, 3.0),                          # identical everywhere
+            comparison("G2", 2.0, 3.0),                          # Home Depot only
+            comparison("G3", 2.0, None, 3.0),                    # Lowe's only
+            # Priced everywhere, but one competitor sells a different brand, so
+            # it is not an identical SKU and the row leaves the common basket.
+            everywhere("G4", 2.0, 3.0, brands={COMPETITORS[-1]: "Style Selections"}),
         ]
 
     def test_common_basket_is_the_intersection(self):
@@ -122,8 +141,10 @@ class CommonBasketTest(unittest.TestCase):
     def test_own_baskets_are_wider_than_the_common_one(self):
         basket_set = build_basket_set(self.comparisons)
         self.assertEqual(basket_set.common_skus, 1)
+        # Home Depot is identical on G1, G2 and G4; the intersection keeps one.
         self.assertEqual(basket_set.own_baskets["home_depot"].skus, 3)
-        self.assertEqual(basket_set.own_baskets["lowes"].skus, 2)
+        self.assertEqual(basket_set.own_baskets["lowes"].skus, 3)
+        self.assertEqual(basket_set.own_baskets[self.competitors[-1]].skus, 1)
 
     def test_every_common_basket_prices_the_same_floor_and_decor_spend(self):
         # The point of the common basket: one F&D number, quoted three ways.
@@ -165,3 +186,45 @@ class SignConventionTest(unittest.TestCase):
         ], "home_depot")
         self.assertGreater(basket.median_gap, 0)
         self.assertEqual((basket.wins, basket.losses), (2, 1))
+
+
+class MultiCompetitorTest(unittest.TestCase):
+    """Adding competitors must narrow the common basket, not silently widen it."""
+
+    def test_common_basket_requires_a_match_at_every_competitor(self):
+        from fnd_pricing import COMPETITORS
+
+        offers = [offer("G1", "floor_and_decor", 2.0)]
+        # Identical at every competitor except the last one, which is absent.
+        for retailer in COMPETITORS[:-1]:
+            offers.append(offer("G1", retailer, 2.2))
+        comp = compare_group(group("G1"), offers)
+        self.assertEqual(common_members([comp]), [])
+
+        offers.append(offer("G1", COMPETITORS[-1], 2.2))
+        complete = compare_group(group("G1"), offers)
+        self.assertEqual(len(common_members([complete])), 1)
+
+    def test_common_share_reports_how_much_of_each_basket_survives(self):
+        from fnd_pricing import COMPETITORS
+
+        everywhere = [offer("G1", "floor_and_decor", 2.0)] + [
+            offer("G1", r, 2.2) for r in COMPETITORS
+        ]
+        partial = [offer("G2", "floor_and_decor", 2.0),
+                   offer("G2", COMPETITORS[0], 2.2)]
+        basket_set = build_basket_set([
+            compare_group(group("G1"), everywhere),
+            compare_group(group("G2"), partial),
+        ])
+        self.assertEqual(basket_set.common_skus, 1)
+        # The first competitor matched twice; only one survives the intersection.
+        self.assertAlmostEqual(basket_set.common_share[COMPETITORS[0]], 0.5, places=4)
+        self.assertAlmostEqual(basket_set.common_share[COMPETITORS[1]], 1.0, places=4)
+
+    def test_every_competitor_gets_its_own_basket(self):
+        from fnd_pricing import COMPETITORS
+
+        basket_set = build_basket_set([comparison("G1", 2.0, 2.2, 2.3)])
+        self.assertEqual(set(basket_set.own_baskets), set(COMPETITORS))
+        self.assertEqual(set(basket_set.common_baskets), set(COMPETITORS))

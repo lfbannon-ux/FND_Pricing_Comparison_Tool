@@ -554,7 +554,37 @@ CATEGORIES = [
     },
 ]
 
-RETAILERS = ("floor_and_decor", "home_depot", "lowes")
+RETAILERS = ("floor_and_decor", "home_depot", "lowes", "menards", "tile_shop")
+
+# Menards and The Tile Shop are derived from Home Depot's per-category index
+# range rather than given 17 hand-written ranges each: a shift in position plus
+# a carriage rule. These are seed POSITIONING ASSUMPTIONS, not observations.
+#
+#   Menards    - full-line Midwest home centre, price-aggressive, so it sits
+#                below Home Depot across the board.
+#   Tile Shop  - tile specialist at a premium to Floor & Decor, with a narrow
+#                assortment: no laminate, wood, carpet, wood trim or vanities,
+#                and a thinner offer inside the categories it does carry.
+DERIVED_COMPETITORS = {
+    "menards": {
+        "shift": -0.04,
+        "no_offer": 0.08,
+        "absent": set(),
+        "uom_like": "home_depot",
+        "brands": ["Tuscany", "Patrician", "Masterforce", "Dakota"],
+    },
+    "tile_shop": {
+        "shift": +0.08,
+        "no_offer": 0.18,
+        "absent": {
+            "Laminate", "Engineered Hardwood", "Solid Hardwood",
+            "Carpet & Carpet Tile", "Trim & Moulding", "Vanities & Tops",
+            "Underlayment",
+        },
+        "uom_like": "lowes",
+        "brands": ["Rush River", "Marmi", "Kismet", "Superior"],
+    },
+}
 
 
 def sqft_from_size(size_in: str) -> float:
@@ -637,7 +667,11 @@ def build_rows():
             )
 
             for retailer in RETAILERS:
-                if retailer != "floor_and_decor" and rng.random() < P_NO_OFFER:
+                derived = DERIVED_COMPETITORS.get(retailer)
+                if derived and cat["category"] in derived["absent"]:
+                    continue  # this banner does not merchandise the category
+                no_offer = derived["no_offer"] if derived else P_NO_OFFER
+                if retailer != "floor_and_decor" and rng.random() < no_offer:
                     continue  # competitor carries nothing comparable
 
                 if retailer == "floor_and_decor":
@@ -645,14 +679,24 @@ def build_rows():
                     index = 1.0
                 else:
                     specs = base_specs if national else perturb(base_specs, pools, rng)
-                    lo, hi = cat["comp_index"][retailer]
+                    if derived:
+                        lo, hi = cat["comp_index"]["home_depot"]
+                        lo, hi = lo + derived["shift"], hi + derived["shift"]
+                    else:
+                        lo, hi = cat["comp_index"][retailer]
                     index = rng.uniform(lo, hi)
                     if national:
                         # Identical branded goods price much closer together.
                         index = 1 + (index - 1) * 0.45
 
-                brand = national_brand or rng.choice(cat["brands"][retailer])
-                uom, coverage_spec = rng.choice(cat["uom"][retailer])
+                if derived:
+                    brand_pool = derived["brands"]
+                    uom_pool = cat["uom"][derived["uom_like"]]
+                else:
+                    brand_pool = cat["brands"][retailer]
+                    uom_pool = cat["uom"][retailer]
+                brand = national_brand or rng.choice(brand_pool)
+                uom, coverage_spec = rng.choice(uom_pool)
                 coverage = resolve_coverage(coverage_spec, specs, rng)
 
                 unit_price = fnd_unit * index
@@ -678,7 +722,7 @@ def build_rows():
                     {
                         "group_id": group_id,
                         "retailer": retailer,
-                        "retailer_sku": f"{retailer[:2].upper()}-{rng.randrange(100000, 999999)}",
+                        "retailer_sku": f"{retailer[:3].upper()}-{rng.randrange(100000, 999999)}",
                         "brand": brand,
                         "product_name": f"{series} {subcat}",
                         "price": f"{price:.2f}",
