@@ -33,6 +33,8 @@ class Quote:
     normalized: Optional[NormalizedOffer] = None
     match: Optional[MatchResult] = None
     delta_abs: Optional[float] = None
+    # (competitor - Floor & Decor) / Floor & Decor: POSITIVE = Floor & Decor is
+    # cheaper. This is the opposite sign to GroupComparison.gap_vs_market_min.
     delta_pct: Optional[float] = None
     list_delta_pct: Optional[float] = None
     included: bool = False
@@ -87,7 +89,14 @@ class GroupComparison:
 
     @property
     def gap_vs_market_min(self) -> Optional[float]:
-        """Negative means Floor & Decor undercuts the cheapest competitor."""
+        """Negative means Floor & Decor undercuts the cheapest competitor.
+
+        NOTE the sign is the opposite of `Quote.delta_pct`: this is Floor &
+        Decor measured against the market, so cheaper reads negative, while a
+        quote is the competitor measured against Floor & Decor, so a competitor
+        being dearer reads positive. Both are natural in isolation and easy to
+        confuse in prose - every report that prints either states its direction.
+        """
         if not self.base_price or not self.market_min:
             return None
         return round((self.base_price - self.market_min) / self.market_min, 4)

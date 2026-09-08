@@ -138,3 +138,30 @@ class CommonBasketTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SignConventionTest(unittest.TestCase):
+    """The codebase carries two opposite sign conventions; pin both down."""
+
+    def test_positive_quote_delta_means_floor_and_decor_is_cheaper(self):
+        comp = comparison("G1", 2.00, 2.20)
+        self.assertAlmostEqual(comp.quotes["home_depot"].delta_pct, 0.10, places=4)
+        self.assertEqual(comp.outcome, "win")
+
+    def test_negative_market_gap_means_floor_and_decor_is_cheaper(self):
+        comp = comparison("G1", 2.00, 2.20)
+        self.assertLess(comp.gap_vs_market_min, 0)
+
+    def test_the_two_conventions_are_opposite_for_the_same_sku(self):
+        comp = comparison("G1", 2.00, 2.20)
+        self.assertGreater(comp.quotes["home_depot"].delta_pct, 0)
+        self.assertLess(comp.gap_vs_market_min, 0)
+
+    def test_a_positive_median_gap_basket_means_floor_and_decor_wins_most_skus(self):
+        basket = build_basket([
+            comparison("G1", 2.00, 2.20),
+            comparison("G2", 2.00, 2.20),
+            comparison("G3", 2.00, 1.90),
+        ], "home_depot")
+        self.assertGreater(basket.median_gap, 0)
+        self.assertEqual((basket.wins, basket.losses), (2, 1))

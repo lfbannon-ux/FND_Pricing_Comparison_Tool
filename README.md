@@ -205,13 +205,18 @@ tile, and gives ground on the categories where the home centres are strong.
 | Net annual advantage vs market low | $3.4M |
 | Annual expense priced above market low | $233k across 4 categories |
 
-On the 43-SKU identical-goods basket the advantage narrows sharply — from ~8–13%
-across all match tiers to **−4.6% vs Home Depot and −2.9% vs Lowe's** — and the
-unweighted view reverses outright: on the *median* identical SKU, Floor & Decor
-is 2.0% dearer than Home Depot and 3.7% dearer than Lowe's. The basket is
-cheaper because Floor & Decor wins the high-volume items in it, not because it
-is broadly cheaper on branded goods. Most of the headline advantage lives in
-private-label spec-equivalents, not in identical SKUs.
+On the 43-SKU identical-goods basket the advantage **narrows but does not
+reverse**: the basket costs 4.6% less than Home Depot and 2.9% less than Lowe's,
+against ~13% and ~11% across all match tiers, and Floor & Decor is still cheaper
+on the median identical SKU (by 2.0% and 3.7%) and on 23 and 28 of the 43 SKUs
+respectively. Most of the *size* of the headline advantage lives in private-label
+spec-equivalents; the direction holds on identical goods too.
+
+Note the two sign conventions in the codebase: `Quote.delta_pct` is the
+competitor measured against Floor & Decor (**positive = Floor & Decor cheaper**),
+while `GroupComparison.gap_vs_market_min` is Floor & Decor measured against the
+market (**negative = Floor & Decor cheaper**). Every report that prints either
+states its direction inline.
 
 Expense is heavily concentrated: Luxury Vinyl Plank alone is 38% of it ($14.5M),
 and the top four categories carry 72%. The expense view also reverses the

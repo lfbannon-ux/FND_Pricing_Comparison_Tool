@@ -279,6 +279,7 @@ def cmd_basket(args) -> int:
     print("  Weighted by annual volume - what the basket costs. The unweighted view")
     print("  below answers a different question and does not have to agree:")
     print()
+    print("  (per-SKU figures: POSITIVE = the competitor is dearer = Floor & Decor cheaper)")
     for retailer in COMPETITORS:
         basket = basket_set.common_baskets[retailer]
         print(f"  vs {RETAILER_LABELS[retailer]:<14}median SKU {_pct(basket.median_gap)}"
