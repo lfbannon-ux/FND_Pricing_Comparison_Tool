@@ -142,6 +142,25 @@ flagged, not silently dropped: `no_competitor_offer`, `weak_match`,
 `competitor_out_of_stock`, `promo_driven_gap` (the gap reverses at list price,
 so it is temporary), `extreme_gap` (>40%), `uom_conversion_error`.
 
+## Collecting the identical-SKU basket
+
+The fastest route to a defensible number. `data/collection/identical_sku_worksheet.csv`
+ships pre-filled with 53 national-brand candidates — brand, product, pack size and
+unit of measure done; only prices and carriage to fill in. Every row is the same
+brand and model at all three retailers, so the comparison needs no spec judgement.
+
+```bash
+python3 scripts/build_collection_worksheet.py      # regenerate a blank worksheet
+# ... fill it in (see data/collection/README.md) ...
+python3 -m fnd_pricing ingest data/collection/identical_sku_worksheet.csv
+python3 -m fnd_pricing validate && python3 -m fnd_pricing basket
+```
+
+Ingest refuses any row where `same_product_confirmed` is not set: an
+identical-SKU basket built from unconfirmed identities is just the spec-matched
+comparison wearing a better name. Untouched rows are reported as "not yet
+collected", so partial runs resume cleanly.
+
 ## Loading real prices
 
 1. Generate the collection template:
@@ -243,16 +262,18 @@ src/fnd_pricing/
   compare.py     gaps, outcomes, exception flags, rollups, basket index
   spend.py       annual expense by category on matched baskets
   basket.py      single-tier basket pricing (identical-SKU comparison)
+  collect.py     collection worksheet <-> canonical data files
   charts.py      inline SVG bar and diverging charts for the report
   report.py      self-contained HTML report
   excel.py       multi-sheet workbook (Summary / Category Expense / SKU Detail /
                  Offers / Exceptions)
   cli.py         validate | compare | index | basket | report | export |
-                 template
+                 ingest | template
+data/collection/ identical-SKU worksheet + collection guide
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           78 unit tests
+tests/           95 unit tests
 ```
 
 ## Tests

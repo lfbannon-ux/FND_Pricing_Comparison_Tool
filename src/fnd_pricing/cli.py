@@ -19,6 +19,7 @@ from . import BASE_RETAILER, RETAILER_LABELS, RETAILERS
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
 from .basket import build_basket_set, qualifies
+from .collect import ingest_worksheet, write_canonical
 from .matching import DEFAULT_MIN_TIER, TIER_EXACT, TIER_ORDER
 from .spend import MARKET_LOW, expense_by_category, total_expense
 from .models import DataError
@@ -383,6 +384,38 @@ def cmd_export(args) -> int:
     return 0
 
 
+def cmd_ingest(args) -> int:
+    """Convert a filled collection worksheet into the canonical data files."""
+    source = Path(args.worksheet)
+    report = ingest_worksheet(source)
+
+    groups_out = Path(args.groups_out or DEFAULT_GROUPS)
+    products_out = Path(args.products_out or DEFAULT_PRODUCTS)
+    if not args.force and (groups_out.exists() or products_out.exists()):
+        raise SystemExit(
+            f"{groups_out} / {products_out} already exist. Pass --force to overwrite, "
+            f"or --groups-out/--products-out to write elsewhere so the existing "
+            f"dataset is preserved."
+        )
+
+    write_canonical(report, groups_out, products_out)
+    print(f"Ingested {len(report.groups)} SKU(s) and {len(report.offers)} offer(s) "
+          f"from {source}")
+    print(f"  priced at all three retailers: {report.three_way}")
+    print(f"  -> {groups_out}")
+    print(f"  -> {products_out}")
+    if report.not_started:
+        print(f"  not yet collected: {report.not_started} candidate(s) still blank")
+    if report.skipped:
+        print(f"\nNeeds attention - {len(report.skipped)} row(s):")
+        for candidate_id, reason in report.skipped[:20]:
+            print(f"  {candidate_id}: {reason}")
+        if len(report.skipped) > 20:
+            print(f"  ... and {len(report.skipped) - 20} more")
+    print("\nNext: python3 -m fnd_pricing validate && python3 -m fnd_pricing basket")
+    return 0
+
+
 def cmd_template(args) -> int:
     out = Path(args.out or ROOT / "data/templates/price_collection_template.csv")
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -456,6 +489,15 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_argument("--category", help="filter to categories containing this text")
     sub.add_argument("--out", help="output path")
     sub.set_defaults(func=cmd_export)
+
+    sub = subparsers.add_parser(
+        "ingest", help="convert a filled collection worksheet into the data files")
+    sub.add_argument("worksheet", help="path to the filled collection worksheet CSV")
+    sub.add_argument("--groups-out", help="where to write sku_groups.csv")
+    sub.add_argument("--products-out", help="where to write products.csv")
+    sub.add_argument("--force", action="store_true",
+                     help="overwrite existing data files")
+    sub.set_defaults(func=cmd_ingest)
 
     sub = subparsers.add_parser("template", help="write a blank price collection CSV")
     sub.add_argument("--out", help="output path")
