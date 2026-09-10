@@ -312,6 +312,33 @@ actually charge for this item" — it shows `$88.99 per_box / 29.69 sq ft` besid
 that carries nothing comparable is **blank, never zero**: a zero would price the item
 as free and win every comparison it entered.
 
+## Everyday low price vs high-low: read both
+
+Every price in the study is the price payable today, so a promotion on any side
+moves the comparison. That is the right default for "what would a customer pay
+this week", and it is the wrong default for reading an **everyday-low-price
+position**: an EDLP retailer holds a stable shelf price while high-low
+competitors dip in and out of promotion, so a promo-inclusive snapshot flatters
+whoever happens to be on sale and understates the EDLP one.
+
+`--list-price` prices every offer at its shelf price, ignoring promotions on
+**all** sides — symmetric, or it would simply flatter Floor & Decor:
+
+```bash
+python3 -m fnd_pricing compare                # as priced today
+python3 -m fnd_pricing --list-price compare   # as priced on the shelf
+```
+
+The two answer different questions and both are true. `compare` also flags
+`promo_driven_gap` on any SKU whose gap reverses between the two, so a temporary
+discount is never mistaken for a price position.
+
+**A snapshot cannot measure EDLP properly at all.** EDLP's value is price
+*stability*, which is a property of a price series, not of one day. Comparing a
+single day catches competitors at a random point in their promotional cycle. The
+honest measure is a time-weighted average across repeated collections — which is
+the strongest argument for archiving every collection run from the first one.
+
 ## Narrowing the competitive set
 
 `--exclude` and `--only` change which banners a run compares, without a second

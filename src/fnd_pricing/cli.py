@@ -40,7 +40,10 @@ def _pct(value: Optional[float]) -> str:
 
 def _load(args) -> List[GroupComparison]:
     groups, offers = load_dataset(Path(args.groups), Path(args.products))
-    comparisons = compare_all(groups, offers, min_tier=args.min_tier)
+    comparisons = compare_all(
+        groups, offers, min_tier=args.min_tier,
+        use_list_price=getattr(args, "list_price", False),
+    )
     if getattr(args, "category", None):
         wanted = args.category.lower()
         comparisons = [
@@ -646,6 +649,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="weakest match tier admitted to the comparison (default: %(default)s)",
     )
     parser.add_argument(
+        "--list-price", action="store_true",
+        help="price every offer at its shelf price, ignoring promotions on all "
+             "sides. Use it to read an everyday-low-price position, which a "
+             "promo-inclusive snapshot understates.",
+    )
+    parser.add_argument(
         "--exclude", action="append", default=[], metavar="RETAILER",
         help="drop a competitor from this run, e.g. --exclude tile_shop. "
              "Repeatable. This changes what the market low is measured "
@@ -740,6 +749,8 @@ def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
     try:
         _apply_retailer_filter(args)
+        if args.list_price:
+            print("[pricing at list: promotions ignored on all sides]")
         if set(active_retailers()) != set(RETAILERS):
             dropped = [RETAILER_LABELS[r] for r in RETAILERS
                        if r not in set(active_retailers())]

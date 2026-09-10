@@ -119,6 +119,7 @@ def _build_quote(
     group: SkuGroup,
     base: Optional[NormalizedOffer],
     min_tier: str,
+    use_list_price: bool = False,
 ) -> Quote:
     quote = Quote(retailer=retailer)
     if offer is None:
@@ -126,7 +127,7 @@ def _build_quote(
         return quote
 
     try:
-        quote.normalized = normalize(offer, group.basis)
+        quote.normalized = normalize(offer, group.basis, use_list_price)
     except DataError as exc:
         quote.note = str(exc)
         return quote
@@ -161,7 +162,8 @@ def _build_quote(
 
 
 def compare_group(
-    group: SkuGroup, offers: Iterable[Offer], min_tier: str = DEFAULT_MIN_TIER
+    group: SkuGroup, offers: Iterable[Offer], min_tier: str = DEFAULT_MIN_TIER,
+    use_list_price: bool = False,
 ) -> GroupComparison:
     by_retailer = {offer.retailer: offer for offer in offers}
     base_offer = by_retailer.get(BASE_RETAILER)
@@ -170,7 +172,7 @@ def compare_group(
     flags: List[str] = []
     if base_offer is not None:
         try:
-            base = normalize(base_offer, group.basis)
+            base = normalize(base_offer, group.basis, use_list_price)
         except DataError:
             flags.append(FLAG_UOM)
     else:
@@ -178,7 +180,7 @@ def compare_group(
 
     quotes = {
         retailer: _build_quote(
-            retailer, by_retailer.get(retailer), group, base, min_tier
+            retailer, by_retailer.get(retailer), group, base, min_tier, use_list_price
         )
         for retailer in competitors()
     }
@@ -215,12 +217,14 @@ def compare_all(
     groups: Dict[str, SkuGroup],
     offers: Iterable[Offer],
     min_tier: str = DEFAULT_MIN_TIER,
+    use_list_price: bool = False,
 ) -> List[GroupComparison]:
     grouped: Dict[str, List[Offer]] = {gid: [] for gid in groups}
     for offer in offers:
         grouped[offer.group_id].append(offer)
     return [
-        compare_group(groups[gid], grouped[gid], min_tier=min_tier)
+        compare_group(groups[gid], grouped[gid], min_tier=min_tier,
+                      use_list_price=use_list_price)
         for gid in groups
     ]
 

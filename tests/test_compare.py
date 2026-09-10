@@ -124,3 +124,59 @@ class CompareTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ListPriceModeTest(unittest.TestCase):
+    """Everyday-low-price positions need a promo-free view to be visible."""
+
+    def test_list_price_mode_ignores_a_competitor_promotion(self):
+        # Shelf: F&D 2.00, HD 2.50 - F&D is cheaper every day. Today HD is on
+        # promotion at 1.80, so a promo-inclusive snapshot calls it a loss.
+        offers = [
+            offer("floor_and_decor", 2.00),
+            offer("home_depot", 2.50, promo_price=1.80),
+        ]
+        today = compare_group(group(), offers)
+        self.assertEqual(today.outcome, "loss")
+
+        shelf = compare_group(group(), offers, use_list_price=True)
+        self.assertEqual(shelf.outcome, "win")
+        self.assertEqual(shelf.quotes["home_depot"].unit_price, 2.50)
+
+    def test_list_price_mode_also_ignores_the_base_retailer_promotion(self):
+        # It must be symmetric, or it just flatters Floor & Decor.
+        offers = [
+            offer("floor_and_decor", 2.50, promo_price=1.80),
+            offer("home_depot", 2.00),
+        ]
+        self.assertEqual(compare_group(group(), offers).outcome, "win")
+        self.assertEqual(
+            compare_group(group(), offers, use_list_price=True).outcome, "loss"
+        )
+
+    def test_a_gap_unaffected_by_promotions_is_identical_in_both_modes(self):
+        offers = [offer("floor_and_decor", 2.00), offer("home_depot", 2.50)]
+        today = compare_group(group(), offers)
+        shelf = compare_group(group(), offers, use_list_price=True)
+        self.assertEqual(today.gap_vs_market_min, shelf.gap_vs_market_min)
+
+    def test_the_promo_driven_flag_marks_exactly_these_reversals(self):
+        offers = [
+            offer("floor_and_decor", 2.00),
+            offer("home_depot", 2.50, promo_price=1.80),
+        ]
+        comp = compare_group(group(), offers)
+        self.assertIn(f"{FLAG_PROMO_DRIVEN}:home_depot", comp.flags)
+        # The flag and the list-price mode must agree about which SKU it is.
+        self.assertNotEqual(
+            comp.outcome, compare_group(group(), offers, use_list_price=True).outcome
+        )
+
+    def test_list_price_is_preserved_in_both_modes(self):
+        offers = [
+            offer("floor_and_decor", 2.00),
+            offer("home_depot", 2.50, promo_price=1.80),
+        ]
+        for use_list in (False, True):
+            comp = compare_group(group(), offers, use_list_price=use_list)
+            self.assertEqual(comp.quotes["home_depot"].normalized.list_unit_price, 2.50)

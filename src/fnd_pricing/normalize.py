@@ -55,8 +55,11 @@ def _convert(price: float, offer: Offer) -> float:
     return value * _POST_SCALE.get(offer.uom, 1.0)
 
 
-def normalize(offer: Offer, basis: str) -> NormalizedOffer:
+def normalize(offer: Offer, basis: str, use_list_price: bool = False) -> NormalizedOffer:
     """Restate `offer` on `basis`, raising if the offer's uom cannot get there.
+
+    Pass `use_list_price` to price the offer at its shelf price, ignoring any
+    promotion currently running on it.
 
     A uom that resolves to a different basis is a data error, not something to
     silently coerce: comparing a per-piece transition strip against a per-sq-ft
@@ -69,7 +72,12 @@ def normalize(offer: Offer, basis: str) -> NormalizedOffer:
             f"{offer_basis!r} but the SKU group is compared on {basis!r}"
         )
 
-    unit_price = _convert(offer.effective_price, offer)
+    # `use_list_price` ignores today's promotions on every side. It exists for
+    # a real asymmetry: an everyday-low-price retailer holds a stable shelf
+    # price while high-low competitors dip in and out of promotion, so a
+    # promo-inclusive snapshot flatters whoever happens to be on sale that week
+    # and systematically understates the EDLP position.
+    unit_price = _convert(offer.price if use_list_price else offer.effective_price, offer)
     list_unit_price = _convert(offer.price, offer)
 
     if needs_coverage:
