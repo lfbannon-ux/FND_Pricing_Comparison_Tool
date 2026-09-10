@@ -355,3 +355,138 @@ class FlooringWorksheetTest(unittest.TestCase):
         for row in self.rows:
             for retailer in RETAILERS:
                 self.assertEqual(row[f"{RETAILER_CODES[retailer]}_price"], "")
+
+
+class MergeWorksheetsTest(unittest.TestCase):
+    """Two instruments, one dataset - without either losing its identity."""
+
+    def setUp(self):
+        from fnd_pricing.collect import STANDARD_SPEC
+
+        self.dir = Path(tempfile.mkdtemp())
+        self.identical = Candidate(
+            candidate_id="C001", category="Setting Materials", basis="lb",
+            brand="MAPEI", product="Ultraflex 2", pack="50 lb bag",
+            record_uom="per_bag", specs="chemistry=modified thinset",
+            pack_coverage="50",
+        )
+        self.spec = Candidate(
+            candidate_id="F001", category="Luxury Vinyl Plank", basis="sq_ft",
+            brand="", product="Mid-tier SPC", pack="", record_uom="per_sq_ft",
+            specs="core=SPC;wear_layer_mil=20;width_in=7",
+            match_standard=STANDARD_SPEC,
+        )
+
+    def _sheet(self, candidate, filler, name):
+        path = self.dir / name
+        write_worksheet([candidate], path)
+        rows = list(csv.DictReader(open(path, encoding="utf-8")))
+        filler(rows[0])
+        with open(path, "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=worksheet_columns())
+            writer.writeheader()
+            writer.writerows(rows)
+        return path
+
+    def _fill_identical(self, row):
+        row["same_product_confirmed"] = "y"
+        row["collected_on"] = "2026-09-10"
+        row["annual_volume"] = "1000"
+        for prefix, price in (("fnd", 24.98), ("hd", 26.98)):
+            row[f"{prefix}_carried"] = "y"
+            row[f"{prefix}_price"] = str(price)
+
+    def _fill_spec(self, row):
+        row["collected_on"] = "2026-09-10"
+        row["annual_volume"] = "1000"
+        for prefix, brand, price in (("fnd", "NuCore", 2.99), ("hd", "LifeProof", 3.49)):
+            row[f"{prefix}_carried"] = "y"
+            row[f"{prefix}_brand"] = brand
+            row[f"{prefix}_specs"] = row["specs"]
+            row[f"{prefix}_price"] = str(price)
+
+    def test_both_worksheets_merge_into_one_dataset(self):
+        from fnd_pricing.collect import ingest_worksheets
+
+        paths = [
+            self._sheet(self.identical, self._fill_identical, "a.csv"),
+            self._sheet(self.spec, self._fill_spec, "b.csv"),
+        ]
+        report = ingest_worksheets(paths)
+        self.assertEqual({g["group_id"] for g in report.groups}, {"C001", "F001"})
+        self.assertEqual(len(report.offers), 4)
+
+    def test_the_two_grades_stay_separable_by_tier(self):
+        # No extra bookkeeping: --tier exact isolates the identical rows because
+        # a spec-matched row carries different brands and cannot score exact.
+        from fnd_pricing.collect import ingest_worksheets
+
+        paths = [
+            self._sheet(self.identical, self._fill_identical, "a.csv"),
+            self._sheet(self.spec, self._fill_spec, "b.csv"),
+        ]
+        report = ingest_worksheets(paths)
+        write_canonical(report, self.dir / "g.csv", self.dir / "p.csv")
+        groups, offers = load_dataset(self.dir / "g.csv", self.dir / "p.csv")
+        by_id = {c.group.group_id: c for c in compare_all(groups, offers)}
+        self.assertEqual(by_id["C001"].quotes["home_depot"].tier, "exact")
+        self.assertEqual(by_id["F001"].quotes["home_depot"].tier, "equivalent")
+
+    def test_a_colliding_candidate_id_is_refused(self):
+        from fnd_pricing.collect import ingest_worksheets
+
+        first = self._sheet(self.identical, self._fill_identical, "a.csv")
+        second = self._sheet(self.identical, self._fill_identical, "b.csv")
+        with self.assertRaises(DataError) as ctx:
+            ingest_worksheets([first, second])
+        self.assertIn("already used by", str(ctx.exception))
+
+    def test_provenance_defaults_to_collected_but_is_not_forced(self):
+        # A dry run must be able to say so; ingest used to stamp every row
+        # "collected" regardless of what it actually was.
+        from fnd_pricing.collect import ingest_worksheet
+
+        path = self._sheet(self.identical, self._fill_identical, "a.csv")
+        self.assertTrue(
+            all(o["data_source"] == "collected"
+                for o in ingest_worksheet(path).offers)
+        )
+
+        rows = list(csv.DictReader(open(path, encoding="utf-8")))
+        rows[0]["data_source"] = "seed_estimate"
+        with open(path, "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=worksheet_columns())
+            writer.writeheader()
+            writer.writerows(rows)
+        self.assertTrue(
+            all(o["data_source"] == "seed_estimate"
+                for o in ingest_worksheet(path).offers)
+        )
+
+
+class DemoDatasetTest(unittest.TestCase):
+    """The shipped dry run must never look like collected data."""
+
+    DEMO = ROOT / "data/demo"
+
+    def test_every_demo_row_is_stamped_as_an_estimate(self):
+        import csv as _csv
+
+        products = self.DEMO / "products.csv"
+        if not products.exists():
+            self.skipTest("demo dataset not generated")
+        rows = list(_csv.DictReader(open(products, encoding="utf-8")))
+        self.assertTrue(rows)
+        for row in rows:
+            self.assertEqual(row["data_source"], "seed_estimate")
+
+    def test_demo_files_are_not_in_the_collection_directory(self):
+        collection = ROOT / "data/collection"
+        for path in collection.glob("*.csv"):
+            with open(path, encoding="utf-8") as handle:
+                for row in csv.DictReader(handle):
+                    for prefix in ("fnd", "hd", "lw", "mnd", "tsh"):
+                        self.assertEqual(
+                            row[f"{prefix}_price"], "",
+                            f"{path.name} ships a price - worksheets must be blank",
+                        )

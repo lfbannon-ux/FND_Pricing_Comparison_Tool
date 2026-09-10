@@ -19,7 +19,7 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Sequence, Tuple
 
 from . import RETAILER_CODES, RETAILERS
 from .loader import GROUP_COLUMNS, PRODUCT_COLUMNS, parse_specs
@@ -46,8 +46,14 @@ IDENTITY_COLUMNS = [
     "annual_volume",
     "same_product_confirmed",
     "collected_on",
+    "data_source",
     "notes",
 ]
+
+# Provenance travels with the row. Ingest used to stamp every offer
+# "collected", which quietly promoted a dry run into observed data; a worksheet
+# now says what its numbers are and the claim survives into the dataset.
+DEFAULT_DATA_SOURCE = "collected"
 
 PER_RETAILER_FIELDS = [
     # `uom` is per retailer, not per row: a 50 lb bag is a 50 lb bag everywhere,
@@ -104,6 +110,7 @@ def write_worksheet(candidates: List[Candidate], path: Path) -> Path:
                 "annual_volume": "",
                 "same_product_confirmed": "",
                 "collected_on": "",
+                "data_source": "",
                 "notes": candidate.notes,
             }
             for retailer in RETAILERS:
@@ -209,6 +216,7 @@ def ingest_worksheet(path: Path) -> IngestReport:
                     ))
                     continue
 
+            data_source = (row["data_source"] or "").strip() or DEFAULT_DATA_SOURCE
             specs = parse_specs(row["specs"])
             groups.append({
                 "group_id": candidate_id,
@@ -243,7 +251,7 @@ def ingest_worksheet(path: Path) -> IngestReport:
                     "promo_price": row[f"{prefix}_promo_price"].strip(),
                     "in_stock": "yes",
                     "collected_on": (row["collected_on"] or "").strip(),
-                    "data_source": "collected",
+                    "data_source": data_source,
                     "url": row[f"{prefix}_url"].strip(),
                     "specs": offer_specs,
                 })
@@ -257,6 +265,38 @@ def ingest_worksheet(path: Path) -> IngestReport:
     return IngestReport(
         groups=groups, offers=offers, skipped=skipped, not_started=not_started
     )
+
+
+def ingest_worksheets(paths: Sequence[Path]) -> IngestReport:
+    """Ingest several worksheets into one dataset.
+
+    The collections are deliberately separate instruments - one asks for
+    identical SKUs, the other for the closest comparable - but they describe the
+    same assortment and belong in one dataset. They stay distinguishable in the
+    result without extra bookkeeping: a spec-matched row cannot score as
+    `exact`, so `--min-tier exact` isolates the identical-SKU rows and
+    `--min-tier equivalent` reads everything.
+    """
+    merged = IngestReport(groups=[], offers=[], skipped=[], not_started=0)
+    seen: Dict[str, Path] = {}
+
+    for path in paths:
+        report = ingest_worksheet(path)
+        for group in report.groups:
+            group_id = group["group_id"]
+            if group_id in seen:
+                raise DataError(
+                    f"{path}: candidate_id {group_id!r} already used by "
+                    f"{seen[group_id]}. Give each worksheet its own id prefix so "
+                    f"rows cannot silently overwrite each other."
+                )
+            seen[group_id] = path
+        merged.groups.extend(report.groups)
+        merged.offers.extend(report.offers)
+        merged.skipped.extend(report.skipped)
+        merged.not_started += report.not_started
+
+    return merged
 
 
 def write_canonical(report: IngestReport, groups_path: Path, products_path: Path) -> None:

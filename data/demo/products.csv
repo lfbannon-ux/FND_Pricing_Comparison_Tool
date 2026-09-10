@@ -1,0 +1,421 @@
+group_id,retailer,retailer_sku,brand,product_name,price,uom,pack_coverage,promo_price,in_stock,collected_on,data_source,url,specs
+C001,floor_and_decor,FND-271657,Custom Building Products,VersaBond Gray Fortified Thin-Set (MTSG50),29.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=standard
+C001,home_depot,HD-366502,Custom Building Products,VersaBond Gray Fortified Thin-Set (MTSG50),30.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=standard
+C001,menards,MND-827768,Custom Building Products,VersaBond Gray Fortified Thin-Set (MTSG50),27.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=standard
+C001,tile_shop,TSH-878552,Custom Building Products,VersaBond Gray Fortified Thin-Set (MTSG50),32.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=standard
+C002,floor_and_decor,FND-220780,Custom Building Products,VersaBond White Professional Thin-Set (MTSW50),24.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C002,home_depot,HD-805608,Custom Building Products,VersaBond White Professional Thin-Set (MTSW50),26.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C002,lowes,LW-755507,Custom Building Products,VersaBond White Professional Thin-Set (MTSW50),25.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C002,menards,MND-438864,Custom Building Products,VersaBond White Professional Thin-Set (MTSW50),24.98,per_bag,50,21.98,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C002,tile_shop,TSH-552397,Custom Building Products,VersaBond White Professional Thin-Set (MTSW50),25.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C003,floor_and_decor,FND-450904,Custom Building Products,VersaBond-LFT Gray Large Format Mortar,22.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=large format mortar;color_family=gray;grade=premium
+C003,home_depot,HD-891138,Custom Building Products,VersaBond-LFT Gray Large Format Mortar,23.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=large format mortar;color_family=gray;grade=premium
+C003,lowes,LW-948469,Custom Building Products,VersaBond-LFT Gray Large Format Mortar,24.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=large format mortar;color_family=gray;grade=premium
+C003,menards,MND-552261,Custom Building Products,VersaBond-LFT Gray Large Format Mortar,22.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=large format mortar;color_family=gray;grade=premium
+C003,tile_shop,TSH-702644,Custom Building Products,VersaBond-LFT Gray Large Format Mortar,24.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=large format mortar;color_family=gray;grade=premium
+C004,floor_and_decor,FND-430863,MAPEI,Ultraflex 2 Gray Polymer-Modified Mortar,27.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C004,home_depot,HD-998475,MAPEI,Ultraflex 2 Gray Polymer-Modified Mortar,28.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C004,lowes,LW-295448,MAPEI,Ultraflex 2 Gray Polymer-Modified Mortar,27.98,per_bag,50,25.98,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C004,menards,MND-139932,MAPEI,Ultraflex 2 Gray Polymer-Modified Mortar,26.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C004,tile_shop,TSH-610254,MAPEI,Ultraflex 2 Gray Polymer-Modified Mortar,28.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C005,floor_and_decor,FND-427879,MAPEI,Ultraflex 1 White Mortar,28.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C005,home_depot,HD-638011,MAPEI,Ultraflex 1 White Mortar,28.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C005,lowes,LW-980509,MAPEI,Ultraflex 1 White Mortar,30.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C005,tile_shop,TSH-487263,MAPEI,Ultraflex 1 White Mortar,31.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=white;grade=standard
+C006,floor_and_decor,FND-308679,MAPEI,Type 1 Ceramic Tile Adhesive,0.49,per_each,,0.49,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C006,home_depot,HD-992354,MAPEI,Type 1 Ceramic Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C006,lowes,LW-463315,MAPEI,Type 1 Ceramic Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C006,menards,MND-500441,MAPEI,Type 1 Ceramic Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C006,tile_shop,TSH-431176,MAPEI,Type 1 Ceramic Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C007,floor_and_decor,FND-944030,Laticrete,254 Platinum Gray Multipurpose Mortar,16.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C007,home_depot,HD-572450,Laticrete,254 Platinum Gray Multipurpose Mortar,16.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C007,menards,MND-992992,Laticrete,254 Platinum Gray Multipurpose Mortar,16.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C007,tile_shop,TSH-797918,Laticrete,254 Platinum Gray Multipurpose Mortar,18.98,per_bag,50,,yes,2026-09-10,seed_estimate,,chemistry=modified thinset;color_family=gray;grade=premium
+C008,floor_and_decor,FND-225403,Custom Building Products,AcrylPro Professional Tile Adhesive,0.39,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C008,home_depot,HD-433627,Custom Building Products,AcrylPro Professional Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C008,lowes,LW-957128,Custom Building Products,AcrylPro Professional Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C008,menards,MND-187215,Custom Building Products,AcrylPro Professional Tile Adhesive,0.39,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C008,tile_shop,TSH-470106,Custom Building Products,AcrylPro Professional Tile Adhesive,0.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=mastic;grade=standard
+C009,floor_and_decor,FND-389600,Custom Building Products,Fusion Pro Single Component Grout,0.99,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C009,home_depot,HD-954089,Custom Building Products,Fusion Pro Single Component Grout,1.09,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C009,lowes,LW-535961,Custom Building Products,Fusion Pro Single Component Grout,1.09,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C009,menards,MND-255197,Custom Building Products,Fusion Pro Single Component Grout,1.09,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C009,tile_shop,TSH-421849,Custom Building Products,Fusion Pro Single Component Grout,1.09,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C010,floor_and_decor,FND-141690,Custom Building Products,Polyblend Plus Sanded Grout,29.98,per_bag,25,26.98,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C010,home_depot,HD-306774,Custom Building Products,Polyblend Plus Sanded Grout,32.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C010,lowes,LW-807375,Custom Building Products,Polyblend Plus Sanded Grout,32.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C010,menards,MND-276578,Custom Building Products,Polyblend Plus Sanded Grout,29.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C011,floor_and_decor,FND-550031,Custom Building Products,Polyblend Plus Non-Sanded Grout,14.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C011,lowes,LW-439731,Custom Building Products,Polyblend Plus Non-Sanded Grout,15.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C011,menards,MND-490470,Custom Building Products,Polyblend Plus Non-Sanded Grout,14.98,per_bag,10,13.98,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C011,tile_shop,TSH-913579,Custom Building Products,Polyblend Plus Non-Sanded Grout,17.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C012,floor_and_decor,FND-388741,MAPEI,Keracolor S Sanded Grout,30.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C012,home_depot,HD-388374,MAPEI,Keracolor S Sanded Grout,34.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C012,lowes,LW-661898,MAPEI,Keracolor S Sanded Grout,33.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C012,menards,MND-143423,MAPEI,Keracolor S Sanded Grout,29.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C012,tile_shop,TSH-237165,MAPEI,Keracolor S Sanded Grout,36.98,per_bag,25,,yes,2026-09-10,seed_estimate,,chemistry=sanded;joint_width=0.25
+C013,floor_and_decor,FND-139068,MAPEI,Keracolor U Unsanded Grout,14.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C013,home_depot,HD-499130,MAPEI,Keracolor U Unsanded Grout,14.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C013,lowes,LW-974383,MAPEI,Keracolor U Unsanded Grout,14.98,per_bag,10,12.98,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C013,menards,MND-774994,MAPEI,Keracolor U Unsanded Grout,14.98,per_bag,10,12.98,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C013,tile_shop,TSH-332830,MAPEI,Keracolor U Unsanded Grout,15.98,per_bag,10,,yes,2026-09-10,seed_estimate,,chemistry=unsanded;joint_width=0.125
+C014,floor_and_decor,FND-813408,MAPEI,Flexcolor CQ Ready-to-Use Grout,1.09,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C014,lowes,LW-136928,MAPEI,Flexcolor CQ Ready-to-Use Grout,1.19,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C014,menards,MND-557130,MAPEI,Flexcolor CQ Ready-to-Use Grout,1.19,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C014,tile_shop,TSH-969120,MAPEI,Flexcolor CQ Ready-to-Use Grout,1.19,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=single component;stain_resistant=yes
+C015,floor_and_decor,FND-159293,Custom Building Products,Commercial 100% Silicone Sealant,1.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=silicone
+C015,lowes,LW-652662,Custom Building Products,Commercial 100% Silicone Sealant,1.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=silicone
+C015,menards,MND-655264,Custom Building Products,Commercial 100% Silicone Sealant,1.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=silicone
+C015,tile_shop,TSH-864524,Custom Building Products,Commercial 100% Silicone Sealant,1.59,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=silicone
+C016,floor_and_decor,FND-976151,Custom Building Products,Polyblend Sanded Ceramic Tile Caulk,1.59,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=sanded caulk
+C016,home_depot,HD-671059,Custom Building Products,Polyblend Sanded Ceramic Tile Caulk,1.59,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=sanded caulk
+C016,lowes,LW-597214,Custom Building Products,Polyblend Sanded Ceramic Tile Caulk,1.49,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=sanded caulk
+C016,menards,MND-364008,Custom Building Products,Polyblend Sanded Ceramic Tile Caulk,1.59,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=sanded caulk
+C016,tile_shop,TSH-766009,Custom Building Products,Polyblend Sanded Ceramic Tile Caulk,1.79,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=sanded caulk
+C017,floor_and_decor,FND-577501,Schluter,DITRA Uncoupling Membrane (DITRA5M),129.00,per_roll_sqft,54,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C017,home_depot,HD-141553,Schluter,DITRA Uncoupling Membrane (DITRA5M),129.00,per_roll_sqft,54,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C017,menards,MND-270829,Schluter,DITRA Uncoupling Membrane (DITRA5M),129.00,per_roll_sqft,54,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C017,tile_shop,TSH-948502,Schluter,DITRA Uncoupling Membrane (DITRA5M),139.00,per_roll_sqft,54,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,floor_and_decor,FND-213155,Schluter,DITRA Uncoupling Membrane,409.00,per_roll_sqft,150,369.00,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,home_depot,HD-591242,Schluter,DITRA Uncoupling Membrane,439.00,per_roll_sqft,150,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,lowes,LW-257678,Schluter,DITRA Uncoupling Membrane,409.00,per_roll_sqft,150,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,menards,MND-343412,Schluter,DITRA Uncoupling Membrane,409.00,per_roll_sqft,150,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,tile_shop,TSH-994301,Schluter,DITRA Uncoupling Membrane,479.00,per_roll_sqft,150,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C019,floor_and_decor,FND-705991,Schluter,DITRA-XL Uncoupling Membrane,419.00,per_roll_sqft,175,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=7;function=uncoupling
+C019,home_depot,HD-675324,Schluter,DITRA-XL Uncoupling Membrane,459.00,per_roll_sqft,175,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=7;function=uncoupling
+C019,lowes,LW-973603,Schluter,DITRA-XL Uncoupling Membrane,409.00,per_roll_sqft,175,359.00,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=7;function=uncoupling
+C019,menards,MND-776427,Schluter,DITRA-XL Uncoupling Membrane,399.00,per_roll_sqft,175,339.00,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=7;function=uncoupling
+C019,tile_shop,TSH-771171,Schluter,DITRA-XL Uncoupling Membrane,479.00,per_roll_sqft,175,,yes,2026-09-10,seed_estimate,,material=polyethylene;thickness_mm=7;function=uncoupling
+C020,floor_and_decor,FND-787339,Schluter,KERDI 200 Waterproofing Membrane,239.00,per_roll_sqft,108,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=waterproofing
+C020,home_depot,HD-683470,Schluter,KERDI 200 Waterproofing Membrane,269.00,per_roll_sqft,108,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=waterproofing
+C020,lowes,LW-148858,Schluter,KERDI 200 Waterproofing Membrane,259.00,per_roll_sqft,108,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=waterproofing
+C020,menards,MND-417477,Schluter,KERDI 200 Waterproofing Membrane,229.00,per_roll_sqft,108,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=waterproofing
+C020,tile_shop,TSH-247500,Schluter,KERDI 200 Waterproofing Membrane,269.00,per_roll_sqft,108,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=waterproofing
+C021,floor_and_decor,FND-409513,Schluter,KERDI-BOARD Building Panel 1/2 in,2.79,per_each,,2.49,yes,2026-09-10,seed_estimate,,material=xps;thickness_in=0.5
+C021,home_depot,HD-752432,Schluter,KERDI-BOARD Building Panel 1/2 in,2.89,per_each,,,yes,2026-09-10,seed_estimate,,material=xps;thickness_in=0.5
+C021,lowes,LW-573161,Schluter,KERDI-BOARD Building Panel 1/2 in,2.99,per_each,,,yes,2026-09-10,seed_estimate,,material=xps;thickness_in=0.5
+C021,menards,MND-280565,Schluter,KERDI-BOARD Building Panel 1/2 in,2.89,per_each,,,yes,2026-09-10,seed_estimate,,material=xps;thickness_in=0.5
+C021,tile_shop,TSH-975298,Schluter,KERDI-BOARD Building Panel 1/2 in,3.09,per_each,,,yes,2026-09-10,seed_estimate,,material=xps;thickness_in=0.5
+C022,floor_and_decor,FND-690116,USG,Durock Brand Cement Board 1/2 in,2.29,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.5
+C022,home_depot,HD-507380,USG,Durock Brand Cement Board 1/2 in,2.49,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.5
+C022,lowes,LW-584908,USG,Durock Brand Cement Board 1/2 in,2.39,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.5
+C022,menards,MND-231327,USG,Durock Brand Cement Board 1/2 in,2.19,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.5
+C022,tile_shop,TSH-413603,USG,Durock Brand Cement Board 1/2 in,2.59,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.5
+C023,floor_and_decor,FND-858972,James Hardie,HardieBacker Cement Board 1/4 in,2.19,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.25
+C023,home_depot,HD-729296,James Hardie,HardieBacker Cement Board 1/4 in,2.19,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.25
+C023,menards,MND-384712,James Hardie,HardieBacker Cement Board 1/4 in,2.19,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.25
+C023,tile_shop,TSH-234795,James Hardie,HardieBacker Cement Board 1/4 in,2.39,per_each,,,yes,2026-09-10,seed_estimate,,material=cement board;thickness_in=0.25
+C024,floor_and_decor,FND-829038,Schluter,DITRA-HEAT Membrane,349.00,per_roll_sqft,134,299.00,yes,2026-09-10,seed_estimate,,material=polyethylene;function=heat
+C024,home_depot,HD-392559,Schluter,DITRA-HEAT Membrane,359.00,per_roll_sqft,134,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=heat
+C024,lowes,LW-229823,Schluter,DITRA-HEAT Membrane,359.00,per_roll_sqft,134,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=heat
+C024,menards,MND-248320,Schluter,DITRA-HEAT Membrane,359.00,per_roll_sqft,134,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=heat
+C024,tile_shop,TSH-415857,Schluter,DITRA-HEAT Membrane,389.00,per_roll_sqft,134,,yes,2026-09-10,seed_estimate,,material=polyethylene;function=heat
+C025,floor_and_decor,FND-260200,Schluter,JOLLY Anodized Aluminum Edge 3/8 in,42.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C025,home_depot,HD-980913,Schluter,JOLLY Anodized Aluminum Edge 3/8 in,43.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C025,lowes,LW-819064,Schluter,JOLLY Anodized Aluminum Edge 3/8 in,43.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C025,menards,MND-739398,Schluter,JOLLY Anodized Aluminum Edge 3/8 in,41.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C025,tile_shop,TSH-435810,Schluter,JOLLY Anodized Aluminum Edge 3/8 in,46.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C026,floor_and_decor,FND-359490,Schluter,RONDEC Anodized Aluminum Edge 3/8 in,79.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C026,home_depot,HD-590988,Schluter,RONDEC Anodized Aluminum Edge 3/8 in,80.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C026,lowes,LW-403766,Schluter,RONDEC Anodized Aluminum Edge 3/8 in,81.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C026,menards,MND-521942,Schluter,RONDEC Anodized Aluminum Edge 3/8 in,76.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C026,tile_shop,TSH-639692,Schluter,RONDEC Anodized Aluminum Edge 3/8 in,90.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C027,floor_and_decor,FND-737125,Schluter,SCHIENE Aluminum Edge 3/8 in,98.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=aluminum;height_mm=10
+C027,home_depot,HD-297487,Schluter,SCHIENE Aluminum Edge 3/8 in,97.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=aluminum;height_mm=10
+C027,lowes,LW-252659,Schluter,SCHIENE Aluminum Edge 3/8 in,99.00,per_piece,8.17,82.98,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=aluminum;height_mm=10
+C027,tile_shop,TSH-438137,Schluter,SCHIENE Aluminum Edge 3/8 in,99.00,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=square edge;material_trim=aluminum;height_mm=10
+C028,floor_and_decor,FND-243422,Schluter,RENO-U Aluminum Reducer 3/8 in,61.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C028,home_depot,HD-548716,Schluter,RENO-U Aluminum Reducer 3/8 in,63.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C028,lowes,LW-892970,Schluter,RENO-U Aluminum Reducer 3/8 in,67.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C028,menards,MND-472088,Schluter,RENO-U Aluminum Reducer 3/8 in,60.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C028,tile_shop,TSH-457977,Schluter,RENO-U Aluminum Reducer 3/8 in,70.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C029,floor_and_decor,FND-583683,Schluter,DILEX-KSA Movement Joint,94.98,per_piece,8.17,85.98,yes,2026-09-10,seed_estimate,,profile=movement joint;material_trim=stainless steel
+C029,home_depot,HD-800149,Schluter,DILEX-KSA Movement Joint,97.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=movement joint;material_trim=stainless steel
+C029,lowes,LW-854630,Schluter,DILEX-KSA Movement Joint,94.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=movement joint;material_trim=stainless steel
+C029,menards,MND-628330,Schluter,DILEX-KSA Movement Joint,97.98,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=movement joint;material_trim=stainless steel
+C029,tile_shop,TSH-629075,Schluter,DILEX-KSA Movement Joint,109.00,per_piece,8.17,,yes,2026-09-10,seed_estimate,,profile=movement joint;material_trim=stainless steel
+C030,floor_and_decor,FND-315171,Schluter,TREP-SE Stair Nosing,50.98,per_piece,4.92,,yes,2026-09-10,seed_estimate,,profile=stair nose;material_trim=aluminum
+C030,home_depot,HD-238639,Schluter,TREP-SE Stair Nosing,52.98,per_piece,4.92,,yes,2026-09-10,seed_estimate,,profile=stair nose;material_trim=aluminum
+C030,lowes,LW-949325,Schluter,TREP-SE Stair Nosing,50.98,per_piece,4.92,46.98,yes,2026-09-10,seed_estimate,,profile=stair nose;material_trim=aluminum
+C030,menards,MND-247918,Schluter,TREP-SE Stair Nosing,53.98,per_piece,4.92,,yes,2026-09-10,seed_estimate,,profile=stair nose;material_trim=aluminum
+C030,tile_shop,TSH-450824,Schluter,TREP-SE Stair Nosing,56.98,per_piece,4.92,,yes,2026-09-10,seed_estimate,,profile=stair nose;material_trim=aluminum
+C031,floor_and_decor,FND-616279,Roberts,Super Felt Cushion Underlayment,62.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=no
+C031,home_depot,HD-431916,Roberts,Super Felt Cushion Underlayment,66.98,per_roll_sqft,100,57.98,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=no
+C032,floor_and_decor,FND-633576,Roberts,Serenity Foam Underlayment,56.98,per_roll_sqft,100,50.98,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C032,home_depot,HD-903205,Roberts,Serenity Foam Underlayment,62.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C032,lowes,LW-793416,Roberts,Serenity Foam Underlayment,59.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C033,floor_and_decor,FND-383176,MP Global,QuietWalk Underlayment,58.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=yes
+C033,home_depot,HD-439995,MP Global,QuietWalk Underlayment,64.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=yes
+C033,lowes,LW-821741,MP Global,QuietWalk Underlayment,63.98,per_roll_sqft,100,55.98,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=yes
+C033,menards,MND-599869,MP Global,QuietWalk Underlayment,60.98,per_roll_sqft,100,,yes,2026-09-10,seed_estimate,,material=felt;thickness_mm=3;moisture_barrier=yes
+C034,floor_and_decor,FND-607891,Roberts,First Step Underlayment,329.00,per_roll_sqft,630,,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C034,home_depot,HD-846380,Roberts,First Step Underlayment,359.00,per_roll_sqft,630,309.00,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C034,lowes,LW-114953,Roberts,First Step Underlayment,349.00,per_roll_sqft,630,,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C034,menards,MND-565912,Roberts,First Step Underlayment,319.00,per_roll_sqft,630,279.00,yes,2026-09-10,seed_estimate,,material=foam;thickness_mm=2;moisture_barrier=yes
+C035,floor_and_decor,FND-801998,QEP,LASH Tile Leveling System Clips (100 ct),69.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling clips;power=manual
+C035,home_depot,HD-256049,QEP,LASH Tile Leveling System Clips (100 ct),69.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling clips;power=manual
+C035,lowes,LW-301114,QEP,LASH Tile Leveling System Clips (100 ct),75.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling clips;power=manual
+C035,menards,MND-492725,QEP,LASH Tile Leveling System Clips (100 ct),66.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling clips;power=manual
+C035,tile_shop,TSH-722599,QEP,LASH Tile Leveling System Clips (100 ct),74.98,per_each,,60.98,yes,2026-09-10,seed_estimate,,tool_type=leveling clips;power=manual
+C036,floor_and_decor,FND-545869,QEP,LASH Tile Leveling Wedges (48 ct),129.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling wedges;power=manual
+C036,home_depot,HD-457651,QEP,LASH Tile Leveling Wedges (48 ct),139.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling wedges;power=manual
+C036,menards,MND-800739,QEP,LASH Tile Leveling Wedges (48 ct),129.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=leveling wedges;power=manual
+C037,floor_and_decor,FND-484350,QEP,7 in Wet Tile Saw,21.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=wet saw;power=electric;capacity=7
+C037,home_depot,HD-177469,QEP,7 in Wet Tile Saw,21.98,per_each,,17.98,yes,2026-09-10,seed_estimate,,tool_type=wet saw;power=electric;capacity=7
+C037,lowes,LW-119288,QEP,7 in Wet Tile Saw,22.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=wet saw;power=electric;capacity=7
+C037,tile_shop,TSH-243824,QEP,7 in Wet Tile Saw,23.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=wet saw;power=electric;capacity=7
+C038,floor_and_decor,FND-673360,QEP,24 in Ceramic Tile Cutter,15.98,per_each,,13.98,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=24
+C038,lowes,LW-928519,QEP,24 in Ceramic Tile Cutter,15.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=24
+C038,tile_shop,TSH-321411,QEP,24 in Ceramic Tile Cutter,17.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=24
+C039,floor_and_decor,FND-654106,Rubi,TX-700 Tile Cutter,78.98,per_each,,68.98,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=28
+C039,home_depot,HD-253501,Rubi,TX-700 Tile Cutter,84.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=28
+C039,lowes,LW-248794,Rubi,TX-700 Tile Cutter,87.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=28
+C039,tile_shop,TSH-519938,Rubi,TX-700 Tile Cutter,92.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=snap cutter;power=manual;capacity=28
+C040,floor_and_decor,FND-653291,QEP,1/4 in x 3/8 in Square-Notch Trowel,55.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=notched trowel;power=manual;material=steel
+C040,home_depot,HD-548077,QEP,1/4 in x 3/8 in Square-Notch Trowel,61.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=notched trowel;power=manual;material=steel
+C040,lowes,LW-362549,QEP,1/4 in x 3/8 in Square-Notch Trowel,55.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=notched trowel;power=manual;material=steel
+C040,menards,MND-206538,QEP,1/4 in x 3/8 in Square-Notch Trowel,52.98,per_each,,42.98,yes,2026-09-10,seed_estimate,,tool_type=notched trowel;power=manual;material=steel
+C040,tile_shop,TSH-348154,QEP,1/4 in x 3/8 in Square-Notch Trowel,65.98,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=notched trowel;power=manual;material=steel
+C041,floor_and_decor,FND-273829,QEP,Gum Rubber Grout Float,159.00,per_each,,129.00,yes,2026-09-10,seed_estimate,,tool_type=grout float;power=manual
+C041,home_depot,HD-395037,QEP,Gum Rubber Grout Float,169.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=grout float;power=manual
+C041,menards,MND-864220,QEP,Gum Rubber Grout Float,159.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=grout float;power=manual
+C041,tile_shop,TSH-574793,QEP,Gum Rubber Grout Float,169.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=grout float;power=manual
+C042,floor_and_decor,FND-349283,QEP,Professional Knee Pads,139.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=knee pads;power=manual
+C042,home_depot,HD-784873,QEP,Professional Knee Pads,149.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=knee pads;power=manual
+C042,lowes,LW-349071,QEP,Professional Knee Pads,149.00,per_each,,129.00,yes,2026-09-10,seed_estimate,,tool_type=knee pads;power=manual
+C042,menards,MND-766516,QEP,Professional Knee Pads,129.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=knee pads;power=manual
+C042,tile_shop,TSH-899350,QEP,Professional Knee Pads,149.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=knee pads;power=manual
+C043,floor_and_decor,FND-825493,Marshalltown,Margin Trowel 5 in x 2 in,109.00,per_each,,92.98,yes,2026-09-10,seed_estimate,,tool_type=margin trowel;power=manual;material=steel
+C043,home_depot,HD-545378,Marshalltown,Margin Trowel 5 in x 2 in,119.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=margin trowel;power=manual;material=steel
+C043,lowes,LW-102103,Marshalltown,Margin Trowel 5 in x 2 in,109.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=margin trowel;power=manual;material=steel
+C043,tile_shop,TSH-667817,Marshalltown,Margin Trowel 5 in x 2 in,119.00,per_each,,,yes,2026-09-10,seed_estimate,,tool_type=margin trowel;power=manual;material=steel
+C044,floor_and_decor,FND-581682,Custom Building Products,Aqua Mix Sealer's Choice Gold,20.98,per_each,,19.98,yes,2026-09-10,seed_estimate,,chemistry=impregnating sealer
+C044,home_depot,HD-388927,Custom Building Products,Aqua Mix Sealer's Choice Gold,21.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=impregnating sealer
+C044,menards,MND-163143,Custom Building Products,Aqua Mix Sealer's Choice Gold,20.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=impregnating sealer
+C045,floor_and_decor,FND-140420,Custom Building Products,Aqua Mix Grout Colorant,24.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=colorant
+C045,home_depot,HD-968415,Custom Building Products,Aqua Mix Grout Colorant,26.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=colorant
+C045,lowes,LW-574163,Custom Building Products,Aqua Mix Grout Colorant,24.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=colorant
+C045,menards,MND-271961,Custom Building Products,Aqua Mix Grout Colorant,24.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=colorant
+C046,floor_and_decor,FND-880664,Miracle Sealants,511 Impregnator Sealer,15.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=impregnating sealer
+C046,menards,MND-243169,Miracle Sealants,511 Impregnator Sealer,15.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=impregnating sealer
+C047,floor_and_decor,FND-443259,Bona,Hardwood Floor Cleaner,25.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C047,home_depot,HD-934881,Bona,Hardwood Floor Cleaner,25.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C047,lowes,LW-982763,Bona,Hardwood Floor Cleaner,28.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C047,menards,MND-926744,Bona,Hardwood Floor Cleaner,26.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C048,floor_and_decor,FND-540807,Bona,Hardwood Floor Cleaner Refill,28.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C048,home_depot,HD-820879,Bona,Hardwood Floor Cleaner Refill,28.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C048,lowes,LW-682293,Bona,Hardwood Floor Cleaner Refill,27.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C048,menards,MND-199197,Bona,Hardwood Floor Cleaner Refill,27.98,per_each,,25.98,yes,2026-09-10,seed_estimate,,chemistry=cleaner;surface=hardwood
+C049,floor_and_decor,FND-151709,DAP,Alex Plus Acrylic Latex Caulk Plus Silicone,23.98,per_each,,19.98,yes,2026-09-10,seed_estimate,,chemistry=acrylic latex caulk
+C049,lowes,LW-829433,DAP,Alex Plus Acrylic Latex Caulk Plus Silicone,23.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=acrylic latex caulk
+C049,menards,MND-601060,DAP,Alex Plus Acrylic Latex Caulk Plus Silicone,24.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=acrylic latex caulk
+C050,floor_and_decor,FND-265621,Zinsser,Bulls Eye 1-2-3 Primer,31.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=primer
+C050,lowes,LW-960396,Zinsser,Bulls Eye 1-2-3 Primer,31.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=primer
+C050,menards,MND-187453,Zinsser,Bulls Eye 1-2-3 Primer,30.98,per_each,,,yes,2026-09-10,seed_estimate,,chemistry=primer
+C051,floor_and_decor,FND-488881,M-D Building Products,Aluminum Carpet Trim / Transition,7.49,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=threshold;material_trim=aluminum
+C051,home_depot,HD-917921,M-D Building Products,Aluminum Carpet Trim / Transition,7.59,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=threshold;material_trim=aluminum
+C051,lowes,LW-788240,M-D Building Products,Aluminum Carpet Trim / Transition,7.79,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=threshold;material_trim=aluminum
+C051,menards,MND-868873,M-D Building Products,Aluminum Carpet Trim / Transition,7.09,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=threshold;material_trim=aluminum
+C052,floor_and_decor,FND-556421,M-D Building Products,Vinyl Reducer Transition,5.19,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=vinyl
+C052,home_depot,HD-677377,M-D Building Products,Vinyl Reducer Transition,5.39,per_piece,3,4.59,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=vinyl
+C052,lowes,LW-984046,M-D Building Products,Vinyl Reducer Transition,5.19,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=vinyl
+C052,menards,MND-834058,M-D Building Products,Vinyl Reducer Transition,5.49,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=reducer;material_trim=vinyl
+C053,floor_and_decor,FND-787740,TrafficMaster,Seam Binder Transition,6.89,per_piece,3,6.19,yes,2026-09-10,seed_estimate,,profile=seam binder;material_trim=aluminum
+C053,lowes,LW-233762,TrafficMaster,Seam Binder Transition,7.39,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=seam binder;material_trim=aluminum
+C053,menards,MND-548189,TrafficMaster,Seam Binder Transition,6.79,per_piece,3,,yes,2026-09-10,seed_estimate,,profile=seam binder;material_trim=aluminum
+F001,floor_and_decor,FND-359614,Sonoma,Opening price point SPC,1.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=6;length_in=48;attached_pad=no;install=click;waterproof=yes;look=oak
+F001,home_depot,HD-948966,LifeProof,Opening price point SPC,31.98,per_case,21.56,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=4.5;thickness_mm=4.0;width_in=6;length_in=48;attached_pad=no;install=click;waterproof=yes;look=oak
+F001,menards,MND-446181,Tuscany,Opening price point SPC,24.98,per_box,16.37,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=6;length_in=48;attached_pad=no;install=click;waterproof=yes;look=oak
+F001,tile_shop,TSH-589457,Rush River,Opening price point SPC,1.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=6;length_in=48;attached_pad=no;install=click;waterproof=yes;look=oak
+F002,floor_and_decor,FND-444809,DuraLux,Value SPC,2.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F002,home_depot,HD-915639,LifeProof,Value SPC,2.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F002,lowes,LW-708129,SMARTCORE,Value SPC,2.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F002,menards,MND-825500,Patrician,Value SPC,2.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F002,tile_shop,TSH-797090,Marmi,Value SPC,3.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,floor_and_decor,FND-378220,NuCore,Mid-tier SPC,4.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,home_depot,HD-316157,TrafficMaster,Mid-tier SPC,109.00,per_case,19.94,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,lowes,LW-610203,allen + roth,Mid-tier SPC,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,menards,MND-107638,Patrician,Mid-tier SPC,4.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,tile_shop,TSH-168020,Rush River,Mid-tier SPC,5.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,floor_and_decor,FND-525100,DuraLux,Premium SPC wide plank,2.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,home_depot,HD-977994,LifeProof,Premium SPC wide plank,2.79,per_sq_ft,,2.39,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,lowes,LW-916271,Style Selections,Premium SPC wide plank,2.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,menards,MND-485213,Patrician,Premium SPC wide plank,49.98,per_box,19.48,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,tile_shop,TSH-420279,Rush River,Premium SPC wide plank,2.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=3.9;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,floor_and_decor,FND-762979,Sonoma,Heavy commercial SPC,3.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,home_depot,HD-234631,Home Decorators Collection,Heavy commercial SPC,4.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,lowes,LW-616872,allen + roth,Heavy commercial SPC,4.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,menards,MND-587950,Tuscany,Heavy commercial SPC,4.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,tile_shop,TSH-559742,Marmi,Heavy commercial SPC,4.59,per_sq_ft,,3.89,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F006,floor_and_decor,FND-141247,Sonoma,Mid-tier WPC,1.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=hickory
+F006,home_depot,HD-536381,LifeProof,Mid-tier WPC,25.98,per_case,16.44,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=hickory
+F006,lowes,LW-771799,Style Selections,Mid-tier WPC,1.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=hickory
+F006,menards,MND-520188,Tuscany,Mid-tier WPC,46.98,per_box,27.21,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=hickory
+F007,floor_and_decor,FND-571474,Sonoma,Premium WPC wide plank,4.89,per_sq_ft,,4.09,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=walnut
+F007,home_depot,HD-923900,TrafficMaster,Premium WPC wide plank,129.00,per_case,23.67,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=walnut
+F007,lowes,LW-913344,allen + roth,Premium WPC wide plank,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=16.8;thickness_mm=8.0;width_in=9;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=walnut
+F007,menards,MND-318928,Tuscany,Premium WPC wide plank,84.98,per_box,17.38,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=walnut
+F008,floor_and_decor,FND-961436,DuraLux,Glue-down LVT plank,2.49,per_sq_ft,,2.09,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F008,home_depot,HD-676606,LifeProof,Glue-down LVT plank,2.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F008,lowes,LW-736229,allen + roth,Glue-down LVT plank,2.69,per_sq_ft,,2.39,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F008,menards,MND-583386,Tuscany,Glue-down LVT plank,60.98,per_box,22.69,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F008,tile_shop,TSH-977875,Kismet,Glue-down LVT plank,2.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F009,floor_and_decor,FND-893464,Salerno,Glue-down LVT stone look,1.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F009,home_depot,HD-878003,LifeProof,Glue-down LVT stone look,41.98,per_case,24.07,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F009,lowes,LW-721302,SMARTCORE,Glue-down LVT stone look,1.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F009,menards,MND-690560,Dakota,Glue-down LVT stone look,1.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F009,tile_shop,TSH-194131,Rush River,Glue-down LVT stone look,1.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F010,floor_and_decor,FND-862390,NuCore,Commercial glue-down LVT,2.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=28;thickness_mm=3.0;width_in=6;length_in=36;install=glue;waterproof=yes;look=oak
+F010,home_depot,HD-949251,Home Decorators Collection,Commercial glue-down LVT,63.98,per_case,25.36,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=28;thickness_mm=3.0;width_in=6;length_in=36;install=glue;waterproof=yes;look=oak
+F010,lowes,LW-569598,Style Selections,Commercial glue-down LVT,2.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=28;thickness_mm=3.0;width_in=6;length_in=36;install=glue;waterproof=yes;look=oak
+F010,tile_shop,TSH-985743,Rush River,Commercial glue-down LVT,2.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=flexible;wear_layer_mil=28;thickness_mm=3.0;width_in=6;length_in=36;install=glue;waterproof=yes;look=oak
+F011,floor_and_decor,FND-834805,NuCore,"Rigid core, cork back",3.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F011,home_depot,HD-509788,LifeProof,"Rigid core, cork back",3.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F011,lowes,LW-122547,Style Selections,"Rigid core, cork back",3.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F011,menards,MND-106984,Patrician,"Rigid core, cork back",55.98,per_box,17.97,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F011,tile_shop,TSH-236746,Kismet,"Rigid core, cork back",3.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=15;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F012,floor_and_decor,FND-207775,Salerno,Rigid core tile format,2.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=12;length_in=24;install=click;waterproof=yes;look=stone
+F012,home_depot,HD-478104,LifeProof,Rigid core tile format,59.98,per_case,22.32,50.98,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=12;length_in=24;install=click;waterproof=yes;look=stone
+F012,menards,MND-126962,Dakota,Rigid core tile format,57.98,per_box,21.81,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=12;length_in=24;install=click;waterproof=yes;look=stone
+F012,tile_shop,TSH-855271,Rush River,Rigid core tile format,2.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=12;length_in=24;install=click;waterproof=yes;look=stone
+F013,floor_and_decor,FND-594130,AquaGuard,Entry waterproof wood look,2.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F013,home_depot,HD-700486,Home Decorators Collection,Entry waterproof wood look,2.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F013,lowes,LW-891234,Style Selections,Entry waterproof wood look,3.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F013,menards,MND-305026,Patrician,Entry waterproof wood look,81.98,per_box,27.51,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F013,tile_shop,TSH-870722,Marmi,Entry waterproof wood look,2.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F014,floor_and_decor,FND-748805,AquaGuard,Long-plank premium,4.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F014,home_depot,HD-309102,TrafficMaster,Long-plank premium,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F014,lowes,LW-878626,Style Selections,Long-plank premium,4.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F014,menards,MND-780636,Tuscany,Long-plank premium,95.98,per_box,24.44,78.98,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F014,tile_shop,TSH-264729,Marmi,Long-plank premium,4.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F015,floor_and_decor,FND-559238,AquaGuard,Wood-look plank 6x36,5.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=6x36;finish_tile=matte;pei_rating=4;look=wood;rectified=no;thickness_mm=9
+F015,home_depot,HD-585444,Home Decorators Collection,Wood-look plank 6x36,5.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=6x36;finish_tile=matte;pei_rating=4;look=wood;rectified=no;thickness_mm=9
+F015,lowes,LW-912322,Style Selections,Wood-look plank 6x36,5.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=6x36;finish_tile=matte;pei_rating=4;look=wood;rectified=no;thickness_mm=9
+F015,menards,MND-705820,Patrician,Wood-look plank 6x36,139.00,per_box,26.64,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=6x36;finish_tile=matte;pei_rating=4;look=wood;rectified=no;thickness_mm=9
+F016,floor_and_decor,FND-766824,AquaGuard,Wood-look plank 8x48 rectified,4.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F016,home_depot,HD-682539,LifeProof,Wood-look plank 8x48 rectified,81.98,per_case,16.19,66.98,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F016,lowes,LW-333161,SMARTCORE,Wood-look plank 8x48 rectified,4.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F016,menards,MND-875437,Patrician,Wood-look plank 8x48 rectified,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F016,tile_shop,TSH-150425,Marmi,Wood-look plank 8x48 rectified,5.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F017,floor_and_decor,FND-347360,DuraLux,Marble-look 12x24 polished,3.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F017,home_depot,HD-296368,LifeProof,Marble-look 12x24 polished,109.00,per_case,29.75,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F017,lowes,LW-765127,SMARTCORE,Marble-look 12x24 polished,3.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F017,menards,MND-747359,Dakota,Marble-look 12x24 polished,4.09,per_sq_ft,,3.59,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F017,tile_shop,TSH-952383,Kismet,Marble-look 12x24 polished,3.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F018,floor_and_decor,FND-781533,DuraLux,Marble-look 24x48 large format,2.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x48;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F018,lowes,LW-964678,SMARTCORE,Marble-look 24x48 large format,2.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x48;finish_tile=matte;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F018,tile_shop,TSH-662021,Rush River,Marble-look 24x48 large format,2.59,per_sq_ft,,2.29,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x48;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F019,floor_and_decor,FND-114550,DuraLux,Concrete-look 24x24 matte,1.69,per_sq_ft,,1.39,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F019,home_depot,HD-760657,LifeProof,Concrete-look 24x24 matte,1.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F019,lowes,LW-352331,allen + roth,Concrete-look 24x24 matte,1.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F019,menards,MND-335828,Tuscany,Concrete-look 24x24 matte,26.98,per_box,16.14,23.98,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F019,tile_shop,TSH-977947,Marmi,Concrete-look 24x24 matte,2.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=polished;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F020,floor_and_decor,FND-578252,AquaGuard,Concrete-look 12x24 matte,3.89,per_sq_ft,,3.49,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=no;thickness_mm=9
+F020,home_depot,HD-550117,LifeProof,Concrete-look 12x24 matte,4.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=no;thickness_mm=9
+F020,lowes,LW-424999,allen + roth,Concrete-look 12x24 matte,3.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=no;thickness_mm=9
+F020,tile_shop,TSH-722204,Rush River,Concrete-look 12x24 matte,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=no;thickness_mm=9
+F021,floor_and_decor,FND-556783,Salerno,Opening price point 12x12,1.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone;rectified=no;thickness_mm=8
+F021,lowes,LW-524468,Style Selections,Opening price point 12x12,1.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone;rectified=no;thickness_mm=6
+F021,menards,MND-680865,Tuscany,Opening price point 12x12,25.98,per_box,17.37,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone;rectified=no;thickness_mm=8
+F021,tile_shop,TSH-113138,Kismet,Opening price point 12x12,1.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone;rectified=no;thickness_mm=8
+F022,floor_and_decor,FND-390846,Salerno,2cm outdoor paver 24x24,1.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F022,home_depot,HD-535332,TrafficMaster,2cm outdoor paver 24x24,53.98,per_case,24.60,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F022,lowes,LW-745919,Style Selections,2cm outdoor paver 24x24,2.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F022,menards,MND-290288,Tuscany,2cm outdoor paver 24x24,1.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F022,tile_shop,TSH-565380,Rush River,2cm outdoor paver 24x24,2.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F023,floor_and_decor,FND-601972,AquaGuard,Subway 3x6 glossy white,1.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=3x6;finish_tile=glossy;pei_rating=1;look=solid
+F023,home_depot,HD-512461,TrafficMaster,Subway 3x6 glossy white,33.98,per_case,17.17,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=3x6;finish_tile=glossy;pei_rating=1;look=solid
+F023,lowes,LW-652626,allen + roth,Subway 3x6 glossy white,1.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=3x6;finish_tile=polished;pei_rating=1;look=solid
+F023,menards,MND-169685,Tuscany,Subway 3x6 glossy white,41.98,per_box,23.29,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=3x6;finish_tile=polished;pei_rating=1;look=solid
+F023,tile_shop,TSH-433551,Kismet,Subway 3x6 glossy white,1.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=3x6;finish_tile=glossy;pei_rating=1;look=solid
+F024,floor_and_decor,FND-325487,Sonoma,Subway 4x12 glossy,1.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F024,home_depot,HD-970894,TrafficMaster,Subway 4x12 glossy,22.98,per_case,16.95,18.98,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F024,lowes,LW-130184,SMARTCORE,Subway 4x12 glossy,1.49,per_sq_ft,,1.29,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F024,menards,MND-628069,Dakota,Subway 4x12 glossy,23.98,per_box,17.56,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F024,tile_shop,TSH-364628,Kismet,Subway 4x12 glossy,1.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F025,floor_and_decor,FND-799736,DuraLux,Floor tile 12x12,0.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F025,home_depot,HD-237970,TrafficMaster,Floor tile 12x12,24.98,per_case,22.67,21.98,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F025,lowes,LW-239508,Style Selections,Floor tile 12x12,0.99,per_sq_ft,,0.89,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F025,menards,MND-386167,Patrician,Floor tile 12x12,25.98,per_box,29.11,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F025,tile_shop,TSH-248412,Rush River,Floor tile 12x12,1.19,per_sq_ft,,1.09,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F026,floor_and_decor,FND-820504,Sonoma,Wall tile 4x16 matte,1.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x16;finish_tile=matte;pei_rating=1;look=solid
+F026,home_depot,HD-533425,TrafficMaster,Wall tile 4x16 matte,25.98,per_case,22.66,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x16;finish_tile=matte;pei_rating=1;look=solid
+F026,lowes,LW-912412,Style Selections,Wall tile 4x16 matte,1.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x16;finish_tile=polished;pei_rating=1;look=solid
+F026,menards,MND-280415,Tuscany,Wall tile 4x16 matte,1.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x16;finish_tile=matte;pei_rating=1;look=solid
+F026,tile_shop,TSH-953407,Rush River,Wall tile 4x16 matte,1.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x16;finish_tile=matte;pei_rating=1;look=solid
+F027,floor_and_decor,FND-121888,AquaGuard,Porcelain hex mosaic 2in,17.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F027,home_depot,HD-596921,Home Decorators Collection,Porcelain hex mosaic 2in,20.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F027,lowes,LW-479605,SMARTCORE,Porcelain hex mosaic 2in,19.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F027,menards,MND-858311,Dakota,Porcelain hex mosaic 2in,15.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F027,tile_shop,TSH-200276,Rush River,Porcelain hex mosaic 2in,19.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F028,floor_and_decor,FND-515613,Salerno,Glass subway mosaic sheet,11.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=glass;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x12
+F028,home_depot,HD-403747,Home Decorators Collection,Glass subway mosaic sheet,13.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=glass;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x12
+F028,lowes,LW-449424,Style Selections,Glass subway mosaic sheet,13.98,per_sq_ft,,12.98,yes,2026-09-10,seed_estimate,,material=glass;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x12
+F028,menards,MND-183935,Tuscany,Glass subway mosaic sheet,11.98,per_sq_ft,,9.89,yes,2026-09-10,seed_estimate,,material=glass;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x12
+F029,floor_and_decor,FND-733498,NuCore,Marble 12x24 honed,10.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=marble;size_in=12x24;finish_tile=honed;stone_grade=standard;thickness_mm=10
+F029,home_depot,HD-513160,TrafficMaster,Marble 12x24 honed,10.98,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=marble;size_in=12x24;finish_tile=honed;stone_grade=standard;thickness_mm=10
+F029,lowes,LW-416039,SMARTCORE,Marble 12x24 honed,10.98,per_sq_ft,,9.59,yes,2026-09-10,seed_estimate,,material=marble;size_in=12x24;finish_tile=honed;stone_grade=standard;thickness_mm=10
+F029,menards,MND-920771,Dakota,Marble 12x24 honed,189.00,per_box,17.50,,yes,2026-09-10,seed_estimate,,material=marble;size_in=12x24;finish_tile=honed;stone_grade=standard;thickness_mm=10
+F030,floor_and_decor,FND-351757,NuCore,Travertine 18x18 tumbled,5.49,per_sq_ft,,5.09,yes,2026-09-10,seed_estimate,,material=travertine;size_in=18x18;finish_tile=tumbled;stone_grade=standard;thickness_mm=12
+F030,lowes,LW-937100,Style Selections,Travertine 18x18 tumbled,5.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=travertine;size_in=18x18;finish_tile=tumbled;stone_grade=standard;thickness_mm=12
+F030,menards,MND-156033,Dakota,Travertine 18x18 tumbled,109.00,per_box,20.59,,yes,2026-09-10,seed_estimate,,material=travertine;size_in=18x18;finish_tile=tumbled;stone_grade=standard;thickness_mm=9
+F030,tile_shop,TSH-888275,Kismet,Travertine 18x18 tumbled,5.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=travertine;size_in=18x18;finish_tile=tumbled;stone_grade=standard;thickness_mm=12
+F031,floor_and_decor,FND-473136,NuCore,"White oak 7.5in, 3mm veneer",3.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
+F031,home_depot,HD-536634,Home Decorators Collection,"White oak 7.5in, 3mm veneer",3.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
+F031,lowes,LW-288978,SMARTCORE,"White oak 7.5in, 3mm veneer",3.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
+F031,menards,MND-647484,Patrician,"White oak 7.5in, 3mm veneer",62.98,per_box,21.24,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
+F032,floor_and_decor,FND-832427,DuraLux,"White oak 6.5in, 2mm veneer",4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=2.0;thickness_mm=12.7;width_in=6.5;finish=wire brushed;install=click
+F032,lowes,LW-489804,allen + roth,"White oak 6.5in, 2mm veneer",5.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=2.0;thickness_mm=12.7;width_in=6.5;finish=wire brushed;install=click
+F032,menards,MND-514606,Tuscany,"White oak 6.5in, 2mm veneer",119.00,per_box,24.45,109.00,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=2.0;thickness_mm=12.7;width_in=6.5;finish=wire brushed;install=click
+F033,floor_and_decor,FND-311331,Salerno,"White oak 5in, entry veneer",4.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=0.6;thickness_mm=9.5;width_in=5;finish=smooth;install=click
+F033,home_depot,HD-805742,LifeProof,"White oak 5in, entry veneer",80.98,per_case,20.77,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=0.45;thickness_mm=9.5;width_in=5;finish=smooth;install=click
+F033,menards,MND-472011,Dakota,"White oak 5in, entry veneer",3.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;veneer_mm=0.6;thickness_mm=9.5;width_in=5;finish=smooth;install=click
+F034,floor_and_decor,FND-349246,DuraLux,"Hickory 6.5in, 3mm veneer",4.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=hickory;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=hand scraped;install=glue
+F034,home_depot,HD-607360,Home Decorators Collection,"Hickory 6.5in, 3mm veneer",4.49,per_sq_ft,,4.09,yes,2026-09-10,seed_estimate,,species=hickory;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=hand scraped;install=glue
+F034,lowes,LW-431292,SMARTCORE,"Hickory 6.5in, 3mm veneer",5.09,per_sq_ft,,4.59,yes,2026-09-10,seed_estimate,,species=hickory;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=matte;install=glue
+F034,menards,MND-872978,Tuscany,"Hickory 6.5in, 3mm veneer",4.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=hickory;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=hand scraped;install=glue
+F035,floor_and_decor,FND-974621,DuraLux,"Maple 5in, 2mm veneer",8.49,per_sq_ft,,6.89,yes,2026-09-10,seed_estimate,,species=maple;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=nail
+F035,home_depot,HD-447140,LifeProof,"Maple 5in, 2mm veneer",279.00,per_case,29.74,,yes,2026-09-10,seed_estimate,,species=maple;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=nail
+F035,lowes,LW-219312,allen + roth,"Maple 5in, 2mm veneer",7.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=maple;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=polished;install=nail
+F035,menards,MND-510767,Dakota,"Maple 5in, 2mm veneer",249.00,per_box,28.55,,yes,2026-09-10,seed_estimate,,species=maple;veneer_mm=2.0;thickness_mm=7.62;width_in=5;finish=smooth;install=nail
+F036,floor_and_decor,FND-318799,Sonoma,Red oak 2.25in select,5.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F036,home_depot,HD-270125,Home Decorators Collection,Red oak 2.25in select,109.00,per_case,20.93,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F036,lowes,LW-327233,SMARTCORE,Red oak 2.25in select,5.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F037,floor_and_decor,FND-840048,Salerno,Red oak 3.25in select,4.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F037,home_depot,HD-240006,TrafficMaster,Red oak 3.25in select,5.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F037,lowes,LW-596973,Style Selections,Red oak 3.25in select,5.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F037,menards,MND-951795,Patrician,Red oak 3.25in select,109.00,per_box,23.60,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F038,floor_and_decor,FND-287439,Salerno,White oak 5in character,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;thickness_in=0.75;width_in=5;finish=smooth;grade=character
+F038,lowes,LW-857109,SMARTCORE,White oak 5in character,5.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=white oak;thickness_in=0.75;width_in=5;finish=smooth;grade=character
+F038,menards,MND-396526,Dakota,White oak 5in character,84.98,per_box,18.75,77.98,yes,2026-09-10,seed_estimate,,species=white oak;thickness_in=0.75;width_in=5;finish=smooth;grade=character
+F039,floor_and_decor,FND-724463,Sonoma,Hickory 5in hand scraped,5.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=hickory;thickness_in=0.75;width_in=5;finish=hand scraped;grade=character
+F039,home_depot,HD-709648,Home Decorators Collection,Hickory 5in hand scraped,5.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=hickory;thickness_in=0.75;width_in=5;finish=hand scraped;grade=character
+F039,lowes,LW-269586,Style Selections,Hickory 5in hand scraped,5.19,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=hickory;thickness_in=0.75;width_in=5;finish=hand scraped;grade=character
+F040,floor_and_decor,FND-376038,NuCore,Maple 3.25in select,5.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=maple;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F040,home_depot,HD-134568,LifeProof,Maple 3.25in select,149.00,per_case,26.78,,yes,2026-09-10,seed_estimate,,species=maple;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F040,lowes,LW-805369,SMARTCORE,Maple 3.25in select,5.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=maple;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F041,floor_and_decor,FND-110274,Bruce,Solid oak 2.25in - match the model code exactly,4.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F041,lowes,LW-351384,Bruce,Solid oak 2.25in - match the model code exactly,4.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F041,menards,MND-511883,Bruce,Solid oak 2.25in - match the model code exactly,5.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F042,floor_and_decor,FND-763402,Bruce,Engineered oak - match the model code exactly,8.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
+F042,home_depot,HD-190232,Bruce,Engineered oak - match the model code exactly,9.69,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
+F042,lowes,LW-433241,Bruce,Engineered oak - match the model code exactly,8.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
+F042,menards,MND-175907,Bruce,Engineered oak - match the model code exactly,8.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
+F043,floor_and_decor,FND-381477,Pergo,Pergo rigid core - collections differ by banner,3.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;install=click;waterproof=yes
+F043,home_depot,HD-801732,Pergo,Pergo rigid core - collections differ by banner,67.98,per_case,17.86,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;install=click;waterproof=yes
+F043,lowes,LW-140038,Pergo,Pergo rigid core - collections differ by banner,3.59,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;install=click;waterproof=yes
+F043,tile_shop,TSH-138503,Pergo,Pergo rigid core - collections differ by banner,3.79,per_sq_ft,,3.19,yes,2026-09-10,seed_estimate,,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;install=click;waterproof=yes
+F044,floor_and_decor,FND-851216,COREtec,COREtec plank - check the collection name,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F044,home_depot,HD-195876,COREtec,COREtec plank - check the collection name,5.09,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F044,lowes,LW-644079,COREtec,COREtec plank - check the collection name,4.79,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F044,menards,MND-991743,COREtec,COREtec plank - check the collection name,4.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F044,tile_shop,TSH-477198,COREtec,COREtec plank - check the collection name,5.49,per_sq_ft,,,yes,2026-09-10,seed_estimate,,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F045,floor_and_decor,FND-171614,MSI,MSI porcelain - collections vary by banner,4.89,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F045,home_depot,HD-368043,MSI,MSI porcelain - collections vary by banner,96.98,per_case,18.78,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F045,lowes,LW-390991,MSI,MSI porcelain - collections vary by banner,5.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F045,menards,MND-973362,MSI,MSI porcelain - collections vary by banner,109.00,per_box,21.87,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F045,tile_shop,TSH-272551,MSI,MSI porcelain - collections vary by banner,4.99,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F046,floor_and_decor,FND-300746,Marazzi,Marazzi ceramic - check the series name,1.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F046,home_depot,HD-202925,Marazzi,Marazzi ceramic - check the series name,1.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F046,menards,MND-855598,Marazzi,Marazzi ceramic - check the series name,1.29,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F046,tile_shop,TSH-895072,Marazzi,Marazzi ceramic - check the series name,1.39,per_sq_ft,,,yes,2026-09-10,seed_estimate,,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid

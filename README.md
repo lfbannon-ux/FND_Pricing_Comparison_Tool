@@ -163,6 +163,28 @@ identical-SKU basket built from unconfirmed identities is just the spec-matched
 comparison wearing a better name. Untouched rows are reported as "not yet
 collected", so partial runs resume cleanly.
 
+### Collecting both, and merging them
+
+`ingest` takes several worksheets and merges them into one dataset:
+
+```bash
+python3 -m fnd_pricing ingest \
+    data/collection/identical_sku_worksheet.csv \
+    data/collection/flooring_worksheet.csv
+```
+
+A candidate id used twice is refused rather than silently overwritten, which is
+why the two instruments use different id prefixes. Provenance travels per row:
+`data_source` defaults to `collected` but a dry run can stamp `seed_estimate`
+and the claim survives into the dataset — ingest no longer asserts that
+everything it touches was observed.
+
+The merged dataset needs no extra bookkeeping to stay honest. A spec-matched row
+carries a different brand per retailer, so it cannot score `exact`; `--tier
+exact` isolates the identical-SKU evidence and `--min-tier equivalent` reads
+everything. `data/demo/` holds a full dry run of exactly this, with every row
+stamped as an estimate.
+
 ### Two worksheets, two grades of evidence
 
 | Worksheet | Rows | Standard | Covers |
@@ -334,10 +356,11 @@ src/fnd_pricing/
                  export | ingest | template
   __init__.py    the retailer registry - add a banner here and it propagates
 data/collection/ identical-SKU and flooring worksheets + collection guide
+data/demo/       end-to-end dry run on simulated prices (never collected)
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           117 unit tests
+tests/           123 unit tests
 ```
 
 ## Tests

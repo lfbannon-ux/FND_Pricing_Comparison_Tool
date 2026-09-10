@@ -19,7 +19,7 @@ from . import BASE_RETAILER, RETAILER_CODES, RETAILER_LABELS, RETAILER_SHORT, RE
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
 from .basket import build_basket_set, qualifies
-from .collect import ingest_worksheet, write_canonical
+from .collect import ingest_worksheets, write_canonical
 from .matching import DEFAULT_MIN_TIER, TIER_EXACT, TIER_ORDER
 from .spend import MARKET_LOW, expense_by_category, total_expense
 from .models import DataError
@@ -512,8 +512,8 @@ def cmd_export(args) -> int:
 
 def cmd_ingest(args) -> int:
     """Convert a filled collection worksheet into the canonical data files."""
-    source = Path(args.worksheet)
-    report = ingest_worksheet(source)
+    sources = [Path(w) for w in args.worksheet]
+    report = ingest_worksheets(sources)
 
     groups_out = Path(args.groups_out or DEFAULT_GROUPS)
     products_out = Path(args.products_out or DEFAULT_PRODUCTS)
@@ -526,7 +526,9 @@ def cmd_ingest(args) -> int:
 
     write_canonical(report, groups_out, products_out)
     print(f"Ingested {len(report.groups)} SKU(s) and {len(report.offers)} offer(s) "
-          f"from {source}")
+          f"from {len(sources)} worksheet(s):")
+    for source in sources:
+        print(f"  {source}")
     print(f"  priced at every one of the {len(RETAILERS)} retailers: {report.three_way}")
     print(f"  -> {groups_out}")
     print(f"  -> {products_out}")
@@ -626,7 +628,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub = subparsers.add_parser(
         "ingest", help="convert a filled collection worksheet into the data files")
-    sub.add_argument("worksheet", help="path to the filled collection worksheet CSV")
+    sub.add_argument("worksheet", nargs="+",
+                     help="one or more filled collection worksheet CSVs; several are "
+                          "merged into a single dataset")
     sub.add_argument("--groups-out", help="where to write sku_groups.csv")
     sub.add_argument("--products-out", help="where to write products.csv")
     sub.add_argument("--force", action="store_true",

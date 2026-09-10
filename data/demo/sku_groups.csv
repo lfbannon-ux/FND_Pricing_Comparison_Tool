@@ -1,0 +1,100 @@
+group_id,category,subcategory,basis,description,annual_volume,specs
+C001,Setting Materials,Custom Building Products,lb,Custom Building Products VersaBond Gray Fortified Thin-Set (MTSG50) 50 lb bag,23113,chemistry=modified thinset;color_family=gray;grade=standard
+C002,Setting Materials,Custom Building Products,lb,Custom Building Products VersaBond White Professional Thin-Set (MTSW50) 50 lb bag,56620,chemistry=modified thinset;color_family=white;grade=standard
+C003,Setting Materials,Custom Building Products,lb,Custom Building Products VersaBond-LFT Gray Large Format Mortar 50 lb bag,45443,chemistry=large format mortar;color_family=gray;grade=premium
+C004,Setting Materials,MAPEI,lb,MAPEI Ultraflex 2 Gray Polymer-Modified Mortar 50 lb bag,82843,chemistry=modified thinset;color_family=gray;grade=premium
+C005,Setting Materials,MAPEI,lb,MAPEI Ultraflex 1 White Mortar 50 lb bag,41860,chemistry=modified thinset;color_family=white;grade=standard
+C006,Setting Materials,MAPEI,each,MAPEI Type 1 Ceramic Tile Adhesive 3.5 gal pail,65648,chemistry=mastic;grade=standard
+C007,Setting Materials,Laticrete,lb,Laticrete 254 Platinum Gray Multipurpose Mortar 50 lb bag,27209,chemistry=modified thinset;color_family=gray;grade=premium
+C008,Setting Materials,Custom Building Products,each,Custom Building Products AcrylPro Professional Tile Adhesive 3.5 gal pail,86976,chemistry=mastic;grade=standard
+C009,Grout & Caulk,Custom Building Products,each,Custom Building Products Fusion Pro Single Component Grout 1 gal pail,12718,chemistry=single component;stain_resistant=yes
+C010,Grout & Caulk,Custom Building Products,lb,Custom Building Products Polyblend Plus Sanded Grout 25 lb bag,60181,chemistry=sanded;joint_width=0.25
+C011,Grout & Caulk,Custom Building Products,lb,Custom Building Products Polyblend Plus Non-Sanded Grout 10 lb bag,56998,chemistry=unsanded;joint_width=0.125
+C012,Grout & Caulk,MAPEI,lb,MAPEI Keracolor S Sanded Grout 25 lb bag,39642,chemistry=sanded;joint_width=0.25
+C013,Grout & Caulk,MAPEI,lb,MAPEI Keracolor U Unsanded Grout 10 lb bag,37553,chemistry=unsanded;joint_width=0.125
+C014,Grout & Caulk,MAPEI,each,MAPEI Flexcolor CQ Ready-to-Use Grout 1 gal pail,34249,chemistry=single component;stain_resistant=yes
+C015,Grout & Caulk,Custom Building Products,each,Custom Building Products Commercial 100% Silicone Sealant 10.1 oz tube,10678,chemistry=silicone
+C016,Grout & Caulk,Custom Building Products,each,Custom Building Products Polyblend Sanded Ceramic Tile Caulk 10.5 oz tube,6362,chemistry=sanded caulk
+C017,Membrane & Backer,Schluter,sq_ft,Schluter DITRA Uncoupling Membrane (DITRA5M) 54 sq ft roll,13667,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C018,Membrane & Backer,Schluter,sq_ft,Schluter DITRA Uncoupling Membrane 150 sq ft roll,87418,material=polyethylene;thickness_mm=3.2;function=uncoupling
+C019,Membrane & Backer,Schluter,sq_ft,Schluter DITRA-XL Uncoupling Membrane 175 sq ft roll,27119,material=polyethylene;thickness_mm=7;function=uncoupling
+C020,Membrane & Backer,Schluter,sq_ft,Schluter KERDI 200 Waterproofing Membrane 108 sq ft roll,11080,material=polyethylene;function=waterproofing
+C021,Membrane & Backer,Schluter,each,Schluter KERDI-BOARD Building Panel 1/2 in 32 in x 48 in,25857,material=xps;thickness_in=0.5
+C022,Membrane & Backer,USG,each,USG Durock Brand Cement Board 1/2 in 3 ft x 5 ft,29281,material=cement board;thickness_in=0.5
+C023,Membrane & Backer,James Hardie,each,James Hardie HardieBacker Cement Board 1/4 in 3 ft x 5 ft,21845,material=cement board;thickness_in=0.25
+C024,Membrane & Backer,Schluter,sq_ft,Schluter DITRA-HEAT Membrane 134 sq ft roll,82639,material=polyethylene;function=heat
+C025,Tile Trim & Edging,Schluter,lin_ft,Schluter JOLLY Anodized Aluminum Edge 3/8 in 8 ft 2 in,39027,profile=square edge;material_trim=anodized aluminum;height_mm=10
+C026,Tile Trim & Edging,Schluter,lin_ft,Schluter RONDEC Anodized Aluminum Edge 3/8 in 8 ft 2 in,83614,profile=round edge;material_trim=anodized aluminum;height_mm=10
+C027,Tile Trim & Edging,Schluter,lin_ft,Schluter SCHIENE Aluminum Edge 3/8 in 8 ft 2 in,51088,profile=square edge;material_trim=aluminum;height_mm=10
+C028,Tile Trim & Edging,Schluter,lin_ft,Schluter RENO-U Aluminum Reducer 3/8 in 8 ft 2 in,43843,profile=reducer;material_trim=anodized aluminum;height_mm=10
+C029,Tile Trim & Edging,Schluter,lin_ft,Schluter DILEX-KSA Movement Joint 8 ft 2 in,65726,profile=movement joint;material_trim=stainless steel
+C030,Tile Trim & Edging,Schluter,lin_ft,Schluter TREP-SE Stair Nosing 4 ft 11 in,44080,profile=stair nose;material_trim=aluminum
+C031,Underlayment,Roberts,sq_ft,Roberts Super Felt Cushion Underlayment 100 sq ft roll,7401,material=felt;thickness_mm=3;moisture_barrier=no
+C032,Underlayment,Roberts,sq_ft,Roberts Serenity Foam Underlayment 100 sq ft roll,58048,material=foam;thickness_mm=2;moisture_barrier=yes
+C033,Underlayment,MP Global,sq_ft,MP Global QuietWalk Underlayment 100 sq ft roll,77115,material=felt;thickness_mm=3;moisture_barrier=yes
+C034,Underlayment,Roberts,sq_ft,Roberts First Step Underlayment 630 sq ft roll,43349,material=foam;thickness_mm=2;moisture_barrier=yes
+C035,Installation Tools,QEP,each,QEP LASH Tile Leveling System Clips (100 ct) 100 count,33809,tool_type=leveling clips;power=manual
+C036,Installation Tools,QEP,each,QEP LASH Tile Leveling Wedges (48 ct) 48 count,74098,tool_type=leveling wedges;power=manual
+C037,Installation Tools,QEP,each,QEP 7 in Wet Tile Saw each,29992,tool_type=wet saw;power=electric;capacity=7
+C038,Installation Tools,QEP,each,QEP 24 in Ceramic Tile Cutter each,8668,tool_type=snap cutter;power=manual;capacity=24
+C039,Installation Tools,Rubi,each,Rubi TX-700 Tile Cutter each,56550,tool_type=snap cutter;power=manual;capacity=28
+C040,Installation Tools,QEP,each,QEP 1/4 in x 3/8 in Square-Notch Trowel each,39412,tool_type=notched trowel;power=manual;material=steel
+C041,Installation Tools,QEP,each,QEP Gum Rubber Grout Float each,66712,tool_type=grout float;power=manual
+C042,Installation Tools,QEP,each,QEP Professional Knee Pads pair,44094,tool_type=knee pads;power=manual
+C043,Installation Tools,Marshalltown,each,Marshalltown Margin Trowel 5 in x 2 in each,4728,tool_type=margin trowel;power=manual;material=steel
+C044,Sealers & Care,Custom Building Products,each,Custom Building Products Aqua Mix Sealer's Choice Gold 1 qt,21995,chemistry=impregnating sealer
+C045,Sealers & Care,Custom Building Products,each,Custom Building Products Aqua Mix Grout Colorant 8 oz,83326,chemistry=colorant
+C046,Sealers & Care,Miracle Sealants,each,Miracle Sealants 511 Impregnator Sealer 1 qt,27278,chemistry=impregnating sealer
+C047,Sealers & Care,Bona,each,Bona Hardwood Floor Cleaner 32 oz spray,13057,chemistry=cleaner;surface=hardwood
+C048,Sealers & Care,Bona,each,Bona Hardwood Floor Cleaner Refill 128 oz,37386,chemistry=cleaner;surface=hardwood
+C049,Sealers & Care,DAP,each,DAP Alex Plus Acrylic Latex Caulk Plus Silicone 10.1 oz tube,6722,chemistry=acrylic latex caulk
+C050,Sealers & Care,Zinsser,each,Zinsser Bulls Eye 1-2-3 Primer 1 gal,40585,chemistry=primer
+C051,Trim & Moulding,M-D Building Products,lin_ft,M-D Building Products Aluminum Carpet Trim / Transition 36 in,68080,profile=threshold;material_trim=aluminum
+C052,Trim & Moulding,M-D Building Products,lin_ft,M-D Building Products Vinyl Reducer Transition 36 in,23666,profile=reducer;material_trim=vinyl
+C053,Trim & Moulding,TrafficMaster,lin_ft,TrafficMaster Seam Binder Transition 36 in,85180,profile=seam binder;material_trim=aluminum
+F001,Luxury Vinyl Plank,spec_matched,sq_ft,Opening price point SPC,16493,core=SPC;wear_layer_mil=6;thickness_mm=4.0;width_in=6;length_in=48;attached_pad=no;install=click;waterproof=yes;look=oak
+F002,Luxury Vinyl Plank,spec_matched,sq_ft,Value SPC,71725,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F003,Luxury Vinyl Plank,spec_matched,sq_ft,Mid-tier SPC,40462,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=oak
+F004,Luxury Vinyl Plank,spec_matched,sq_ft,Premium SPC wide plank,34991,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F005,Luxury Vinyl Plank,spec_matched,sq_ft,Heavy commercial SPC,55325,core=SPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=60;attached_pad=yes;install=click;waterproof=yes;look=oak
+F006,Luxury Vinyl Plank,spec_matched,sq_ft,Mid-tier WPC,63077,core=WPC;wear_layer_mil=20;thickness_mm=6.5;width_in=7;length_in=48;attached_pad=yes;install=click;waterproof=yes;look=hickory
+F007,Luxury Vinyl Plank,spec_matched,sq_ft,Premium WPC wide plank,84767,core=WPC;wear_layer_mil=28;thickness_mm=8.0;width_in=9;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=walnut
+F008,Luxury Vinyl Plank,spec_matched,sq_ft,Glue-down LVT plank,35759,core=flexible;wear_layer_mil=20;thickness_mm=2.5;width_in=6;length_in=48;install=glue;waterproof=yes;look=oak
+F009,Luxury Vinyl Plank,spec_matched,sq_ft,Glue-down LVT stone look,24262,core=flexible;wear_layer_mil=20;thickness_mm=2.0;width_in=12;length_in=24;install=glue;waterproof=yes;look=stone
+F010,Luxury Vinyl Plank,spec_matched,sq_ft,Commercial glue-down LVT,81533,core=flexible;wear_layer_mil=28;thickness_mm=3.0;width_in=6;length_in=36;install=glue;waterproof=yes;look=oak
+F011,Luxury Vinyl Plank,spec_matched,sq_ft,"Rigid core, cork back",27236,core=SPC;wear_layer_mil=20;thickness_mm=7.0;width_in=7;length_in=48;attached_pad=cork;install=click;waterproof=yes;look=oak
+F012,Luxury Vinyl Plank,spec_matched,sq_ft,Rigid core tile format,25322,core=SPC;wear_layer_mil=20;thickness_mm=5.0;width_in=12;length_in=24;install=click;waterproof=yes;look=stone
+F013,Luxury Vinyl Plank,spec_matched,sq_ft,Entry waterproof wood look,56266,core=SPC;wear_layer_mil=12;thickness_mm=5.0;width_in=7;length_in=48;attached_pad=no;install=click;waterproof=yes;look=hickory
+F014,Luxury Vinyl Plank,spec_matched,sq_ft,Long-plank premium,36143,core=SPC;wear_layer_mil=22;thickness_mm=6.5;width_in=7.2;length_in=72;attached_pad=yes;install=click;waterproof=yes;look=oak
+F015,Porcelain Tile,spec_matched,sq_ft,Wood-look plank 6x36,42449,material=porcelain;size_in=6x36;finish_tile=matte;pei_rating=4;look=wood;rectified=no;thickness_mm=9
+F016,Porcelain Tile,spec_matched,sq_ft,Wood-look plank 8x48 rectified,70788,material=porcelain;size_in=8x48;finish_tile=matte;pei_rating=4;look=wood;rectified=yes;thickness_mm=9
+F017,Porcelain Tile,spec_matched,sq_ft,Marble-look 12x24 polished,8696,material=porcelain;size_in=12x24;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F018,Porcelain Tile,spec_matched,sq_ft,Marble-look 24x48 large format,6556,material=porcelain;size_in=24x48;finish_tile=polished;pei_rating=3;look=marble;rectified=yes;thickness_mm=10
+F019,Porcelain Tile,spec_matched,sq_ft,Concrete-look 24x24 matte,83717,material=porcelain;size_in=24x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=yes;thickness_mm=9
+F020,Porcelain Tile,spec_matched,sq_ft,Concrete-look 12x24 matte,51461,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete;rectified=no;thickness_mm=9
+F021,Porcelain Tile,spec_matched,sq_ft,Opening price point 12x12,88662,material=porcelain;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone;rectified=no;thickness_mm=8
+F022,Porcelain Tile,spec_matched,sq_ft,2cm outdoor paver 24x24,57812,material=porcelain;size_in=24x24;finish_tile=textured;pei_rating=5;look=stone;rectified=yes;thickness_mm=20
+F023,Ceramic Tile,spec_matched,sq_ft,Subway 3x6 glossy white,58491,material=ceramic;size_in=3x6;finish_tile=glossy;pei_rating=1;look=solid
+F024,Ceramic Tile,spec_matched,sq_ft,Subway 4x12 glossy,63608,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
+F025,Ceramic Tile,spec_matched,sq_ft,Floor tile 12x12,3533,material=ceramic;size_in=12x12;finish_tile=matte;pei_rating=3;look=stone
+F026,Ceramic Tile,spec_matched,sq_ft,Wall tile 4x16 matte,10358,material=ceramic;size_in=4x16;finish_tile=matte;pei_rating=1;look=solid
+F027,Mosaic & Decorative Tile,spec_matched,sq_ft,Porcelain hex mosaic 2in,42642,material=porcelain;pattern=hexagon;chip_size=2x2;finish_tile=matte;size_in=12x12
+F028,Mosaic & Decorative Tile,spec_matched,sq_ft,Glass subway mosaic sheet,25602,material=glass;pattern=subway;chip_size=1x3;finish_tile=polished;size_in=12x12
+F029,Natural Stone Tile,spec_matched,sq_ft,Marble 12x24 honed,20325,material=marble;size_in=12x24;finish_tile=honed;stone_grade=standard;thickness_mm=10
+F030,Natural Stone Tile,spec_matched,sq_ft,Travertine 18x18 tumbled,13315,material=travertine;size_in=18x18;finish_tile=tumbled;stone_grade=standard;thickness_mm=12
+F031,Engineered Hardwood,spec_matched,sq_ft,"White oak 7.5in, 3mm veneer",79407,species=white oak;veneer_mm=3.0;thickness_mm=15.0;width_in=7.5;finish=wire brushed;install=click
+F032,Engineered Hardwood,spec_matched,sq_ft,"White oak 6.5in, 2mm veneer",40687,species=white oak;veneer_mm=2.0;thickness_mm=12.7;width_in=6.5;finish=wire brushed;install=click
+F033,Engineered Hardwood,spec_matched,sq_ft,"White oak 5in, entry veneer",10018,species=white oak;veneer_mm=0.6;thickness_mm=9.5;width_in=5;finish=smooth;install=click
+F034,Engineered Hardwood,spec_matched,sq_ft,"Hickory 6.5in, 3mm veneer",53170,species=hickory;veneer_mm=3.0;thickness_mm=12.7;width_in=6.5;finish=hand scraped;install=glue
+F035,Engineered Hardwood,spec_matched,sq_ft,"Maple 5in, 2mm veneer",53241,species=maple;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=nail
+F036,Solid Hardwood,spec_matched,sq_ft,Red oak 2.25in select,89412,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F037,Solid Hardwood,spec_matched,sq_ft,Red oak 3.25in select,43737,species=red oak;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F038,Solid Hardwood,spec_matched,sq_ft,White oak 5in character,42721,species=white oak;thickness_in=0.75;width_in=5;finish=smooth;grade=character
+F039,Solid Hardwood,spec_matched,sq_ft,Hickory 5in hand scraped,11685,species=hickory;thickness_in=0.75;width_in=5;finish=hand scraped;grade=character
+F040,Solid Hardwood,spec_matched,sq_ft,Maple 3.25in select,7289,species=maple;thickness_in=0.75;width_in=3.25;finish=smooth;grade=select
+F041,Solid Hardwood,Bruce,sq_ft,Bruce Solid oak 2.25in - match the model code exactly,56528,species=red oak;thickness_in=0.75;width_in=2.25;finish=smooth;grade=select
+F042,Engineered Hardwood,Bruce,sq_ft,Bruce Engineered oak - match the model code exactly,65349,species=red oak;veneer_mm=2.0;thickness_mm=12.7;width_in=5;finish=smooth;install=click
+F043,Luxury Vinyl Plank,Pergo,sq_ft,Pergo Pergo rigid core - collections differ by banner,11266,core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7;install=click;waterproof=yes
+F044,Luxury Vinyl Plank,COREtec,sq_ft,COREtec COREtec plank - check the collection name,4898,core=WPC;wear_layer_mil=20;thickness_mm=8.0;width_in=7;install=click;waterproof=yes
+F045,Porcelain Tile,MSI,sq_ft,MSI MSI porcelain - collections vary by banner,70229,material=porcelain;size_in=12x24;finish_tile=matte;pei_rating=4;look=concrete
+F046,Ceramic Tile,Marazzi,sq_ft,Marazzi Marazzi ceramic - check the series name,45655,material=ceramic;size_in=4x12;finish_tile=glossy;pei_rating=1;look=solid
