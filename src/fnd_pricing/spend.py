@@ -18,13 +18,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
-from . import COMPETITORS as _COMPETITORS
-from . import BASE_RETAILER, RETAILERS
+from . import BASE_RETAILER, RETAILERS, competitors
 from .compare import GroupComparison
 
-COMPETITORS = list(_COMPETITORS)
 MARKET_LOW = "market_low"
-BASKETS = COMPETITORS + [MARKET_LOW]
+def baskets():
+    """Every basket a rollup reports: each active competitor, plus market low."""
+    return list(competitors()) + [MARKET_LOW]
 
 
 @dataclass(frozen=True)
@@ -100,7 +100,7 @@ def _spendable(comparison: GroupComparison) -> bool:
 def _build_baskets(comparisons: List[GroupComparison]) -> Dict[str, Basket]:
     baskets: Dict[str, Basket] = {}
 
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         matched = base_spend = comp_spend = 0.0
         for comp in comparisons:
             quote = comp.quotes.get(retailer)

@@ -6,7 +6,7 @@ import statistics
 from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Optional
 
-from . import BASE_RETAILER, RETAILERS
+from . import BASE_RETAILER, RETAILERS, competitors
 from .matching import DEFAULT_MIN_TIER, MatchResult, score_match, tier_at_least
 from .models import DataError, Offer, SkuGroup
 from .normalize import NormalizedOffer, normalize
@@ -180,8 +180,7 @@ def compare_group(
         retailer: _build_quote(
             retailer, by_retailer.get(retailer), group, base, min_tier
         )
-        for retailer in RETAILERS
-        if retailer != BASE_RETAILER
+        for retailer in competitors()
     }
 
     comparison = GroupComparison(group=group, base=base, quotes=quotes, flags=flags)
@@ -272,9 +271,7 @@ def _spend_index(comparisons: List[GroupComparison]) -> Optional[float]:
 def build_rollup(label: str, comparisons: List[GroupComparison]) -> Rollup:
     rollup = Rollup(label=label, groups=len(comparisons))
     gaps = []
-    per_retailer: Dict[str, List[float]] = {
-        r: [] for r in RETAILERS if r != BASE_RETAILER
-    }
+    per_retailer: Dict[str, List[float]] = {r: [] for r in competitors()}
 
     for comp in comparisons:
         gap = comp.gap_vs_market_min

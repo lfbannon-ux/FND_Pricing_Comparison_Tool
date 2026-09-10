@@ -32,25 +32,32 @@ import statistics
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence
 
-from . import COMPETITORS as _COMPETITORS
-from . import BASE_RETAILER, RETAILERS
+from . import BASE_RETAILER, RETAILERS, competitors
 from .compare import GroupComparison
-from .matching import TIER_EXACT
-
-COMPETITORS = list(_COMPETITORS)
+from .matching import TIER_EXACT, tier_at_least
 
 
-def qualifies(comparison: GroupComparison, retailer: str, tier: str) -> bool:
-    """Is this SKU eligible for a `tier` basket against `retailer`?"""
+
+def qualifies(
+    comparison: GroupComparison, retailer: str, tier: str, at_least: bool = False
+) -> bool:
+    """Is this SKU eligible for a `tier` basket against `retailer`?
+
+    By default the tier must match exactly, which is what isolates one grade of
+    evidence - an `exact` basket must not quietly admit spec-matched rows. Pass
+    `at_least` for the other question: everything comparable at this tier or
+    better, which is the basket a merchant means by "what we both carry".
+    """
     quote = comparison.quotes.get(retailer)
-    return bool(
+    if not (
         comparison.base is not None
         and comparison.group.annual_volume > 0
         and quote is not None
         and quote.normalized is not None
-        and quote.tier == tier
         and quote.normalized.offer.in_stock
-    )
+    ):
+        return False
+    return tier_at_least(quote.tier, tier) if at_least else quote.tier == tier
 
 
 @dataclass
@@ -121,10 +128,11 @@ def build_basket(
     retailer: str,
     tier: str = TIER_EXACT,
     tie_band: float = 0.005,
+    at_least: bool = False,
 ) -> Basket:
     basket = Basket(retailer=retailer, tier=tier)
     for comparison in comparisons:
-        if not qualifies(comparison, retailer, tier):
+        if not qualifies(comparison, retailer, tier, at_least):
             continue
         quote = comparison.quotes[retailer]
         volume = comparison.group.annual_volume
@@ -148,12 +156,13 @@ def build_basket(
 
 
 def common_members(
-    comparisons: Sequence[GroupComparison], tier: str = TIER_EXACT
+    comparisons: Sequence[GroupComparison], tier: str = TIER_EXACT,
+    at_least: bool = False,
 ) -> List[GroupComparison]:
     """SKUs that qualify at every competitor - the only true three-way basket."""
     return [
         c for c in comparisons
-        if all(qualifies(c, retailer, tier) for retailer in COMPETITORS)
+        if all(qualifies(c, retailer, tier, at_least) for retailer in competitors())
     ]
 
 
@@ -193,12 +202,18 @@ class BasketSet:
 
 
 def build_basket_set(
-    comparisons: Sequence[GroupComparison], tier: str = TIER_EXACT
+    comparisons: Sequence[GroupComparison], tier: str = TIER_EXACT,
+    at_least: bool = False,
 ) -> BasketSet:
-    common = common_members(comparisons, tier)
+    common = common_members(comparisons, tier, at_least)
     return BasketSet(
         tier=tier,
         common=common,
-        common_baskets={r: build_basket(common, r, tier) for r in COMPETITORS},
-        own_baskets={r: build_basket(comparisons, r, tier) for r in COMPETITORS},
+        common_baskets={
+            r: build_basket(common, r, tier, at_least=at_least) for r in competitors()
+        },
+        own_baskets={
+            r: build_basket(comparisons, r, tier, at_least=at_least)
+            for r in competitors()
+        },
     )

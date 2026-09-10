@@ -228,3 +228,75 @@ class MultiCompetitorTest(unittest.TestCase):
         basket_set = build_basket_set([comparison("G1", 2.0, 2.2, 2.3)])
         self.assertEqual(set(basket_set.own_baskets), set(COMPETITORS))
         self.assertEqual(set(basket_set.common_baskets), set(COMPETITORS))
+
+
+class ActiveSetTest(unittest.TestCase):
+    """Narrowing the competitive set changes the answer, so it must be exact."""
+
+    def tearDown(self):
+        from fnd_pricing import reset_retailers
+
+        reset_retailers()
+
+    def test_excluding_a_retailer_removes_it_from_every_comparison(self):
+        from fnd_pricing import competitors, set_active_retailers
+
+        set_active_retailers(["floor_and_decor", "home_depot", "lowes"])
+        self.assertNotIn("tile_shop", competitors())
+        comp = comparison("G1", 2.0, 3.0, 3.0, others={"tile_shop": 1.0})
+        # The excluded banner cannot set the market low, even priced lowest.
+        self.assertNotIn("tile_shop", comp.quotes)
+        self.assertEqual(comp.market_min, 3.0)
+        self.assertEqual(comp.outcome, "win")
+
+    def test_the_base_retailer_cannot_be_excluded(self):
+        from fnd_pricing import BASE_RETAILER, competitors, set_active_retailers
+
+        set_active_retailers(["home_depot"])
+        self.assertNotIn(BASE_RETAILER, competitors())
+        from fnd_pricing import active_retailers
+        self.assertIn(BASE_RETAILER, active_retailers())
+
+    def test_an_unknown_retailer_is_refused(self):
+        from fnd_pricing import set_active_retailers
+
+        with self.assertRaises(ValueError):
+            set_active_retailers(["home_depot", "menards_wholesale"])
+
+    def test_an_empty_competitive_set_is_refused(self):
+        from fnd_pricing import set_active_retailers
+
+        with self.assertRaises(ValueError):
+            set_active_retailers(["floor_and_decor"])
+
+
+class AtLeastBasketTest(unittest.TestCase):
+    """`--tier` isolates one grade; `--at-least` asks what we both carry."""
+
+    def setUp(self):
+        from fnd_pricing import COMPETITORS
+
+        self.exact = everywhere("G1", 2.0, 2.2)
+        # Same specs, different brands -> equivalent, never exact.
+        self.equivalent = comparison(
+            "G2", 2.0,
+            others={r: 2.2 for r in COMPETITORS},
+            brands={r: f"Brand{i}" for i, r in enumerate(COMPETITORS)},
+        )
+
+    def test_exact_tier_alone_excludes_equivalent_rows(self):
+        basket_set = build_basket_set([self.exact, self.equivalent])
+        self.assertEqual([c.group.group_id for c in basket_set.common], ["G1"])
+
+    def test_at_least_admits_the_better_tier_too(self):
+        basket_set = build_basket_set(
+            [self.exact, self.equivalent], tier="equivalent", at_least=True
+        )
+        self.assertEqual(
+            sorted(c.group.group_id for c in basket_set.common), ["G1", "G2"]
+        )
+
+    def test_equivalent_tier_alone_excludes_exact_rows(self):
+        # Exact-tier equality is what keeps the identical-SKU evidence isolated.
+        basket_set = build_basket_set([self.exact, self.equivalent], tier="equivalent")
+        self.assertEqual([c.group.group_id for c in basket_set.common], ["G2"])

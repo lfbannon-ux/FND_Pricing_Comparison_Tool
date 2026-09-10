@@ -312,6 +312,31 @@ actually charge for this item" — it shows `$88.99 per_box / 29.69 sq ft` besid
 that carries nothing comparable is **blank, never zero**: a zero would price the item
 as free and win every comparison it entered.
 
+## Narrowing the competitive set
+
+`--exclude` and `--only` change which banners a run compares, without a second
+dataset:
+
+```bash
+python3 -m fnd_pricing --exclude tile_shop compare
+python3 -m fnd_pricing --only home_depot --only lowes basket
+```
+
+Floor & Decor is always included. Every narrowed run prints the active set,
+because this is a **methodology change, not a filter**: win rate and the
+market-low index are measured against the cheapest comparable competitor, so
+results from different competitive sets are not comparable to each other.
+
+`basket --tier` matches a tier exactly, which is what isolates one grade of
+evidence — an `exact` basket must not quietly admit spec-matched rows. Add
+`--at-least` for the other question, everything comparable at that tier or
+better:
+
+```bash
+python3 -m fnd_pricing --exclude tile_shop basket                        # identical SKUs only
+python3 -m fnd_pricing --exclude tile_shop basket --at-least --tier close  # all comparable
+```
+
 ## Adding or changing a retailer
 
 The comparison engine is retailer-agnostic: `normalize`, `matching`, `compare`,
@@ -360,7 +385,7 @@ data/demo/       end-to-end dry run on simulated prices (never collected)
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           123 unit tests
+tests/           130 unit tests
 ```
 
 ## Tests

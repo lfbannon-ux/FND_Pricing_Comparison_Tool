@@ -1,0 +1,131 @@
+group_id,category,description,brand,basis,annual_volume,fnd_unit_price,fnd_annual_spend,home_depot_unit_price,home_depot_annual_spend,home_depot_gap_pct,lowes_unit_price,lowes_annual_spend,lowes_gap_pct,menards_unit_price,menards_annual_spend,menards_gap_pct,cheapest_retailer
+G0006,Luxury Vinyl Plank,Waterproof LVP - Blackwater rigid core 20,Shaw,sq_ft,107649.0,4.39,472579.11,4.79,515638.71,0.0911,4.6902,504895.34,0.0684,4.69,504873.81,0.0683,floor_and_decor
+G0008,Luxury Vinyl Plank,WPC Rigid Core - Vintage Elm WPC 28,AquaGuard,sq_ft,233094.0,4.49,1046592.06,5.99,1396233.06,0.3341,4.99,1163139.06,0.1114,5.59,1302995.46,0.245,floor_and_decor
+G0009,Luxury Vinyl Plank,Waterproof LVP - Zermatt WPC 20,AquaGuard,sq_ft,146770.0,3.39,497550.3,4.09,600289.3,0.2065,4.2687,626517.1,0.2592,2.8568,419292.54,-0.1573,menards
+G0010,Luxury Vinyl Plank,SPC Rigid Core - Stonehaven WPC 12,Mohawk,sq_ft,113210.0,3.49,395102.9,3.6902,417767.54,0.0574,3.69,417744.9,0.0573,3.59,406423.9,0.0287,floor_and_decor
+G0011,Luxury Vinyl Plank,SPC Rigid Core - Harbor Oak WPC 12,DuraLux,sq_ft,163958.0,2.59,424651.22,2.7704,454229.24,0.0697,2.7543,451589.52,0.0634,3.1222,511909.67,0.2055,floor_and_decor
+G0012,Luxury Vinyl Plank,Waterproof LVP - Zermatt rigid core 12,DuraLux,sq_ft,192148.0,3.19,612952.12,3.39,651381.72,0.0627,3.79,728240.92,0.1881,3.805,731123.14,0.1928,floor_and_decor
+G0013,Luxury Vinyl Plank,SPC Rigid Core - Umber rigid core 22,AquaGuard,sq_ft,54349.0,2.09,113589.41,2.4883,135236.62,0.1906,2.39,129894.11,0.1435,2.3856,129654.97,0.1414,floor_and_decor
+G0014,Luxury Vinyl Plank,SPC Rigid Core - Thornbury WPC 20,Pergo,sq_ft,192652.0,4.69,903537.88,4.9467,952991.65,0.0547,4.9046,944881.0,0.0458,4.5806,882461.75,-0.0233,menards
+G0016,Luxury Vinyl Plank,Waterproof LVP - Maplewood rigid core 22,AquaGuard,sq_ft,203747.0,4.39,894449.33,5.6247,1146015.75,0.2813,4.09,833325.23,-0.0683,3.7334,760669.05,-0.1496,menards
+G0019,Luxury Vinyl Plank,SPC Rigid Core - Sierra WPC 12,DuraLux,sq_ft,246749.0,2.79,688429.71,2.59,639079.91,-0.0717,2.99,737779.51,0.0717,3.09,762454.41,0.1075,home_depot
+G0020,Luxury Vinyl Plank,Glue Down LVP - Bianco rigid core 22,COREtec,sq_ft,205990.0,3.29,677707.1,3.39,698306.1,0.0304,3.5302,727185.9,0.073,3.49,718905.1,0.0608,floor_and_decor
+G0021,Luxury Vinyl Plank,WPC Rigid Core - Espresso SPC 12,NuCore,sq_ft,156612.0,3.99,624881.88,4.59,718849.08,0.1504,4.79,750171.48,0.2005,4.09,640543.08,0.0251,floor_and_decor
+G0022,Luxury Vinyl Plank,WPC Rigid Core - Yorkshire rigid core 6,NuCore,sq_ft,177638.0,2.49,442318.62,2.691,478023.86,0.0807,2.4941,443046.94,0.0016,2.9961,532221.21,0.2033,floor_and_decor
+G0023,Luxury Vinyl Plank,Glue Down LVP - Coastal Grey WPC 6,NuCore,sq_ft,64412.0,4.79,308533.48,4.69,302092.28,-0.0209,5.2936,340971.36,0.1051,4.79,308533.48,0.0,home_depot
+G0024,Luxury Vinyl Plank,Waterproof LVP - Kingsport SPC 12,DuraLux,sq_ft,152137.0,4.49,683095.13,4.19,637454.03,-0.0668,5.113,777876.48,0.1388,4.7211,718253.99,0.0515,home_depot
+G0025,Luxury Vinyl Plank,WPC Rigid Core - Bergamo WPC 28,DuraLux,sq_ft,247080.0,2.89,714061.2,3.19,788185.2,0.1038,2.782,687376.56,-0.0374,3.29,812893.2,0.1384,lowes
+G0026,Luxury Vinyl Plank,Glue Down LVP - Fieldstone WPC 20,NuCore,sq_ft,240188.0,3.79,910312.52,5.163,1240090.64,0.3623,5.49,1318632.12,0.4485,6.1638,1480470.79,0.6263,floor_and_decor
+G0027,Luxury Vinyl Plank,Glue Down LVP - Ivory rigid core 20,AquaGuard,sq_ft,212609.0,3.19,678222.71,3.89,827049.01,0.2194,3.6676,779764.77,0.1497,3.4474,732948.27,0.0807,floor_and_decor
+G0028,Luxury Vinyl Plank,Glue Down LVP - Alabaster SPC 12,DuraLux,sq_ft,132973.0,2.09,277913.57,2.69,357697.37,0.2871,2.1526,286237.68,0.03,2.5063,333270.23,0.1992,floor_and_decor
+G0029,Luxury Vinyl Plank,Waterproof LVP - Autumn Hollow SPC 12,NuCore,sq_ft,212904.0,1.79,381098.16,1.99,423678.96,0.1117,2.19,466259.76,0.2235,1.6222,345372.87,-0.0937,menards
+G0031,Laminate,Waterproof Laminate - Fieldstone 4 7,Quick-Step,sq_ft,91308.0,1.99,181702.92,2.39,218226.12,0.201,2.39,218226.12,0.201,2.2473,205196.47,0.1293,floor_and_decor
+G0032,Laminate,Waterproof Laminate - Sundance 4 12,Sono Eclipse,sq_ft,157778.0,2.99,471756.22,2.89,455978.42,-0.0334,2.8159,444287.07,-0.0582,3.09,487534.02,0.0334,lowes
+G0034,Laminate,Water Resistant Laminate - Saxony 5 7,AquaGuard,sq_ft,49772.0,2.29,113977.88,2.69,133886.68,0.1747,2.608,129805.38,0.1389,1.99,99046.28,-0.131,menards
+G0035,Laminate,Water Resistant Laminate - Pembroke 5 7,AquaGuard,sq_ft,179784.0,1.49,267878.16,1.29,231921.36,-0.1342,1.89,339791.76,0.2685,1.79,321813.36,0.2013,home_depot
+G0036,Laminate,Waterproof Laminate - Slate Creek 4 10,Sono Eclipse,sq_ft,179213.0,2.49,446240.37,2.1326,382189.64,-0.1435,3.09,553768.17,0.241,2.99,535846.87,0.2008,home_depot
+G0037,Laminate,Water Resistant Laminate - Umber 3 8,Sono Eclipse,sq_ft,10355.0,1.79,18535.45,1.8879,19549.2,0.0547,2.09,21641.95,0.1676,1.89,19570.95,0.0559,floor_and_decor
+G0038,Laminate,Waterproof Laminate - Cedar Point 4 12,Sono Eclipse,sq_ft,18181.0,2.39,43452.59,2.6355,47916.03,0.1027,2.59,47088.79,0.0837,2.8878,52503.09,0.2083,floor_and_decor
+G0039,Laminate,Water Resistant Laminate - Windsor 5 10,Sono Eclipse,sq_ft,70810.0,1.89,133830.9,2.09,147992.9,0.1058,2.1612,153034.57,0.1435,2.39,169235.9,0.2646,floor_and_decor
+G0042,Laminate,Waterproof Laminate - Willow Bend 4 7,Sono Eclipse,sq_ft,42624.0,2.29,97608.96,2.4516,104497.0,0.0706,2.79,118920.96,0.2183,2.89,123183.36,0.262,floor_and_decor
+G0046,Laminate,Standard Laminate - Whitewash 3 12,Pergo,sq_ft,29385.0,2.19,64353.15,2.59,76107.15,0.1826,2.5538,75043.41,0.1661,2.49,73168.65,0.137,floor_and_decor
+G0047,Laminate,Water Resistant Laminate - Sterling 3 10,Sono Eclipse,sq_ft,159396.0,3.49,556292.04,4.2201,672667.06,0.2092,3.9862,635384.34,0.1422,3.69,588171.24,0.0573,floor_and_decor
+G0048,Laminate,Water Resistant Laminate - Charcoal 3 10,AquaGuard,sq_ft,132972.0,2.29,304505.88,2.69,357694.68,0.1747,2.359,313680.95,0.0301,2.39,317803.08,0.0437,floor_and_decor
+G0049,Engineered Hardwood,Click Engineered - Copperfield white oak 3.0,Sonoma,sq_ft,48288.0,6.49,313389.12,7.99,385821.12,0.2311,6.89,332704.32,0.0616,7.5502,364584.06,0.1634,floor_and_decor
+G0050,Engineered Hardwood,Glue Down Engineered - Cedar Point birch 4.0,Bruce,sq_ft,57976.0,3.09,179145.84,3.6849,213635.76,0.1925,4.49,260312.24,0.4531,3.2928,190903.37,0.0656,floor_and_decor
+G0054,Engineered Hardwood,Wide Plank Engineered - Greystone birch 3.0,Sonoma,sq_ft,55125.0,2.79,153798.75,4.1261,227451.26,0.4789,4.0684,224270.55,0.4582,4.2563,234628.54,0.5256,floor_and_decor
+G0055,Engineered Hardwood,Wide Plank Engineered - Autumn Hollow red oak 4.0,AquaGuard Wood,sq_ft,46645.0,4.29,200107.05,4.89,228094.05,0.1399,5.4765,255451.34,0.2766,5.0585,235953.73,0.1791,floor_and_decor
+G0056,Engineered Hardwood,Wide Plank Engineered - Sandstone hickory 0.6,AquaGuard Wood,sq_ft,40648.0,8.89,361360.72,10.6753,433929.59,0.2008,10.7889,438547.21,0.2136,10.98,446315.04,0.2351,floor_and_decor
+G0057,Engineered Hardwood,Click Engineered - Millbrook birch 2.0,Sonoma,sq_ft,37319.0,4.19,156366.61,4.49,167562.31,0.0716,5.49,204881.31,0.3103,4.39,163830.41,0.0477,floor_and_decor
+G0059,Engineered Hardwood,Click Engineered - Cambridge birch 3.0,Mannington,sq_ft,59690.0,6.99,417233.1,7.29,435140.1,0.0429,7.2841,434787.93,0.0421,7.6621,457350.75,0.0962,floor_and_decor
+G0063,Engineered Hardwood,Glue Down Engineered - Alabaster red oak 2.0,AquaGuard Wood,sq_ft,62801.0,7.49,470379.49,8.2377,517335.8,0.0998,7.9008,496178.14,0.0548,8.79,552020.79,0.1736,floor_and_decor
+G0064,Engineered Hardwood,Click Engineered - Dunmore walnut 4.0,Bruce,sq_ft,57666.0,4.99,287753.34,3.99,230087.34,-0.2004,5.09,293519.94,0.02,5.09,293519.94,0.02,home_depot
+G0065,Solid Hardwood,Unfinished Solid - Saxony birch 0.5,Sonoma,sq_ft,34431.0,6.99,240672.69,8.0672,277761.76,0.1541,5.99,206241.69,-0.1431,8.1822,281721.33,0.1706,lowes
+G0067,Solid Hardwood,Prefinished Solid - Tidewater white oak 0.5,Somerset,sq_ft,37609.0,8.19,308017.71,10.98,412946.82,0.3407,9.49,356909.41,0.1587,8.99,338104.91,0.0977,floor_and_decor
+G0068,Solid Hardwood,Prefinished Solid - Bergamo birch 0.5,Sonoma,sq_ft,33958.0,7.99,271324.42,9.7336,330533.59,0.2182,9.69,329053.02,0.2128,9.39,318865.62,0.1752,floor_and_decor
+G0069,Solid Hardwood,Prefinished Solid - Meridian white oak 0.5,Somerset,sq_ft,3821.0,3.69,14099.49,4.0677,15542.68,0.1024,3.69,14099.49,0.0,3.99,15245.79,0.0813,floor_and_decor
+G0070,Solid Hardwood,Unfinished Solid - Quarry red oak 0.75,Founders,sq_ft,14857.0,7.19,106821.83,8.3483,124030.69,0.1611,8.59,127621.63,0.1947,8.59,127621.63,0.1947,floor_and_decor
+G0071,Solid Hardwood,Unfinished Solid - Meridian red oak 0.5,Sonoma,sq_ft,15455.0,6.49,100302.95,9.39,145122.45,0.4468,9.19,142031.45,0.416,6.3082,97493.23,-0.028,menards
+G0073,Solid Hardwood,Prefinished Solid - Cambridge maple 0.75,Sonoma,sq_ft,34840.0,3.89,135527.6,4.4385,154637.34,0.141,4.19,145979.6,0.0771,3.69,128559.6,-0.0514,menards
+G0074,Solid Hardwood,Prefinished Solid - Yorkshire birch 0.75,Sonoma,sq_ft,13631.0,4.79,65292.49,5.4169,73837.76,0.1309,5.59,76197.29,0.167,5.1653,70408.2,0.0784,floor_and_decor
+G0075,Porcelain Tile,Outdoor Paver - Bianco porcelain 12x12,Founders,sq_ft,35970.0,1.69,60789.3,1.99,71580.3,0.1775,1.79,64386.3,0.0592,1.6016,57609.55,-0.0523,menards
+G0076,Porcelain Tile,Outdoor Paver - Stonehaven porcelain 12x12,Founders,sq_ft,105389.0,3.69,388885.41,4.49,473196.61,0.2168,4.39,462657.71,0.1897,4.9337,519957.71,0.337,floor_and_decor
+G0077,Porcelain Tile,Concrete Look - Tidewater porcelain 24x24,Founders,sq_ft,96069.0,2.09,200784.21,2.6102,250759.3,0.2489,2.49,239211.81,0.1914,2.29,219998.01,0.0957,floor_and_decor
+G0080,Porcelain Tile,Concrete Look - Blackwater porcelain 24x48,Salerno,sq_ft,141764.0,3.79,537285.56,4.19,593991.16,0.1055,4.59,650696.76,0.2111,4.4543,631459.39,0.1753,floor_and_decor
+G0081,Porcelain Tile,Wood Look Plank - Bayside porcelain 6x24,MSI,sq_ft,50412.0,2.19,110402.28,2.39,120484.68,0.0913,2.49,125525.88,0.137,2.39,120484.68,0.0913,floor_and_decor
+G0084,Porcelain Tile,Marble Look - Granite Peak porcelain 12x12,Marazzi,sq_ft,112291.0,4.69,526644.79,5.19,582790.29,0.1066,5.19,582790.29,0.1066,4.8178,540995.58,0.0272,floor_and_decor
+G0090,Porcelain Tile,Large Format - Tidewater porcelain 24x48,Founders,sq_ft,20709.0,2.99,61919.91,2.7211,56351.26,-0.0899,3.4987,72454.58,0.1701,3.69,76416.21,0.2341,home_depot
+G0092,Porcelain Tile,Outdoor Paver - Whitewash porcelain 24x48,Salerno,sq_ft,53286.0,1.89,100710.54,2.9192,155552.49,0.5446,2.2487,119824.23,0.1898,2.49,132682.14,0.3175,floor_and_decor
+G0094,Porcelain Tile,Outdoor Paver - Thornbury porcelain 12x24,Daltile,sq_ft,100140.0,5.09,509712.6,5.49,549768.6,0.0786,5.985,599337.9,0.1758,4.1928,419866.99,-0.1763,menards
+G0095,Porcelain Tile,Marble Look - Maplewood porcelain 12x12,Nova,sq_ft,115294.0,4.79,552258.26,5.69,656022.86,0.1879,6.09,702140.46,0.2714,5.1945,598894.68,0.0844,floor_and_decor
+G0096,Porcelain Tile,Large Format - Quarry porcelain 12x24,Nova,sq_ft,39440.0,5.89,232301.6,5.59,220469.6,-0.0509,7.995,315322.8,0.3574,6.69,263853.6,0.1358,home_depot
+G0097,Porcelain Tile,Marble Look - Yorkshire porcelain 24x48,Nova,sq_ft,30584.0,3.79,115913.36,4.308,131755.87,0.1367,4.89,149555.76,0.2902,3.89,118971.76,0.0264,floor_and_decor
+G0098,Porcelain Tile,Large Format - Windsor porcelain 24x24,Sonoma,sq_ft,30763.0,5.39,165812.57,6.2162,191228.96,0.1533,6.69,205804.47,0.2412,6.7951,209037.66,0.2607,floor_and_decor
+G0099,Porcelain Tile,Marble Look - Maplewood porcelain 12x12,Founders,sq_ft,20183.0,3.99,80530.17,6.0523,122153.57,0.5169,6.39,128969.37,0.6015,5.89,118877.87,0.4762,floor_and_decor
+G0100,Porcelain Tile,Large Format - Blackwater porcelain 12x12,Daltile,sq_ft,148412.0,4.39,651528.68,4.8058,713238.39,0.0947,4.79,710893.48,0.0911,4.7225,700875.67,0.0757,floor_and_decor
+G0102,Ceramic Tile,Subway Tile - Riverbend ceramic 4x12,Nova,sq_ft,127832.0,1.39,177686.48,1.9391,247879.03,0.395,1.7702,226288.21,0.2735,1.99,254385.68,0.4317,floor_and_decor
+G0103,Ceramic Tile,Floor Ceramic - Sterling ceramic 3x6,Nova,sq_ft,43525.0,1.79,77909.75,2.346,102109.65,0.3106,2.0702,90105.45,0.1565,2.19,95319.75,0.2235,floor_and_decor
+G0104,Ceramic Tile,Subway Tile - Charcoal ceramic 3x6,Salerno,sq_ft,100579.0,1.89,190094.31,2.09,210210.11,0.1058,2.32,233343.28,0.2275,1.7036,171346.38,-0.0986,menards
+G0106,Ceramic Tile,Field Tile - Onyx ceramic 12x12,Marazzi,sq_ft,120062.0,2.79,334972.98,3.09,370991.58,0.1075,3.09,370991.58,0.1075,3.0451,365600.8,0.0914,floor_and_decor
+G0107,Ceramic Tile,Field Tile - Bayside ceramic 12x12,Salerno,sq_ft,54136.0,2.89,156453.04,3.0293,163994.18,0.0482,3.69,199761.84,0.2768,3.0822,166857.98,0.0665,floor_and_decor
+G0108,Ceramic Tile,Floor Ceramic - Juniper ceramic 6x24,Nova,sq_ft,83668.0,2.29,191599.72,2.5622,214374.15,0.1189,2.69,225066.92,0.1747,2.6461,221393.89,0.1555,floor_and_decor
+G0109,Ceramic Tile,Floor Ceramic - Fieldstone ceramic 12x12,Nova,sq_ft,119389.0,2.09,249523.01,2.5497,304406.13,0.22,2.39,285339.71,0.1435,2.19,261461.91,0.0478,floor_and_decor
+G0110,Ceramic Tile,Field Tile - Quarry ceramic 6x24,Nova,sq_ft,69662.0,0.99,68965.38,1.0735,74782.16,0.0843,1.09,75931.58,0.101,1.0981,76495.84,0.1092,floor_and_decor
+G0111,Ceramic Tile,Subway Tile - Chelsea ceramic 12x12,Nova,sq_ft,117796.0,0.79,93058.84,1.09,128397.64,0.3797,0.8701,102494.3,0.1014,0.99,116618.04,0.2532,floor_and_decor
+G0112,Ceramic Tile,Field Tile - Coastal Grey ceramic 4x16,Salerno,sq_ft,149603.0,2.29,342590.87,2.59,387471.77,0.131,2.89,432352.67,0.262,2.8697,429315.73,0.2531,floor_and_decor
+G0113,Ceramic Tile,Floor Ceramic - Redmond ceramic 12x12,Marazzi,sq_ft,129225.0,1.19,153777.75,1.29,166700.25,0.084,1.29,166700.25,0.084,1.3539,174957.73,0.1377,floor_and_decor
+G0115,Natural Stone Tile,Slate - Onyx travertine 12x12,Nova,sq_ft,5038.0,11.98,60355.24,13.8215,69632.72,0.1537,15.99,80557.62,0.3347,13.2047,66525.28,0.1022,floor_and_decor
+G0116,Natural Stone Tile,Marble - Harbor Oak slate 18x18,Nova,sq_ft,34722.0,5.69,197568.18,7.49,260067.78,0.3163,5.7644,200151.5,0.0131,6.8953,239418.61,0.2118,floor_and_decor
+G0118,Natural Stone Tile,Marble - Cambridge quartzite 16x16,MSI,sq_ft,14599.0,9.59,140004.41,11.99,175042.01,0.2503,10.6817,155942.14,0.1138,10.97,160151.03,0.1439,floor_and_decor
+G0119,Natural Stone Tile,Quartzite - Sundance travertine 6x12,Sonoma,sq_ft,16421.0,6.19,101645.99,8.09,132845.89,0.3069,8.18,134323.78,0.3215,8.09,132845.89,0.3069,floor_and_decor
+G0120,Natural Stone Tile,Slate - Harbor Oak slate 12x12,Sonoma,sq_ft,22974.0,4.79,110045.46,5.59,128424.66,0.167,5.79,133019.46,0.2088,6.09,139911.66,0.2714,floor_and_decor
+G0124,Natural Stone Tile,Travertine - Sterling travertine 12x24,Founders,sq_ft,38993.0,12.98,506129.14,17.97,700704.21,0.3844,14.97,583725.21,0.1533,15.2229,593586.54,0.1728,floor_and_decor
+G0125,Natural Stone Tile,Limestone - Dunmore travertine 12x24,Founders,sq_ft,33636.0,5.79,194752.44,7.0837,238267.33,0.2234,6.49,218297.64,0.1209,7.79,262024.44,0.3454,floor_and_decor
+G0126,Natural Stone Tile,Slate - Thornbury travertine 12x24,Nova,sq_ft,33404.0,9.39,313663.56,10.455,349238.82,0.1134,11.97,399845.88,0.2748,10.99,367109.96,0.1704,floor_and_decor
+G0127,Mosaic & Decorative Tile,Decorative Accent - Alabaster marble hexagon,Nova,sq_ft,2066.0,11.98,24750.68,15.5938,32216.79,0.3017,13.98,28882.68,0.1669,16.4845,34056.98,0.376,floor_and_decor
+G0128,Mosaic & Decorative Tile,Stone Mosaic - Thornbury marble subway,Nova,sq_ft,4549.0,20.98,95438.02,24.98,113634.02,0.1907,27.97,127235.53,0.3332,27.0729,123154.62,0.2904,floor_and_decor
+G0130,Mosaic & Decorative Tile,Stone Mosaic - Riverbend porcelain subway,Nova,sq_ft,5055.0,21.98,111108.9,27.8041,140549.73,0.265,27.97,141388.35,0.2725,25.97,131278.35,0.1815,floor_and_decor
+G0133,Mosaic & Decorative Tile,Glass Mosaic - Espresso glass herringbone,Nova,sq_ft,1286.0,12.99,16705.14,14.98,19264.28,0.1532,13.98,17978.28,0.0762,15.99,20563.14,0.2309,floor_and_decor
+G0137,Wall Tile & Backsplash,Glass Wall - Quarry ceramic 4x16,Marazzi,sq_ft,19290.0,3.59,69251.1,3.99,76967.1,0.1114,3.89,75038.1,0.0836,4.0534,78190.09,0.1291,floor_and_decor
+G0139,Wall Tile & Backsplash,Glass Wall - Slate Creek porcelain 3x6,Nova,sq_ft,4907.0,4.39,21541.73,4.39,21541.73,0.0,4.99,24485.93,0.1367,5.49,26939.43,0.2506,floor_and_decor
+G0140,Wall Tile & Backsplash,Glass Wall - Barnwood ceramic 4x16,Salerno,sq_ft,18832.0,5.09,95854.88,4.9585,93378.47,-0.0258,6.09,114686.88,0.1965,5.39,101504.48,0.0589,home_depot
+G0141,Wall Tile & Backsplash,Glass Wall - Sundance glass 3x6,Nova,sq_ft,2647.0,6.79,17973.13,7.39,19561.33,0.0884,7.19,19031.93,0.0589,7.3712,19511.57,0.0856,floor_and_decor
+G0142,Wall Tile & Backsplash,Glass Wall - Westbury porcelain 3x6,Nova,sq_ft,4459.0,3.59,16007.81,4.49,20020.91,0.2507,3.79,16899.61,0.0557,4.09,18237.31,0.1393,floor_and_decor
+G0143,Wall Tile & Backsplash,Glass Wall - Quarry porcelain 4x16,Salerno,sq_ft,4030.0,6.29,25348.7,8.39,33811.7,0.3339,5.89,23736.7,-0.0636,7.19,28975.7,0.1431,lowes
+G0145,Carpet & Carpet Tile,Broadloom - Harbor Oak nylon 32,Shaw,sq_ft,24853.0,2.89,71825.17,3.1107,77310.23,0.0764,3.1089,77265.49,0.0757,2.99,74310.47,0.0346,floor_and_decor
+G0148,Carpet & Carpet Tile,Broadloom - Umber nylon 26,NuCore Soft,sq_ft,9858.0,2.19,21589.02,2.7296,26908.4,0.2464,2.29,22574.82,0.0457,2.3454,23120.95,0.071,floor_and_decor
+G0149,Carpet & Carpet Tile,Carpet Tile - Westbury nylon 20,Sonoma,sq_ft,22702.0,3.29,74689.58,3.39,76959.78,0.0304,3.29,74689.58,0.0,3.49,79229.98,0.0608,floor_and_decor
+G0151,Underlayment,Rubber Underlayment - Oakmont cork 6,QEP,sq_ft,42416.0,0.6899,29262.8,0.6968,29555.47,0.01,0.7197,30526.8,0.0432,0.6999,29686.96,0.0145,floor_and_decor
+G0152,Underlayment,Felt Underlayment - Riverbend cork 2,QEP,sq_ft,24022.0,0.6749,16212.45,0.7444,17881.98,0.103,0.79,18977.38,0.1705,0.6999,16813.0,0.037,floor_and_decor
+G0153,Underlayment,Felt Underlayment - Sierra felt 6,Roberts,sq_ft,45473.0,0.6599,30007.63,0.6699,30462.36,0.0152,0.69,31376.37,0.0456,0.6249,28416.08,-0.053,menards
+G0154,Underlayment,Foam Underlayment - Zermatt felt 3,Roberts,sq_ft,70677.0,0.3849,27203.58,0.4399,31090.81,0.1429,0.49,34631.73,0.2731,0.373,26362.52,-0.0309,menards
+G0155,Underlayment,Felt Underlayment - Yorkshire rubber 6,Roberts,sq_ft,78432.0,0.4999,39208.16,0.4999,39208.16,0.0,0.4999,39208.16,0.0,0.5222,40957.19,0.0446,floor_and_decor
+G0158,Underlayment,Felt Underlayment - Carrara felt 2,MP Global,sq_ft,58313.0,0.3798,22147.28,0.3095,18047.87,-0.1851,0.3349,19529.02,-0.1182,0.3571,20823.57,-0.0598,home_depot
+G0159,Setting Materials,Unmodified Thinset - Onyx epoxy mortar standard,Bostik,lb,36746.0,0.3598,13221.21,0.3798,13956.13,0.0556,0.2916,10715.13,-0.1895,0.3356,12331.96,-0.0673,lowes
+G0160,Setting Materials,Unmodified Thinset - Greystone epoxy mortar premium,Laticrete,lb,33242.0,0.4396,14613.18,0.4396,14613.18,0.0,0.4198,13954.99,-0.045,0.3598,11960.47,-0.1815,menards
+G0161,Setting Materials,Modified Thinset - Tidewater epoxy mortar standard,MAPEI,lb,12276.0,0.4392,5391.62,0.4388,5386.71,-0.0009,0.4394,5394.07,0.0005,0.4396,5396.53,0.0009,floor_and_decor
+G0164,Setting Materials,Unmodified Thinset - Riverbend unmodified thinset standard,Bostik,lb,6676.0,0.2798,1867.94,0.2998,2001.46,0.0715,0.2996,2000.13,0.0708,0.2756,1839.91,-0.015,menards
+G0165,Setting Materials,Epoxy Mortar - Windsor unmodified thinset standard,MAPEI,lb,35500.0,0.4788,16997.4,0.3796,13475.8,-0.2072,0.3798,13482.9,-0.2068,0.4396,15605.8,-0.0819,home_depot
+G0166,Setting Materials,Epoxy Mortar - Alabaster modified thinset standard,MAPEI,lb,30822.0,0.6198,19103.48,0.6394,19707.59,0.0316,0.6598,20336.36,0.0645,0.5798,17870.6,-0.0645,menards
+G0169,Grout & Caulk,Single Component Grout - Charcoal single component 0.5,MAPEI,lb,5469.0,1.2211,6678.2,1.198,6551.86,-0.0189,1.1992,6558.42,-0.0179,1.1588,6337.48,-0.051,menards
+G0170,Grout & Caulk,Sanded Grout - Linen sanded 0.125,Custom Building Products,lb,10089.0,0.9992,10080.93,0.9989,10077.9,-0.0003,1.097,11067.63,0.0979,0.959,9675.35,-0.0402,menards
+G0171,Grout & Caulk,Epoxy Grout - Hillcrest epoxy 0.125,MAPEI,lb,34627.0,1.0656,36898.53,0.9211,31894.93,-0.1356,0.869,30090.86,-0.1845,1.0211,35357.63,-0.0418,lowes
+G0173,Grout & Caulk,Sanded Grout - Vintage Elm epoxy 0.125,Custom Building Products,lb,34872.0,1.33,46379.76,1.4411,50254.04,0.0835,1.198,41776.66,-0.0992,1.33,46379.76,0.0,lowes
+G0174,Grout & Caulk,Single Component Grout - Fieldstone sanded 0.125,Laticrete,lb,31626.0,1.3322,42132.16,1.33,42062.58,-0.0017,1.2796,40468.63,-0.0395,1.22,38583.72,-0.0842,menards
+G0175,Trim & Moulding,T-Molding - Westbury quarter round aluminum,Sonoma,lin_ft,26252.0,1.6213,42562.37,1.7488,45909.5,0.0786,1.69,44365.88,0.0424,1.7488,45909.5,0.0786,floor_and_decor
+G0179,Trim & Moulding,Reducer - Pembroke T-molding vinyl,Sonoma,lin_ft,5654.0,4.9962,28248.51,5.8627,33147.71,0.1734,5.0738,28687.27,0.0155,4.8712,27541.76,-0.025,menards
+G0180,Trim & Moulding,Baseboard - Cedar Point T-molding aluminum,Sonoma,lin_ft,19646.0,1.8446,36239.01,1.864,36620.14,0.0105,1.79,35166.34,-0.0296,1.8431,36209.54,-0.0008,lowes
+G0181,Trim & Moulding,Quarter Round - Maplewood reducer wood,Shaw,lin_ft,25521.0,5.2277,133416.13,6.46,164865.66,0.2357,5.39,137558.19,0.031,5.9954,153008.6,0.1469,floor_and_decor
+G0182,Trim & Moulding,Stair Nose - Marbella T-molding vinyl,DuraLux,lin_ft,3260.0,5.3293,17373.52,6.4585,21054.71,0.2119,5.39,17571.4,0.0114,5.8653,19120.88,0.1006,floor_and_decor
+G0184,Trim & Moulding,Baseboard - Slate Creek T-molding wood,NuCore,lin_ft,16519.0,2.1237,35081.4,1.8738,30953.3,-0.1177,2.29,37828.51,0.0783,2.1307,35197.03,0.0033,home_depot
+G0185,Tile Trim & Edging,Edge Profile - Riverbend bullnose brushed brass,Custom Building Products,lin_ft,8453.0,4.7488,40141.61,5.8738,49651.23,0.2369,5.6225,47526.99,0.184,5.6212,47516.0,0.1837,floor_and_decor
+G0187,Tile Trim & Edging,Edge Profile - Juniper bullnose PVC,Schluter,lin_ft,7716.0,11.7624,90758.68,12.9388,99835.78,0.1,11.7624,90758.68,0.0,11.7624,90758.68,0.0,floor_and_decor
+G0188,Tile Trim & Edging,Transition Profile - Calacatta square edge stainless steel,Custom Building Products,lin_ft,7478.0,7.1753,53656.89,7.2906,54519.11,0.0161,5.6459,42220.04,-0.2131,7.2906,54519.11,0.0161,lowes
+G0191,Installation Tools,Hand Tool - Fieldstone knee pads manual,QEP,each,1209.0,164.98,199460.82,164.98,199460.82,0.0,124.98,151100.82,-0.2425,169.98,205505.82,0.0303,lowes
+G0193,Installation Tools,Wet Saw - Havana mixing paddle electric,DEWALT,each,1526.0,164.98,251759.48,169.98,259389.48,0.0303,164.98,251759.48,0.0,164.98,251759.48,0.0,floor_and_decor
+G0194,Installation Tools,Hand Tool - Copperfield leveling clips electric,DEWALT,each,3378.0,99.98,337732.44,99.98,337732.44,0.0,99.98,337732.44,0.0,99.98,337732.44,0.0,floor_and_decor
+G0195,Installation Tools,Leveling System - Oakmont notched trowel manual,Rubi,each,2743.0,88.98,244072.14,68.98,189212.14,-0.2248,86.97,238558.71,-0.0226,80.99,222155.57,-0.0898,home_depot
+G0196,Installation Tools,Hand Tool - Willow Bend leveling clips electric,Rubi,each,2105.0,129.98,273607.9,129.98,273607.9,0.0,129.98,273607.9,0.0,124.98,263082.9,-0.0385,menards
+G0197,Vanities & Tops,Double Sink Vanity - Quarry 48 engineered stone top,Foremost,each,720.0,619.0,445680.0,739.0,532080.0,0.1939,719.0,517680.0,0.1616,689.0,496080.0,0.1131,floor_and_decor
+G0198,Vanities & Tops,Double Sink Vanity - Charcoal 30 quartz top,Sonoma,each,457.0,469.0,214333.0,389.0,177773.0,-0.1706,419.0,191483.0,-0.1066,389.0,177773.0,-0.1706,home_depot
+G0199,Vanities & Tops,Double Sink Vanity - Sundance 48 quartz top,Sonoma,each,517.0,669.0,345873.0,649.0,335533.0,-0.0299,619.0,320023.0,-0.0747,649.0,335533.0,-0.0299,lowes

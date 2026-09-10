@@ -15,7 +15,10 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
-from . import BASE_RETAILER, RETAILER_CODES, RETAILER_LABELS, RETAILER_SHORT, RETAILERS
+from . import (
+    BASE_RETAILER, RETAILER_CODES, RETAILER_LABELS, RETAILER_SHORT, RETAILERS,
+    active_retailers, competitors, set_active_retailers,
+)
 from .compare import GroupComparison, build_rollup, compare_all, rollup_by_category
 from .loader import PRODUCT_COLUMNS, load_dataset
 from .basket import build_basket_set, qualifies
@@ -29,7 +32,6 @@ DEFAULT_GROUPS = ROOT / "data/raw/sku_groups.csv"
 DEFAULT_PRODUCTS = ROOT / "data/raw/products.csv"
 DEFAULT_OUT = ROOT / "data/out"
 
-COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
 
 
 def _pct(value: Optional[float]) -> str:
@@ -85,7 +87,7 @@ def cmd_compare(args) -> int:
 
     print()
     versus = " vs ".join(
-        [RETAILER_LABELS[BASE_RETAILER]] + [RETAILER_LABELS[r] for r in COMPETITORS]
+        [RETAILER_LABELS[BASE_RETAILER]] + [RETAILER_LABELS[r] for r in competitors()]
     )
     print(f"{versus.upper()} - like-for-like pricing")
     print("=" * 78)
@@ -95,21 +97,21 @@ def cmd_compare(args) -> int:
           f"   (win rate {(overall.win_rate or 0) * 100:.0f}%)")
     print(f"Median gap vs market low  {_pct(overall.median_gap)}   (negative = F&D cheaper)")
     print(f"Basket index vs low       {overall.spend_index}   (volume-weighted spend)")
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         print(f"Median gap vs {RETAILER_LABELS[retailer]:<12}{_pct(overall.per_retailer_gap.get(retailer))}")
 
     print()
     competitor_heads = "".join(
-        f"{RETAILER_CODES[r].upper():>9}" for r in COMPETITORS
+        f"{RETAILER_CODES[r].upper():>9}" for r in competitors()
     )
-    width = 60 + 9 * len(COMPETITORS)
+    width = 60 + 9 * len(competitors())
     print(f"{'CATEGORY':<28}{'SKUs':>5}{'CMP':>5}{'WIN':>6}{'MEDIAN':>9}{'INDEX':>8}"
           f"{competitor_heads}")
     print("-" * width)
     for rollup in rollup_by_category(comparisons):
         index = "     -" if rollup.spend_index is None else f"{rollup.spend_index:6.3f}"
         gaps = "".join(
-            f"{_pct(rollup.per_retailer_gap.get(r)):>9}" for r in COMPETITORS
+            f"{_pct(rollup.per_retailer_gap.get(r)):>9}" for r in competitors()
         )
         print(f"{rollup.label[:27]:<28}{rollup.groups:>5}{rollup.compared:>5}"
               f"{(rollup.win_rate or 0) * 100:>5.0f}%{_pct(rollup.median_gap):>9}{index:>8}"
@@ -141,7 +143,7 @@ def _write_detail_csv(comparisons: List[GroupComparison], path: Path) -> None:
         "fnd_unit_price",
     ] + [
         f"{retailer}_{field}"
-        for retailer in COMPETITORS
+        for retailer in competitors()
         for field in ("unit_price", "delta_pct", "match_tier")
     ] + [
         "market_min", "gap_vs_market_min", "outcome", "cheapest_retailer", "flags",
@@ -164,7 +166,7 @@ def _write_detail_csv(comparisons: List[GroupComparison], path: Path) -> None:
                 "cheapest_retailer": comp.cheapest_retailer or "",
                 "flags": ";".join(sorted(set(comp.flags))),
             }
-            for retailer in COMPETITORS:
+            for retailer in competitors():
                 quote = comp.quotes[retailer]
                 row[f"{retailer}_unit_price"] = quote.unit_price
                 row[f"{retailer}_delta_pct"] = quote.delta_pct
@@ -230,7 +232,7 @@ def _write_expense_csv(rows, total, path: Path) -> None:
         "dollars_vs_market_low",
     ] + [
         f"{prefix}_vs_{retailer}"
-        for retailer in COMPETITORS
+        for retailer in competitors()
         for prefix in ("index", "dollars")
     ]
     with open(path, "w", newline="", encoding="utf-8") as handle:
@@ -250,7 +252,7 @@ def _write_expense_csv(rows, total, path: Path) -> None:
                 "matched_skus_vs_low": low.matched_skus,
                 "index_vs_market_low": low.index, "dollars_vs_market_low": low.delta,
             }
-            for retailer in COMPETITORS:
+            for retailer in competitors():
                 record[f"index_vs_{retailer}"] = row.baskets[retailer].index
                 record[f"dollars_vs_{retailer}"] = row.baskets[retailer].delta
             writer.writerow(record)
@@ -259,35 +261,40 @@ def _write_expense_csv(rows, total, path: Path) -> None:
 def cmd_basket(args) -> int:
     """Price a basket built from a single match tier - identical goods by default."""
     comparisons = _load(args)
-    basket_set = build_basket_set(comparisons, tier=args.tier)
+    basket_set = build_basket_set(comparisons, tier=args.tier,
+                                  at_least=args.at_least)
     common = basket_set.common
     if not common:
         raise SystemExit(
             f"no SKU carries an in-stock {args.tier!r} match at every competitor"
         )
 
-    base_spend = basket_set.common_baskets[COMPETITORS[0]].base_spend
-    label = {TIER_EXACT: "IDENTICAL SKUs (same brand and model)"}.get(
-        args.tier, f"{args.tier.upper()} MATCHES")
+    base_spend = basket_set.common_baskets[competitors()[0]].base_spend
+    if args.at_least:
+        label = f"ALL COMPARABLE SKUs ({args.tier} match or better)"
+    else:
+        label = {TIER_EXACT: "IDENTICAL SKUs (same brand and model)"}.get(
+            args.tier, f"{args.tier.upper()} MATCHES ONLY")
 
     print()
     print(f"BASKET: {label}")
     print("=" * 78)
-    print(f"{len(common)} SKUs carry an in-stock {args.tier} match at ALL "
-          f"{len(COMPETITORS)} competitors, out of {len(comparisons)} studied.")
-    print(f"This is the only basket all {len(RETAILERS)} retailers can be quoted on "
+    qualifier = f"{args.tier} match or better" if args.at_least else f"{args.tier} match"
+    print(f"{len(common)} SKUs carry an in-stock {qualifier} at ALL "
+          f"{len(competitors())} competitors, out of {len(comparisons)} studied.")
+    print(f"This is the only basket all {len(active_retailers())} retailers can be quoted on "
           f"side by side. Every competitor added shrinks it - see the pairwise")
     print("baskets below, which are wider but not comparable to each other.")
     print()
     print(f"  {'Floor & Decor':<16}{base_spend:>16,.2f}")
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         basket = basket_set.common_baskets[retailer]
         print(f"  {RETAILER_LABELS[retailer]:<16}{basket.comp_spend:>16,.2f}")
 
     print()
     print("HOW MUCH CHEAPER IS FLOOR & DECOR?")
     print("-" * 78)
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         basket = basket_set.common_baskets[retailer]
         name = RETAILER_LABELS[retailer]
         print(f"  vs {name:<14}"
@@ -298,7 +305,7 @@ def cmd_basket(args) -> int:
     print("  below answers a different question and does not have to agree:")
     print()
     print("  (per-SKU figures: POSITIVE = the competitor is dearer = Floor & Decor cheaper)")
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         basket = basket_set.common_baskets[retailer]
         print(f"  vs {RETAILER_LABELS[retailer]:<14}median SKU {_pct(basket.median_gap)}"
               f"   mean {_pct(basket.mean_gap)}"
@@ -308,7 +315,7 @@ def cmd_basket(args) -> int:
     print()
     print("PROMOTION EFFECT")
     print("-" * 78)
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         basket = basket_set.common_baskets[retailer]
         print(f"  vs {RETAILER_LABELS[retailer]:<14}today {basket.spend_index}"
               f"   at list price {basket.list_spend_index}"
@@ -318,7 +325,7 @@ def cmd_basket(args) -> int:
     print("EACH COMPETITOR'S OWN WIDER BASKET (pairwise - not mutually comparable)")
     print("-" * 78)
     share = basket_set.common_share
-    for retailer in COMPETITORS:
+    for retailer in competitors():
         basket = basket_set.own_baskets[retailer]
         if not basket.skus:
             print(f"  vs {RETAILER_LABELS[retailer]:<16}no identical SKUs in stock")
@@ -357,7 +364,7 @@ def _write_basket_csv(common, basket_set, path: Path) -> None:
         "fnd_unit_price", "fnd_annual_spend",
     ] + [
         f"{retailer}_{field}"
-        for retailer in COMPETITORS
+        for retailer in competitors()
         for field in ("unit_price", "annual_spend", "gap_pct")
     ] + ["cheapest_retailer"]
     with open(path, "w", newline="", encoding="utf-8") as handle:
@@ -376,7 +383,7 @@ def _write_basket_csv(common, basket_set, path: Path) -> None:
                 "fnd_annual_spend": round(comparison.base_price * volume, 2),
                 "cheapest_retailer": comparison.cheapest_retailer or "",
             }
-            for retailer in COMPETITORS:
+            for retailer in competitors():
                 quote = comparison.quotes[retailer]
                 record[f"{retailer}_unit_price"] = quote.unit_price
                 record[f"{retailer}_annual_spend"] = (
@@ -398,7 +405,7 @@ def cmd_prices(args) -> int:
 
     columns = ["group_id", "category", "subcategory", "description", "basis",
                "annual_volume"]
-    for retailer in RETAILERS:
+    for retailer in active_retailers():
         code = RETAILER_CODES[retailer]
         columns.extend([
             f"{code}_brand", f"{code}_sku", f"{code}_price_as_quoted", f"{code}_uom",
@@ -425,7 +432,7 @@ def cmd_prices(args) -> int:
                 "outcome": comp.outcome,
                 "cheapest_retailer": comp.cheapest_retailer or "",
             }
-            for retailer in RETAILERS:
+            for retailer in active_retailers():
                 code = RETAILER_CODES[retailer]
                 if retailer == BASE_RETAILER:
                     normalized, tier, counted = comp.base, "base", "yes"
@@ -462,13 +469,13 @@ def cmd_prices(args) -> int:
 
     sample = comparisons[: args.show]
     if sample:
-        heads = "".join(f"{RETAILER_CODES[r].upper():>22}" for r in RETAILERS)
+        heads = "".join(f"{RETAILER_CODES[r].upper():>22}" for r in active_retailers())
         print()
         print(f"{'GROUP':<8}{'DESCRIPTION':<34}{heads}")
         print("-" * (42 + 22 * len(RETAILERS)))
         for comp in sample:
             cells = ""
-            for retailer in RETAILERS:
+            for retailer in active_retailers():
                 normalized = (
                     comp.base if retailer == BASE_RETAILER
                     else comp.quotes[retailer].normalized
@@ -583,6 +590,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--min-tier", default=DEFAULT_MIN_TIER, choices=list(TIER_ORDER),
         help="weakest match tier admitted to the comparison (default: %(default)s)",
     )
+    parser.add_argument(
+        "--exclude", action="append", default=[], metavar="RETAILER",
+        help="drop a competitor from this run, e.g. --exclude tile_shop. "
+             "Repeatable. This changes what the market low is measured "
+             "against, so results are not comparable to a run with a different set.",
+    )
+    parser.add_argument(
+        "--only", action="append", default=[], metavar="RETAILER",
+        help="compare against only these competitors (Floor & Decor is always "
+             "included). Repeatable; overrides --exclude.",
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     sub = subparsers.add_parser("validate", help="check the input files and report coverage")
@@ -604,6 +622,9 @@ def build_parser() -> argparse.ArgumentParser:
         "basket", help="price a basket built from one match tier (default: identical SKUs)")
     sub.add_argument("--tier", default=TIER_EXACT, choices=list(TIER_ORDER),
                      help="match tier the basket is built from (default: %(default)s)")
+    sub.add_argument("--at-least", action="store_true",
+                     help="include this tier OR BETTER, rather than only this tier - "
+                          "the 'everything we both carry' basket")
     sub.add_argument("--category", help="filter to categories containing this text")
     sub.add_argument("--csv", help="also write the basket members to this CSV path")
     sub.set_defaults(func=cmd_basket)
@@ -643,10 +664,33 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _apply_retailer_filter(args) -> None:
+    if args.only:
+        set_active_retailers(list(args.only) + [BASE_RETAILER])
+    elif args.exclude:
+        keep = [r for r in RETAILERS if r not in set(args.exclude)]
+        unknown = [r for r in args.exclude if r not in RETAILERS]
+        if unknown:
+            raise SystemExit(
+                f"unknown retailer(s): {', '.join(unknown)}. "
+                f"Known: {', '.join(RETAILERS)}"
+            )
+        set_active_retailers(keep)
+
+
 def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
     try:
+        _apply_retailer_filter(args)
+        if set(active_retailers()) != set(RETAILERS):
+            dropped = [RETAILER_LABELS[r] for r in RETAILERS
+                       if r not in set(active_retailers())]
+            print(f"[active set: {len(active_retailers())} retailers; "
+                  f"excluded {', '.join(dropped)}]")
         return args.func(args)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     except DataError as exc:
         print(f"data error: {exc}", file=sys.stderr)
         return 2

@@ -10,13 +10,11 @@ import html
 import json
 from typing import Dict, List, Optional
 
-from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS, code
+from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS, code, competitors
 from .charts import compact_money, diverging_bars, magnitude_bars
 from .compare import GroupComparison, Rollup, build_rollup, rollup_by_category
 from .spend import MARKET_LOW, expense_by_category, total_expense
 
-COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
-COMPETITOR_LABELS = [(r, RETAILER_SHORT.get(r, r)) for r in COMPETITORS]
 
 
 def _pct(value: Optional[float], digits: int = 1) -> str:
@@ -27,10 +25,14 @@ def _money(value: Optional[float]) -> str:
     return "-" if value is None else f"${value:,.2f}"
 
 
+def competitor_labels():
+    return [(r, RETAILER_SHORT.get(r, r)) for r in competitors()]
+
+
 def _competitor_headers(prefix: str) -> str:
     return "".join(
         f'<th class="num">{prefix}{html.escape(label)}</th>'
-        for _, label in COMPETITOR_LABELS
+        for _, label in competitor_labels()
     )
 
 
@@ -39,7 +41,7 @@ def _detail_headers() -> str:
     return "".join(
         f'<th class="num" data-k="{code(retailer)}">{html.escape(label)}</th>'
         f'<th class="num" data-k="{code(retailer)}Delta">&Delta;</th>'
-        for retailer, label in COMPETITOR_LABELS
+        for retailer, label in competitor_labels()
     )
 
 
@@ -68,7 +70,7 @@ def _rows_payload(comparisons: List[GroupComparison]) -> List[dict]:
             "cheapest": RETAILER_LABELS.get(comp.cheapest_retailer or "", "-"),
             "flags": sorted({f.split(":")[0] for f in comp.flags}),
         }
-        for retailer in COMPETITORS:
+        for retailer in competitors():
             quote = comp.quotes[retailer]
             key = code(retailer)
             row[key] = quote.unit_price
@@ -120,7 +122,7 @@ def _tiles(overall: Rollup, comparisons: List[GroupComparison]) -> str:
     ] + [
         index_tile(basket(retailer), f"Basket index vs {label}",
                    "volume-weighted spend ratio")
-        for retailer, label in COMPETITOR_LABELS
+        for retailer, label in competitor_labels()
     ]
     return "\n".join(tiles)
 
@@ -139,7 +141,7 @@ def _category_table(rollups: List[Rollup]) -> str:
             f"<td class='num {idx_class}'>{idx}</td>"
             + "".join(
                 f"<td class='num'>{_pct(r.per_retailer_gap.get(retailer))}</td>"
-                for retailer in COMPETITORS
+                for retailer in competitors()
             )
             + "</tr>"
         )
@@ -184,7 +186,7 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
             f"<td class='num {'pos' if basket.delta > 0 else 'neg'}'>{basket.delta:,.0f}</td>"
             + "".join(
                 f"<td class='num'>{_index(row.baskets[retailer].index)}</td>"
-                for retailer in COMPETITORS
+                for retailer in competitors()
             )
             + f"<td class='num'>{(row.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
         )
@@ -198,7 +200,7 @@ def _expense_section(comparisons: List[GroupComparison]) -> str:
         f"<td class='num'>{market.delta:,.0f}</td>"
         + "".join(
             f"<td class='num'>{_index(total.baskets[retailer].index)}</td>"
-            for retailer in COMPETITORS
+            for retailer in competitors()
         )
         + f"<td class='num'>{(total.benchmark_coverage or 0) * 100:.0f}%</td></tr>"
     )
@@ -249,13 +251,13 @@ def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> s
     overall = build_rollup("All categories", comparisons)
     categories = rollup_by_category(comparisons)
     payload = json.dumps(_rows_payload(comparisons))
-    codes = json.dumps([code(r) for r in COMPETITORS])
-    first_tier_key = code(COMPETITORS[0]) + "Tier"
+    codes = json.dumps([code(r) for r in competitors()])
+    first_tier_key = code(competitors()[0]) + "Tier"
     cat_options = "\n".join(
         f'<option value="{html.escape(c.label)}">{html.escape(c.label)}</option>'
         for c in categories
     )
-    versus = " vs ".join(["Floor &amp; Decor"] + [l for _, l in COMPETITOR_LABELS])
+    versus = " vs ".join(["Floor &amp; Decor"] + [l for _, l in competitor_labels()])
     subtitle = (
         f"{len(comparisons)} SKU groups &middot; {versus}"
         + (f" &middot; prices collected {html.escape(collected_on)}" if collected_on else "")

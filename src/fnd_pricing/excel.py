@@ -7,11 +7,10 @@ from typing import List
 
 from openpyxl.utils import get_column_letter
 
-from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS
+from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS, competitors
 from .compare import GroupComparison, build_rollup, rollup_by_category
 from .spend import MARKET_LOW, expense_by_category, total_expense
 
-COMPETITORS = [r for r in RETAILERS if r != BASE_RETAILER]
 
 _MONEY = '"$"#,##0.00'
 _PCT = "+0.0%;-0.0%;0.0%"
@@ -60,7 +59,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         ("Volume-weighted basket index vs market low", overall.spend_index, _INDEX),
     ] + [
         (f"Median gap vs {RETAILER_LABELS.get(r, r)}", overall.per_retailer_gap.get(r), _PCT)
-        for r in COMPETITORS
+        for r in competitors()
     ]:
         sheet.append([label, value])
         if fmt:
@@ -72,18 +71,18 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
     sheet.append([
         "Category", "SKUs", "Compared", "Win rate", "Median gap", "Mean gap",
         "Basket index",
-    ] + [f"Median vs {RETAILER_SHORT.get(r, r)}" for r in COMPETITORS])
+    ] + [f"Median vs {RETAILER_SHORT.get(r, r)}" for r in competitors()])
     for rollup in rollup_by_category(comparisons):
         sheet.append([
             rollup.label, rollup.groups, rollup.compared, rollup.win_rate,
             rollup.median_gap, rollup.mean_gap, rollup.spend_index,
-        ] + [rollup.per_retailer_gap.get(r) for r in COMPETITORS])
+        ] + [rollup.per_retailer_gap.get(r) for r in competitors()])
         row = sheet.max_row
         sheet.cell(row=row, column=4).number_format = "0.0%"
         for col in (5, 6):
             sheet.cell(row=row, column=col).number_format = _PCT
         sheet.cell(row=row, column=7).number_format = _INDEX
-        for offset in range(len(COMPETITORS)):
+        for offset in range(len(competitors())):
             sheet.cell(row=row, column=8 + offset).number_format = _PCT
     _style_header(sheet, header_row)
     sheet.freeze_panes = f"A{header_row + 1}"
@@ -98,7 +97,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         "Index vs market low", "$ vs market low",
     ] + [
         heading
-        for r in COMPETITORS
+        for r in competitors()
         for heading in (f"Index vs {RETAILER_SHORT.get(r, r)}",
                         f"$ vs {RETAILER_SHORT.get(r, r)}")
     ])
@@ -113,7 +112,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
             low.matched_skus, low.index, low.delta,
         ] + [
             value
-            for r in COMPETITORS
+            for r in competitors()
             for value in (row.baskets[r].index, row.baskets[r].delta)
         ])
         line = expense.max_row
@@ -123,7 +122,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
             expense.cell(row=line, column=col).number_format = "0.0%"
         expense.cell(row=line, column=12).number_format = _INDEX
         # index / dollars alternate from column 14 onwards, one pair per competitor
-        for offset in range(len(COMPETITORS)):
+        for offset in range(len(competitors())):
             expense.cell(row=line, column=14 + offset * 2).number_format = _INDEX
             expense.cell(row=line, column=15 + offset * 2).number_format = _MONEY
     for cell in expense[expense.max_row]:
@@ -141,7 +140,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         "F&D brand", "F&D unit price",
     ] + [
         heading
-        for r in COMPETITORS
+        for r in competitors()
         for heading in (
             f"{RETAILER_SHORT.get(r, r)} brand", f"{RETAILER_SHORT.get(r, r)} unit price",
             f"{RETAILER_SHORT.get(r, r)} delta %", f"{RETAILER_SHORT.get(r, r)} match",
@@ -149,7 +148,7 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         )
     ] + ["Market low", "Gap vs low", "Outcome", "Cheapest", "Flags"])
     for comp in comparisons:
-        quotes = [comp.quotes[r] for r in COMPETITORS]
+        quotes = [comp.quotes[r] for r in competitors()]
         detail.append([
             comp.group.group_id, comp.group.category, comp.group.subcategory,
             comp.group.description, comp.group.basis, comp.group.annual_volume,
@@ -169,11 +168,11 @@ def write_workbook(comparisons: List[GroupComparison], path: Path) -> Path:
         ])
         row = detail.max_row
         detail.cell(row=row, column=8).number_format = _MONEY
-        for offset in range(len(COMPETITORS)):
+        for offset in range(len(competitors())):
             base_col = 9 + offset * 5
             detail.cell(row=row, column=base_col + 1).number_format = _MONEY
             detail.cell(row=row, column=base_col + 2).number_format = _PCT
-        tail = 9 + len(COMPETITORS) * 5
+        tail = 9 + len(competitors()) * 5
         detail.cell(row=row, column=tail).number_format = _MONEY
         detail.cell(row=row, column=tail + 1).number_format = _PCT
     _style_header(detail)
