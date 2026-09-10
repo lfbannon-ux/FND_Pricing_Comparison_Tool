@@ -333,9 +333,16 @@ evidence — an `exact` basket must not quietly admit spec-matched rows. Add
 better:
 
 ```bash
-python3 -m fnd_pricing --exclude tile_shop basket                        # identical SKUs only
+python3 -m fnd_pricing --exclude tile_shop basket                          # identical SKUs only
 python3 -m fnd_pricing --exclude tile_shop basket --at-least --tier close  # all comparable
+python3 -m fnd_pricing basket --at-least --tier close --top-skus 10        # what drives it
 ```
+
+`--top-skus` answers the follow-up to every basket number by splitting it in
+two: which SKUs make the basket **big** (spend concentration) and which make it
+**expensive** (dollars above the market low). They are usually different lists —
+a high-volume opening-price-point plank dominates spend while being a price
+advantage, and ranking by spend alone sends a merchant after the wrong item.
 
 ## Adding or changing a retailer
 

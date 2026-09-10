@@ -300,3 +300,59 @@ class AtLeastBasketTest(unittest.TestCase):
         # Exact-tier equality is what keeps the identical-SKU evidence isolated.
         basket_set = build_basket_set([self.exact, self.equivalent], tier="equivalent")
         self.assertEqual([c.group.group_id for c in basket_set.common], ["G2"])
+
+
+class BasketDriversTest(unittest.TestCase):
+    """Spend concentration and price exposure are different questions."""
+
+    def tearDown(self):
+        from fnd_pricing import reset_retailers
+
+        reset_retailers()
+
+    def test_a_high_volume_cheap_sku_dominates_spend_without_being_exposed(self):
+        # The item that makes the basket big need not be the item that makes it
+        # expensive; ranking by spend alone sends you after the wrong SKU.
+        cheap_and_huge = everywhere("G1", 1.00, 1.05, volume=1_000_000)
+        dear_and_small = everywhere("G2", 9.00, 6.00, volume=100)
+
+        spend = {
+            c.group.group_id: c.base_price * c.group.annual_volume
+            for c in (cheap_and_huge, dear_and_small)
+        }
+        self.assertGreater(spend["G1"], spend["G2"])          # G1 dominates spend
+
+        exposure = {
+            c.group.group_id: (c.base_price - c.market_min) * c.group.annual_volume
+            for c in (cheap_and_huge, dear_and_small)
+        }
+        self.assertLess(exposure["G1"], 0)                    # G1 is an advantage
+        self.assertGreater(exposure["G2"], 0)                 # G2 is the exposure
+
+    def test_drivers_render_without_error_on_a_real_basket(self):
+        import io
+        from contextlib import redirect_stdout
+
+        from fnd_pricing.cli import _print_basket_drivers
+
+        rows = [everywhere(f"G{i}", 2.0 + i, 2.5 + i, volume=100 * (i + 1))
+                for i in range(4)]
+        base_spend = sum(c.base_price * c.group.annual_volume for c in rows)
+        buffer = io.StringIO()
+        with redirect_stdout(buffer):
+            _print_basket_drivers(rows, base_spend, 3)
+        output = buffer.getvalue()
+        self.assertIn("WHAT MAKES THE BASKET BIG", output)
+        self.assertIn("Advantage (F&D cheaper)", output)
+
+    def test_drivers_survive_a_basket_with_no_exposure(self):
+        import io
+        from contextlib import redirect_stdout
+
+        from fnd_pricing.cli import _print_basket_drivers
+
+        rows = [everywhere("G1", 1.0, 2.0, volume=100)]   # F&D cheaper everywhere
+        buffer = io.StringIO()
+        with redirect_stdout(buffer):
+            _print_basket_drivers(rows, 100.0, 5)
+        self.assertNotIn("WHAT MAKES IT EXPENSIVE", buffer.getvalue())

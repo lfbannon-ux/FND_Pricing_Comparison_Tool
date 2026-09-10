@@ -350,11 +350,66 @@ def cmd_basket(args) -> int:
     ):
         print(f"{category[:29]:<30}{count:>6}{spend:>16,.0f}{spend / base_spend * 100:>7.1f}%")
 
+    if args.top_skus:
+        _print_basket_drivers(common, base_spend, args.top_skus)
+
     if args.csv:
         out = Path(args.csv)
         _write_basket_csv(common, basket_set, out)
         print(f"\nWrote basket members -> {out}")
     return 0
+
+
+def _print_basket_drivers(common, base_spend: float, limit: int) -> None:
+    """What makes the basket big, and what makes it expensive - two lists.
+
+    A SKU can dominate spend because its price is high or because its volume
+    is. Ranking by spend alone conflates the two and sends a merchant after the
+    wrong items, so the concentration and the exposure are reported separately.
+    """
+    by_spend = sorted(
+        common, key=lambda c: c.base_price * c.group.annual_volume, reverse=True
+    )
+    print()
+    print(f"WHAT MAKES THE BASKET BIG - top {limit} by annual spend")
+    print(f"{'ID':<7}{'CATEGORY':<24}{'UNIT':>9}{'VOLUME':>12}{'SPEND':>13}{'CUM':>7}")
+    print("-" * 78)
+    cumulative = 0.0
+    for comparison in by_spend[:limit]:
+        spend = comparison.base_price * comparison.group.annual_volume
+        cumulative += spend
+        print(f"{comparison.group.group_id:<7}{comparison.group.category[:23]:<24}"
+              f"{comparison.base_price:>9.2f}{comparison.group.annual_volume:>12,.0f}"
+              f"{spend:>13,.0f}{cumulative / base_spend:>6.0%}")
+
+    exposed = [
+        ((c.base_price - c.market_min) * c.group.annual_volume, c)
+        for c in common if c.market_min is not None
+    ]
+    exposure = sum(d for d, _ in exposed if d > 0)
+    advantage = sum(-d for d, _ in exposed if d < 0)
+    exposed.sort(key=lambda pair: pair[0], reverse=True)
+    dearer = [pair for pair in exposed if pair[0] > 0][:limit]
+
+    if dearer:
+        print()
+        print(f"WHAT MAKES IT EXPENSIVE - top {len(dearer)} by dollars above the market low")
+        print(f"{'ID':<7}{'CATEGORY':<24}{'F&D':>9}{'MKT LOW':>9}{'GAP':>8}{'$/YR':>13}")
+        print("-" * 78)
+        for delta, comparison in dearer:
+            print(f"{comparison.group.group_id:<7}{comparison.group.category[:23]:<24}"
+                  f"{comparison.base_price:>9.2f}{comparison.market_min:>9.2f}"
+                  f"{(comparison.gap_vs_market_min or 0) * 100:>7.1f}%{delta:>13,.0f}")
+        share = sum(d for d, _ in dearer) / exposure if exposure else 0
+        print(f"\n  These {len(dearer)} SKUs are {share:.0%} of all exposure.")
+
+    print()
+    print(f"  Exposure  (F&D dearer):  {exposure:>12,.0f}/yr across "
+          f"{sum(1 for d, _ in exposed if d > 0)} SKUs")
+    print(f"  Advantage (F&D cheaper): {advantage:>12,.0f}/yr across "
+          f"{sum(1 for d, _ in exposed if d < 0)} SKUs")
+    print(f"  Net:                     {advantage - exposure:>12,.0f}/yr in "
+          f"Floor & Decor's favour, against the cheapest competitor on every line")
 
 
 def _write_basket_csv(common, basket_set, path: Path) -> None:
@@ -626,6 +681,9 @@ def build_parser() -> argparse.ArgumentParser:
                      help="include this tier OR BETTER, rather than only this tier - "
                           "the 'everything we both carry' basket")
     sub.add_argument("--category", help="filter to categories containing this text")
+    sub.add_argument("--top-skus", type=int, default=0, metavar="N",
+                     help="also list the N SKUs driving the basket's size and its "
+                          "exposure above the market low")
     sub.add_argument("--csv", help="also write the basket members to this CSV path")
     sub.set_defaults(func=cmd_basket)
 
