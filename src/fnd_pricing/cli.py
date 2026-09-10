@@ -386,6 +386,106 @@ def _write_basket_csv(common, basket_set, path: Path) -> None:
             writer.writerow(record)
 
 
+def cmd_prices(args) -> int:
+    """Every price in the study, side by side, as quoted and as normalised.
+
+    The canonical products.csv is long - one row per offer - which is right for
+    the engine and unreadable for a person. This is the same data pivoted wide:
+    one row per SKU, one column block per retailer, with the shelf price exactly
+    as collected next to the unit price the comparison actually uses.
+    """
+    comparisons = _load(args)
+
+    columns = ["group_id", "category", "subcategory", "description", "basis",
+               "annual_volume"]
+    for retailer in RETAILERS:
+        code = RETAILER_CODES[retailer]
+        columns.extend([
+            f"{code}_brand", f"{code}_sku", f"{code}_price_as_quoted", f"{code}_uom",
+            f"{code}_pack_coverage", f"{code}_promo_price", f"{code}_unit_price",
+            f"{code}_match_tier", f"{code}_in_stock", f"{code}_counted",
+        ])
+    columns.extend(["market_min", "gap_vs_market_min", "outcome", "cheapest_retailer"])
+
+    out = Path(args.csv or DEFAULT_OUT / "raw_prices.csv")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with open(out, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer.writeheader()
+        for comp in comparisons:
+            row = {
+                "group_id": comp.group.group_id,
+                "category": comp.group.category,
+                "subcategory": comp.group.subcategory,
+                "description": comp.group.description,
+                "basis": comp.group.basis,
+                "annual_volume": comp.group.annual_volume,
+                "market_min": comp.market_min,
+                "gap_vs_market_min": comp.gap_vs_market_min,
+                "outcome": comp.outcome,
+                "cheapest_retailer": comp.cheapest_retailer or "",
+            }
+            for retailer in RETAILERS:
+                code = RETAILER_CODES[retailer]
+                if retailer == BASE_RETAILER:
+                    normalized, tier, counted = comp.base, "base", "yes"
+                else:
+                    quote = comp.quotes[retailer]
+                    normalized = quote.normalized
+                    tier = quote.tier
+                    counted = "yes" if quote.included else "no"
+                if normalized is None:
+                    # Not carried, or the offer could not be converted. Blank
+                    # cells, never zeros - a zero would price as free.
+                    row.update({f"{code}_{f}": "" for f in (
+                        "brand", "sku", "price_as_quoted", "uom", "pack_coverage",
+                        "promo_price", "unit_price", "in_stock")})
+                    row[f"{code}_match_tier"] = "not carried" if tier == "none" else tier
+                    row[f"{code}_counted"] = "no"
+                    continue
+                offer = normalized.offer
+                row.update({
+                    f"{code}_brand": offer.brand,
+                    f"{code}_sku": offer.retailer_sku,
+                    f"{code}_price_as_quoted": offer.price,
+                    f"{code}_uom": offer.uom,
+                    f"{code}_pack_coverage": offer.pack_coverage or "",
+                    f"{code}_promo_price": offer.promo_price or "",
+                    f"{code}_unit_price": normalized.unit_price,
+                    f"{code}_match_tier": tier,
+                    f"{code}_in_stock": "yes" if offer.in_stock else "no",
+                    f"{code}_counted": counted,
+                })
+            writer.writerow(row)
+
+    print(f"Wrote {len(comparisons)} SKUs x {len(RETAILERS)} retailers -> {out}")
+
+    sample = comparisons[: args.show]
+    if sample:
+        heads = "".join(f"{RETAILER_CODES[r].upper():>22}" for r in RETAILERS)
+        print()
+        print(f"{'GROUP':<8}{'DESCRIPTION':<34}{heads}")
+        print("-" * (42 + 22 * len(RETAILERS)))
+        for comp in sample:
+            cells = ""
+            for retailer in RETAILERS:
+                normalized = (
+                    comp.base if retailer == BASE_RETAILER
+                    else comp.quotes[retailer].normalized
+                )
+                if normalized is None:
+                    cells += f"{'-':>22}"
+                    continue
+                offer = normalized.offer
+                quoted = f"${offer.effective_price:,.2f} {offer.uom[4:]}"
+                cells += f"{quoted:>13}{normalized.unit_price:>9.2f}"
+            print(f"{comp.group.group_id:<8}{comp.group.description[:33]:<34}{cells}")
+        print()
+        print("  Each pair is the shelf price as quoted, then the normalised unit price")
+        print(f"  on the SKU's basis. Blank = the retailer carries nothing comparable.")
+    return 0
+
+
 def cmd_report(args) -> int:
     from .report import render_html
 
@@ -505,6 +605,14 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_argument("--category", help="filter to categories containing this text")
     sub.add_argument("--csv", help="also write the basket members to this CSV path")
     sub.set_defaults(func=cmd_basket)
+
+    sub = subparsers.add_parser(
+        "prices", help="every price side by side, as quoted and as normalised")
+    sub.add_argument("--category", help="filter to categories containing this text")
+    sub.add_argument("--csv", help="output path (default data/out/raw_prices.csv)")
+    sub.add_argument("--show", type=int, default=8,
+                     help="how many rows to preview on screen")
+    sub.set_defaults(func=cmd_prices)
 
     sub = subparsers.add_parser("report", help="write the self-contained HTML report")
     sub.add_argument("--category", help="filter to categories containing this text")

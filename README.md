@@ -7,6 +7,7 @@ allowed to move the headline numbers.
 
 ```
 python3 -m fnd_pricing compare      # console summary
+python3 -m fnd_pricing prices       # every price side by side, as quoted
 python3 -m fnd_pricing index        # annual expense by category
 python3 -m fnd_pricing basket       # price a basket of identical SKUs only
 python3 -m fnd_pricing report       # self-contained HTML report
@@ -49,6 +50,7 @@ Filter to one category, or write the per-SKU detail to CSV:
 ```bash
 python3 -m fnd_pricing compare --category "Porcelain Tile"
 python3 -m fnd_pricing compare --csv data/out/sku_detail.csv
+python3 -m fnd_pricing prices --csv data/out/raw_prices.csv
 python3 -m fnd_pricing index --csv data/out/category_expense.csv
 python3 -m fnd_pricing basket --csv data/out/exact_match_basket.csv
 python3 -m fnd_pricing basket --tier equivalent    # widen to spec-matched goods
@@ -255,6 +257,23 @@ LVP (−10.7%). Weakest: Vanities & Tops (+5.1%), Trim & Moulding (+5.2%),
 Grout & Caulk (+3.1%), Installation Tools (+0.0% median but a 1.109 basket
 index). Treat the direction as illustrative until real prices are loaded.
 
+## Where the raw data lives
+
+Four views of the same numbers, in increasing order of processing:
+
+| File | Shape | What it holds |
+|---|---|---|
+| `data/raw/products.csv` | long, one row per offer | the canonical input — price exactly as quoted, uom, pack size, promo, stock, provenance |
+| `data/out/raw_prices.csv` | wide, one row per SKU | the same data pivoted for reading: every retailer side by side, shelf price next to normalised unit price |
+| `data/out/sku_detail.csv` | wide, one row per SKU | the comparison result — unit prices, gaps, match tiers, outcome |
+| workbook `Offers` sheet | long, one row per offer | the audit trail, including the conversion applied to each price |
+
+`raw_prices.csv` is the one to open when the question is "what does each retailer
+actually charge for this item" — it shows `$88.99 per_box / 29.69 sq ft` beside the
+`$3.00/sq ft` the comparison uses, so a conversion can be checked by eye. A retailer
+that carries nothing comparable is **blank, never zero**: a zero would price the item
+as free and win every comparison it entered.
+
 ## Adding or changing a retailer
 
 The comparison engine is retailer-agnostic: `normalize`, `matching`, `compare`,
@@ -295,14 +314,14 @@ src/fnd_pricing/
   report.py      self-contained HTML report
   excel.py       multi-sheet workbook (Summary / Category Expense / SKU Detail /
                  Offers / Exceptions)
-  cli.py         validate | compare | index | basket | report | export |
-                 ingest | template
+  cli.py         validate | compare | prices | index | basket | report |
+                 export | ingest | template
   __init__.py    the retailer registry - add a banner here and it propagates
 data/collection/ identical-SKU worksheet + collection guide
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           103 unit tests
+tests/           107 unit tests
 ```
 
 ## Tests

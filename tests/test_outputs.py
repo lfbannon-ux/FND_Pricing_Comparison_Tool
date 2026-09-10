@@ -1,5 +1,6 @@
 """The report and workbook writers must survive real data."""
 
+import csv
 import tempfile
 import unittest
 from pathlib import Path
@@ -108,3 +109,64 @@ class WorkbookShapeTest(unittest.TestCase):
         for retailer in COMPETITORS:
             short = RETAILER_SHORT.get(retailer, retailer)
             self.assertIn(f"{short} unit price", headers)
+
+
+class RawPriceExportTest(unittest.TestCase):
+    """The wide price export is the human-readable view of the canonical data."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+
+        from fnd_pricing.cli import main
+
+        cls.path = Path(tempfile.mkdtemp()) / "prices.csv"
+        main(["prices", "--csv", str(cls.path), "--show", "0"])
+        with open(cls.path, encoding="utf-8") as handle:
+            cls.rows = list(csv.DictReader(handle))
+
+    def test_one_row_per_sku_group(self):
+        groups, _ = load_dataset(
+            ROOT / "data/raw/sku_groups.csv", ROOT / "data/raw/products.csv"
+        )
+        self.assertEqual(len(self.rows), len(groups))
+
+    def test_every_retailer_gets_a_column_block(self):
+        from fnd_pricing import RETAILER_CODES, RETAILERS
+
+        header = self.rows[0].keys()
+        for retailer in RETAILERS:
+            code = RETAILER_CODES[retailer]
+            for field in ("price_as_quoted", "uom", "unit_price", "match_tier"):
+                self.assertIn(f"{code}_{field}", header)
+
+    def test_a_missing_offer_is_blank_never_zero(self):
+        # A zero in a price column would price the item as free and silently
+        # win every comparison it appears in.
+        blanks = 0
+        for row in self.rows:
+            for key, value in row.items():
+                if key.endswith("_price_as_quoted") or key.endswith("_unit_price"):
+                    self.assertNotEqual(value, "0")
+                    self.assertNotEqual(value, "0.0")
+                    if value == "":
+                        blanks += 1
+        self.assertGreater(blanks, 0, "expected some uncarried offers in the dataset")
+
+    def test_quoted_price_and_unit_price_reconcile(self):
+        from fnd_pricing import RETAILER_CODES, RETAILERS
+
+        checked = 0
+        for row in self.rows:
+            for retailer in RETAILERS:
+                code = RETAILER_CODES[retailer]
+                quoted, unit = row[f"{code}_price_as_quoted"], row[f"{code}_unit_price"]
+                pack, promo = row[f"{code}_pack_coverage"], row[f"{code}_promo_price"]
+                if not quoted or not unit or promo:
+                    continue
+                effective = float(quoted) / float(pack) if pack else float(quoted)
+                if row[f"{code}_uom"] == "per_sq_yd":
+                    effective /= 9
+                self.assertAlmostEqual(effective, float(unit), places=2)
+                checked += 1
+        self.assertGreater(checked, 100)
