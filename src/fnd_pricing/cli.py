@@ -551,13 +551,42 @@ def cmd_prices(args) -> int:
     return 0
 
 
+def _promo_intensity(args) -> dict:
+    """How much of each retailer's book is on promotion, and how deep."""
+    _, offers = load_dataset(Path(args.groups), Path(args.products))
+    stats: dict = {}
+    for retailer in active_retailers():
+        theirs = [o for o in offers if o.retailer == retailer]
+        discounted = [o for o in theirs if o.on_promo]
+        depth = (
+            sum(1 - o.promo_price / o.price for o in discounted) / len(discounted)
+            if discounted else 0.0
+        )
+        stats[retailer] = (len(discounted), len(theirs), depth)
+    return stats
+
+
 def cmd_report(args) -> int:
     from .report import render_html
 
     comparisons = _load(args)
+    # The everyday-low-price section needs the same study priced both ways.
+    shelf = None
+    if not args.list_price:
+        groups, offers = load_dataset(Path(args.groups), Path(args.products))
+        shelf = compare_all(
+            groups, offers, min_tier=args.min_tier, use_list_price=True
+        )
+        if args.category:
+            wanted = args.category.lower()
+            shelf = [c for c in shelf if wanted in c.group.category.lower()]
+
     out = Path(args.out or DEFAULT_OUT / "pricing_report.html")
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render_html(comparisons, _collected_on(args)), encoding="utf-8")
+    out.write_text(
+        render_html(comparisons, _collected_on(args), shelf, _promo_intensity(args)),
+        encoding="utf-8",
+    )
     print(f"Wrote HTML report -> {out}")
     return 0
 

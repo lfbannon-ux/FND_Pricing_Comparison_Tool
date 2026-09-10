@@ -170,3 +170,57 @@ class RawPriceExportTest(unittest.TestCase):
                 self.assertAlmostEqual(effective, float(unit), places=2)
                 checked += 1
         self.assertGreater(checked, 100)
+
+
+class EdlpSectionTest(unittest.TestCase):
+    """The report's everyday-low-price read needs the study priced both ways."""
+
+    @classmethod
+    def setUpClass(cls):
+        from fnd_pricing.compare import compare_all as _compare
+
+        groups, offers = load_dataset(
+            ROOT / "data/raw/sku_groups.csv", ROOT / "data/raw/products.csv"
+        )
+        cls.today = _compare(groups, offers)
+        cls.shelf = _compare(groups, offers, use_list_price=True)
+        cls.promo = {
+            r: (sum(1 for o in offers if o.retailer == r and o.on_promo),
+                sum(1 for o in offers if o.retailer == r), 0.15)
+            for r in {o.retailer for o in offers}
+        }
+
+    def test_section_appears_only_when_both_views_are_supplied(self):
+        with_both = render_html(self.today, "", self.shelf, self.promo)
+        self.assertIn("Everyday low price", with_both)
+        self.assertNotIn("Everyday low price", render_html(self.today))
+
+    def test_the_chart_carries_a_market_low_row_beside_the_head_to_heads(self):
+        from fnd_pricing import competitors
+
+        html = render_html(self.today, "", self.shelf, self.promo)
+        self.assertIn("Market low (best of all)", html)
+        # One pair of bars per competitor, plus the market-low pair.
+        self.assertEqual(
+            html.count('class="mark series-a"'), len(competitors()) + 1
+        )
+        self.assertEqual(
+            html.count('class="mark series-b"'), len(competitors()) + 1
+        )
+
+    def test_both_series_are_legended_so_colour_is_never_alone(self):
+        html = render_html(self.today, "", self.shelf, self.promo)
+        self.assertIn("As priced today", html)
+        self.assertIn("At shelf price", html)
+        self.assertIn('key series-a', html)
+        self.assertIn('key series-b', html)
+
+    def test_the_shelf_view_is_not_simply_the_same_numbers(self):
+        # If promotions were being ignored on one side only, or not at all,
+        # these two would agree; they must not.
+        from fnd_pricing.compare import build_rollup
+
+        today = build_rollup("t", self.today)
+        shelf = build_rollup("s", self.shelf)
+        self.assertNotEqual(today.win_rate, shelf.win_rate)
+        self.assertGreater(shelf.win_rate, today.win_rate)

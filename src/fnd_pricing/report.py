@@ -11,8 +11,10 @@ import json
 from typing import Dict, List, Optional
 
 from . import BASE_RETAILER, RETAILER_LABELS, RETAILER_SHORT, RETAILERS, code, competitors
-from .charts import compact_money, diverging_bars, magnitude_bars
-from .compare import GroupComparison, Rollup, build_rollup, rollup_by_category
+from .charts import compact_money, diverging_bars, magnitude_bars, paired_bars
+from .compare import (
+    FLAG_PROMO_DRIVEN, GroupComparison, Rollup, build_rollup, rollup_by_category,
+)
 from .spend import MARKET_LOW, expense_by_category, total_expense
 
 
@@ -247,7 +249,130 @@ category expense on SKUs where some competitor offer was comparable enough to us
 """
 
 
-def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> str:
+def _edlp_section(
+    comparisons: List[GroupComparison],
+    shelf: List[GroupComparison],
+    offers_on_promo: Dict[str, tuple],
+) -> str:
+    """Today's price against the shelf price - the everyday-low-price read.
+
+    Every other number on this page is the price payable today, so a promotion
+    on any side moves it. That is right for "what would a customer pay this
+    week" and wrong for judging an everyday-low-price position, which is a
+    claim about the shelf price rather than about this week's offers.
+    """
+    today = build_rollup("today", comparisons)
+    at_list = build_rollup("list", shelf)
+
+    def basket(rows: List[GroupComparison], retailer: str) -> Optional[float]:
+        base = comp = 0.0
+        for row in rows:
+            quote = row.quotes.get(retailer)
+            if not quote or not quote.included or row.base_price is None:
+                continue
+            volume = row.group.annual_volume
+            base += row.base_price * volume
+            comp += quote.unit_price * volume
+        return round(base / comp, 4) if comp else None
+
+    def market_low(rows: List[GroupComparison]) -> Optional[float]:
+        base = low = 0.0
+        for row in rows:
+            if row.market_min is None or not row.group.annual_volume:
+                continue
+            volume = row.group.annual_volume
+            base += row.base_price * volume
+            low += row.market_min * volume
+        return round(base / low, 4) if low else None
+
+    chart_rows = []
+    for retailer, label in competitor_labels():
+        now, shelf_index = basket(comparisons, retailer), basket(shelf, retailer)
+        if now is None or shelf_index is None:
+            continue
+        chart_rows.append((
+            label, now, shelf_index,
+            f"{label} - {now:.3f} as priced today (promotions included)",
+            f"{label} - {shelf_index:.3f} at shelf price (promotions ignored)",
+        ))
+
+    # The head-to-head indexes barely move; the market low moves a lot. That
+    # contrast is the finding, so both belong on one scale.
+    low_now, low_shelf = market_low(comparisons), market_low(shelf)
+    if low_now is not None and low_shelf is not None:
+        chart_rows.append((
+            "Market low (best of all)", low_now, low_shelf,
+            f"Market low - {low_now:.3f} as priced today",
+            f"Market low - {low_shelf:.3f} at shelf price",
+        ))
+    promoting = sum(
+        1 for c in comparisons
+        if any(q.normalized and q.normalized.offer.on_promo for q in c.quotes.values())
+    )
+
+    reversals = sum(
+        1 for c in comparisons
+        if any(f.startswith(FLAG_PROMO_DRIVEN) for f in c.flags)
+    )
+    promo_rows = "".join(
+        f"<tr><td>{html.escape(RETAILER_LABELS[r])}</td>"
+        f"<td class='num'>{count}</td><td class='num'>{total}</td>"
+        f"<td class='num'>{count / total * 100:.0f}%</td>"
+        f"<td class='num'>{depth * 100:.0f}%</td></tr>"
+        for r, (count, total, depth) in offers_on_promo.items() if total
+    )
+
+    delta = (today.win_rate or 0), (at_list.win_rate or 0)
+    return f"""
+<h2>Everyday low price: today's price vs the shelf price</h2>
+<div class="tiles">
+  <div class="tile"><div class="tile-value">{delta[0] * 100:.0f}% &rarr; {delta[1] * 100:.0f}%</div>
+    <div class="tile-label">Win rate, today &rarr; at shelf price</div>
+    <div class="tile-sub">competitor promotions cost
+      {(delta[1] - delta[0]) * 100:.0f} points of measured win rate</div></div>
+  <div class="tile"><div class="tile-value">{_pct(today.median_gap)} &rarr; {_pct(at_list.median_gap)}</div>
+    <div class="tile-label">Median gap vs market low</div>
+    <div class="tile-sub">negative = Floor &amp; Decor is cheaper</div></div>
+  <div class="tile bad"><div class="tile-value">{reversals}</div>
+    <div class="tile-label">SKUs whose gap reverses at shelf price</div>
+    <div class="tile-sub">cheaper every day, dearer this week</div></div>
+</div>
+
+<h3>Volume-weighted basket index, both ways</h3>
+<p class="note"><span class="key series-a"></span>As priced today (promotions included)
+<span class="key series-b"></span>At shelf price (promotions ignored on all sides)
+&mdash; the vertical rule is parity; below it Floor &amp; Decor is cheaper.</p>
+<div class="panel chart-panel">{paired_bars(chart_rows, ("today", "shelf"))}</div>
+
+<h3>Promotional intensity</h3>
+<div class="panel"><table>
+<thead><tr><th>Retailer</th><th class="num">On promotion</th><th class="num">Offers</th>
+<th class="num">Rate</th><th class="num">Average depth</th></tr></thead>
+<tbody>{promo_rows}</tbody></table></div>
+
+<p class="note"><strong>Why the head-to-head indexes barely move but the market low does.</strong>
+Floor &amp; Decor and each competitor promote at similar rates, so in a
+head-to-head the two roughly cancel. The market low is the <em>minimum</em>
+across every competitor, so it only takes one of them running a promotion to
+pull it down &mdash; and on {promoting} of {len(comparisons)} SKUs at least one
+was. That is why a promo-inclusive snapshot understates an everyday-low-price
+position specifically against "best price available", which is the benchmark
+most price studies actually report.</p>
+
+<p class="note"><strong>A snapshot cannot measure everyday low price properly.</strong>
+Price stability is a property of a price series, not of a single day, and one
+collection catches every competitor at a random point in its promotional cycle.
+Both columns above are true and answer different questions; neither is a
+substitute for repeated collection.</p>
+"""
+
+
+def render_html(
+    comparisons: List[GroupComparison],
+    collected_on: str = "",
+    shelf: Optional[List[GroupComparison]] = None,
+    offers_on_promo: Optional[Dict[str, tuple]] = None,
+) -> str:
     overall = build_rollup("All categories", comparisons)
     categories = rollup_by_category(comparisons)
     payload = json.dumps(_rows_payload(comparisons))
@@ -272,11 +397,13 @@ def render_html(comparisons: List[GroupComparison], collected_on: str = "") -> s
   --bg:#f6f7f9; --panel:#ffffff; --ink:#16191d; --muted:#5f6873; --line:#e2e5ea;
   --good:#0b7a4b; --bad:#b3261e; --accent:#1a4f8a;
   --mark:#2a78d6; --mark-over:#e34948; --grid:#e2e5ea; --zero:#aab2be;
+  --series-a:#2a78d6; --series-b:#eb6834;
 }}
 @media (prefers-color-scheme: dark) {{
   :root {{ --bg:#14171a; --panel:#1c2126; --ink:#e8eaed; --muted:#9aa4b0;
            --line:#2b3138; --good:#4ade80; --bad:#f87171; --accent:#7aa7dd;
-           --mark:#3987e5; --mark-over:#e66767; --grid:#2b3138; --zero:#4a525c; }}
+           --mark:#3987e5; --mark-over:#e66767; --grid:#2b3138; --zero:#4a525c;
+           --series-a:#3987e5; --series-b:#d95926; }}
 }}
 * {{ box-sizing:border-box; }}
 body {{ margin:0; background:var(--bg); color:var(--ink);
@@ -313,6 +440,10 @@ h3 {{ font-size:13px; font-weight:600; margin:26px 0 8px; }}
 .chart .value {{ fill:var(--ink); font-size:12px; font-variant-numeric:tabular-nums; }}
 .chart .mark {{ fill:var(--mark); }}
 .chart .mark.over {{ fill:var(--mark-over); }}
+.chart .mark.series-a {{ fill:var(--series-a); }}
+.chart .mark.series-b {{ fill:var(--series-b); }}
+.key.series-a {{ background:var(--series-a); }}
+.key.series-b {{ background:var(--series-b); }}
 .chart .hit {{ fill:transparent; }}
 .chart .row:hover .hit, .chart .row:focus .hit {{ fill:rgba(127,127,127,.09); }}
 .chart .row {{ outline:none; }}
@@ -352,6 +483,7 @@ footer {{ color:var(--muted); font-size:12px; margin-top:32px; line-height:1.7; 
 <tbody>{_category_table(categories)}</tbody></table></div>
 
 {_expense_section(comparisons)}
+{_edlp_section(comparisons, shelf, offers_on_promo) if shelf and offers_on_promo else ""}
 
 <h2>SKU detail</h2>
 <div class="controls">

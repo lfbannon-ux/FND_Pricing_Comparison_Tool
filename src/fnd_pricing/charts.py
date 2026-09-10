@@ -123,6 +123,75 @@ def magnitude_bars(
     return "".join(parts)
 
 
+def paired_bars(
+    rows: Sequence[Tuple[str, float, float, str, str]],
+    series: Tuple[str, str],
+    baseline: float = 1.0,
+) -> str:
+    """Two bars per category. rows = (label, value_a, value_b, tip_a, tip_b).
+
+    Used where the same measure is read two ways - here a price index as
+    charged today and at shelf price - so the movement between them is the
+    point and has to sit on one shared scale.
+    """
+    if not rows:
+        return ""
+    plot_w = VIEW_W - LABEL_W - 90
+    values = [v for _, a, b, _, _ in rows for v in (a, b)]
+    axis_max, axis_step = _nice_axis(max(values + [baseline]))
+    pair_h = BAR_H * 2 + 2          # 2px surface gap between adjacent bars
+    row_h = pair_h + 18
+    height = len(rows) * row_h + AXIS_H
+
+    parts = [
+        f'<svg class="chart" viewBox="0 0 {VIEW_W} {height}" role="img" '
+        f'aria-label="{html.escape(series[0])} versus {html.escape(series[1])}">'
+    ]
+    for tick in _ticks(axis_max, axis_step):
+        x = LABEL_W + plot_w * tick / axis_max
+        parts.append(
+            f'<line class="grid" x1="{x:.1f}" y1="0" x2="{x:.1f}" '
+            f'y2="{len(rows) * row_h:.0f}"/>'
+        )
+        parts.append(
+            f'<text class="tick" x="{x:.1f}" y="{len(rows) * row_h + 18:.0f}" '
+            f'text-anchor="middle">{tick:.2f}</text>'
+        )
+    # Parity: the line every index is read against.
+    x_base = LABEL_W + plot_w * baseline / axis_max
+    parts.append(
+        f'<line class="zero" x1="{x_base:.1f}" y1="0" x2="{x_base:.1f}" '
+        f'y2="{len(rows) * row_h:.0f}"/>'
+    )
+
+    for index, (label, value_a, value_b, tip_a, tip_b) in enumerate(rows):
+        top = index * row_h + 6
+        parts.append(
+            f'<text class="label" x="{LABEL_W - 12}" y="{top + pair_h / 2 + 4:.1f}" '
+            f'text-anchor="end">{html.escape(label)}</text>'
+        )
+        for offset, (value, tip, css) in enumerate((
+            (value_a, tip_a, "series-a"), (value_b, tip_b, "series-b")
+        )):
+            y = top + offset * (BAR_H + 2)
+            x1 = LABEL_W + plot_w * value / axis_max
+            parts.append(f'<g class="row" tabindex="0" data-tip="{html.escape(tip)}">')
+            parts.append(
+                f'<rect class="hit" x="0" y="{y:.1f}" width="{VIEW_W}" '
+                f'height="{BAR_H + 2}"/>'
+            )
+            parts.append(
+                f'<path class="mark {css}" d="{_bar_path(LABEL_W, x1, y, BAR_H)}"/>'
+            )
+            parts.append(
+                f'<text class="value" x="{x1 + 8:.1f}" y="{y + BAR_H - 2:.1f}">'
+                f'{value:.3f}</text>'
+            )
+            parts.append("</g>")
+    parts.append("</svg>")
+    return "".join(parts)
+
+
 def diverging_bars(
     rows: Sequence[Tuple[str, float, str]], value_label: str
 ) -> str:

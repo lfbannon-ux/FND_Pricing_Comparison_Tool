@@ -329,6 +329,14 @@ python3 -m fnd_pricing compare                # as priced today
 python3 -m fnd_pricing --list-price compare   # as priced on the shelf
 ```
 
+The HTML report carries both automatically: an **Everyday low price** section
+prices the same study each way and charts the head-to-head indexes beside the
+market-low index. That contrast is the finding — the head-to-heads barely move,
+because Floor & Decor and each competitor promote at similar rates and it
+cancels, while the market low is the *minimum* across every competitor and only
+needs one of them on promotion to fall. On the seed data at least one competitor
+is promoting on 81 of 200 SKUs.
+
 The two answer different questions and both are true. `compare` also flags
 `promo_driven_gap` on any SKU whose gap reverses between the two, so a temporary
 discount is never mistaken for a price position.
