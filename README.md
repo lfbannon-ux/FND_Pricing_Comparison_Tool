@@ -163,6 +163,22 @@ identical-SKU basket built from unconfirmed identities is just the spec-matched
 comparison wearing a better name. Untouched rows are reported as "not yet
 collected", so partial runs resume cleanly.
 
+### Two worksheets, two grades of evidence
+
+| Worksheet | Rows | Standard | Covers |
+|---|---|---|---|
+| `identical_sku_worksheet.csv` | 53 | `identical` | setting materials, grout, membrane, profiles, underlayment, tools, sealers |
+| `flooring_worksheet.csv` | 46 | 40 `spec_matched` + 6 `identical` attempts | LVT/LVP, porcelain, ceramic, mosaic, stone, engineered and solid hardwood |
+
+The split is not a preference, it is what the market allows. Identical SKUs
+exist in install materials because national brands sell the same bag to
+everyone. In LVT, tile and hardwood every side is private label, and even
+national flooring brands segment collections by retailer to prevent the
+comparison, so those rows record each retailer's **own** brand, specs and unit
+of measure and let the matching engine score the tier. A `spec_matched` row can
+never come out as `exact`, so the identical-SKU basket stays clean; the flooring
+rows land at `equivalent` and `close` and are read with `--min-tier`.
+
 ## Loading real prices
 
 1. Generate the collection template:
@@ -317,11 +333,11 @@ src/fnd_pricing/
   cli.py         validate | compare | prices | index | basket | report |
                  export | ingest | template
   __init__.py    the retailer registry - add a banner here and it propagates
-data/collection/ identical-SKU worksheet + collection guide
+data/collection/ identical-SKU and flooring worksheets + collection guide
 data/raw/        sku_groups.csv, products.csv
 data/out/        generated reports
 scripts/         seed dataset generator
-tests/           107 unit tests
+tests/           117 unit tests
 ```
 
 ## Tests

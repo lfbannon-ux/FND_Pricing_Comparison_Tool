@@ -527,7 +527,7 @@ def cmd_ingest(args) -> int:
     write_canonical(report, groups_out, products_out)
     print(f"Ingested {len(report.groups)} SKU(s) and {len(report.offers)} offer(s) "
           f"from {source}")
-    print(f"  priced at all three retailers: {report.three_way}")
+    print(f"  priced at every one of the {len(RETAILERS)} retailers: {report.three_way}")
     print(f"  -> {groups_out}")
     print(f"  -> {products_out}")
     if report.not_started:

@@ -28,10 +28,16 @@ from .models import DataError
 # Short prefixes keep the wide worksheet readable in a spreadsheet.
 RETAILER_PREFIX = dict(RETAILER_CODES)
 
+# Two grades of evidence, kept apart on purpose.
+STANDARD_IDENTICAL = "identical"       # same brand and model on every shelf
+STANDARD_SPEC = "spec_matched"         # closest comparable, scored by the matcher
+MATCH_STANDARDS = (STANDARD_IDENTICAL, STANDARD_SPEC)
+
 IDENTITY_COLUMNS = [
     "candidate_id",
     "category",
     "basis",
+    "match_standard",
     "brand",
     "product",
     "pack",
@@ -43,7 +49,14 @@ IDENTITY_COLUMNS = [
     "notes",
 ]
 
-PER_RETAILER_FIELDS = ["carried", "sku", "price", "pack_coverage", "promo_price", "url"]
+PER_RETAILER_FIELDS = [
+    # `uom` is per retailer, not per row: a 50 lb bag is a 50 lb bag everywhere,
+    # but Floor & Decor quotes flooring per square foot while a home centre
+    # quotes the identical product per case. Blank inherits the row's
+    # `record_uom`.
+    "carried", "sku", "brand", "price", "uom", "pack_coverage", "promo_price",
+    "specs", "url",
+]
 
 
 def worksheet_columns() -> List[str]:
@@ -68,6 +81,7 @@ class Candidate:
     specs: str
     pack_coverage: str = ""
     notes: str = ""
+    match_standard: str = STANDARD_IDENTICAL
 
 
 def write_worksheet(candidates: List[Candidate], path: Path) -> Path:
@@ -81,6 +95,7 @@ def write_worksheet(candidates: List[Candidate], path: Path) -> Path:
                 "candidate_id": candidate.candidate_id,
                 "category": candidate.category,
                 "basis": candidate.basis,
+                "match_standard": candidate.match_standard,
                 "brand": candidate.brand,
                 "product": candidate.product,
                 "pack": candidate.pack,
@@ -95,7 +110,13 @@ def write_worksheet(candidates: List[Candidate], path: Path) -> Path:
                 prefix = RETAILER_PREFIX[retailer]
                 row[f"{prefix}_carried"] = ""
                 row[f"{prefix}_sku"] = ""
+                # Left blank on an identical row: the brand and specs are the
+                # row's, by definition. Required on a spec-matched row, where
+                # each retailer sells a different product.
+                row[f"{prefix}_brand"] = ""
+                row[f"{prefix}_specs"] = ""
                 row[f"{prefix}_price"] = ""
+                row[f"{prefix}_uom"] = ""
                 # Pre-fill the expected pack size; the collector corrects it if
                 # the shelf disagrees, and a disagreement is itself a finding.
                 row[f"{prefix}_pack_coverage"] = candidate.pack_coverage
@@ -160,16 +181,39 @@ def ingest_worksheet(path: Path) -> IngestReport:
                 else:
                     not_started += 1
                 continue
-            if not _yes(row["same_product_confirmed"]):
-                # The identity claim is the whole point of this basket.
-                skipped.append((candidate_id, "same_product_confirmed not set"))
+
+            standard = (row["match_standard"] or STANDARD_IDENTICAL).strip()
+            if standard not in MATCH_STANDARDS:
+                skipped.append((candidate_id, f"unknown match_standard {standard!r}"))
                 continue
+
+            if standard == STANDARD_IDENTICAL:
+                if not _yes(row["same_product_confirmed"]):
+                    # The identity claim is the whole point of that basket.
+                    skipped.append((candidate_id, "same_product_confirmed not set"))
+                    continue
+            else:
+                # A spec-matched row must carry each retailer's own brand and
+                # spec sheet, or the matcher would score every row as identical
+                # and quietly promote a judgement call into a fact.
+                incomplete = [
+                    RETAILER_PREFIX[r] for r in priced
+                    if not (row[f"{RETAILER_PREFIX[r]}_brand"] or "").strip()
+                    or not (row[f"{RETAILER_PREFIX[r]}_specs"] or "").strip()
+                ]
+                if incomplete:
+                    skipped.append((
+                        candidate_id,
+                        f"spec_matched needs brand and specs per retailer; missing: "
+                        f"{', '.join(incomplete)}",
+                    ))
+                    continue
 
             specs = parse_specs(row["specs"])
             groups.append({
                 "group_id": candidate_id,
                 "category": row["category"].strip(),
-                "subcategory": row["brand"].strip(),
+                "subcategory": row["brand"].strip() or standard,
                 "basis": row["basis"].strip(),
                 "description": f"{row['brand'].strip()} {row['product'].strip()} "
                                f"{row['pack'].strip()}".strip(),
@@ -179,23 +223,29 @@ def ingest_worksheet(path: Path) -> IngestReport:
 
             for retailer in priced:
                 prefix = RETAILER_PREFIX[retailer]
+                # On an identical row the brand and specs are the row's - that
+                # shared identity is what scores the match as `exact`. On a
+                # spec-matched row each retailer brings its own, and the matcher
+                # decides the tier from how far apart they are.
+                brand = (row[f"{prefix}_brand"] or "").strip() or row["brand"].strip()
+                offer_specs = (row[f"{prefix}_specs"] or "").strip() or row["specs"].strip()
+                offer_uom = (row[f"{prefix}_uom"] or "").strip() or row["record_uom"].strip()
+                parse_specs(offer_specs)   # fail fast on a malformed spec string
                 offers.append({
                     "group_id": candidate_id,
                     "retailer": retailer,
                     "retailer_sku": row[f"{prefix}_sku"].strip(),
-                    # Same brand on every row is what makes the match `exact`;
-                    # the worksheet asserted these are the same product.
-                    "brand": row["brand"].strip(),
+                    "brand": brand,
                     "product_name": row["product"].strip(),
                     "price": row[f"{prefix}_price"].strip(),
-                    "uom": row["record_uom"].strip(),
+                    "uom": offer_uom,
                     "pack_coverage": row[f"{prefix}_pack_coverage"].strip(),
                     "promo_price": row[f"{prefix}_promo_price"].strip(),
                     "in_stock": "yes",
                     "collected_on": (row["collected_on"] or "").strip(),
                     "data_source": "collected",
                     "url": row[f"{prefix}_url"].strip(),
-                    "specs": row["specs"].strip(),
+                    "specs": offer_specs,
                 })
             _ = specs  # parsed above purely to fail fast on malformed specs
 

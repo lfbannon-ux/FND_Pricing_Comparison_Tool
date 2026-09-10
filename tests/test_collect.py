@@ -213,3 +213,145 @@ class RegistryTest(unittest.TestCase):
         report = ingest_worksheet(path)
         self.assertEqual(len(report.offers), 2)
         self.assertEqual(report.three_way, 0)
+
+
+class SpecMatchedStandardTest(unittest.TestCase):
+    """The second evidence grade must stay distinguishable from the first."""
+
+    def setUp(self):
+        from fnd_pricing.collect import STANDARD_SPEC
+
+        self.dir = Path(tempfile.mkdtemp())
+        self.path = self.dir / "w.csv"
+        self.candidate = Candidate(
+            candidate_id="F001", category="Luxury Vinyl Plank", basis="sq_ft",
+            brand="", product="Mid-tier SPC", pack="", record_uom="per_sq_ft",
+            specs="core=SPC;wear_layer_mil=20;thickness_mm=6.0;width_in=7",
+            match_standard=STANDARD_SPEC,
+        )
+        write_worksheet([self.candidate], self.path)
+
+    def _rows(self):
+        return list(csv.DictReader(open(self.path, encoding="utf-8")))
+
+    def _write(self, rows):
+        with open(self.path, "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=worksheet_columns())
+            writer.writeheader()
+            writer.writerows(rows)
+
+    def _fill(self, row, brands_specs):
+        row["collected_on"] = "2026-09-10"
+        row["annual_volume"] = "1000"
+        for prefix, (brand, specs, price) in brands_specs.items():
+            row[f"{prefix}_carried"] = "y"
+            row[f"{prefix}_brand"] = brand
+            row[f"{prefix}_specs"] = specs
+            row[f"{prefix}_price"] = str(price)
+        return row
+
+    def test_a_spec_matched_row_never_scores_as_identical(self):
+        # Different brands, same specs -> `equivalent`, never `exact`. An exact
+        # tier here would promote a judgement call into a stated fact.
+        specs = self.candidate.specs
+        row = self._fill(self._rows()[0], {
+            "fnd": ("NuCore", specs, 2.99),
+            "hd": ("LifeProof", specs, 3.49),
+        })
+        self._write([row])
+        report = ingest_worksheet(self.path)
+        write_canonical(report, self.dir / "g.csv", self.dir / "p.csv")
+
+        groups, offers = load_dataset(self.dir / "g.csv", self.dir / "p.csv")
+        comparison = compare_all(groups, offers)[0]
+        self.assertEqual(comparison.quotes["home_depot"].tier, "equivalent")
+        self.assertNotEqual(comparison.quotes["home_depot"].tier, "exact")
+
+    def test_a_worse_spec_is_downgraded_not_hidden(self):
+        row = self._fill(self._rows()[0], {
+            "fnd": ("NuCore", self.candidate.specs, 2.99),
+            "hd": ("LifeProof",
+                   self.candidate.specs.replace("wear_layer_mil=20", "wear_layer_mil=6"),
+                   2.49),
+        })
+        self._write([row])
+        report = ingest_worksheet(self.path)
+        write_canonical(report, self.dir / "g.csv", self.dir / "p.csv")
+
+        groups, offers = load_dataset(self.dir / "g.csv", self.dir / "p.csv")
+        quote = compare_all(groups, offers)[0].quotes["home_depot"]
+        self.assertIn(quote.tier, ("close", "weak"))
+        self.assertIn("wear_layer_mil", quote.match.unmatched_specs)
+
+    def test_missing_per_retailer_specs_is_refused(self):
+        row = self._rows()[0]
+        row["collected_on"] = "2026-09-10"
+        row["fnd_carried"] = "y"
+        row["fnd_price"] = "2.99"
+        row["fnd_brand"] = "NuCore"      # brand given, specs withheld
+        self._write([row])
+        with self.assertRaises(DataError):
+            ingest_worksheet(self.path)
+
+    def test_each_retailer_keeps_its_own_unit_of_measure(self):
+        # Floor & Decor per sq ft, Home Depot per case: the row-level uom must
+        # not flatten them, or the case price is compared as a square-foot price.
+        row = self._fill(self._rows()[0], {
+            "fnd": ("NuCore", self.candidate.specs, 2.99),
+            "hd": ("LifeProof", self.candidate.specs, 71.98),
+        })
+        row["hd_uom"] = "per_case"
+        row["hd_pack_coverage"] = "23.77"
+        self._write([row])
+        report = ingest_worksheet(self.path)
+        write_canonical(report, self.dir / "g.csv", self.dir / "p.csv")
+
+        groups, offers = load_dataset(self.dir / "g.csv", self.dir / "p.csv")
+        quote = compare_all(groups, offers)[0].quotes["home_depot"]
+        self.assertAlmostEqual(quote.unit_price, 71.98 / 23.77, places=3)
+
+    def test_an_unknown_match_standard_is_refused(self):
+        row = self._fill(self._rows()[0], {"fnd": ("NuCore", self.candidate.specs, 2.99)})
+        row["match_standard"] = "vibes"
+        self._write([row])
+        with self.assertRaises(DataError):
+            ingest_worksheet(self.path)
+
+
+class FlooringWorksheetTest(unittest.TestCase):
+    FLOORING = ROOT / "data/collection/flooring_worksheet.csv"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = list(csv.DictReader(open(cls.FLOORING, encoding="utf-8")))
+
+    def test_it_covers_lvt_tile_and_hardwood(self):
+        categories = {row["category"] for row in self.rows}
+        self.assertIn("Luxury Vinyl Plank", categories)
+        self.assertIn("Porcelain Tile", categories)
+        self.assertIn("Engineered Hardwood", categories)
+        self.assertIn("Solid Hardwood", categories)
+
+    def test_most_rows_use_the_spec_matched_standard(self):
+        from fnd_pricing.collect import STANDARD_SPEC
+
+        spec_rows = [r for r in self.rows if r["match_standard"] == STANDARD_SPEC]
+        self.assertGreaterEqual(len(spec_rows) / len(self.rows), 0.8)
+
+    def test_every_row_declares_a_known_standard(self):
+        from fnd_pricing.collect import MATCH_STANDARDS
+
+        for row in self.rows:
+            self.assertIn(row["match_standard"], MATCH_STANDARDS)
+
+    def test_every_candidate_carries_a_target_specification(self):
+        for row in self.rows:
+            self.assertTrue(row["specs"], f"{row['candidate_id']} has no target spec")
+            self.assertIn("=", row["specs"])
+
+    def test_no_prices_are_shipped(self):
+        from fnd_pricing import RETAILER_CODES, RETAILERS
+
+        for row in self.rows:
+            for retailer in RETAILERS:
+                self.assertEqual(row[f"{RETAILER_CODES[retailer]}_price"], "")
